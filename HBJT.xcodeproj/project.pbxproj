@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83125C831C82A9A40019835E /* PagedTables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83125C821C82A9A40019835E /* PagedTables.storyboard */; };
 		EE011AD9E0A2AFE8718DB733 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210317032B9168BA09858C87 /* libPods.a */; };
 		F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333A91C7D974E00E2FD20 /* FTIntercepter.m */; };
 		F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333AB1C7D974E00E2FD20 /* FTLog.m */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		210317032B9168BA09858C87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E077DB84359F2F7E567C7E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		83125C821C82A9A40019835E /* PagedTables.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PagedTables.storyboard; sourceTree = "<group>"; };
 		B4E1DC973ECEE0364534613E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F77333A81C7D974E00E2FD20 /* FTIntercepter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTIntercepter.h; sourceTree = "<group>"; };
 		F77333A91C7D974E00E2FD20 /* FTIntercepter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTIntercepter.m; sourceTree = "<group>"; };
@@ -62,6 +64,14 @@
 				210317032B9168BA09858C87 /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		83125C811C82A9600019835E /* PagedTable */ = {
+			isa = PBXGroup;
+			children = (
+				83125C821C82A9A40019835E /* PagedTables.storyboard */,
+			);
+			name = PagedTable;
 			sourceTree = "<group>";
 		};
 		B1B7CC557BD1024F8DF54DD8 /* Pods */ = {
@@ -120,6 +130,7 @@
 				F7DFF9311C7D74EF00A24DB5 /* LaunchScreen.storyboard */,
 				F7DFF9331C7D74EF00A24DB5 /* Main.storyboard */,
 				F7DFF9351C7D74EF00A24DB5 /* Info.plist */,
+				83125C811C82A9600019835E /* PagedTable */,
 				F7DFF9361C7D74EF00A24DB5 /* main.m */,
 				F7DFF9371C7D74EF00A24DB5 /* ViewController.h */,
 				F7DFF9381C7D74EF00A24DB5 /* ViewController.m */,
@@ -198,6 +209,7 @@
 			files = (
 				F7DFF93E1C7D74EF00A24DB5 /* Assets.xcassets in Resources */,
 				F7DFF9401C7D74EF00A24DB5 /* Main.storyboard in Resources */,
+				83125C831C82A9A40019835E /* PagedTables.storyboard in Resources */,
 				F7DFF93F1C7D74EF00A24DB5 /* LaunchScreen.storyboard in Resources */,
 				F7DFF9411C7D74EF00A24DB5 /* Info.plist in Resources */,
 			);
