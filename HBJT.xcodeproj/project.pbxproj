@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		83125C831C82A9A40019835E /* PagedTables.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83125C821C82A9A40019835E /* PagedTables.storyboard */; };
+		83125C861C82BC760019835E /* PagedTablesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83125C851C82BC760019835E /* PagedTablesViewController.m */; };
+		83125C891C82BE300019835E /* PagedTablesViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 83125C881C82BE300019835E /* PagedTablesViewModel.m */; };
+		83125C8C1C82EB360019835E /* GuildHeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 83125C8B1C82EB360019835E /* GuildHeaderTableViewCell.m */; };
 		EE011AD9E0A2AFE8718DB733 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210317032B9168BA09858C87 /* libPods.a */; };
 		F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333A91C7D974E00E2FD20 /* FTIntercepter.m */; };
 		F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333AB1C7D974E00E2FD20 /* FTLog.m */; };
@@ -25,6 +28,12 @@
 		210317032B9168BA09858C87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E077DB84359F2F7E567C7E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		83125C821C82A9A40019835E /* PagedTables.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PagedTables.storyboard; sourceTree = "<group>"; };
+		83125C841C82BC760019835E /* PagedTablesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagedTablesViewController.h; sourceTree = "<group>"; };
+		83125C851C82BC760019835E /* PagedTablesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagedTablesViewController.m; sourceTree = "<group>"; };
+		83125C871C82BE300019835E /* PagedTablesViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagedTablesViewModel.h; sourceTree = "<group>"; };
+		83125C881C82BE300019835E /* PagedTablesViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagedTablesViewModel.m; sourceTree = "<group>"; };
+		83125C8A1C82EB360019835E /* GuildHeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuildHeaderTableViewCell.h; sourceTree = "<group>"; };
+		83125C8B1C82EB360019835E /* GuildHeaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuildHeaderTableViewCell.m; sourceTree = "<group>"; };
 		B4E1DC973ECEE0364534613E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F77333A81C7D974E00E2FD20 /* FTIntercepter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTIntercepter.h; sourceTree = "<group>"; };
 		F77333A91C7D974E00E2FD20 /* FTIntercepter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTIntercepter.m; sourceTree = "<group>"; };
@@ -66,12 +75,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		83125C811C82A9600019835E /* PagedTable */ = {
+		83125C811C82A9600019835E /* PagedTables */ = {
 			isa = PBXGroup;
 			children = (
 				83125C821C82A9A40019835E /* PagedTables.storyboard */,
+				83125C841C82BC760019835E /* PagedTablesViewController.h */,
+				83125C851C82BC760019835E /* PagedTablesViewController.m */,
+				83125C8A1C82EB360019835E /* GuildHeaderTableViewCell.h */,
+				83125C8B1C82EB360019835E /* GuildHeaderTableViewCell.m */,
+				83125C871C82BE300019835E /* PagedTablesViewModel.h */,
+				83125C881C82BE300019835E /* PagedTablesViewModel.m */,
 			);
-			name = PagedTable;
+			name = PagedTables;
 			sourceTree = "<group>";
 		};
 		B1B7CC557BD1024F8DF54DD8 /* Pods */ = {
@@ -130,7 +145,7 @@
 				F7DFF9311C7D74EF00A24DB5 /* LaunchScreen.storyboard */,
 				F7DFF9331C7D74EF00A24DB5 /* Main.storyboard */,
 				F7DFF9351C7D74EF00A24DB5 /* Info.plist */,
-				83125C811C82A9600019835E /* PagedTable */,
+				83125C811C82A9600019835E /* PagedTables */,
 				F7DFF9361C7D74EF00A24DB5 /* main.m */,
 				F7DFF9371C7D74EF00A24DB5 /* ViewController.h */,
 				F7DFF9381C7D74EF00A24DB5 /* ViewController.m */,
@@ -272,8 +287,11 @@
 			files = (
 				F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */,
 				F7DFF9431C7D74EF00A24DB5 /* ViewController.m in Sources */,
+				83125C891C82BE300019835E /* PagedTablesViewModel.m in Sources */,
 				F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */,
+				83125C861C82BC760019835E /* PagedTablesViewController.m in Sources */,
 				F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */,
+				83125C8C1C82EB360019835E /* GuildHeaderTableViewCell.m in Sources */,
 				F7DFF93D1C7D74EF00A24DB5 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
