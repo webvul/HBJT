@@ -29,6 +29,7 @@
 		F77333AA1C7D974E00E2FD20 /* FTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLog.h; sourceTree = "<group>"; };
 		F77333AB1C7D974E00E2FD20 /* FTLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLog.m; sourceTree = "<group>"; };
 		F77333AF1C7D976E00E2FD20 /* EJS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJS.h; sourceTree = "<group>"; };
+		F7C14FC71C84224600779833 /* Framework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Framework.h; sourceTree = "<group>"; };
 		F7DFF90E1C7D595500A24DB5 /* HBJT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBJT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DFF9291C7D64A900A24DB5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				F77333AC1C7D974E00E2FD20 /* EJS */,
+				F7C14FC71C84224600779833 /* Framework.h */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
 				F7DFF9301C7D74EF00A24DB5 /* Assets.xcassets */,
