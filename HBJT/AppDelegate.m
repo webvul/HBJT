@@ -17,6 +17,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:[[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateInitialViewController] leftDrawerViewController:[[UIStoryboard storyboardWithName:@"Menu" bundle:nil]instantiateInitialViewController]];
+    [drawerController setShowsShadow:NO];
+    [drawerController setMaximumRightDrawerWidth:240.0];
+    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
+    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    [drawerController setShouldStretchDrawer:NO];
+    [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
+    [drawerController bouncePreviewForDrawerSide:MMDrawerSideLeft completion:nil];
     return YES;
 }
 
