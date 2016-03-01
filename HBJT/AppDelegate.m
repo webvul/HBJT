@@ -25,6 +25,11 @@
     [drawerController setShouldStretchDrawer:NO];
     [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
     [drawerController bouncePreviewForDrawerSide:MMDrawerSideLeft completion:nil];
+    
+    //self.window.tintColor = [HBJTHeader themeColor];//#2B84D3蓝 #FC7A07橙
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self.window setRootViewController:drawerController];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

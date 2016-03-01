@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Framework.h"
+#import "EJFramework.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

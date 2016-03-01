@@ -54,4 +54,5 @@ fastlane/screenshots
 
 
 #项目
-EJS/
+HBJT/EJS/
+!HBJT/EJS/**/*.h
