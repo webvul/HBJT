@@ -1,16 +1,16 @@
 //
-//  Framework.h
+//  EJFramework.h
 //  HBJT
 //
 //  Created by 方秋鸣 on 16/2/29.
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#ifndef Framework_h
-#define Framework_h
+#ifndef EJFramework_h
+#define EJFramework_h
 
 
-#endif /* Framework_h */
+#endif /* EJFramework_h */
 
 #import <AFNetworking/AFNetworking.h>
 #import <Aspects/Aspects.h>
@@ -21,6 +21,9 @@
 #import <MMDrawerController/MMDrawerController.h>
 #import <MMDrawerController/MMDrawerVisualState.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+
+#import "FTools/Ftools.h"
+#define NSLog(format,...) FTLog(format,##__VA_ARGS__)
 
 
 
