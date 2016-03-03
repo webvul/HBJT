@@ -9,7 +9,7 @@
         <!--Menu View Controller-->
         <scene sceneID="roa-WK-cJZ">
             <objects>
-                <tableViewController storyboardIdentifier="menuVC" title="菜单" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ONj-87-Fie" userLabel="Menu View Controller" customClass="MenuTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="menuVC" title="菜单" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ONj-87-Fie" userLabel="Menu View Controller" customClass="EJMenuTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsMultipleSelection="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="38" sectionHeaderHeight="1" sectionFooterHeight="22" id="xKw-MJ-WwW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

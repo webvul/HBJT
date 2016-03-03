@@ -8,21 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		EE011AD9E0A2AFE8718DB733 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210317032B9168BA09858C87 /* libPods.a */; };
+		F716BC651C86872500516DF4 /* EJIndexViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F716BC641C86872500516DF4 /* EJIndexViewModel.m */; };
+		F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F75EA0331C86E11000878EF5 /* EJSAPIManager.m */; };
 		F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333A91C7D974E00E2FD20 /* FTIntercepter.m */; };
 		F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333AB1C7D974E00E2FD20 /* FTLog.m */; };
+		F7AB19001C8698F100723EC2 /* EJNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AB18FF1C8698F100723EC2 /* EJNewsViewController.m */; };
+		F7AB19081C86CC2A00723EC2 /* UIViewController+FTBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AB19071C86CC2A00723EC2 /* UIViewController+FTBinding.m */; };
 		F7C14FCA1C8434E200779833 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C14FC81C8434E200779833 /* Index.storyboard */; };
 		F7C14FCB1C8434E200779833 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C14FC91C8434E200779833 /* Menu.storyboard */; };
-		F7C14FDC1C853A9B00779833 /* EJAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FD01C853A9B00779833 /* EJAPIManager.m */; };
-		F7C14FDD1C853A9B00779833 /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C14FD11C853A9B00779833 /* Test.storyboard */; };
-		F7C14FDE1C853A9B00779833 /* TestAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FD31C853A9B00779833 /* TestAPIManager.m */; };
-		F7C14FDF1C853A9B00779833 /* TestTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FD51C853A9B00779833 /* TestTableViewCell.m */; };
-		F7C14FE01C853A9B00779833 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FD71C853A9B00779833 /* TestViewController.m */; };
-		F7C14FE11C853A9B00779833 /* TestViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FD91C853A9B00779833 /* TestViewModel.m */; };
-		F7C14FE21C853A9B00779833 /* EJViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FDB1C853A9B00779833 /* EJViewModel.m */; };
+		F7C14FDC1C853A9B00779833 /* FTAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FD01C853A9B00779833 /* FTAPIManager.m */; };
+		F7C14FE21C853A9B00779833 /* FTViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FDB1C853A9B00779833 /* FTViewModel.m */; };
 		F7C14FE91C85404A00779833 /* EJSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FE81C85404A00779833 /* EJSNetwork.m */; };
-		F7C14FEC1C856B9500779833 /* app服务接口信息0225.xlsx in Resources */ = {isa = PBXBuildFile; fileRef = F7C14FEB1C856B9500779833 /* app服务接口信息0225.xlsx */; };
-		F7C1596F1C8589F000779833 /* MenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C1596E1C8589F000779833 /* MenuTableViewController.m */; };
-		F7C159721C858B4200779833 /* IndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C159711C858B4200779833 /* IndexViewController.m */; };
+		F7C1596F1C8589F000779833 /* EJMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C1596E1C8589F000779833 /* EJMenuTableViewController.m */; };
+		F7C159721C858B4200779833 /* EJIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C159711C858B4200779833 /* EJIndexViewController.m */; };
 		F7DFF92A1C7D64A900A24DB5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DFF9291C7D64A900A24DB5 /* MapKit.framework */; };
 		F7DFF93D1C7D74EF00A24DB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */; };
 		F7DFF93E1C7D74EF00A24DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9301C7D74EF00A24DB5 /* Assets.xcassets */; };
@@ -30,43 +28,43 @@
 		F7DFF9401C7D74EF00A24DB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9331C7D74EF00A24DB5 /* Main.storyboard */; };
 		F7DFF9411C7D74EF00A24DB5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9351C7D74EF00A24DB5 /* Info.plist */; };
 		F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DFF9361C7D74EF00A24DB5 /* main.m */; };
-		F7DFF9431C7D74EF00A24DB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DFF9381C7D74EF00A24DB5 /* ViewController.m */; };
+		F7F8F9F71C8818E9008758BF /* EJIndexCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F8F9F61C8818E9008758BF /* EJIndexCellView.m */; };
+		F7F8F9FC1C881A54008758BF /* EJSSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F8F9FB1C881A54008758BF /* EJSSet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		210317032B9168BA09858C87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E077DB84359F2F7E567C7E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B4E1DC973ECEE0364534613E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F716BC631C86872500516DF4 /* EJIndexViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJIndexViewModel.h; sourceTree = "<group>"; };
+		F716BC641C86872500516DF4 /* EJIndexViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJIndexViewModel.m; sourceTree = "<group>"; };
+		F75EA0321C86E11000878EF5 /* EJSAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSAPIManager.h; sourceTree = "<group>"; };
+		F75EA0331C86E11000878EF5 /* EJSAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSAPIManager.m; sourceTree = "<group>"; };
 		F77333A81C7D974E00E2FD20 /* FTIntercepter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTIntercepter.h; sourceTree = "<group>"; };
 		F77333A91C7D974E00E2FD20 /* FTIntercepter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTIntercepter.m; sourceTree = "<group>"; };
 		F77333AA1C7D974E00E2FD20 /* FTLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTLog.h; sourceTree = "<group>"; };
 		F77333AB1C7D974E00E2FD20 /* FTLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTLog.m; sourceTree = "<group>"; };
+		F7AB18FE1C8698F100723EC2 /* EJNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EJNewsViewController.h; path = HBJT/EJNewsViewController.h; sourceTree = SOURCE_ROOT; };
+		F7AB18FF1C8698F100723EC2 /* EJNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EJNewsViewController.m; path = HBJT/EJNewsViewController.m; sourceTree = SOURCE_ROOT; };
+		F7AB19061C86CC2A00723EC2 /* UIViewController+FTBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+FTBinding.h"; sourceTree = "<group>"; };
+		F7AB19071C86CC2A00723EC2 /* UIViewController+FTBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+FTBinding.m"; sourceTree = "<group>"; };
+		F7AB19091C86CCB400723EC2 /* FTFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTFoundation.h; sourceTree = "<group>"; };
 		F7C14FC71C84224600779833 /* EJFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EJFramework.h; path = HBJT/EJFramework.h; sourceTree = "<group>"; };
 		F7C14FC81C8434E200779833 /* Index.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		F7C14FC91C8434E200779833 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
-		F7C14FCF1C853A9B00779833 /* EJAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJAPIManager.h; sourceTree = "<group>"; };
-		F7C14FD01C853A9B00779833 /* EJAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJAPIManager.m; sourceTree = "<group>"; };
-		F7C14FD11C853A9B00779833 /* Test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
-		F7C14FD21C853A9B00779833 /* TestAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAPIManager.h; sourceTree = "<group>"; };
-		F7C14FD31C853A9B00779833 /* TestAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAPIManager.m; sourceTree = "<group>"; };
-		F7C14FD41C853A9B00779833 /* TestTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewCell.h; sourceTree = "<group>"; };
-		F7C14FD51C853A9B00779833 /* TestTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewCell.m; sourceTree = "<group>"; };
-		F7C14FD61C853A9B00779833 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		F7C14FD71C853A9B00779833 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
-		F7C14FD81C853A9B00779833 /* TestViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewModel.h; sourceTree = "<group>"; };
-		F7C14FD91C853A9B00779833 /* TestViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewModel.m; sourceTree = "<group>"; };
-		F7C14FDA1C853A9B00779833 /* EJViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJViewModel.h; sourceTree = "<group>"; };
-		F7C14FDB1C853A9B00779833 /* EJViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJViewModel.m; sourceTree = "<group>"; };
+		F7C14FCF1C853A9B00779833 /* FTAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTAPIManager.h; sourceTree = "<group>"; };
+		F7C14FD01C853A9B00779833 /* FTAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTAPIManager.m; sourceTree = "<group>"; };
+		F7C14FDA1C853A9B00779833 /* FTViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTViewModel.h; sourceTree = "<group>"; };
+		F7C14FDB1C853A9B00779833 /* FTViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTViewModel.m; sourceTree = "<group>"; };
 		F7C14FE41C853BD500779833 /* EJSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSNetwork.h; sourceTree = "<group>"; };
 		F7C14FE51C853BE700779833 /* EJS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EJS.h; sourceTree = "<group>"; };
 		F7C14FE81C85404A00779833 /* EJSNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSNetwork.m; sourceTree = "<group>"; };
 		F7C14FEA1C85464200779833 /* EJSNetworkAPIName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EJSNetworkAPIName.h; sourceTree = "<group>"; };
-		F7C14FEB1C856B9500779833 /* app服务接口信息0225.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "app服务接口信息0225.xlsx"; sourceTree = "<group>"; };
 		F7C14FED1C85746100779833 /* FTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTools.h; sourceTree = "<group>"; };
-		F7C1596D1C8589F000779833 /* MenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuTableViewController.h; sourceTree = "<group>"; };
-		F7C1596E1C8589F000779833 /* MenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuTableViewController.m; sourceTree = "<group>"; };
-		F7C159701C858B4200779833 /* IndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexViewController.h; sourceTree = "<group>"; };
-		F7C159711C858B4200779833 /* IndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexViewController.m; sourceTree = "<group>"; };
+		F7C1596D1C8589F000779833 /* EJMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJMenuTableViewController.h; sourceTree = "<group>"; };
+		F7C1596E1C8589F000779833 /* EJMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJMenuTableViewController.m; sourceTree = "<group>"; };
+		F7C159701C858B4200779833 /* EJIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJIndexViewController.h; sourceTree = "<group>"; };
+		F7C159711C858B4200779833 /* EJIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJIndexViewController.m; sourceTree = "<group>"; };
 		F7DFF90E1C7D595500A24DB5 /* HBJT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBJT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DFF9291C7D64A900A24DB5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -76,8 +74,11 @@
 		F7DFF9341C7D74EF00A24DB5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7DFF9351C7D74EF00A24DB5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HBJT/Info.plist; sourceTree = "<group>"; };
 		F7DFF9361C7D74EF00A24DB5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HBJT/main.m; sourceTree = "<group>"; };
-		F7DFF9371C7D74EF00A24DB5 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F7DFF9381C7D74EF00A24DB5 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F7F8F9F41C88128F008758BF /* app服务接口信息0301.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "app服务接口信息0301.xlsx"; sourceTree = "<group>"; };
+		F7F8F9F51C8818E9008758BF /* EJIndexCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJIndexCellView.h; sourceTree = "<group>"; };
+		F7F8F9F61C8818E9008758BF /* EJIndexCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJIndexCellView.m; sourceTree = "<group>"; };
+		F7F8F9FA1C881A53008758BF /* EJSSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSSet.h; sourceTree = "<group>"; };
+		F7F8F9FB1C881A54008758BF /* EJSSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSSet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +112,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F716BC661C86880100516DF4 /* EJIndex */ = {
+			isa = PBXGroup;
+			children = (
+				F7F8F9F51C8818E9008758BF /* EJIndexCellView.h */,
+				F7F8F9F61C8818E9008758BF /* EJIndexCellView.m */,
+				F7C159701C858B4200779833 /* EJIndexViewController.h */,
+				F7C159711C858B4200779833 /* EJIndexViewController.m */,
+				F716BC631C86872500516DF4 /* EJIndexViewModel.h */,
+				F716BC641C86872500516DF4 /* EJIndexViewModel.m */,
+			);
+			name = EJIndex;
+			sourceTree = "<group>";
+		};
 		F77333A71C7D974E00E2FD20 /* FTools */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,41 +140,31 @@
 		F77333AC1C7D974E00E2FD20 /* EJS */ = {
 			isa = PBXGroup;
 			children = (
-				F7C14FEB1C856B9500779833 /* app服务接口信息0225.xlsx */,
+				F7F8F9F41C88128F008758BF /* app服务接口信息0301.xlsx */,
 				F7C14FE51C853BE700779833 /* EJS.h */,
-				F7C14FEA1C85464200779833 /* EJSNetworkAPIName.h */,
+				F7F8F9FA1C881A53008758BF /* EJSSet.h */,
+				F7F8F9FB1C881A54008758BF /* EJSSet.m */,
 				F7C14FE41C853BD500779833 /* EJSNetwork.h */,
 				F7C14FE81C85404A00779833 /* EJSNetwork.m */,
-				F7C14FE31C853ACE00779833 /* Test */,
+				F75EA0321C86E11000878EF5 /* EJSAPIManager.h */,
+				F75EA0331C86E11000878EF5 /* EJSAPIManager.m */,
+				F7C14FEA1C85464200779833 /* EJSNetworkAPIName.h */,
 			);
 			path = EJS;
 			sourceTree = "<group>";
 		};
-		F7C14FE31C853ACE00779833 /* Test */ = {
+		F7C1596C1C8580A900779833 /* FTFoundation */ = {
 			isa = PBXGroup;
 			children = (
-				F7C14FD11C853A9B00779833 /* Test.storyboard */,
-				F7C14FD21C853A9B00779833 /* TestAPIManager.h */,
-				F7C14FD31C853A9B00779833 /* TestAPIManager.m */,
-				F7C14FD41C853A9B00779833 /* TestTableViewCell.h */,
-				F7C14FD51C853A9B00779833 /* TestTableViewCell.m */,
-				F7C14FD61C853A9B00779833 /* TestViewController.h */,
-				F7C14FD71C853A9B00779833 /* TestViewController.m */,
-				F7C14FD81C853A9B00779833 /* TestViewModel.h */,
-				F7C14FD91C853A9B00779833 /* TestViewModel.m */,
+				F7AB19091C86CCB400723EC2 /* FTFoundation.h */,
+				F7AB19061C86CC2A00723EC2 /* UIViewController+FTBinding.h */,
+				F7AB19071C86CC2A00723EC2 /* UIViewController+FTBinding.m */,
+				F7C14FCF1C853A9B00779833 /* FTAPIManager.h */,
+				F7C14FD01C853A9B00779833 /* FTAPIManager.m */,
+				F7C14FDA1C853A9B00779833 /* FTViewModel.h */,
+				F7C14FDB1C853A9B00779833 /* FTViewModel.m */,
 			);
-			path = Test;
-			sourceTree = "<group>";
-		};
-		F7C1596C1C8580A900779833 /* EJFoundation */ = {
-			isa = PBXGroup;
-			children = (
-				F7C14FCF1C853A9B00779833 /* EJAPIManager.h */,
-				F7C14FD01C853A9B00779833 /* EJAPIManager.m */,
-				F7C14FDA1C853A9B00779833 /* EJViewModel.h */,
-				F7C14FDB1C853A9B00779833 /* EJViewModel.m */,
-			);
-			path = EJFoundation;
+			path = FTFoundation;
 			sourceTree = "<group>";
 		};
 		F7DFF9051C7D595500A24DB5 = {
@@ -190,21 +194,44 @@
 		F7DFF92D1C7D74EF00A24DB5 /* HBJT */ = {
 			isa = PBXGroup;
 			children = (
+				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
+				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
 				F7C14FC81C8434E200779833 /* Index.storyboard */,
 				F7C14FC91C8434E200779833 /* Menu.storyboard */,
 				F77333AC1C7D974E00E2FD20 /* EJS */,
-				F7C1596C1C8580A900779833 /* EJFoundation */,
-				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
-				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
-				F7C159701C858B4200779833 /* IndexViewController.h */,
-				F7C159711C858B4200779833 /* IndexViewController.m */,
-				F7C1596D1C8589F000779833 /* MenuTableViewController.h */,
-				F7C1596E1C8589F000779833 /* MenuTableViewController.m */,
-				F7DFF9371C7D74EF00A24DB5 /* ViewController.h */,
-				F7DFF9381C7D74EF00A24DB5 /* ViewController.m */,
+				F716BC661C86880100516DF4 /* EJIndex */,
+				F7F284A61C87EB6400027DF6 /* EJMenu */,
+				F7F284A71C87EB6E00027DF6 /* EJNews */,
+				F7F284A81C87EB7700027DF6 /* EJGuild */,
+				F7C1596C1C8580A900779833 /* FTFoundation */,
 				F77333A71C7D974E00E2FD20 /* FTools */,
 			);
 			path = HBJT;
+			sourceTree = "<group>";
+		};
+		F7F284A61C87EB6400027DF6 /* EJMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F7C1596D1C8589F000779833 /* EJMenuTableViewController.h */,
+				F7C1596E1C8589F000779833 /* EJMenuTableViewController.m */,
+			);
+			name = EJMenu;
+			sourceTree = "<group>";
+		};
+		F7F284A71C87EB6E00027DF6 /* EJNews */ = {
+			isa = PBXGroup;
+			children = (
+				F7AB18FE1C8698F100723EC2 /* EJNewsViewController.h */,
+				F7AB18FF1C8698F100723EC2 /* EJNewsViewController.m */,
+			);
+			name = EJNews;
+			sourceTree = "<group>";
+		};
+		F7F284A81C87EB7700027DF6 /* EJGuild */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = EJGuild;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,9 +307,7 @@
 				F7C14FCA1C8434E200779833 /* Index.storyboard in Resources */,
 				F7C14FCB1C8434E200779833 /* Menu.storyboard in Resources */,
 				F7DFF93F1C7D74EF00A24DB5 /* LaunchScreen.storyboard in Resources */,
-				F7C14FDD1C853A9B00779833 /* Test.storyboard in Resources */,
 				F7DFF9411C7D74EF00A24DB5 /* Info.plist in Resources */,
-				F7C14FEC1C856B9500779833 /* app服务接口信息0225.xlsx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,20 +366,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F7C14FDE1C853A9B00779833 /* TestAPIManager.m in Sources */,
-				F7C159721C858B4200779833 /* IndexViewController.m in Sources */,
+				F7C159721C858B4200779833 /* EJIndexViewController.m in Sources */,
 				F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */,
 				F7C14FE91C85404A00779833 /* EJSNetwork.m in Sources */,
-				F7DFF9431C7D74EF00A24DB5 /* ViewController.m in Sources */,
 				F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */,
-				F7C14FE01C853A9B00779833 /* TestViewController.m in Sources */,
 				F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */,
-				F7C14FE21C853A9B00779833 /* EJViewModel.m in Sources */,
-				F7C14FDC1C853A9B00779833 /* EJAPIManager.m in Sources */,
+				F7F8F9FC1C881A54008758BF /* EJSSet.m in Sources */,
+				F7C14FE21C853A9B00779833 /* FTViewModel.m in Sources */,
+				F7C14FDC1C853A9B00779833 /* FTAPIManager.m in Sources */,
 				F7DFF93D1C7D74EF00A24DB5 /* AppDelegate.m in Sources */,
-				F7C14FDF1C853A9B00779833 /* TestTableViewCell.m in Sources */,
-				F7C14FE11C853A9B00779833 /* TestViewModel.m in Sources */,
-				F7C1596F1C8589F000779833 /* MenuTableViewController.m in Sources */,
+				F7F8F9F71C8818E9008758BF /* EJIndexCellView.m in Sources */,
+				F7AB19001C8698F100723EC2 /* EJNewsViewController.m in Sources */,
+				F7AB19081C86CC2A00723EC2 /* UIViewController+FTBinding.m in Sources */,
+				F7C1596F1C8589F000779833 /* EJMenuTableViewController.m in Sources */,
+				F716BC651C86872500516DF4 /* EJIndexViewModel.m in Sources */,
+				F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +498,32 @@
 				INFOPLIST_FILE = hbjt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"Aspects\"",
+					"-l\"CocoaSecurity\"",
+					"-l\"IQKeyboardManager\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MMDrawerController\"",
+					"-l\"Masonry\"",
+					"-l\"ReactiveCocoa\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"$(inherited)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fangqiuming.hbjt;
 				PRODUCT_NAME = HBJT;
 				PROVISIONING_PROFILE = "";
@@ -488,6 +540,32 @@
 				INFOPLIST_FILE = hbjt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+					"-l\"AFNetworking\"",
+					"-l\"Aspects\"",
+					"-l\"CocoaSecurity\"",
+					"-l\"IQKeyboardManager\"",
+					"-l\"MBProgressHUD\"",
+					"-l\"MMDrawerController\"",
+					"-l\"Masonry\"",
+					"-l\"ReactiveCocoa\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"MobileCoreServices\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.fangqiuming.hbjt;
 				PRODUCT_NAME = HBJT;
 				PROVISIONING_PROFILE = "";

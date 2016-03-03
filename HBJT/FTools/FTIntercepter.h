@@ -6,6 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
+#import "FTLog.h"
 #import <Foundation/Foundation.h>
 
 @interface FTIntercepter : NSObject

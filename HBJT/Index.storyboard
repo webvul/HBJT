@@ -10,7 +10,7 @@
         <!--Index View Controller-->
         <scene sceneID="xF7-du-xBx">
             <objects>
-                <viewController storyboardIdentifier="indexVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lP9-3m-EFb" customClass="IndexViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="indexVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lP9-3m-EFb" customClass="EJIndexViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5j8-v4-jRl"/>
                         <viewControllerLayoutGuide type="bottom" id="rQJ-so-oRC"/>
@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花纹背景" translatesAutoresizingMaskIntoConstraints="NO" id="Iyt-9T-qA3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="花纹背景" translatesAutoresizingMaskIntoConstraints="NO" id="Iyt-9T-qA3" userLabel="背景">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0a_r7_c1" translatesAutoresizingMaskIntoConstraints="NO" id="fIU-TC-PTT" userLabel="页眉">
@@ -28,14 +28,14 @@
                                     <constraint firstAttribute="width" secondItem="fIU-TC-PTT" secondAttribute="height" multiplier="585:70" id="2XN-kz-NLp"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wy-sm-KJM">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Wy-sm-KJM" userLabel="页眉按钮">
                                 <rect key="frame" x="8" y="24" width="43" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2Wy-sm-KJM" secondAttribute="height" multiplier="1:1" id="Ava-di-SxH"/>
                                 </constraints>
                                 <state key="normal" image="02a.fw"/>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="001_r2_c1" translatesAutoresizingMaskIntoConstraints="NO" id="11i-aw-9Ay">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="001_r2_c1" translatesAutoresizingMaskIntoConstraints="NO" id="11i-aw-9Ay" userLabel="页眉文字">
                                 <rect key="frame" x="94" y="37" width="132" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="11i-aw-9Ay" secondAttribute="height" multiplier="134:17" id="23g-EV-GDH"/>
@@ -47,11 +47,11 @@
                                     <constraint firstAttribute="height" priority="750" constant="75" id="ItG-BP-OKq"/>
                                 </constraints>
                             </imageView>
-                            <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIu-hV-PhH" userLabel="图框">
+                            <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YIu-hV-PhH" userLabel="轮播图边框">
                                 <rect key="frame" x="12" y="63" width="296" height="141"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wWx-Fw-2QV">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wWx-Fw-2QV" userLabel="轮播图">
                                 <rect key="frame" x="20" y="71" width="280" height="125"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrM-Ro-ngB">
@@ -189,7 +189,7 @@
                                     <constraint firstAttribute="bottom" secondItem="MrM-Ro-ngB" secondAttribute="bottom" id="vj0-0n-wYr"/>
                                 </constraints>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="vmA-jl-0sk">
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="vmA-jl-0sk" userLabel="轮播指示器">
                                 <rect key="frame" x="225" y="171" width="75" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="ppw-mN-R6T"/>
@@ -455,13 +455,14 @@
                         <outlet property="button6" destination="I2P-3U-BZ7" id="4Kg-jb-yhO"/>
                         <outlet property="button7" destination="T71-z2-yam" id="Wdx-Fu-ocs"/>
                         <outlet property="button8" destination="Omb-1H-ZDC" id="hLw-i1-1Pp"/>
+                        <outlet property="menuButton" destination="2Wy-sm-KJM" id="ehJ-w7-znY"/>
                         <outlet property="pageControl" destination="vmA-jl-0sk" id="FrS-rG-XYy"/>
                         <outlet property="scrollView" destination="wWx-Fw-2QV" id="nQN-UA-Jwy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRw-w7-h08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1083" y="195"/>
+            <point key="canvasLocation" x="824" y="183"/>
         </scene>
     </scenes>
     <resources>

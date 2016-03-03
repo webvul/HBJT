@@ -22,8 +22,10 @@
 #import <MMDrawerController/MMDrawerVisualState.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+#import "FTFoundation/FTFoundation.h"
 #import "FTools/Ftools.h"
-#define NSLog(format,...) FTLog(format,##__VA_ARGS__)
+
+#import "EJS/EJS.h"
 
 
 
