@@ -1,14 +1,14 @@
 //
-//  EJViewModel.m
-//  hbjt
+//  FTViewModel.m
+//  FTools
 //
 //  Created by 方秋鸣 on 16/2/22.
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJViewModel.h"
+#import "FTViewModel.h"
 
-@implementation EJViewModel
+@implementation FTViewModel
 
 + (instancetype)viewModel
 {
@@ -19,13 +19,12 @@
 {
     self = [super init];
     if (self) {
-        [self start];
         [self modulate];
     }
     return self;
 }
 
-- (void)start
+- (void)startWithSender:(id)sender
 {
     
 }
@@ -35,9 +34,14 @@
 
 }
 
+- (void)didReceiveMemoryWarning
+{
+    
+}
+
 - (void)dealloc
 {
-    NSLog(@"[%@ VIEWMODEL DEALLOC]",self);
+    NSLog(@"[%@ VIEWMODEL DEALLOCING]",self);
 }
 
 

@@ -17,19 +17,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    MMDrawerController *drawerController = [[MMDrawerController alloc] initWithCenterViewController:[[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateInitialViewController] leftDrawerViewController:[[UIStoryboard storyboardWithName:@"Menu" bundle:nil]instantiateInitialViewController]];
-    [drawerController setShowsShadow:NO];
-    [drawerController setMaximumRightDrawerWidth:240.0];
-    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
-    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
-    [drawerController setShouldStretchDrawer:NO];
-    [drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
-    [drawerController bouncePreviewForDrawerSide:MMDrawerSideLeft completion:nil];
-    
-    //self.window.tintColor = [HBJTHeader themeColor];//#2B84D3蓝 #FC7A07橙
+    NSLog(@"App Launching");
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window setRootViewController:drawerController];
+    [self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
+    NSLog(@"App Launched");
     return YES;
 }
 
@@ -55,4 +47,82 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+#pragma mark - Public Methods
+
++ (instancetype)sharedDelegate
+{
+    NSString *sourceString = [[NSThread callStackSymbols] objectAtIndex:1];
+    NSCharacterSet *separatorSet = [NSCharacterSet characterSetWithCharactersInString:@" -[]+?.,"];
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[sourceString  componentsSeparatedByCharactersInSet:separatorSet]];
+    [array removeObject:@""];
+    NSString *classCaller    = [array objectAtIndex:3];
+    NSString *functionCaller = [array objectAtIndex:4];
+    NSLog(@"%@ %@ is Calling Appdelegate",classCaller,functionCaller);
+    return [[UIApplication sharedApplication] delegate];
+}
+
+- (void)setLeftDrawerViewController
+{
+    [self.drawerController setLeftDrawerViewController:self.menuTableViewController];
+}
+
+#pragma mark - Private Methods
+
+
+
+#pragma mark - Getters
+
+- (IQKeyboardManager *)keyboardManager
+{
+    if (_keyboardManager == nil) {
+        _keyboardManager = [IQKeyboardManager sharedManager];
+        [_keyboardManager setEnableAutoToolbar:NO];
+        [_keyboardManager setKeyboardDistanceFromTextField:160];
+    }
+    return _keyboardManager;
+}
+
+- (MMDrawerController *)drawerController
+{
+    if (_drawerController == nil) {
+        _drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.indexViewController leftDrawerViewController:nil];
+        [_drawerController setShowsShadow:NO];
+        [_drawerController setMaximumRightDrawerWidth:240.0];
+        [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
+        [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+        [_drawerController setShouldStretchDrawer:NO];
+        [_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
+        NSLog(@"DrawerController Initialized");
+    }
+    return _drawerController;
+}
+
+- (EJIndexViewController *)indexViewController
+{
+    if (_indexViewController == nil) {
+        _indexViewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateInitialViewController];
+        NSLog(@"IndexViewController Initialized");
+    }
+    return _indexViewController;
+}
+
+- (EJMenuTableViewController *)menuTableViewController
+{
+    if (_menuTableViewController == nil) {
+        _menuTableViewController = [[UIStoryboard storyboardWithName:@"Menu" bundle:nil] instantiateInitialViewController];
+        NSLog(@"MenuTableViewController Initialized");
+    }
+    return _menuTableViewController;
+}
+
+- (EJNewsViewController *)newsViewController
+{
+    if (_newsViewController == nil) {
+        _newsViewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil] instantiateInitialViewController];
+        NSLog(@"NewsViewController Initialized");
+
+    }
+    return _newsViewController;
+}
 @end

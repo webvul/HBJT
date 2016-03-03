@@ -8,11 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "EJFramework.h"
-
+#import "EJIndexViewController.h"
+#import "EJMenuTableViewController.h"
+#import "EJNewsViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) IQKeyboardManager *keyboardManager;
+@property (strong, nonatomic) MMDrawerController *drawerController;
+@property (strong, nonatomic) EJIndexViewController *indexViewController;
+@property (strong, nonatomic) EJMenuTableViewController *menuTableViewController;
+@property (strong, nonatomic) EJNewsViewController *newsViewController;
+
++ (instancetype)sharedDelegate;
+- (void)setLeftDrawerViewController;
 
 
 @end

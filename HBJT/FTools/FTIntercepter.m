@@ -39,6 +39,9 @@
         [UIViewController aspect_hookSelector:@selector(viewWillAppear:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated){
             [self viewWillAppear:animated viewController:[aspectInfo instance]];
         } error:NULL];
+        [UIViewController aspect_hookSelector:@selector(viewWillDisappear:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated){
+            [self viewWillDisappear:animated viewController:[aspectInfo instance]];
+        } error:NULL];
     }
     return self;
 }
@@ -46,12 +49,17 @@
 #pragma mark - fake methods
 - (void)loadView:(UIViewController *)viewController
 {
-    NSLog(@"[%@ loadView]", [viewController class]);
+    NSLog(@"%@ loadView", [viewController class]);
 }
 
 - (void)viewWillAppear:(BOOL)animated viewController:(UIViewController *)viewController
 {
-    NSLog(@"[%@ viewWillAppear:%@]", [viewController class], animated ? @"YES" : @"NO");
+    NSLog(@"%@ viewWillAppear:%@", [viewController class], animated ? @"YES" : @"NO");
+}
+
+- (void)viewWillDisappear:(BOOL)animated viewController:(UIViewController *)viewController
+{
+    NSLog(@"%@ viewWillDisappear:%@", [viewController class], animated ? @"YES" : @"NO");
 }
 
 @end

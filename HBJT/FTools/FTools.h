@@ -9,7 +9,7 @@
 #ifndef FTools_h
 #define FTools_h
 
-
 #endif /* FTools_h */
 
 #import "FTLog.h"
+

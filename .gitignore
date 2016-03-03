@@ -56,3 +56,4 @@ fastlane/screenshots
 #项目
 HBJT/EJS/
 !HBJT/EJS/**/*.h
+HBJT/EJS/Test

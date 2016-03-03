@@ -8,7 +8,9 @@
 
 #import "FTLog.h"
 
-@implementation FTLog
+CFAbsoluteTime markTime = 0;
+
+/*@implementation FTLog
 
 + (void)log:(char *)file line:(int)line objects:(id)format, ...;
 {
@@ -32,4 +34,4 @@
     }
 }
 
-@end
+@end*/
