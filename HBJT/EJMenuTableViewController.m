@@ -7,6 +7,7 @@
 //
 
 #import "EJMenuTableViewController.h"
+#import "AppDelegate.h"
 
 @interface EJMenuTableViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *usernameLabel;
@@ -27,8 +28,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self layoutSublayers];
-    //[self bindViewModel];
+    [self createLayoutConstraint];
+    [self prepareOtherViewController];
+
+}
+
+- (void)createLayoutConstraint
+{
+    //self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, CGFLOAT_MIN)];
+    self.tableView.contentInset = UIEdgeInsetsMake(-36.0f, 0.0f, 0.0f, 0.0f);
+    if (self.view.frame.size.height > 500)
+    {
+        self.tableView.scrollEnabled = NO;
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+
+    [self.navigationController setNavigationBarHidden:YES];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +64,14 @@
 #pragma mark - UITableViewDataSource
 
 #pragma mark - UITableViewDelegate
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return nil;
+    }
+    return ([[UITableViewHeaderFooterView alloc]init]);
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -51,13 +84,21 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    /* if (indexPath.section == 1) {
+
+
+    if (indexPath.section == 1) {
      switch (indexPath.row) {
-     case 0:
-     [self pushMenuControllerNamed:@"section" inStoryboardNamed:@"Matters"];
+         case 0:
+             
+             
+             [[[AppDelegate sharedDelegate] rootNavigationController] pushViewController:[[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateInitialViewController] animated:YES];
+             NSLog(@"1");
+    // [self pushMenuControllerNamed:@"section" inStoryboardNamed:@"Matters"];
      break;
-     case 1:
-     
+     }
+    }
+    // case 1:
+     /*
      break;
      default:
      break;
@@ -94,11 +135,21 @@
 }
 #pragma - private methods
 
-- (void)layoutSublayers
+
+
+
+- (void)prepareOtherViewController
 {
-    self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, CGFLOAT_MIN)];
-    self.tableView.scrollEnabled = NO;
+    AppDelegate *appDelegate = [AppDelegate sharedDelegate];
+    @weakify(appDelegate);
+    [[self.loginButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(appDelegate);
+        [[appDelegate drawerController] closeDrawerAnimated:YES completion:nil];
+        [[appDelegate rootNavigationController] pushViewController:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController] animated:YES];
+    }];
+
 }
+
 
 /*- (void)bindViewModel
  {

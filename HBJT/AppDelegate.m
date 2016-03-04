@@ -64,7 +64,26 @@
 
 - (void)setLeftDrawerViewController
 {
-    [self.drawerController setLeftDrawerViewController:self.menuTableViewController];
+    if (!self.drawerController.leftDrawerViewController) {
+        [self.drawerController setLeftDrawerViewController:self.menuTableViewController];
+    }
+}
+
+- (void)push:(nonnull UIViewController *)viewController
+{
+    [self toggleDrawerOpenGesture:NO];
+    [self.rootNavigationController pushViewController:viewController animated:YES];
+
+}
+
+- (void)toggleDrawerOpenGesture:(BOOL)enbaled
+{
+    if (enbaled) {
+        [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningCenterView];
+    } else
+    {
+        [self.drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    }
 }
 
 #pragma mark - Private Methods
@@ -72,6 +91,7 @@
 
 
 #pragma mark - Getters
+
 
 - (IQKeyboardManager *)keyboardManager
 {
@@ -83,15 +103,25 @@
     return _keyboardManager;
 }
 
+- (UINavigationController *)rootNavigationController
+{
+    if (_rootNavigationController == nil) {
+        _rootNavigationController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateViewControllerWithIdentifier:@"Root"];
+        //_rootNavigationController.navigationBar.tintColor = [UIColor colorWithRed:0.169 green:0.518 blue:0.827 alpha:0.1];
+    }
+    return _rootNavigationController;
+}
+
 - (MMDrawerController *)drawerController
 {
     if (_drawerController == nil) {
-        _drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.indexViewController leftDrawerViewController:nil];
+        _drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.rootNavigationController leftDrawerViewController:nil];
         [_drawerController setShowsShadow:NO];
-        [_drawerController setMaximumRightDrawerWidth:240.0];
-        [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeBezelPanningCenterView];
+        [_drawerController setMaximumLeftDrawerWidth:240.0];
+        [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
         [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
         [_drawerController setShouldStretchDrawer:NO];
+        //_drawerController.centerHiddenInteractionMode = MMDrawerOpenCenterInteractionModeFull;
         [_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
         NSLog(@"DrawerController Initialized");
     }

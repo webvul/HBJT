@@ -19,29 +19,34 @@
 {
     self = [super init];
     if (self) {
-        [self modulate];
+        [self start];
     }
     return self;
 }
 
-- (void)startWithSender:(id)sender
+- (void)start
 {
     
 }
 
-- (void)modulate
+- (void)connect
 {
-
+    self.isConnected = YES;
 }
 
-- (void)didReceiveMemoryWarning
+- (void)disconnect
 {
-    
+    self.isConnected = NO;
+}
+
+- (void)stop
+{
+    [self disconnect];
 }
 
 - (void)dealloc
 {
-    NSLog(@"[%@ VIEWMODEL DEALLOCING]",self);
+    NSLog(@"%@ VIEWMODEL DEALLOCING",[self class]);
 }
 
 

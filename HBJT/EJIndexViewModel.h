@@ -6,15 +6,13 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "FTViewModel.h"
+#import "EJFramework.h"
 
 @interface EJIndexViewModel : FTViewModel
 
-@property (assign, nonatomic) NSInteger numberOfPageInScrollView;
-@property (assign, nonatomic) CGFloat scrollViewWidth;
-
 //Receiver
-@property (assign, nonatomic) CGFloat scrollViewOffset;
+@property (assign, nonatomic) NSInteger numberOfSrollViewPage;
+@property (assign, nonatomic) NSNumber *scrollViewOffset;
 //Sender
 @property (strong, nonatomic) RACSignal *pageIndicatorTintSignal;
 @property (strong, nonatomic) RACSignal *scrollViewRotateSignal;

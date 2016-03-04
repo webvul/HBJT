@@ -6,10 +6,9 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJIndexViewController.h"
+#import "EJS/EJS.h"
+#import "EJFramework.h"
 
 @interface EJMenuTableViewController : UITableViewController
-
-@property (assign, nonatomic) EJIndexViewController *EJIndexViewController;
 
 @end

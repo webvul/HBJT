@@ -16,11 +16,13 @@
 #import <Aspects/Aspects.h>
 #import <CocoaSecurity/CocoaSecurity.h>
 #import <IQKeyboardManager/IQKeyboardManager.h>
+#define MAS_SHORTHAND
 #import <Masonry/Masonry.h>
 #import <MBProgressHUD/MBProgressHUD.h>
 #import <MMDrawerController/MMDrawerController.h>
 #import <MMDrawerController/MMDrawerVisualState.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 #import "FTFoundation/FTFoundation.h"
 #import "FTools/Ftools.h"

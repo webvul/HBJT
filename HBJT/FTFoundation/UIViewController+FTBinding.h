@@ -18,6 +18,10 @@
  */
 @property (strong, nonatomic, nullable)FTViewModel *viewModel;
 /**
+ *  初始化View Model，并调用bindViewModelToUpdate和bindViewModelForNotice方法。
+ */
+- (void)bindViewModel;
+/**
  *  约定View Controller将以何种方式更新View Model信息。
  */
 - (void)bindViewModelToUpdate;
@@ -30,7 +34,7 @@
  */
 - (void)prepareOtherViewController;
 /**
- *  当从另一个View Controller跳转进入前，如用必要可调用此方法向此View Controller的View Model发送初始配置信息。
+ *  当从另一个View Controller跳转进入前，如用必要可调用此方法向此View Controller发送初始配置信息。
  *
  *  @param sender 包含跳转入View Controller初始配置信息的对象。
  */

@@ -42,6 +42,9 @@
         [UIViewController aspect_hookSelector:@selector(viewWillDisappear:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo, BOOL animated){
             [self viewWillDisappear:animated viewController:[aspectInfo instance]];
         } error:NULL];
+        [UIScrollView aspect_hookSelector:@selector(setContentOffset:) withOptions:AspectPositionAfter usingBlock:^(id<AspectInfo> aspectInfo){
+            [self setContentOffsetScrollView:[aspectInfo instance]];
+        } error:NULL];
     }
     return self;
 }
@@ -62,4 +65,8 @@
     NSLog(@"%@ viewWillDisappear:%@", [viewController class], animated ? @"YES" : @"NO");
 }
 
+- (void)setContentOffsetScrollView:(id)viewController
+{
+    //NSLog(@"setContentOffsetScrollView:%@", [viewController class]);
+}
 @end
