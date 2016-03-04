@@ -27,13 +27,16 @@
 @property (strong, nonatomic) IBOutlet UIButton *menuButton;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet UIView *scrollContentView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewAspect;
 
 @property (strong, nonatomic) NSArray *buttonArray;
 @property (strong, nonatomic) NSMutableArray *imageViewArray;
 
 @property (assign, nonatomic) NSInteger numberOfSrollViewPage;
 @property (assign, nonatomic) CGFloat scrollViewWidth;
+@property (assign, nonatomic) CGPoint scrollViewOffsetHolder;
 
 @end
 
@@ -46,64 +49,99 @@ CGFloat scrollViewOffsetx;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.numberOfSrollViewPage = kEJSSetNumberOfIndexSrollViewPage;
-    self.scrollViewWidth = self.scrollView.frame.size.width;
-    [self.scrollView setContentOffset:CGPointMake(self.scrollViewWidth, 0) animated:NO];
     self.buttonArray = @[self.button0, self.button1, self.button2, self.button3, self.button4,
                         self.button5, self.button6, self.button7, self.button8];
-    [self scrollViewControl];
-}
-
-- (void)layoutSubviews
-{
+    self.imageViewArray = [[NSMutableArray alloc]init];
+    self.numberOfSrollViewPage = kEJSSetNumberOfIndexSrollViewPage+2;
+    self.scrollViewWidth = self.scrollView.frame.size.width;
     for (NSInteger i=0; i<self.numberOfSrollViewPage; i++) {
-        [UIImageView alloc]in
+        UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
+        [imageView setContentMode:UIViewContentModeScaleAspectFill];
+        [self.imageViewArray addObject:imageView];
+        [self.scrollContentView addSubview:imageView];
     }
+    [self.scrollView setContentOffset:CGPointMake(self.scrollViewWidth, 0) animated:NO];
+    [self createLayoutConstraints];
+    [self prepareOtherViewController];
 }
 
-- (void)scrollViewControl
+- (void)createLayoutConstraints
 {
- /*   @weakify(self);
-    [RACObserve(self.scrollView, contentOffset) subscribeNext:^(id x) {
-        @strongify(self);
-               }
-    }];*/
+    NSInteger i = 0;
+    for (UIImageView *imageView in self.imageViewArray) {
+        [imageView makeConstraints:^(MASConstraintMaker *make){
+            make.size.and.top.equalTo(self.scrollView);
+            make.leading.equalTo(self.scrollContentView).offset(self.scrollViewWidth*i);
+        }];
+        imageView.backgroundColor = [UIColor colorWithHue:(CGFloat)((double)i/(double)self.imageViewArray.count) saturation:1 brightness:1 alpha:1];
+        i++;
+    }
+    [self.scrollContentView makeConstraints:^(MASConstraintMaker *make){
+        make.width.equalTo(self.scrollContentView.height).multipliedBy((double)i*9/4);
+    }];
 
 }
+
+- (void)viewWillLayoutSubviews
+{
+    //没用考虑横屏的情况
+    self.scrollViewOffsetHolder = self.scrollView.contentOffset;
+    [super viewWillLayoutSubviews];
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    //没用考虑横屏的情况
+    self.scrollView.contentOffset = self.scrollViewOffsetHolder;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.viewModel connect];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     [[AppDelegate sharedDelegate] setLeftDrawerViewController];
+    [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:NO];
+    [self.viewModel stop];
 }
 
 - (void)didReceiveMemoryWarning {
+    
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    self.viewModel = nil;
 }
-
 
 #pragma mark - Reactive Method
 
 - (void)bindViewModelToUpdate
 {
-    CGFloat scrollViewWidth = self.scrollView.frame.size.width;
-    RAC(self.viewModel, scrollViewOffset) = [RACObserve(self, scrollView.contentOffset.x) map:^id(id value) {
-        return @([value floatValue]/scrollViewWidth);
+    self.viewModel.numberOfSrollViewPage = self.numberOfSrollViewPage;
+    RAC(self.viewModel, scrollViewOffset) = [RACObserve(self.scrollView, contentOffset) map:^id(id value) {
+        return @(self.scrollView.contentOffset.x/self.scrollViewWidth);
     }];
+    
 }
 
 - (void)bindViewModelForNotice
 {
     //Scroll View Rotate
-    CGFloat scrollViewWidth = self.scrollView.frame.size.width;
     [self.viewModel.scrollViewRotateSignal subscribeNext:^(id x) {
-        [self.scrollView setContentOffset:CGPointMake(scrollViewWidth*[x floatValue], 0) animated:NO];
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*[x floatValue], 0) animated:NO];
     }];
+    RAC(self.pageControl, currentPage) = self.viewModel.pageIndicatorTintSignal;
     
     [[self.button8 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"ServicesGuild" bundle:nil] instantiateInitialViewController] animated:YES];
@@ -112,18 +150,20 @@ CGFloat scrollViewOffsetx;
 
 - (void)prepareOtherViewController
 {
-    EJNewsViewController *newsViewController = [[AppDelegate sharedDelegate] newsViewController];
-    for (NSInteger i; i<self.buttonArray.count; i++) {
-        [[self.buttonArray[i] rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self prepareViewController:newsViewController withSender:@(i)];
-        }];
+    [[self.menuButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [[[AppDelegate sharedDelegate] drawerController] openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+    }];
+}
+
+#pragma mark - Getters
+
+- (EJIndexViewModel *)viewModel
+{
+    if (_viewModel == nil) {
+        _viewModel = [EJIndexViewModel viewModel];
+        [self bindViewModel];
     }
+    return _viewModel;
 }
-
-- (IBAction)didTappedMenuButton:(UIBarButtonItem *)sender {
-    //[self.sideMenuViewController presentLeftMenuViewController];
-}
-
-
 
 @end

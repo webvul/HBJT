@@ -23,6 +23,12 @@ static void *viewModelKey = &viewModelKey;
     return objc_getAssociatedObject(self, &viewModelKey);
 }
 
+- (void)bindViewModel
+{
+    [self bindViewModelToUpdate];
+    [self bindViewModelForNotice];
+}
+
 - (void)bindViewModelToUpdate
 {
     
@@ -40,7 +46,7 @@ static void *viewModelKey = &viewModelKey;
 
 - (void)preparedWithSender:(__nullable id)sender
 {
-    [self.viewModel startWithSender:sender];
+    
 }
 
 - (void)prepareViewController:(nonnull UIViewController *)viewContorller withSender:(__nullable id)sender

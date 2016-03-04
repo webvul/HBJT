@@ -9,5 +9,6 @@ pod 'Masonry'
 pod 'MBProgressHUD'
 pod 'MMDrawerController'
 pod 'ReactiveCocoa'
+pod 'SDWebImage/Core'
 
 xcodeproj 'HBJT.xcodeproj'

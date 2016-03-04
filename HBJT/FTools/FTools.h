@@ -12,4 +12,5 @@
 #endif /* FTools_h */
 
 #import "FTLog.h"
+#import "FTVerifier.h"
 

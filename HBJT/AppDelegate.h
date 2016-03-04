@@ -20,9 +20,12 @@
 @property (strong, nonatomic) EJIndexViewController *indexViewController;
 @property (strong, nonatomic) EJMenuTableViewController *menuTableViewController;
 @property (strong, nonatomic) EJNewsViewController *newsViewController;
+@property (strong, nonatomic) UINavigationController *rootNavigationController;
 
 + (instancetype)sharedDelegate;
 - (void)setLeftDrawerViewController;
+- (void)push:(UIViewController *)viewController;
+- (void)toggleDrawerOpenGesture:(BOOL)enbaled;
 
 
 @end

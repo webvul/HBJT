@@ -10,26 +10,33 @@
 
 @implementation EJIndexViewModel
 
-- (void)modulate
-{
-    if (self.scrollView.contentOffset.x > self.scrollViewOffsetx*4.99) {
-        [self.scrollView setContentOffset:CGPointMake(self.scrollViewOffsetx*1.0, 0) animated:NO];
-    }
-    if (self.scrollView.contentOffset.x < self.scrollViewOffsetx*0.01) {
-        [self.scrollView setContentOffset:CGPointMake(self.scrollViewOffsetx*4.0, 0) animated:NO];
-    }
-    if ((self.scrollView.contentOffset.x < self.scrollViewOffsetx)||((self.scrollView.contentOffset.x >= self.scrollViewOffsetx*4) && (self.scrollView.contentOffset.x < self.scrollViewOffsetx*5))) {
-        self.pageControl.currentPage = 3;
-    }
-    if ((self.scrollView.contentOffset.x >= self.scrollViewOffsetx*5)||((self.scrollView.contentOffset.x >= self.scrollViewOffsetx*1) && (self.scrollView.contentOffset.x < self.scrollViewOffsetx*2))) {
-        self.pageControl.currentPage = 0;
-    }
-    if ((self.scrollView.contentOffset.x >= self.scrollViewOffsetx*2) && (self.scrollView.contentOffset.x < self.scrollViewOffsetx*3)) {
-        self.pageControl.currentPage = 1;
-    }
-    if ((self.scrollView.contentOffset.x >= self.scrollViewOffsetx*3) && (self.scrollView.contentOffset.x < self.scrollViewOffsetx*4)) {
-        self.pageControl.currentPage = 2;
 
+- (void)start
+{
+    @weakify(self);
+    self.scrollViewRotateSignal = [[[RACObserve(self, scrollViewOffset) map:^id(id value) {
+        @strongify(self);
+        return ([value floatValue] > self.numberOfSrollViewPage-1.01)?@(1):([value floatValue]<0.01?@(self.numberOfSrollViewPage-2):nil);
+    }] filter:^BOOL(id value) {
+        return value;
+    }] filter:^BOOL(id value) {
+        @strongify(self);
+        return self.isConnected;
+    }];
+    self.pageIndicatorTintSignal = [[RACObserve(self, scrollViewOffset) map:^id(id value) {
+        @strongify(self);
+        NSInteger i = floor([value floatValue]+0.5);
+        return @(i==0?self.numberOfSrollViewPage-1:(i==self.numberOfSrollViewPage-1?0:i-1));
+    }] filter:^BOOL(id value) {
+        @strongify(self);
+        return self.isConnected;
+    }];
 }
 
+- (void)stop
+{
+    [super stop];
+    self.scrollViewRotateSignal = nil;
+    self.pageIndicatorTintSignal = nil;
+}
 @end
