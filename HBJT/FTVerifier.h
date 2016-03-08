@@ -11,6 +11,6 @@
 @interface FTVerifier : NSObject
 
 + (BOOL)verify:(NSString *)string withRegex:(NSString *)regex;
-+ (BOOL)validIDNumberText:(NSString *)string;
++ (BOOL)validateIdentityCardNumberString:(NSString *)string;
 
 @end

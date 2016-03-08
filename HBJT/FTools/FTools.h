@@ -13,4 +13,5 @@
 
 #import "FTLog.h"
 #import "FTVerifier.h"
+#import "FTKeyboardTapGestureRecognizer.h"
 

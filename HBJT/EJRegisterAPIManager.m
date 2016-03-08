@@ -13,6 +13,7 @@
 
 - (instancetype)initWithParams:(NSDictionary *)params
 {
+    [params setValue:[EJSNetwork encryptedPassword:[params valueForKey:@"password"]]  forKey:@"password"];
     self = [super initWith:kEJSNetworkAPINameRegister params:params];
     return self;
 }

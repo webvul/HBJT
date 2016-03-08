@@ -17,7 +17,7 @@
 @property (strong, nonatomic) AFHTTPRequestSerializer *requestSerializer;
 @property (strong, nonatomic) AFHTTPResponseSerializer *responseSerializer;
 @property (strong, nonatomic) NSURLSessionTask *task;
-@property (strong, nonatomic) NSURLRequest *request;
+@property (strong, nonatomic) NSString *requestMethod;
 @property (strong, nonatomic) id rawData;
 
 - (instancetype)init;

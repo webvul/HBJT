@@ -21,9 +21,11 @@
 @property (strong, nonatomic) EJMenuTableViewController *menuTableViewController;
 @property (strong, nonatomic) EJNewsViewController *newsViewController;
 @property (strong, nonatomic) UINavigationController *rootNavigationController;
+@property (strong, nonatomic) NSMutableDictionary *userinfo;
 
 + (instancetype)sharedDelegate;
 - (void)setLeftDrawerViewController;
+- (void)setkeyboardDistance;
 - (void)push:(UIViewController *)viewController;
 - (void)toggleDrawerOpenGesture:(BOOL)enbaled;
 

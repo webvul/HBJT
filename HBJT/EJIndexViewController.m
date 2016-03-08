@@ -62,12 +62,12 @@ CGFloat scrollViewOffsetx;
     }
     [self.scrollView setContentOffset:CGPointMake(self.scrollViewWidth, 0) animated:NO];
     [self createLayoutConstraints];
-    [self prepareOtherViewController];
 }
 
 - (void)createLayoutConstraints
 {
     NSInteger i = 0;
+    //masonry的block不需要weakself
     for (UIImageView *imageView in self.imageViewArray) {
         [imageView makeConstraints:^(MASConstraintMaker *make){
             make.size.and.top.equalTo(self.scrollView);
@@ -79,14 +79,13 @@ CGFloat scrollViewOffsetx;
     [self.scrollContentView makeConstraints:^(MASConstraintMaker *make){
         make.width.equalTo(self.scrollContentView.height).multipliedBy((double)i*9/4);
     }];
-
 }
 
 - (void)viewWillLayoutSubviews
 {
+    [super viewWillLayoutSubviews];
     //没用考虑横屏的情况
     self.scrollViewOffsetHolder = self.scrollView.contentOffset;
-    [super viewWillLayoutSubviews];
 }
 
 - (void)viewDidLayoutSubviews
@@ -106,7 +105,12 @@ CGFloat scrollViewOffsetx;
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [[AppDelegate sharedDelegate] setLeftDrawerViewController];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[AppDelegate sharedDelegate] setLeftDrawerViewController];
+        [[AppDelegate sharedDelegate] setkeyboardDistance];
+        [self prepareOtherViewController];
+    });    
     [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:YES];
 }
 
@@ -129,16 +133,19 @@ CGFloat scrollViewOffsetx;
 - (void)bindViewModelToUpdate
 {
     self.viewModel.numberOfSrollViewPage = self.numberOfSrollViewPage;
+    @weakify(self);
     RAC(self.viewModel, scrollViewOffset) = [RACObserve(self.scrollView, contentOffset) map:^id(id value) {
+        @strongify(self);
         return @(self.scrollView.contentOffset.x/self.scrollViewWidth);
-    }];
-    
+   }];
 }
 
 - (void)bindViewModelForNotice
 {
     //Scroll View Rotate
+    @weakify(self);
     [self.viewModel.scrollViewRotateSignal subscribeNext:^(id x) {
+        @strongify(self);
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*[x floatValue], 0) animated:NO];
     }];
     RAC(self.pageControl, currentPage) = self.viewModel.pageIndicatorTintSignal;

@@ -7,6 +7,7 @@
 //
 
 #import "FTLog.h"
+#import "FTKeyboardTapGestureRecognizer.h"
 #import <Foundation/Foundation.h>
 
 @interface FTIntercepter : NSObject

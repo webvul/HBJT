@@ -9,6 +9,6 @@
 #import "EJFramework.h"
 #import "EJRegisterViewModel.h"
 
-@interface EJRegisterViewController : UIViewController <UITextFieldDelegate>
+@interface EJRegisterViewController : UIViewController
 
 @end

@@ -69,6 +69,11 @@
     }
 }
 
+- (void)setkeyboardDistance
+{
+    [self.keyboardManager setKeyboardDistanceFromTextField:120];
+}
+
 - (void)push:(nonnull UIViewController *)viewController
 {
     [self toggleDrawerOpenGesture:NO];
@@ -92,13 +97,20 @@
 
 #pragma mark - Getters
 
+- (NSMutableDictionary *)userinfo
+{
+    if (_userinfo == nil) {
+        _userinfo = [[NSMutableDictionary alloc]init];
+        [_userinfo setValue:@(NO) forKey:@"isCurrentUser"];
+    }
+    return _userinfo;
+}
+
 
 - (IQKeyboardManager *)keyboardManager
 {
     if (_keyboardManager == nil) {
         _keyboardManager = [IQKeyboardManager sharedManager];
-        [_keyboardManager setEnableAutoToolbar:NO];
-        [_keyboardManager setKeyboardDistanceFromTextField:160];
     }
     return _keyboardManager;
 }
@@ -121,7 +133,6 @@
         [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
         [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
         [_drawerController setShouldStretchDrawer:NO];
-        //_drawerController.centerHiddenInteractionMode = MMDrawerOpenCenterInteractionModeFull;
         [_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
         NSLog(@"DrawerController Initialized");
     }
