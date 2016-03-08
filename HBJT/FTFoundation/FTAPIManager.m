@@ -17,20 +17,21 @@
         self.params = [[NSMutableDictionary alloc]init];
         self.url = @"https://raw.githubusercontent.com/fangqiuming/FTools/test/FTools/TestResponse";
         self.requestSerializer = [AFHTTPRequestSerializer serializer];
+        self.requestMethod = @"POST";
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
-        self.request = [self.requestSerializer requestWithMethod:@"POST" URLString:self.url parameters:self.params error:nil];
-    }
+        }
     return self;
 }
 
 - (void)launchRequestWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock
 {
+    NSURLRequest *request = [self.requestSerializer requestWithMethod:self.requestMethod URLString:self.url parameters:self.params error:nil];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.responseSerializer = self.responseSerializer;
     @weakify(self);
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:self.request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         @strongify(self);
         if (error) {
             NSLog(@"API MANAGER DID FAIL");

@@ -29,13 +29,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createLayoutConstraint];
-    [self prepareOtherViewController];
-
+    
+    [RACObserve([AppDelegate sharedDelegate], userinfo) subscribeNext:^(id x) {
+        self.usernameLabel = [[[AppDelegate sharedDelegate] userinfo] valueForKeyPath:@"username"];
+        //self.loginButton.enabled = NO;
+    }];
 }
 
 - (void)createLayoutConstraint
 {
-    //self.tableView.tableHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, CGFLOAT_MIN)];
     self.tableView.contentInset = UIEdgeInsetsMake(-36.0f, 0.0f, 0.0f, 0.0f);
     if (self.view.frame.size.height > 500)
     {
@@ -45,15 +47,17 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-
-    [self.navigationController setNavigationBarHidden:YES];
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self prepareOtherViewController];
+    });
 }
 
 - (void)didReceiveMemoryWarning {

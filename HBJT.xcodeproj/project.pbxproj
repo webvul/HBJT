@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EE011AD9E0A2AFE8718DB733 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210317032B9168BA09858C87 /* libPods.a */; };
 		F716BC651C86872500516DF4 /* EJIndexViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F716BC641C86872500516DF4 /* EJIndexViewModel.m */; };
+		F734D27B1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */; };
 		F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F75EA0331C86E11000878EF5 /* EJSAPIManager.m */; };
 		F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333A91C7D974E00E2FD20 /* FTIntercepter.m */; };
 		F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333AB1C7D974E00E2FD20 /* FTLog.m */; };
@@ -49,6 +50,8 @@
 		B4E1DC973ECEE0364534613E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F716BC631C86872500516DF4 /* EJIndexViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJIndexViewModel.h; sourceTree = "<group>"; };
 		F716BC641C86872500516DF4 /* EJIndexViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJIndexViewModel.m; sourceTree = "<group>"; };
+		F734D2791C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTKeyboardTapGestureRecognizer.h; sourceTree = "<group>"; };
+		F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTKeyboardTapGestureRecognizer.m; sourceTree = "<group>"; };
 		F75EA0321C86E11000878EF5 /* EJSAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSAPIManager.h; sourceTree = "<group>"; };
 		F75EA0331C86E11000878EF5 /* EJSAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSAPIManager.m; sourceTree = "<group>"; };
 		F77333A81C7D974E00E2FD20 /* FTIntercepter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTIntercepter.h; sourceTree = "<group>"; };
@@ -159,6 +162,8 @@
 		F77333A71C7D974E00E2FD20 /* FTools */ = {
 			isa = PBXGroup;
 			children = (
+				F734D2791C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.h */,
+				F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */,
 				F7C14FED1C85746100779833 /* FTools.h */,
 				F77333A81C7D974E00E2FD20 /* FTIntercepter.h */,
 				F77333A91C7D974E00E2FD20 /* FTIntercepter.m */,
@@ -192,7 +197,6 @@
 				F7A86D491C8942FC006D5F18 /* View */,
 				F7A86D481C8942E4006D5F18 /* ViewModel */,
 				F7A86D4A1C894309006D5F18 /* APIManager */,
-				F7A86D271C891731006D5F18 /* Logger.storyboard */,
 			);
 			name = EJLogger;
 			sourceTree = "<group>";
@@ -202,14 +206,14 @@
 			children = (
 				F7A86D2C1C891997006D5F18 /* EJLoginViewModel.h */,
 				F7A86D2D1C891997006D5F18 /* EJLoginViewModel.m */,
+				F7A86D391C8941B2006D5F18 /* EJRegisterViewModel.h */,
+				F7A86D3A1C8941B2006D5F18 /* EJRegisterViewModel.m */,
 				F7A86D3F1C894258006D5F18 /* EJRetrievePasswordViewModel.h */,
 				F7A86D401C894258006D5F18 /* EJRetrievePasswordViewModel.m */,
 				F7A86D421C89427B006D5F18 /* EJChangePasswordViewModel.h */,
 				F7A86D431C89427B006D5F18 /* EJChangePasswordViewModel.m */,
 				F7A86D451C8942B4006D5F18 /* EJModifyUserinfoViewModel.h */,
 				F7A86D461C8942B4006D5F18 /* EJModifyUserinfoViewModel.m */,
-				F7A86D391C8941B2006D5F18 /* EJRegisterViewModel.h */,
-				F7A86D3A1C8941B2006D5F18 /* EJRegisterViewModel.m */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -217,6 +221,7 @@
 		F7A86D491C8942FC006D5F18 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F7A86D271C891731006D5F18 /* Logger.storyboard */,
 				F7A86D2A1C891997006D5F18 /* EJLoginTableViewController.h */,
 				F7A86D2B1C891997006D5F18 /* EJLoginTableViewController.m */,
 				F7A5B8E71C8969F600672967 /* EJRegisterViewController.h */,
@@ -454,6 +459,7 @@
 			files = (
 				F7C159721C858B4200779833 /* EJIndexViewController.m in Sources */,
 				F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */,
+				F734D27B1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m in Sources */,
 				F7A5B8E61C895CBC00672967 /* EJRegisterAPIManager.m in Sources */,
 				F7C14FE91C85404A00779833 /* EJSNetwork.m in Sources */,
 				F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */,

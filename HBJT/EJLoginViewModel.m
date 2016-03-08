@@ -14,9 +14,12 @@
 
 @interface EJLoginViewModel()
 
+@property (assign, nonatomic) BOOL isLoginProceed;
+@property (strong, nonatomic) NSString *loginTintText;
+
 @property (strong, nonatomic) EJLoginAPIManager *loginAPIManager;
 
-@property (strong, nonatomic) RACSignal* loginSignal;
+@property (strong, nonatomic) RACSignal *loginSignal;
 
 @end
 
@@ -24,25 +27,21 @@
 
 - (void)start
 {
-    self.usernameValidSignal = [[RACObserve(self, usernameText) map:^id(NSString *usernameText) {
-        return @([FTVerifier verify:usernameText withRegex:@"^[A-Za-z]{6,18}$"]);
-    }] distinctUntilChanged];
-    self.passwordValidSignal = [[RACObserve(self, passwordText) map:^id(NSString *passwordText) {
-        return @([FTVerifier verify:passwordText withRegex:@"^.{6,16}$"]);
-    }] distinctUntilChanged];
-    self.loginButtonEnableSignal = [RACSignal combineLatest:@[self.usernameValidSignal, self.passwordValidSignal] reduce:^id(NSNumber *usernameValid, NSNumber *passwordValid)
-    {
-        return @([usernameValid boolValue]&&[passwordValid boolValue]);
-    }];
-    self.loginProceedSignal = nil;
+    @weakify(self);
     self.loginTintSignal = [RACObserve(self, isLoginProceed) merge:RACObserve(self, loginTintText)];
-    
     self.loginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
         [subscriber sendNext:nil];
         [self.loginAPIManager launchRequestWithSuccess:^(id responseObject) {
-            [subscriber sendCompleted];
+            @strongify(self);
+            if (![self.loginAPIManager status]) {
+                [subscriber sendCompleted];
+            } else
+            {
+                [subscriber sendError:nil];
+            }
         } failure:^(NSError *error) {
-            [subscriber sendError:error];
+            [subscriber sendError:nil];
         }];
         return nil;
     }];
@@ -71,7 +70,24 @@
         self.loginTintText = @"网络错误";
         self.isLoginProceed = NO;
     } completed:^{
+        self.loginTintText = @"登录成功";
+        self.isLoginProceed = NO;
     }];    
+}
+
+- (BOOL)fetchLoginResult
+{
+    NSDictionary *data = [self.loginAPIManager data];
+    self.loginTintText = [data valueForKeyPath:@"EJSUserinfo"];
+    if ([[data valueForKeyPath:@"EJSCode"] isEqualToValue:@(0)]) {
+        self.userinfo = [NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"data"]];
+        return YES;
+    }
+    else
+    {
+        return NO;
+    }
+    
 }
 
 @end

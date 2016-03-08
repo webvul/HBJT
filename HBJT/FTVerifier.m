@@ -16,7 +16,7 @@
     return [predicate evaluateWithObject:string];
 }
 
-+ (BOOL)validIDNumberText:(NSString *)string
++ (BOOL)validateIdentityCardNumberString:(NSString *)string
 {
     if ([self verify:string withRegex:@"^(^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$)|(^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])((\\d{4})|\\d{3}[Xx])$)$"]&&(string.length == 18)) {
         NSArray * idWiArray = @[@"7", @"9", @"10", @"5", @"8", @"4", @"2", @"1",

@@ -8,7 +8,6 @@
 
 
 #import "EJIndexViewModel.h"
-#import "EJS.h"
 
 @interface EJIndexViewController : UIViewController
 

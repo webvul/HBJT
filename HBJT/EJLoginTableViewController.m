@@ -25,11 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
-
-- (void)loginSuccessed
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,13 +35,22 @@
     [self.navigationController setNavigationBarHidden:NO];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self prepareOtherViewController];
+    });
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
-    
+    [self.viewModel stop];
 }
 
 - (void)didReceiveMemoryWarning {
-    [self.viewModel stop];
+    self.viewModel = nil;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -59,10 +64,8 @@
     @weakify(self);
     [[self.loginButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
-        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         [self.viewModel login];
     }];
-
 }
 
 - (void)bindViewModelForNotice
@@ -77,12 +80,21 @@
             [self.hub hide:YES afterDelay:2];
         }
     }];
-
 }
 
 - (void)prepareOtherViewController
 {
-    
+    [[[self.viewModel.loginTintSignal filter:^BOOL(id value) {
+        return [value isKindOfClass:[NSString class]];
+    }] filter:^BOOL(id value) {
+        return [value isEqualToString:@"登录成功"];
+    }] subscribeNext:^(id x) {
+        [[[AppDelegate sharedDelegate] userinfo] addEntriesFromDictionary:self.viewModel.userinfo];
+        
+        [[[AppDelegate sharedDelegate] userinfo] setValue:@(YES) forKey:@"isCurrentUser"];
+        NSLog(@"%@",[[AppDelegate sharedDelegate] userinfo]);
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
 }
 
 #pragma mark - Getter
@@ -95,15 +107,5 @@
     }
     return _viewModel;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

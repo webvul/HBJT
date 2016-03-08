@@ -12,7 +12,6 @@ static void *viewModelKey = &viewModelKey;
 
 @implementation UIViewController (FTBinding)
 
-
 -(void)setViewModel:(FTViewModel *)viewModel
 {
     objc_setAssociatedObject(self, & viewModelKey, viewModel, OBJC_ASSOCIATION_COPY);

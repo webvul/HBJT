@@ -25,8 +25,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #import "FTFoundation/FTFoundation.h"
-#import "FTools/Ftools.h"
-
 #import "EJS/EJS.h"
 
 

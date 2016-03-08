@@ -17,7 +17,10 @@
 @property (strong, nonatomic) EJRegisterAPIManager *registerAPIManager;
 @property (strong, nonatomic) EJValidateUsernameAPIManager *validateUsernameAPIManager;
 
-@property (strong, nonatomic) NSString *registerHint;
+@property (strong, nonatomic) NSString *registerHintText;
+@property (assign, nonatomic) BOOL isRegisterProceed;
+@property (assign, nonatomic) BOOL isUsernameUnique;
+@property (assign, nonatomic) NSDictionary *userinfo;
 
 @end
 
@@ -26,48 +29,14 @@
 
 - (void)start
 {
-    self.usernameValidSignal = [[RACObserve(self, usernameText) map:^id(NSString *usernameText) {
-        return @([FTVerifier verify:usernameText withRegex:@"^[A-Za-z]{6,18}$"]);
-    }] distinctUntilChanged];
-    self.passwordValidSignal = [[RACObserve(self, passwordText) map:^id(NSString *passwordText) {
-        return @([FTVerifier verify:passwordText withRegex:@"^.{6,11}$"]);
-    }] distinctUntilChanged];
-    @weakify(self);
-    self.confirmValidSignal = [[RACObserve(self, confirmText) map:^id(NSString *confirmText) {
-        @strongify(self);
-        return @([confirmText isEqualToString:self.passwordText]);
-    }] distinctUntilChanged];
-    self.nameValidSignal = [[RACObserve(self, nameText) map:^id(NSString *usernameText) {
-        return @([FTVerifier verify:usernameText withRegex:@"^[\u4e00-\u9fa5]{2,8}$"]);
-    }] distinctUntilChanged];
-    self.numberValidSignal = [[RACObserve(self, numberText) map:^id(NSString *numberText) {
-        return @([FTVerifier validIDNumberText:numberText]);
-    }] distinctUntilChanged];
-    self.phoneValidSignal = [[RACObserve(self, phoneText) map:^id(NSString *phoneText) {
-        return @([FTVerifier verify:phoneText withRegex:@"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|70)\\d{8}$"]);
-    }] distinctUntilChanged];
-    self.addressValidSignal = [[RACObserve(self, addressText) map:^id(NSString *addressText) {
-        return @([FTVerifier verify:addressText withRegex:@"^.{6,16}$"]);
-    }] distinctUntilChanged];
-    self.userAgreedSignal = [RACObserve(self, isUserAgreed) distinctUntilChanged];
-    self.userInputErrorSignal = [RACSignal combineLatest:@[self.usernameValidSignal, self.passwordValidSignal, self.confirmValidSignal, self.nameValidSignal,
-                                                           self.numberValidSignal, self.addressValidSignal] reduce:^id(NSNumber *usernameValid, NSNumber *passwordValid, NSNumber *confirmValid, NSNumber *nameValid, NSNumber *numberValid, NSNumber *addressValid) {
-                                                               NSString *errorString = @"";
-                                                               errorString = [errorString stringByAppendingString:([usernameValid boolValue]?nil:@"用户名格式不正确")];
-                                                               errorString = [errorString stringByAppendingString:([passwordValid boolValue]?nil:@"密码格式不正确")];
-                                                               errorString = [errorString stringByAppendingString:([usernameValid boolValue]?nil:@"密码两次输入不一致")];
-                                                               errorString = [errorString stringByAppendingString:([usernameValid boolValue]?nil:@"请输入真实姓名")];
-                                                               errorString = [errorString stringByAppendingString:([usernameValid boolValue]?nil:@"身份证号格式不正确")];
-                                                               errorString = [errorString stringByAppendingString:([usernameValid boolValue]?nil:@"手机号格式不正确")];
-                                                               errorString = [errorString stringByAppendingString:([usernameValid boolValue]?nil:@"请输入正确的联系地址")];
-                                                               return errorString;
-    }];
-    
+    self.registerHintSignal = [RACObserve(self, isRegisterProceed) merge:RACObserve(self, registerHintText)];
+    self.userAgreedSingal = RACObserve(self, isUserAgreed);
     self.registerSignal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [subscriber sendNext:nil];
         [self.validateUsernameAPIManager launchRequestWithSuccess:^(id responseObject) {
             [subscriber sendCompleted];
         } failure:^(NSError *error) {
+            NSLog(@"%@",error);
             [subscriber sendError:error];
         }];
         return nil;
@@ -81,24 +50,58 @@
             return nil;
         }];
     }];
-    self.registerHintSignal = [RACObserve(self, isRegisterProceed) map:^id(id value) {
-        return self.registerHint;
-    }];
 }
 
 
 - (void)registery
 {
-    self.isRegisterProceed = YES;
-    [self.userInputErrorSignal subscribeNext:^(id x) {
-        if (![x isEqualToString:@""]) {
-            self.registerHint = x;
-            self.isRegisterProceed = NO;
-            return;
-        }
-    }];
+    /*self.isRegisterProceed = YES;
+    self.registerHintText = @"正在注册";
+    if(![FTVerifier verify:self.usernameText withRegex:@"^[A-Za-z]{6,18}$"])
+    {
+        self.registerHintText = @"用户名格式不正确";
+        self.isRegisterProceed = NO;
+        return;
+    }
+    if (![FTVerifier verify:self.passwordText withRegex:@"^.{6,11}$"]) {
+        self.registerHintText = @"密码格式不正确";
+        self.isRegisterProceed = NO;
+        return;
+    }
+    if (![self.confirmText isEqualToString:self.passwordText]) {
+        self.registerHintText = @"密码两次输入不一致";
+        self.isRegisterProceed = NO;
+        return;
+    }
+    if (![FTVerifier verify:self.nameText withRegex:@"^[\u4e00-\u9fa5]{2,8}$"]) {
+        self.registerHintText = @"姓名格式不正确";
+        self.isRegisterProceed = NO;
+        return;
+    }
+    if (![FTVerifier validateIdentityCardNumberString:self.numberText]) {
+        self.registerHintText = @"身份证号格式不正确";
+        self.isRegisterProceed = NO;
+        return;
+    }
+    if (![FTVerifier verify:self.phoneText withRegex:@"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|70)\\d{8}$"]) {
+        self.registerHintText = @"手机号码格式不正确";
+        self.isRegisterProceed = NO;
+        return;
+    }
+    if (![FTVerifier verify:self.addressText withRegex:@"^.{6,16}$"])
+    {
+        self.registerHintText = @"联系地址格式不正确";
+        self.isRegisterProceed = NO;
+        return;
+    }
+    if (!self.isUserAgreed) {
+        self.registerHintText = @"请确认同意用户协议";
+        self.isRegisterProceed = NO;
+        return;
+    }*/
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     [params setObject:self.usernameText forKey:@"username"];
+    self.validateUsernameAPIManager = [[EJValidateUsernameAPIManager alloc] initWithParams:params];
     [params setObject:self.passwordText forKey:@"password"];
     [params setObject:self.nameText forKey:@"realName"];
     [params setObject:self.numberText forKey:@"cardnum"];
@@ -106,12 +109,22 @@
     [params setObject:self.addressText forKey:@"contractaddress"];
     self.registerAPIManager = [[EJRegisterAPIManager alloc] initWithParams:params];
     [self.registerSignal subscribeError:^(NSError *error) {
-        self.registerHint = @"网络错误";
+        self.registerHintText = @"网络错误";
         self.isRegisterProceed = NO;
     } completed:^{
         self.isRegisterProceed = NO;
     }];
 
+}
+
+- (void)fetchDataForValidateUsernameAPIManager
+{
+    //self.validateUsernameAPIManager.rawData
+}
+
+- (void)fetchDataForRegister
+{
+    
 }
 
 @end
