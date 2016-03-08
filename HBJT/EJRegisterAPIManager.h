@@ -6,7 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJSAPIManager.h"
+#import "EJS/EJS.h"
 
 @interface EJRegisterAPIManager : EJSAPIManager
 

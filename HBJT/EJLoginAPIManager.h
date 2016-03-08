@@ -6,7 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJFramework.h"
+#import "EJS/EJS.h"
 
 @interface EJLoginAPIManager :EJSAPIManager
 

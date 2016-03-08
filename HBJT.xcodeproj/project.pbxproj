@@ -10,6 +10,8 @@
 		EE011AD9E0A2AFE8718DB733 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 210317032B9168BA09858C87 /* libPods.a */; };
 		F716BC651C86872500516DF4 /* EJIndexViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F716BC641C86872500516DF4 /* EJIndexViewModel.m */; };
 		F734D27B1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */; };
+		F746B9081C8EB7CF00DBF40E /* EJSResponseAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = F746B9071C8EB7CF00DBF40E /* EJSResponseAnalyzer.m */; };
+		F746B90C1C8EDDBB00DBF40E /* FTDataAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = F746B90B1C8EDDBB00DBF40E /* FTDataAnalyzer.m */; };
 		F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F75EA0331C86E11000878EF5 /* EJSAPIManager.m */; };
 		F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333A91C7D974E00E2FD20 /* FTIntercepter.m */; };
 		F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333AB1C7D974E00E2FD20 /* FTLog.m */; };
@@ -52,6 +54,10 @@
 		F716BC641C86872500516DF4 /* EJIndexViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJIndexViewModel.m; sourceTree = "<group>"; };
 		F734D2791C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTKeyboardTapGestureRecognizer.h; sourceTree = "<group>"; };
 		F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTKeyboardTapGestureRecognizer.m; sourceTree = "<group>"; };
+		F746B9061C8EB7CF00DBF40E /* EJSResponseAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSResponseAnalyzer.h; sourceTree = "<group>"; };
+		F746B9071C8EB7CF00DBF40E /* EJSResponseAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSResponseAnalyzer.m; sourceTree = "<group>"; };
+		F746B90A1C8EDDBB00DBF40E /* FTDataAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDataAnalyzer.h; sourceTree = "<group>"; };
+		F746B90B1C8EDDBB00DBF40E /* FTDataAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDataAnalyzer.m; sourceTree = "<group>"; };
 		F75EA0321C86E11000878EF5 /* EJSAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSAPIManager.h; sourceTree = "<group>"; };
 		F75EA0331C86E11000878EF5 /* EJSAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSAPIManager.m; sourceTree = "<group>"; };
 		F77333A81C7D974E00E2FD20 /* FTIntercepter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTIntercepter.h; sourceTree = "<group>"; };
@@ -162,15 +168,17 @@
 		F77333A71C7D974E00E2FD20 /* FTools */ = {
 			isa = PBXGroup;
 			children = (
-				F734D2791C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.h */,
-				F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */,
 				F7C14FED1C85746100779833 /* FTools.h */,
-				F77333A81C7D974E00E2FD20 /* FTIntercepter.h */,
-				F77333A91C7D974E00E2FD20 /* FTIntercepter.m */,
 				F77333AA1C7D974E00E2FD20 /* FTLog.h */,
 				F77333AB1C7D974E00E2FD20 /* FTLog.m */,
 				F7A86D301C891A79006D5F18 /* FTVerifier.h */,
 				F7A86D311C891A79006D5F18 /* FTVerifier.m */,
+				F77333A81C7D974E00E2FD20 /* FTIntercepter.h */,
+				F77333A91C7D974E00E2FD20 /* FTIntercepter.m */,
+				F746B90A1C8EDDBB00DBF40E /* FTDataAnalyzer.h */,
+				F746B90B1C8EDDBB00DBF40E /* FTDataAnalyzer.m */,
+				F734D2791C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.h */,
+				F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */,
 			);
 			path = FTools;
 			sourceTree = "<group>";
@@ -187,6 +195,8 @@
 				F75EA0321C86E11000878EF5 /* EJSAPIManager.h */,
 				F75EA0331C86E11000878EF5 /* EJSAPIManager.m */,
 				F7C14FEA1C85464200779833 /* EJSNetworkAPIName.h */,
+				F746B9061C8EB7CF00DBF40E /* EJSResponseAnalyzer.h */,
+				F746B9071C8EB7CF00DBF40E /* EJSResponseAnalyzer.m */,
 			);
 			path = EJS;
 			sourceTree = "<group>";
@@ -458,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7C159721C858B4200779833 /* EJIndexViewController.m in Sources */,
+				F746B90C1C8EDDBB00DBF40E /* FTDataAnalyzer.m in Sources */,
 				F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */,
 				F734D27B1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m in Sources */,
 				F7A5B8E61C895CBC00672967 /* EJRegisterAPIManager.m in Sources */,
@@ -465,6 +476,7 @@
 				F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */,
 				F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */,
 				F7A86D411C894258006D5F18 /* EJRetrievePasswordViewModel.m in Sources */,
+				F746B9081C8EB7CF00DBF40E /* EJSResponseAnalyzer.m in Sources */,
 				F7F8F9FC1C881A54008758BF /* EJSSet.m in Sources */,
 				F7C14FE21C853A9B00779833 /* FTViewModel.m in Sources */,
 				F7A86D381C891C1F006D5F18 /* EJValidateUsernameAPIManager.m in Sources */,

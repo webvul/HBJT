@@ -6,7 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "FTViewModel.h"
+#import "EJFramework.h"
 
 @interface EJRegisterViewModel : FTViewModel
 

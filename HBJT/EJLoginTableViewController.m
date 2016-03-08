@@ -8,6 +8,8 @@
 
 #import "EJLoginTableViewController.h"
 #import "AppDelegate.h"
+#import "EJFramework.h"
+#import "EJLoginViewModel.h"
 
 @interface EJLoginTableViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -89,10 +91,6 @@
     }] filter:^BOOL(id value) {
         return [value isEqualToString:@"登录成功"];
     }] subscribeNext:^(id x) {
-        [[[AppDelegate sharedDelegate] userinfo] addEntriesFromDictionary:self.viewModel.userinfo];
-        
-        [[[AppDelegate sharedDelegate] userinfo] setValue:@(YES) forKey:@"isCurrentUser"];
-        NSLog(@"%@",[[AppDelegate sharedDelegate] userinfo]);
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
 }

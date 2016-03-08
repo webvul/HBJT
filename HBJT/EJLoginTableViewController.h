@@ -6,8 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJFramework.h"
-#import "EJLoginViewModel.h"
+#import <UIKit/UIKit.h>
 
 @interface EJLoginTableViewController : UITableViewController
 

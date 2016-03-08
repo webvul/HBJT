@@ -8,9 +8,11 @@
 
 #import "EJMenuTableViewController.h"
 #import "AppDelegate.h"
+#import "EJS/EJS.h"
+#import "EJFramework.h"
 
 @interface EJMenuTableViewController ()
-@property (strong, nonatomic) IBOutlet UIButton *usernameLabel;
+@property (strong, nonatomic) IBOutlet UIButton *usernameLabelButton;
 @property (strong, nonatomic) IBOutlet UIButton *loginLabelButton;
 
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
@@ -30,9 +32,8 @@
     [super viewDidLoad];
     [self createLayoutConstraint];
     
-    [RACObserve([AppDelegate sharedDelegate], userinfo) subscribeNext:^(id x) {
-        self.usernameLabel = [[[AppDelegate sharedDelegate] userinfo] valueForKeyPath:@"username"];
-        //self.loginButton.enabled = NO;
+    [RACObserve([AppDelegate sharedDelegate], currentUser) subscribeNext:^(id x) {
+        [self.usernameLabelButton setTitle:[[AppDelegate sharedDelegate] usernameString] forState:UIControlStateNormal];
     }];
 }
 
@@ -93,9 +94,7 @@
     if (indexPath.section == 1) {
      switch (indexPath.row) {
          case 0:
-             
-             
-             [[[AppDelegate sharedDelegate] rootNavigationController] pushViewController:[[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateInitialViewController] animated:YES];
+             [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateInitialViewController]];
              NSLog(@"1");
     // [self pushMenuControllerNamed:@"section" inStoryboardNamed:@"Matters"];
      break;
@@ -148,8 +147,8 @@
     @weakify(appDelegate);
     [[self.loginButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(appDelegate);
-        [[appDelegate drawerController] closeDrawerAnimated:YES completion:nil];
-        [[appDelegate rootNavigationController] pushViewController:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController] animated:YES];
+        [appDelegate closeDrawerNeedReopen:NO];
+        [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
     }];
 
 }

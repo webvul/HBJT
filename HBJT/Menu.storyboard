@@ -329,7 +329,7 @@
                         <outlet property="suggestionCell" destination="xgC-cS-QX0" id="mhP-1s-I34"/>
                         <outlet property="surveyCell" destination="ADL-wa-B2T" id="KQc-2N-6RL"/>
                         <outlet property="userinfoCell" destination="ZfU-pV-iCV" id="V2b-EV-Bc6"/>
-                        <outlet property="usernameLabel" destination="qog-Dg-TAD" id="aTA-DH-8W2"/>
+                        <outlet property="usernameLabelButton" destination="qog-Dg-TAD" id="wj5-Eh-asg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="641-nI-9Tk" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,26 +8,38 @@
 
 #import <UIKit/UIKit.h>
 #import "EJFramework.h"
-#import "EJIndexViewController.h"
-#import "EJMenuTableViewController.h"
-#import "EJNewsViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) IQKeyboardManager *keyboardManager;
-@property (strong, nonatomic) MMDrawerController *drawerController;
-@property (strong, nonatomic) EJIndexViewController *indexViewController;
-@property (strong, nonatomic) EJMenuTableViewController *menuTableViewController;
-@property (strong, nonatomic) EJNewsViewController *newsViewController;
-@property (strong, nonatomic) UINavigationController *rootNavigationController;
-@property (strong, nonatomic) NSMutableDictionary *userinfo;
+
+@property (strong, nonatomic) NSString *usernameString;
+@property (strong, nonatomic) NSString *userIDString;
+@property (strong, nonatomic) NSString *userNumberString;
+@property (strong, nonatomic) NSString *userPhoneString;
+@property (strong, nonatomic) NSString *userAddressString;
+@property (assign, nonatomic) BOOL currentUser;
+@property (assign, nonatomic) BOOL needDrawerReopen;
 
 + (instancetype)sharedDelegate;
-- (void)setLeftDrawerViewController;
+
 - (void)setkeyboardDistance;
-- (void)push:(UIViewController *)viewController;
+
+- (void)setLeftDrawerViewController;
 - (void)toggleDrawerOpenGesture:(BOOL)enbaled;
+- (void)openDrawer;
+- (void)closeDrawerNeedReopen:(BOOL)needReopen;
+- (void)setNeedDrawerReopen:(BOOL)needDrawerReopen;
+
+- (void)push:(UIViewController *)viewController;
+
+- (void)setCurrentUser:(BOOL)isCurrentUser;
+- (void)setUsername:(NSString *)usernameString
+             userID:(NSString *)userIDString
+         userNumber:(NSString *)userNumberString
+          userPhone:(NSString *)userPhoneString
+        userAddress:(NSString *)userAddressString;
+
 
 
 @end

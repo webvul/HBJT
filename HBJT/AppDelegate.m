@@ -7,8 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import "EJIndexViewController.h"
+#import "EJMenuTableViewController.h"
+#import "EJNewsViewController.h"
 
 @interface AppDelegate ()
+
+@property (strong, nonatomic) IQKeyboardManager *keyboardManager;
+@property (strong, nonatomic) MMDrawerController *drawerController;
+@property (strong, nonatomic) EJIndexViewController *indexViewController;
+@property (strong, nonatomic) EJMenuTableViewController *menuTableViewController;
+@property (strong, nonatomic) EJNewsViewController *newsViewController;
+@property (strong, nonatomic) UINavigationController *rootNavigationController;
 
 @end
 
@@ -62,10 +72,41 @@
     return [[UIApplication sharedApplication] delegate];
 }
 
+- (void)setUsername:(NSString *)usernameString userID:(NSString *)useridString userNumber:(NSString *)userNumberString userPhone:(NSString *)userPhoneString userAddress:(NSString *)userAddressString;
+{
+    self.usernameString = usernameString;
+    self.userIDString = useridString;
+    self.userNumberString = userNumberString;
+    self.userPhoneString = userPhoneString;
+    self.userAddressString = userAddressString;
+    self.currentUser = YES;
+}
+
+- (void)setIsCurrentUser:(BOOL)currentUser
+{
+    _currentUser = currentUser;
+    (_currentUser?:[self setUsername:nil userID:nil userNumber:nil userPhone:nil userAddress:nil]);
+}
+
+- (void)openDrawer
+{
+    [self setNeedDrawerReopen:NO];
+    [self.drawerController openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
+
+- (void)closeDrawerNeedReopen:(BOOL)needReopen
+{
+    [self setNeedDrawerReopen:needReopen];
+    [self.drawerController closeDrawerAnimated:YES completion:nil];
+}
+
 - (void)setLeftDrawerViewController
 {
-    if (!self.drawerController.leftDrawerViewController) {
+    if (self.drawerController.leftDrawerViewController == nil) {
         [self.drawerController setLeftDrawerViewController:self.menuTableViewController];
+    }
+    if (self.needDrawerReopen == YES) {
+        [[self drawerController] openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     }
 }
 
@@ -96,16 +137,6 @@
 
 
 #pragma mark - Getters
-
-- (NSMutableDictionary *)userinfo
-{
-    if (_userinfo == nil) {
-        _userinfo = [[NSMutableDictionary alloc]init];
-        [_userinfo setValue:@(NO) forKey:@"isCurrentUser"];
-    }
-    return _userinfo;
-}
-
 
 - (IQKeyboardManager *)keyboardManager
 {

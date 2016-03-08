@@ -8,6 +8,8 @@
 
 #import "EJIndexViewController.h"
 #import "AppDelegate.h"
+#import "EJIndexViewModel.h"
+#import "EJS/EJS.h"
 
 
 @interface EJIndexViewController ()
@@ -37,6 +39,7 @@
 @property (assign, nonatomic) NSInteger numberOfSrollViewPage;
 @property (assign, nonatomic) CGFloat scrollViewWidth;
 @property (assign, nonatomic) CGPoint scrollViewOffsetHolder;
+
 
 @end
 
@@ -107,10 +110,10 @@ CGFloat scrollViewOffsetx;
     [super viewDidAppear:animated];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [[AppDelegate sharedDelegate] setLeftDrawerViewController];
         [[AppDelegate sharedDelegate] setkeyboardDistance];
         [self prepareOtherViewController];
-    });    
+    });
+    [[AppDelegate sharedDelegate] setLeftDrawerViewController];
     [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:YES];
 }
 
@@ -158,7 +161,7 @@ CGFloat scrollViewOffsetx;
 - (void)prepareOtherViewController
 {
     [[self.menuButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[[AppDelegate sharedDelegate] drawerController] openDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+        [[AppDelegate sharedDelegate] openDrawer];
     }];
 }
 

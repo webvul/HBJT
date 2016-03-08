@@ -6,19 +6,16 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "EJLoginViewModel.h"
 #import "EJLoginAPIManager.h"
-#import "EJValidateUsernameAPIManager.h"
-#import "EJS.h"
 
 
 @interface EJLoginViewModel()
 
 @property (assign, nonatomic) BOOL isLoginProceed;
 @property (strong, nonatomic) NSString *loginTintText;
-
 @property (strong, nonatomic) EJLoginAPIManager *loginAPIManager;
-
 @property (strong, nonatomic) RACSignal *loginSignal;
 
 @end
@@ -34,7 +31,8 @@
         [subscriber sendNext:nil];
         [self.loginAPIManager launchRequestWithSuccess:^(id responseObject) {
             @strongify(self);
-            if (![self.loginAPIManager status]) {
+            if ([self.loginAPIManager newStatus] == 0) {
+                NSLog(@"%tu",[self.loginAPIManager status]);
                 [subscriber sendCompleted];
             } else
             {
@@ -65,29 +63,30 @@
     [param setObject:self.usernameText forKey:@"username"];
     [param setObject:self.passwordText forKey:@"password"];
     self.loginAPIManager = [[EJLoginAPIManager alloc]initWithParams:param];
+    @weakify(self);
     [self.loginSignal subscribeNext:^(id x) {
     } error:^(NSError *error) {
-        self.loginTintText = @"网络错误";
+        @strongify(self);
+        self.loginTintText = @"登录失败";
+        switch (self.loginAPIManager.status) {
+            case EJSAPIManagerStatusError:
+                self.loginTintText = @"用户名或密码不正确";
+                break;
+            default:
+                self.loginTintText = @"网络错误";
+                break;
+        }
         self.isLoginProceed = NO;
     } completed:^{
+        @strongify(self);
+        self.userinfo = self.loginAPIManager.data;
+        [[AppDelegate sharedDelegate] setUsername:[self.userinfo objectForKey:@"usernaemString"]
+                                           userID:[self.userinfo objectForKey:@"userIDString"]
+                                       userNumber:[self.userinfo objectForKey:@"userNumerString"]
+                                        userPhone:[self.userinfo objectForKey:@"userPhoneString"]
+                                      userAddress:[self.userinfo objectForKey:@"userAddressString"]];
         self.loginTintText = @"登录成功";
         self.isLoginProceed = NO;
-    }];    
+    }];
 }
-
-- (BOOL)fetchLoginResult
-{
-    NSDictionary *data = [self.loginAPIManager data];
-    self.loginTintText = [data valueForKeyPath:@"EJSUserinfo"];
-    if ([[data valueForKeyPath:@"EJSCode"] isEqualToValue:@(0)]) {
-        self.userinfo = [NSDictionary dictionaryWithDictionary:[data valueForKeyPath:@"data"]];
-        return YES;
-    }
-    else
-    {
-        return NO;
-    }
-    
-}
-
 @end

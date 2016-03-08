@@ -6,8 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJFramework.h"
-#import "EJRegisterViewModel.h"
+#import <UIKit/UIKit.h>
 
 @interface EJRegisterViewController : UIViewController
 

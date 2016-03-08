@@ -6,8 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-
-#import "EJIndexViewModel.h"
+#import <UIKit/UIKit.h>
 
 @interface EJIndexViewController : UIViewController
 

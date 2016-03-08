@@ -6,8 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJS/EJS.h"
-#import "EJFramework.h"
+#import <UIKit/UIKit.h>
 
 @interface EJMenuTableViewController : UITableViewController
 

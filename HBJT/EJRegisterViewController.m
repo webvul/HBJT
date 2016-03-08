@@ -7,6 +7,8 @@
 //
 
 #import "EJRegisterViewController.h"
+#import "EJFramework.h"
+#import "EJRegisterViewModel.h"
 
 @interface EJRegisterViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
