@@ -22,23 +22,20 @@
 
 @implementation EJLoginViewModel
 
-- (void)start
+- (void)autoStart
 {
     @weakify(self);
-    self.loginTintSignal = [RACObserve(self, isLoginProceed) merge:RACObserve(self, loginTintText)];
+    self.loginTintSignal = [[RACObserve(self, isLoginProceed) merge:RACObserve(self, loginTintText)] filter:^BOOL(id value) {
+        return self.isConnected;
+    }];
     self.loginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         [subscriber sendNext:nil];
         [self.loginAPIManager launchRequestWithSuccess:^(id responseObject) {
             @strongify(self);
-            if ([self.loginAPIManager newStatus] == 0) {
-                NSLog(@"%tu",[self.loginAPIManager status]);
-                [subscriber sendCompleted];
-            } else
-            {
-                [subscriber sendError:nil];
-            }
+            ([self.loginAPIManager newStatus] == 0? [subscriber sendCompleted]: [subscriber sendError:nil]);
         } failure:^(NSError *error) {
+            NSLog(@"%@",error.userInfo);
             [subscriber sendError:nil];
         }];
         return nil;
@@ -67,15 +64,7 @@
     [self.loginSignal subscribeNext:^(id x) {
     } error:^(NSError *error) {
         @strongify(self);
-        self.loginTintText = @"登录失败";
-        switch (self.loginAPIManager.status) {
-            case EJSAPIManagerStatusError:
-                self.loginTintText = @"用户名或密码不正确";
-                break;
-            default:
-                self.loginTintText = @"网络错误";
-                break;
-        }
+        self.loginTintText = self.loginAPIManager.statusDescription;
         self.isLoginProceed = NO;
     } completed:^{
         @strongify(self);
@@ -89,4 +78,5 @@
         self.isLoginProceed = NO;
     }];
 }
+
 @end

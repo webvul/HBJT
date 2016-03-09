@@ -46,11 +46,6 @@
     });
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [self.viewModel stop];
-}
-
 - (void)didReceiveMemoryWarning {
     self.viewModel = nil;
     [super didReceiveMemoryWarning];
@@ -79,20 +74,31 @@
             self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [self.hub setYOffset:-64];
         } else {
-            [self.hub hide:YES afterDelay:2];
+            [self.hub hide:YES afterDelay:1];
         }
     }];
 }
 
 - (void)prepareOtherViewController
 {
-    [[[self.viewModel.loginTintSignal filter:^BOOL(id value) {
+    [[[[self.viewModel.loginTintSignal filter:^BOOL(id value) {
         return [value isKindOfClass:[NSString class]];
     }] filter:^BOOL(id value) {
         return [value isEqualToString:@"登录成功"];
-    }] subscribeNext:^(id x) {
+    }] delay:1] subscribeNext:^(id x) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }];
+}
+
+- (void)preparedWithSender:(id)sender
+{
+    if ([sender isKindOfClass:[NSArray class]]) {
+        NSArray *array = sender;
+        self.viewModel.usernameText = [array firstObject];
+        self.viewModel.passwordText = [array lastObject];
+        [self.viewModel connect];
+        [self.viewModel login];
+    }
 }
 
 #pragma mark - Getter

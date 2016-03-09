@@ -19,14 +19,20 @@
 {
     self = [super init];
     if (self) {
-        [self start];
+        [self autoStart];
     }
     return self;
 }
 
-- (void)start
+- (void)autoStart
 {
     
+}
+
+- (void)start
+{
+    NSAssert(YES, @"必须同时重写start和stop方法");
+    [self stop];
 }
 
 - (void)connect
@@ -41,7 +47,8 @@
 
 - (void)stop
 {
-    [self disconnect];
+    NSAssert(YES, @"必须同时重写start和stop方法");
+    [self start];
 }
 
 - (void)dealloc

@@ -31,7 +31,7 @@
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.responseSerializer = self.responseSerializer;
     @weakify(self);
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+    self.task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
         @strongify(self);
         if (error) {
             NSLog(@"API MANAGER DID FAIL");
@@ -42,7 +42,7 @@
             successBlock(responseObject);
         }
     }];
-    [dataTask resume];
+    [self.task resume];
 }
 
 - (void)launchWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock
@@ -52,6 +52,7 @@
 
 - (void)dealloc
 {
+    [self.task cancel];
     NSLog(@"[%@ APIMANAGER DEALLOCING]", self);
 }
 

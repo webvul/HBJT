@@ -27,24 +27,24 @@
 @implementation EJRegisterViewModel
 
 
-- (void)start
+- (void)autoStart
 {
     self.registerHintSignal = [RACObserve(self, isRegisterProceed) merge:RACObserve(self, registerHintText)];
     self.userAgreedSingal = RACObserve(self, isUserAgreed);
     self.registerSignal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [subscriber sendNext:nil];
         [self.validateUsernameAPIManager launchRequestWithSuccess:^(id responseObject) {
-            [subscriber sendCompleted];
+            ([self.validateUsernameAPIManager newStatus] == 0? [subscriber sendCompleted]: [subscriber sendError:nil]);
         } failure:^(NSError *error) {
-            NSLog(@"%@",error);
+            NSLog(@"%@",error.userInfo);
             [subscriber sendError:error];
         }];
         return nil;
     }] then:^RACSignal *{
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             [self.registerAPIManager launchRequestWithSuccess:^(id responseObject) {
-                [subscriber sendCompleted];
+                ([self.registerAPIManager newStatus] == 0? [subscriber sendCompleted]: [subscriber sendError:nil]);
             } failure:^(NSError *error) {
+                NSLog(@"%@",error.userInfo);
                 [subscriber sendError:error];
             }];
             return nil;
@@ -55,7 +55,7 @@
 
 - (void)registery
 {
-    /*self.isRegisterProceed = YES;
+    self.isRegisterProceed = YES;
     self.registerHintText = @"正在注册";
     if(![FTVerifier verify:self.usernameText withRegex:@"^[A-Za-z]{6,18}$"])
     {
@@ -67,7 +67,7 @@
         self.registerHintText = @"密码格式不正确";
         self.isRegisterProceed = NO;
         return;
-    }
+    }/*
     if (![self.confirmText isEqualToString:self.passwordText]) {
         self.registerHintText = @"密码两次输入不一致";
         self.isRegisterProceed = NO;
@@ -109,22 +109,13 @@
     [params setObject:self.addressText forKey:@"contractaddress"];
     self.registerAPIManager = [[EJRegisterAPIManager alloc] initWithParams:params];
     [self.registerSignal subscribeError:^(NSError *error) {
-        self.registerHintText = @"网络错误";
+        self.registerHintText = (self.registerAPIManager.status == EJSAPIManagerStatusUnset? self.validateUsernameAPIManager.statusDescription: self.registerAPIManager.statusDescription);
         self.isRegisterProceed = NO;
     } completed:^{
+        self.registerHintText = @"注册成功";
         self.isRegisterProceed = NO;
     }];
 
-}
-
-- (void)fetchDataForValidateUsernameAPIManager
-{
-    //self.validateUsernameAPIManager.rawData
-}
-
-- (void)fetchDataForRegister
-{
-    
 }
 
 @end

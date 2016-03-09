@@ -17,7 +17,7 @@
 /**
  *  约定如何处理来自View Controller的输入并制作输出信号。
  */
-- (void)start;
+- (void)autoStart;
 /**
  *  接受输入;
  */
@@ -30,5 +30,6 @@
  *  停止所有在进行的任务，做好被释放的准备;
  */
 - (void)stop;
+- (void)start;
 
 @end

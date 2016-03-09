@@ -11,14 +11,14 @@
 @implementation EJIndexViewModel
 
 
-- (void)start
+- (void)autoStart
 {
     @weakify(self);
     self.scrollViewRotateSignal = [[[RACObserve(self, scrollViewOffset) map:^id(id value) {
         @strongify(self);
         return ([value floatValue] > self.numberOfSrollViewPage-1.01)?@(1):([value floatValue]<0.01?@(self.numberOfSrollViewPage-2):nil);
     }] filter:^BOOL(id value) {
-        return value;
+        return (value != nil);
     }] filter:^BOOL(id value) {
         @strongify(self);
         return self.isConnected;
@@ -33,10 +33,5 @@
     }];
 }
 
-- (void)stop
-{
-    [super stop];
-    self.scrollViewRotateSignal = nil;
-    self.pageIndicatorTintSignal = nil;
-}
+
 @end

@@ -39,9 +39,19 @@
     [self.viewModel connect];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self prepareOtherViewController];
+    });
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    self.viewModel = nil;
 }
 
 #pragma mark - Reactive Methods
@@ -77,8 +87,24 @@
             self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [self.hub setYOffset:-64];
         } else {
-            [self.hub hide:YES afterDelay:2];
+            [self.hub hide:YES afterDelay:1];
         }
+    }];
+}
+
+- (void)prepareOtherViewController
+{
+    @weakify(self);
+    [[[[self.viewModel.registerHintSignal filter:^BOOL(id value) {
+        return [value isKindOfClass:[NSString class]];
+    }] filter:^BOOL(id value) {
+        return [value isEqualToString:@"注册成功"];
+    }] delay:1] subscribeNext:^(id x) {
+        @strongify(self);
+        NSLog(@"%@",self.navigationController.topViewController);
+        [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"%@",self.navigationController.topViewController);
+        [self prepareViewController:self.navigationController.topViewController withSender:@[self.viewModel.usernameText,self.viewModel.passwordText]];
     }];
 }
 

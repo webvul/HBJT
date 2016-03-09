@@ -680,7 +680,7 @@
         <!--用户协议-->
         <scene sceneID="dJI-Zn-45x">
             <objects>
-                <viewController storyboardIdentifier="agree" title="用户协议" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XVU-Co-w1O" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="agree" title="用户协议" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XVU-Co-w1O" customClass="EJUserAgreementViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y6R-02-Y6e"/>
                         <viewControllerLayoutGuide type="bottom" id="5Bl-5V-Sbg"/>
@@ -689,10 +689,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9a-8t-jKd">
-                                <rect key="frame" x="15" y="64" width="345" height="603"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p9a-8t-jKd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-15" maxY="0.0"/>
                                 <string key="text">
  
 欢迎您注册成"湖北交通运输网上审批服务平台"用户，请仔细阅读下面条款：
@@ -757,12 +756,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="p9a-8t-jKd" secondAttribute="trailing" constant="15" id="6Sw-S7-9so"/>
                             <constraint firstAttribute="bottom" secondItem="p9a-8t-jKd" secondAttribute="bottom" id="7yF-3i-fhp"/>
-                            <constraint firstItem="p9a-8t-jKd" firstAttribute="top" secondItem="G7e-IZ-amI" secondAttribute="top" constant="64" id="8jp-Bc-Wlm"/>
-                            <constraint firstItem="p9a-8t-jKd" firstAttribute="leading" secondItem="G7e-IZ-amI" secondAttribute="leading" constant="15" id="i2e-FY-Y7p"/>
+                            <constraint firstItem="p9a-8t-jKd" firstAttribute="top" secondItem="G7e-IZ-amI" secondAttribute="top" id="8jp-Bc-Wlm"/>
+                            <constraint firstItem="p9a-8t-jKd" firstAttribute="centerX" secondItem="G7e-IZ-amI" secondAttribute="centerX" id="LQU-nz-6NZ"/>
+                            <constraint firstItem="p9a-8t-jKd" firstAttribute="width" secondItem="G7e-IZ-amI" secondAttribute="width" id="NsP-6v-AoT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="textView" destination="p9a-8t-jKd" id="Fst-Gh-c9M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d5m-ZQ-vWd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

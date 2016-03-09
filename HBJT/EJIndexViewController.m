@@ -63,8 +63,8 @@ CGFloat scrollViewOffsetx;
         [self.imageViewArray addObject:imageView];
         [self.scrollContentView addSubview:imageView];
     }
-    [self.scrollView setContentOffset:CGPointMake(self.scrollViewWidth, 0) animated:NO];
     [self createLayoutConstraints];
+    [self.scrollView setContentOffset:CGPointMake(self.scrollViewWidth, 0) animated:NO];
 }
 
 - (void)createLayoutConstraints
@@ -95,7 +95,7 @@ CGFloat scrollViewOffsetx;
 {
     [super viewDidLayoutSubviews];
     //没用考虑横屏的情况
-    self.scrollView.contentOffset = self.scrollViewOffsetHolder;
+    [self.scrollView setContentOffset:self.scrollViewOffsetHolder];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -121,7 +121,7 @@ CGFloat scrollViewOffsetx;
 {
     [super viewWillDisappear:animated];
     [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:NO];
-    [self.viewModel stop];
+    [self.viewModel disconnect];
 }
 
 - (void)didReceiveMemoryWarning {

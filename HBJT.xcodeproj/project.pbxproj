@@ -29,6 +29,8 @@
 		F7A86D471C8942B4006D5F18 /* EJModifyUserinfoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A86D461C8942B4006D5F18 /* EJModifyUserinfoViewModel.m */; };
 		F7AB19001C8698F100723EC2 /* EJNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AB18FF1C8698F100723EC2 /* EJNewsViewController.m */; };
 		F7AB19081C86CC2A00723EC2 /* UIViewController+FTBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AB19071C86CC2A00723EC2 /* UIViewController+FTBinding.m */; };
+		F7AC66BD1C8FB75E00BC8456 /* EJMenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AC66BC1C8FB75E00BC8456 /* EJMenuViewModel.m */; };
+		F7AC66C01C8FFDA200BC8456 /* EJUserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AC66BF1C8FFDA200BC8456 /* EJUserAgreementViewController.m */; };
 		F7C14FCA1C8434E200779833 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C14FC81C8434E200779833 /* Index.storyboard */; };
 		F7C14FCB1C8434E200779833 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C14FC91C8434E200779833 /* Menu.storyboard */; };
 		F7C14FDC1C853A9B00779833 /* FTAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FD01C853A9B00779833 /* FTAPIManager.m */; };
@@ -92,6 +94,10 @@
 		F7AB19061C86CC2A00723EC2 /* UIViewController+FTBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+FTBinding.h"; sourceTree = "<group>"; };
 		F7AB19071C86CC2A00723EC2 /* UIViewController+FTBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+FTBinding.m"; sourceTree = "<group>"; };
 		F7AB19091C86CCB400723EC2 /* FTFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FTFoundation.h; sourceTree = "<group>"; };
+		F7AC66BB1C8FB75E00BC8456 /* EJMenuViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJMenuViewModel.h; sourceTree = "<group>"; };
+		F7AC66BC1C8FB75E00BC8456 /* EJMenuViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJMenuViewModel.m; sourceTree = "<group>"; };
+		F7AC66BE1C8FFDA200BC8456 /* EJUserAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJUserAgreementViewController.h; sourceTree = "<group>"; };
+		F7AC66BF1C8FFDA200BC8456 /* EJUserAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJUserAgreementViewController.m; sourceTree = "<group>"; };
 		F7C14FC71C84224600779833 /* EJFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EJFramework.h; path = HBJT/EJFramework.h; sourceTree = "<group>"; };
 		F7C14FC81C8434E200779833 /* Index.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		F7C14FC91C8434E200779833 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -236,6 +242,8 @@
 				F7A86D2B1C891997006D5F18 /* EJLoginTableViewController.m */,
 				F7A5B8E71C8969F600672967 /* EJRegisterViewController.h */,
 				F7A5B8E81C8969F600672967 /* EJRegisterViewController.m */,
+				F7AC66BE1C8FFDA200BC8456 /* EJUserAgreementViewController.h */,
+				F7AC66BF1C8FFDA200BC8456 /* EJUserAgreementViewController.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -314,6 +322,8 @@
 				F7C14FC91C8434E200779833 /* Menu.storyboard */,
 				F7C1596D1C8589F000779833 /* EJMenuTableViewController.h */,
 				F7C1596E1C8589F000779833 /* EJMenuTableViewController.m */,
+				F7AC66BB1C8FB75E00BC8456 /* EJMenuViewModel.h */,
+				F7AC66BC1C8FB75E00BC8456 /* EJMenuViewModel.m */,
 			);
 			name = EJMenu;
 			sourceTree = "<group>";
@@ -484,6 +494,7 @@
 				F7C14FDC1C853A9B00779833 /* FTAPIManager.m in Sources */,
 				F7A86D2E1C891997006D5F18 /* EJLoginTableViewController.m in Sources */,
 				F7DFF93D1C7D74EF00A24DB5 /* AppDelegate.m in Sources */,
+				F7AC66C01C8FFDA200BC8456 /* EJUserAgreementViewController.m in Sources */,
 				F7AB19001C8698F100723EC2 /* EJNewsViewController.m in Sources */,
 				F7A5B8E91C8969F600672967 /* EJRegisterViewController.m in Sources */,
 				F7A86D471C8942B4006D5F18 /* EJModifyUserinfoViewModel.m in Sources */,
@@ -495,6 +506,7 @@
 				F7A86D2F1C891997006D5F18 /* EJLoginViewModel.m in Sources */,
 				F7A86D321C891A79006D5F18 /* FTVerifier.m in Sources */,
 				F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */,
+				F7AC66BD1C8FB75E00BC8456 /* EJMenuViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

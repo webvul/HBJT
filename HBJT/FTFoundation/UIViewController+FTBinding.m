@@ -51,7 +51,6 @@ static void *viewModelKey = &viewModelKey;
 - (void)prepareViewController:(nonnull UIViewController *)viewContorller withSender:(__nullable id)sender
 {
     [viewContorller preparedWithSender:sender];
-    [self.navigationController pushViewController:viewContorller animated:YES];
 }
 
 @end

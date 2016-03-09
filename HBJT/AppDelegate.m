@@ -32,6 +32,8 @@
     [self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
     NSLog(@"App Launched");
+    self.currentUser = YES;
+    self.usernameString = @"张";
     return YES;
 }
 

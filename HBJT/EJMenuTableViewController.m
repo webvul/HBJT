@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "EJS/EJS.h"
 #import "EJFramework.h"
+#import "EJMenuViewModel.h"
 
 @interface EJMenuTableViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *usernameLabelButton;
@@ -24,6 +25,8 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *userinfoCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *passwordCell;
 @property (strong, nonatomic) IBOutlet UITableViewCell *logoutCell;
+
+@property (strong, nonatomic) EJMenuViewModel *viewModel;
 @end
 
 @implementation EJMenuTableViewController
@@ -49,6 +52,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.viewModel connect];
     [self.navigationController setNavigationBarHidden:YES];
 }
 
@@ -61,9 +65,16 @@
     });
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [self.viewModel disconnect];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    self.viewModel = nil;
 }
 
 #pragma mark - UITableViewDataSource
@@ -136,10 +147,7 @@
      }*/
     
 }
-#pragma - private methods
-
-
-
+#pragma - Reactive methods
 
 - (void)prepareOtherViewController
 {
@@ -150,110 +158,41 @@
         [appDelegate closeDrawerNeedReopen:NO];
         [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
     }];
-
 }
 
+- (void)bindViewModelForNotice
+{
+    [self.viewModel.currentUserSignal subscribeNext:^(id x) {
+        if ([x isKindOfClass:[NSString class]]) {
+            self.usernameLabelButton.hidden = NO;
+            self.loginLabelButton.hidden = YES;
+            self.loginButton.enabled = NO;
+            [self.usernameLabelButton setTitle:x forState:UIControlStateNormal];
+            self.passwordCell.hidden = NO;
+            self.userinfoCell.hidden = NO;
+            self.logoutCell.hidden = NO;
+        } else if (![x boolValue])
+        {
+            self.usernameLabelButton.hidden = YES;
+            self.loginLabelButton.hidden = NO;
+            self.loginButton.enabled = YES;
+            [self.usernameLabelButton setTitle:@"" forState:UIControlStateNormal];
+            self.passwordCell.hidden = YES;
+            self.userinfoCell.hidden = YES;
+            self.logoutCell.hidden = YES;
+        }
+    }];
+}
 
-/*- (void)bindViewModel
- {
- self.viewModel = [[MenuTableViewModel alloc]init];
- [self bindMenuButton:self.loginButton toControllerNamed:@"login" inStoryboardNamed:@"Logger"];
- RAC(self.loginLabelButton, hidden) = self.viewModel.didloginSignal;
- RAC(self.usernameLabel, hidden) = self.viewModel.didlogoutSignal;
- RAC(self.logoutCell, hidden) = self.viewModel.didlogoutSignal;
- }
- - (void)bindMenuButton:(UIButton *)button
- toControllerNamed:(NSString *)controllerName
- inStoryboardNamed:(NSString *)storyboardName;
- {
- @weakify(self);
- [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
- @strongify(self);
- [self pushMenuControllerNamed:controllerName inStoryboardNamed:storyboardName];
- }];
- }
- 
- - (void)pushMenuControllerNamed:(NSString *)controllerName
- inStoryboardNamed:(NSString *)storyboardName;
- {
- //[self.sideMenuViewController hideMenuViewController];
- self.EJIndexViewController.isNeedShowMenu = YES;
- @weakify(self);
- [[[RACSignal empty] delay:0] subscribeCompleted:^{
- @strongify(self);
- 
- }];
- }*/
+#pragma mark - Getter
 
-
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
- }
- */
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
- #pragma mark - Table view delegate
- 
- // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
- // Navigation logic may go here, for example:
- // Create the next view controller.
- DetailViewController *detailViewController = [[DetailViewController alloc] initWithNibName:@"Nib name" bundle:nil];
- 
- // Pass the selected object to the new view controller.
- 
- // Push the view controller.
- [self.navigationController pushViewController:detailViewController animated:YES];
- }
- */
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+- (EJMenuViewModel *)viewModel
+{
+    if (_viewModel == nil) {
+        _viewModel = [EJMenuViewModel viewModel];
+        [self bindViewModel];
+    }
+    return _viewModel;
+}
 
 @end
