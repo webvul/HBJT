@@ -36,7 +36,8 @@
     [self createLayoutConstraint];
     
     [RACObserve([AppDelegate sharedDelegate], currentUser) subscribeNext:^(id x) {
-        [self.usernameLabelButton setTitle:[[AppDelegate sharedDelegate] usernameString] forState:UIControlStateNormal];
+        NSString *name = [[AppDelegate sharedDelegate] userNameString];
+        [self.usernameLabelButton setTitle:([name isEqualToString:@"0"]?[[AppDelegate sharedDelegate] userUsernameString]: name) forState:UIControlStateNormal];
     }];
 }
 

@@ -26,6 +26,7 @@
 {
     @weakify(self);
     self.loginTintSignal = [[RACObserve(self, isLoginProceed) merge:RACObserve(self, loginTintText)] filter:^BOOL(id value) {
+        @strongify(self);
         return self.isConnected;
     }];
     self.loginSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
@@ -56,24 +57,21 @@
         self.isLoginProceed = NO;
         return;
     }
-    NSMutableDictionary *param = [[NSMutableDictionary alloc]init];
-    [param setObject:self.usernameText forKey:@"username"];
-    [param setObject:self.passwordText forKey:@"password"];
-    self.loginAPIManager = [[EJLoginAPIManager alloc]initWithParams:param];
+    self.loginAPIManager = [[EJLoginAPIManager alloc]initWithUsername:self.usernameText password:self.passwordText];
     @weakify(self);
-    [self.loginSignal subscribeNext:^(id x) {
-    } error:^(NSError *error) {
+    [self.loginSignal subscribeError:^(NSError *error) {
         @strongify(self);
         self.loginTintText = self.loginAPIManager.statusDescription;
         self.isLoginProceed = NO;
     } completed:^{
         @strongify(self);
         self.userinfo = self.loginAPIManager.data;
-        [[AppDelegate sharedDelegate] setUsername:[self.userinfo objectForKey:@"usernaemString"]
-                                           userID:[self.userinfo objectForKey:@"userIDString"]
-                                       userNumber:[self.userinfo objectForKey:@"userNumerString"]
-                                        userPhone:[self.userinfo objectForKey:@"userPhoneString"]
-                                      userAddress:[self.userinfo objectForKey:@"userAddressString"]];
+        [[AppDelegate sharedDelegate] setUsername:[self.userinfo objectForKey:@"userUsernaemString"]
+                                             name:[self.userinfo objectForKey:@"userNameString"]
+                                               id:[self.userinfo objectForKey:@"userIDString"]
+                                           number:[self.userinfo objectForKey:@"userNumerString"]
+                                            phone:[self.userinfo objectForKey:@"userPhoneString"]
+                                          address:[self.userinfo objectForKey:@"userAddressString"]];
         self.loginTintText = @"登录成功";
         self.isLoginProceed = NO;
     }];

@@ -10,4 +10,6 @@
 
 @interface EJRegisterAPIManager : EJSAPIManager
 
+- (instancetype)initWithUsername:(NSString *)usernameText password:(NSString *)passwordText name:(NSString *)nameText number:(NSString *)numberText phone:(NSString *)phoneText address:(NSString *)addressText;
+
 @end

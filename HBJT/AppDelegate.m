@@ -32,8 +32,6 @@
     [self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
     NSLog(@"App Launched");
-    self.currentUser = YES;
-    self.usernameString = @"张";
     return YES;
 }
 
@@ -74,20 +72,32 @@
     return [[UIApplication sharedApplication] delegate];
 }
 
-- (void)setUsername:(NSString *)usernameString userID:(NSString *)useridString userNumber:(NSString *)userNumberString userPhone:(NSString *)userPhoneString userAddress:(NSString *)userAddressString;
+- (void)setUsername:(NSString *)userUsernameString name:(NSString *)userNameString id:(NSString *)userIDString number:(NSString *)userNumberString phone:(NSString *)userPhoneString address:(NSString *)userAddressString
 {
-    self.usernameString = usernameString;
-    self.userIDString = useridString;
+    self.userUsernameString = userUsernameString;
+    self.userNameString = userNameString;
+    self.userIDString = userIDString;
     self.userNumberString = userNumberString;
     self.userPhoneString = userPhoneString;
     self.userAddressString = userAddressString;
     self.currentUser = YES;
 }
 
+- (void)modifyName:(NSString *)userNameString number:(NSString *)userNumberString phone:(NSString *)userPhoneString address:(NSString *)userAddressString
+{
+    if (self.currentUser) {
+        self.userNameString = userNameString;
+        self.userNumberString = userNumberString;
+        self.userPhoneString = userPhoneString;
+        self.userAddressString = userAddressString;
+    }
+}
+
+
 - (void)setIsCurrentUser:(BOOL)currentUser
 {
     _currentUser = currentUser;
-    (_currentUser?:[self setUsername:nil userID:nil userNumber:nil userPhone:nil userAddress:nil]);
+    (_currentUser?:[self setUsername:nil name:nil id:nil number:nil phone:nil address:nil]);
 }
 
 - (void)openDrawer

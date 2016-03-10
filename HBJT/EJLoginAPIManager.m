@@ -11,9 +11,13 @@
 @implementation EJLoginAPIManager
 
 
-- (instancetype)initWithParams:(NSDictionary *)params
+- (instancetype)initWithUsername:(NSString *)usernameText password:(NSString *)password
 {
-    self = [super initWith:kEJSNetworkAPINameLogin params:params];
+    self = [super initWith:kEJSNetworkAPINameLogin];
+    if (self) {
+        [self.params setObject:usernameText forKey:@"username"];
+        [self.params setObject:[EJSNetwork encryptedPassword:password] forKey:@"password"];
+    }
     return self;
 }
 

@@ -19,8 +19,6 @@
 
 @property (strong, nonatomic) NSString *registerHintText;
 @property (assign, nonatomic) BOOL isRegisterProceed;
-@property (assign, nonatomic) BOOL isUsernameUnique;
-@property (assign, nonatomic) NSDictionary *userinfo;
 
 @end
 
@@ -29,10 +27,16 @@
 
 - (void)autoStart
 {
-    self.registerHintSignal = [RACObserve(self, isRegisterProceed) merge:RACObserve(self, registerHintText)];
+    @weakify(self);
+    self.registerHintSignal = [[RACObserve(self, isRegisterProceed) merge:RACObserve(self, registerHintText)] filter:^BOOL(id value) {
+        @strongify(self);
+        return self.isConnected;
+    }];
     self.userAgreedSingal = RACObserve(self, isUserAgreed);
     self.registerSignal = [[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
         [self.validateUsernameAPIManager launchRequestWithSuccess:^(id responseObject) {
+            @strongify(self);
             ([self.validateUsernameAPIManager newStatus] == 0? [subscriber sendCompleted]: [subscriber sendError:nil]);
         } failure:^(NSError *error) {
             NSLog(@"%@",error.userInfo);
@@ -41,7 +45,9 @@
         return nil;
     }] then:^RACSignal *{
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+            @strongify(self);
             [self.registerAPIManager launchRequestWithSuccess:^(id responseObject) {
+                @strongify(self);
                 ([self.registerAPIManager newStatus] == 0? [subscriber sendCompleted]: [subscriber sendError:nil]);
             } failure:^(NSError *error) {
                 NSLog(@"%@",error.userInfo);
@@ -99,19 +105,15 @@
         self.isRegisterProceed = NO;
         return;
     }*/
-    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-    [params setObject:self.usernameText forKey:@"username"];
-    self.validateUsernameAPIManager = [[EJValidateUsernameAPIManager alloc] initWithParams:params];
-    [params setObject:self.passwordText forKey:@"password"];
-    [params setObject:self.nameText forKey:@"realName"];
-    [params setObject:self.numberText forKey:@"cardnum"];
-    [params setObject:self.phoneText forKey:@"mobilephone"];
-    [params setObject:self.addressText forKey:@"contractaddress"];
-    self.registerAPIManager = [[EJRegisterAPIManager alloc] initWithParams:params];
+    self.validateUsernameAPIManager = [[EJValidateUsernameAPIManager alloc]initWithUsername:self.usernameText];
+    self.registerAPIManager = [[EJRegisterAPIManager alloc] initWithUsername:self.usernameText password:self.passwordText name:self.nameText number:self.numberText phone:self.phoneText address:self.addressText];
+    @weakify(self);
     [self.registerSignal subscribeError:^(NSError *error) {
+        @strongify(self);
         self.registerHintText = (self.registerAPIManager.status == EJSAPIManagerStatusUnset? self.validateUsernameAPIManager.statusDescription: self.registerAPIManager.statusDescription);
         self.isRegisterProceed = NO;
     } completed:^{
+        @strongify(self);
         self.registerHintText = @"注册成功";
         self.isRegisterProceed = NO;
     }];

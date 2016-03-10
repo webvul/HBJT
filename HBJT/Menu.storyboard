@@ -323,6 +323,7 @@
                         <outlet property="agreeCell" destination="bJd-Tj-lBX" id="wTi-6r-j3a"/>
                         <outlet property="followCell" destination="XTx-q3-zbh" id="0Qp-PI-Vzf"/>
                         <outlet property="loginButton" destination="Y04-t1-5ha" id="h92-l6-N3H"/>
+                        <outlet property="loginLabelButton" destination="JVd-rQ-8Fe" id="awU-gI-udg"/>
                         <outlet property="logoutCell" destination="rrW-xg-nUl" id="Lh8-FX-1TT"/>
                         <outlet property="matterCell" destination="rhP-CE-rZQ" id="gtJ-gR-HeX"/>
                         <outlet property="passwordCell" destination="WJb-xC-sbe" id="dtg-3H-E5l"/>

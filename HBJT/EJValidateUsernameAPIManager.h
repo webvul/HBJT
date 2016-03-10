@@ -10,4 +10,6 @@
 
 @interface EJValidateUsernameAPIManager : EJSAPIManager
 
+- (instancetype)initWithUsername:(NSString *)usernameText;
+
 @end

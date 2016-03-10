@@ -13,7 +13,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) NSString *usernameString;
+@property (strong, nonatomic) NSString *userUsernameString;
+@property (strong, nonatomic) NSString *userNameString;
 @property (strong, nonatomic) NSString *userIDString;
 @property (strong, nonatomic) NSString *userNumberString;
 @property (strong, nonatomic) NSString *userPhoneString;
@@ -34,11 +35,16 @@
 - (void)push:(UIViewController *)viewController;
 
 - (void)setCurrentUser:(BOOL)isCurrentUser;
-- (void)setUsername:(NSString *)usernameString
-             userID:(NSString *)userIDString
-         userNumber:(NSString *)userNumberString
-          userPhone:(NSString *)userPhoneString
-        userAddress:(NSString *)userAddressString;
+- (void)setUsername:(NSString *)userUsernameString
+               name:(NSString *)userNameString
+                 id:(NSString *)userIDString
+             number:(NSString *)userNumberString
+              phone:(NSString *)userPhoneString
+            address:(NSString *)userAddressString;
+- (void)modifyName:(NSString *)userNameString
+            number:(NSString *)userNumberString
+             phone:(NSString *)userPhoneString
+           address:(NSString *)userAddressString;
 
 
 

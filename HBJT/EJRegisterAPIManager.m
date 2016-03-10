@@ -11,10 +11,18 @@
 
 @implementation EJRegisterAPIManager
 
-- (instancetype)initWithParams:(NSDictionary *)params
+- (instancetype)initWithUsername:(NSString *)usernameText password:(NSString *)passwordText name:(NSString *)nameText number:(NSString *)numberText phone:(NSString *)phoneText address:(NSString *)addressText
 {
-    [params setValue:[EJSNetwork encryptedPassword:[params objectForKey:@"password"]]  forKey:@"password"];
-    self = [super initWith:kEJSNetworkAPINameRegister params:params];
+    self = [super initWith:kEJSNetworkAPINameRegister];
+    if (self) {
+        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+        [params setObject:usernameText forKey:@"username"];
+        [params setObject:[EJSNetwork encryptedPassword:passwordText] forKey:@"password"];
+        [params setObject:nameText forKey:@"realName"];
+        [params setObject:numberText forKey:@"cardnum"];
+        [params setObject:phoneText forKey:@"mobilephone"];
+        [params setObject:addressText forKey:@"contractaddress"];
+    }
     return self;
 }
 

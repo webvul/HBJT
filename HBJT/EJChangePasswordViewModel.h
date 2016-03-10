@@ -10,4 +10,13 @@
 
 @interface EJChangePasswordViewModel : FTViewModel
 
+@property (strong, nonatomic) NSString *oldpasswordText;
+@property (strong, nonatomic) NSString *passwordText;
+@property (strong, nonatomic) NSString *confirmText;
+
+@property (strong, nonatomic) RACSignal *changePasswordHintSignal;
+
+- (void)changePassword;
+
+
 @end

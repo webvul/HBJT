@@ -46,6 +46,21 @@
 		F7DFF9411C7D74EF00A24DB5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9351C7D74EF00A24DB5 /* Info.plist */; };
 		F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DFF9361C7D74EF00A24DB5 /* main.m */; };
 		F7F8F9FC1C881A54008758BF /* EJSSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F8F9FB1C881A54008758BF /* EJSSet.m */; };
+		F7FE551A1C91544C001C1F6B /* Userinfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7FE55191C91544C001C1F6B /* Userinfo.storyboard */; };
+		F7FE551D1C9154E5001C1F6B /* EJModifyUserinfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE551C1C9154E5001C1F6B /* EJModifyUserinfoViewController.m */; };
+		F7FE55201C915E1C001C1F6B /* EJModifyUserinfoAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE551F1C915E1C001C1F6B /* EJModifyUserinfoAPIManager.m */; };
+		F7FE55231C9181FA001C1F6B /* EJChangePasswordAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE55221C9181FA001C1F6B /* EJChangePasswordAPIManager.m */; };
+		F7FE55261C918363001C1F6B /* EJVerityPasswordAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE55251C918363001C1F6B /* EJVerityPasswordAPIManager.m */; };
+		F7FE55291C919B24001C1F6B /* EJMatterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE55281C919B24001C1F6B /* EJMatterViewController.m */; };
+		F7FE552C1C919B57001C1F6B /* EJMatterViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE552B1C919B57001C1F6B /* EJMatterViewModel.m */; };
+		F7FE55311C919BD7001C1F6B /* EJQueryCaogaoAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE55301C919BD7001C1F6B /* EJQueryCaogaoAPIManager.m */; };
+		F7FE55341C919C24001C1F6B /* EJQueryDaishenAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE55331C919C24001C1F6B /* EJQueryDaishenAPIManager.m */; };
+		F7FE55371C919C61001C1F6B /* EJQueryTuihuiAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE55361C919C61001C1F6B /* EJQueryTuihuiAPIManager.m */; };
+		F7FE553A1C919CEE001C1F6B /* EJQueryShouliAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE55391C919CEE001C1F6B /* EJQueryShouliAPIManager.m */; };
+		F7FE553D1C919D13001C1F6B /* EJQueryYibanAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE553C1C919D13001C1F6B /* EJQueryYibanAPIManager.m */; };
+		F7FE55401C919D34001C1F6B /* EJQueryPingyiAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE553F1C919D34001C1F6B /* EJQueryPingyiAPIManager.m */; };
+		F7FE55431C919FA7001C1F6B /* EJChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE55421C919FA7001C1F6B /* EJChangePasswordViewController.m */; };
+		F7FE55451C91A480001C1F6B /* Matter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7FE55441C91A480001C1F6B /* Matter.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -126,6 +141,34 @@
 		F7F8F9F41C88128F008758BF /* app服务接口信息0301.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "app服务接口信息0301.xlsx"; sourceTree = "<group>"; };
 		F7F8F9FA1C881A53008758BF /* EJSSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSSet.h; sourceTree = "<group>"; };
 		F7F8F9FB1C881A54008758BF /* EJSSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSSet.m; sourceTree = "<group>"; };
+		F7FE55191C91544C001C1F6B /* Userinfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Userinfo.storyboard; sourceTree = "<group>"; };
+		F7FE551B1C9154E5001C1F6B /* EJModifyUserinfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJModifyUserinfoViewController.h; sourceTree = "<group>"; };
+		F7FE551C1C9154E5001C1F6B /* EJModifyUserinfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJModifyUserinfoViewController.m; sourceTree = "<group>"; };
+		F7FE551E1C915E1C001C1F6B /* EJModifyUserinfoAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJModifyUserinfoAPIManager.h; sourceTree = "<group>"; };
+		F7FE551F1C915E1C001C1F6B /* EJModifyUserinfoAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJModifyUserinfoAPIManager.m; sourceTree = "<group>"; };
+		F7FE55211C9181FA001C1F6B /* EJChangePasswordAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJChangePasswordAPIManager.h; sourceTree = "<group>"; };
+		F7FE55221C9181FA001C1F6B /* EJChangePasswordAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJChangePasswordAPIManager.m; sourceTree = "<group>"; };
+		F7FE55241C918363001C1F6B /* EJVerityPasswordAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVerityPasswordAPIManager.h; sourceTree = "<group>"; };
+		F7FE55251C918363001C1F6B /* EJVerityPasswordAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJVerityPasswordAPIManager.m; sourceTree = "<group>"; };
+		F7FE55271C919B24001C1F6B /* EJMatterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJMatterViewController.h; sourceTree = "<group>"; };
+		F7FE55281C919B24001C1F6B /* EJMatterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJMatterViewController.m; sourceTree = "<group>"; };
+		F7FE552A1C919B57001C1F6B /* EJMatterViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJMatterViewModel.h; sourceTree = "<group>"; };
+		F7FE552B1C919B57001C1F6B /* EJMatterViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJMatterViewModel.m; sourceTree = "<group>"; };
+		F7FE552F1C919BD7001C1F6B /* EJQueryCaogaoAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJQueryCaogaoAPIManager.h; sourceTree = "<group>"; };
+		F7FE55301C919BD7001C1F6B /* EJQueryCaogaoAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJQueryCaogaoAPIManager.m; sourceTree = "<group>"; };
+		F7FE55321C919C24001C1F6B /* EJQueryDaishenAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJQueryDaishenAPIManager.h; sourceTree = "<group>"; };
+		F7FE55331C919C24001C1F6B /* EJQueryDaishenAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJQueryDaishenAPIManager.m; sourceTree = "<group>"; };
+		F7FE55351C919C61001C1F6B /* EJQueryTuihuiAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJQueryTuihuiAPIManager.h; sourceTree = "<group>"; };
+		F7FE55361C919C61001C1F6B /* EJQueryTuihuiAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJQueryTuihuiAPIManager.m; sourceTree = "<group>"; };
+		F7FE55381C919CEE001C1F6B /* EJQueryShouliAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJQueryShouliAPIManager.h; sourceTree = "<group>"; };
+		F7FE55391C919CEE001C1F6B /* EJQueryShouliAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJQueryShouliAPIManager.m; sourceTree = "<group>"; };
+		F7FE553B1C919D13001C1F6B /* EJQueryYibanAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJQueryYibanAPIManager.h; sourceTree = "<group>"; };
+		F7FE553C1C919D13001C1F6B /* EJQueryYibanAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJQueryYibanAPIManager.m; sourceTree = "<group>"; };
+		F7FE553E1C919D34001C1F6B /* EJQueryPingyiAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJQueryPingyiAPIManager.h; sourceTree = "<group>"; };
+		F7FE553F1C919D34001C1F6B /* EJQueryPingyiAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJQueryPingyiAPIManager.m; sourceTree = "<group>"; };
+		F7FE55411C919FA7001C1F6B /* EJChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJChangePasswordViewController.h; sourceTree = "<group>"; };
+		F7FE55421C919FA7001C1F6B /* EJChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJChangePasswordViewController.m; sourceTree = "<group>"; };
+		F7FE55441C91A480001C1F6B /* Matter.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Matter.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +281,11 @@
 			isa = PBXGroup;
 			children = (
 				F7A86D271C891731006D5F18 /* Logger.storyboard */,
+				F7FE55191C91544C001C1F6B /* Userinfo.storyboard */,
+				F7FE551B1C9154E5001C1F6B /* EJModifyUserinfoViewController.h */,
+				F7FE551C1C9154E5001C1F6B /* EJModifyUserinfoViewController.m */,
+				F7FE55411C919FA7001C1F6B /* EJChangePasswordViewController.h */,
+				F7FE55421C919FA7001C1F6B /* EJChangePasswordViewController.m */,
 				F7A86D2A1C891997006D5F18 /* EJLoginTableViewController.h */,
 				F7A86D2B1C891997006D5F18 /* EJLoginTableViewController.m */,
 				F7A5B8E71C8969F600672967 /* EJRegisterViewController.h */,
@@ -251,12 +299,18 @@
 		F7A86D4A1C894309006D5F18 /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
+				F7FE551E1C915E1C001C1F6B /* EJModifyUserinfoAPIManager.h */,
+				F7FE551F1C915E1C001C1F6B /* EJModifyUserinfoAPIManager.m */,
 				F7A86D331C891B2E006D5F18 /* EJLoginAPIManager.h */,
 				F7A86D341C891B2E006D5F18 /* EJLoginAPIManager.m */,
 				F7A5B8E41C895CBC00672967 /* EJRegisterAPIManager.h */,
 				F7A5B8E51C895CBC00672967 /* EJRegisterAPIManager.m */,
 				F7A86D361C891C1F006D5F18 /* EJValidateUsernameAPIManager.h */,
 				F7A86D371C891C1F006D5F18 /* EJValidateUsernameAPIManager.m */,
+				F7FE55241C918363001C1F6B /* EJVerityPasswordAPIManager.h */,
+				F7FE55251C918363001C1F6B /* EJVerityPasswordAPIManager.m */,
+				F7FE55211C9181FA001C1F6B /* EJChangePasswordAPIManager.h */,
+				F7FE55221C9181FA001C1F6B /* EJChangePasswordAPIManager.m */,
 			);
 			name = APIManager;
 			sourceTree = "<group>";
@@ -302,6 +356,7 @@
 		F7DFF92D1C7D74EF00A24DB5 /* HBJT */ = {
 			isa = PBXGroup;
 			children = (
+				F7FE552D1C919B6E001C1F6B /* EJMatter */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
 				F77333AC1C7D974E00E2FD20 /* EJS */,
@@ -342,6 +397,38 @@
 			children = (
 			);
 			name = EJGuild;
+			sourceTree = "<group>";
+		};
+		F7FE552D1C919B6E001C1F6B /* EJMatter */ = {
+			isa = PBXGroup;
+			children = (
+				F7FE55441C91A480001C1F6B /* Matter.storyboard */,
+				F7FE55271C919B24001C1F6B /* EJMatterViewController.h */,
+				F7FE55281C919B24001C1F6B /* EJMatterViewController.m */,
+				F7FE552A1C919B57001C1F6B /* EJMatterViewModel.h */,
+				F7FE552B1C919B57001C1F6B /* EJMatterViewModel.m */,
+				F7FE552E1C919B82001C1F6B /* APIManager */,
+			);
+			name = EJMatter;
+			sourceTree = "<group>";
+		};
+		F7FE552E1C919B82001C1F6B /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				F7FE552F1C919BD7001C1F6B /* EJQueryCaogaoAPIManager.h */,
+				F7FE55301C919BD7001C1F6B /* EJQueryCaogaoAPIManager.m */,
+				F7FE55321C919C24001C1F6B /* EJQueryDaishenAPIManager.h */,
+				F7FE55331C919C24001C1F6B /* EJQueryDaishenAPIManager.m */,
+				F7FE55351C919C61001C1F6B /* EJQueryTuihuiAPIManager.h */,
+				F7FE55361C919C61001C1F6B /* EJQueryTuihuiAPIManager.m */,
+				F7FE55381C919CEE001C1F6B /* EJQueryShouliAPIManager.h */,
+				F7FE55391C919CEE001C1F6B /* EJQueryShouliAPIManager.m */,
+				F7FE553B1C919D13001C1F6B /* EJQueryYibanAPIManager.h */,
+				F7FE553C1C919D13001C1F6B /* EJQueryYibanAPIManager.m */,
+				F7FE553E1C919D34001C1F6B /* EJQueryPingyiAPIManager.h */,
+				F7FE553F1C919D34001C1F6B /* EJQueryPingyiAPIManager.m */,
+			);
+			name = APIManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +504,8 @@
 				F7C14FCA1C8434E200779833 /* Index.storyboard in Resources */,
 				F7C14FCB1C8434E200779833 /* Menu.storyboard in Resources */,
 				F7DFF93F1C7D74EF00A24DB5 /* LaunchScreen.storyboard in Resources */,
+				F7FE55451C91A480001C1F6B /* Matter.storyboard in Resources */,
+				F7FE551A1C91544C001C1F6B /* Userinfo.storyboard in Resources */,
 				F7DFF9411C7D74EF00A24DB5 /* Info.plist in Resources */,
 				F7A86D281C891731006D5F18 /* Logger.storyboard in Resources */,
 			);
@@ -486,23 +575,36 @@
 				F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */,
 				F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */,
 				F7A86D411C894258006D5F18 /* EJRetrievePasswordViewModel.m in Sources */,
+				F7FE55371C919C61001C1F6B /* EJQueryTuihuiAPIManager.m in Sources */,
+				F7FE553A1C919CEE001C1F6B /* EJQueryShouliAPIManager.m in Sources */,
 				F746B9081C8EB7CF00DBF40E /* EJSResponseAnalyzer.m in Sources */,
 				F7F8F9FC1C881A54008758BF /* EJSSet.m in Sources */,
 				F7C14FE21C853A9B00779833 /* FTViewModel.m in Sources */,
+				F7FE55401C919D34001C1F6B /* EJQueryPingyiAPIManager.m in Sources */,
 				F7A86D381C891C1F006D5F18 /* EJValidateUsernameAPIManager.m in Sources */,
 				F7A86D3B1C8941B2006D5F18 /* EJRegisterViewModel.m in Sources */,
+				F7FE55201C915E1C001C1F6B /* EJModifyUserinfoAPIManager.m in Sources */,
 				F7C14FDC1C853A9B00779833 /* FTAPIManager.m in Sources */,
 				F7A86D2E1C891997006D5F18 /* EJLoginTableViewController.m in Sources */,
+				F7FE551D1C9154E5001C1F6B /* EJModifyUserinfoViewController.m in Sources */,
 				F7DFF93D1C7D74EF00A24DB5 /* AppDelegate.m in Sources */,
+				F7FE55431C919FA7001C1F6B /* EJChangePasswordViewController.m in Sources */,
 				F7AC66C01C8FFDA200BC8456 /* EJUserAgreementViewController.m in Sources */,
 				F7AB19001C8698F100723EC2 /* EJNewsViewController.m in Sources */,
 				F7A5B8E91C8969F600672967 /* EJRegisterViewController.m in Sources */,
 				F7A86D471C8942B4006D5F18 /* EJModifyUserinfoViewModel.m in Sources */,
+				F7FE55261C918363001C1F6B /* EJVerityPasswordAPIManager.m in Sources */,
+				F7FE55311C919BD7001C1F6B /* EJQueryCaogaoAPIManager.m in Sources */,
+				F7FE55291C919B24001C1F6B /* EJMatterViewController.m in Sources */,
 				F7AB19081C86CC2A00723EC2 /* UIViewController+FTBinding.m in Sources */,
+				F7FE553D1C919D13001C1F6B /* EJQueryYibanAPIManager.m in Sources */,
 				F7C1596F1C8589F000779833 /* EJMenuTableViewController.m in Sources */,
 				F7A86D351C891B2E006D5F18 /* EJLoginAPIManager.m in Sources */,
+				F7FE55231C9181FA001C1F6B /* EJChangePasswordAPIManager.m in Sources */,
 				F716BC651C86872500516DF4 /* EJIndexViewModel.m in Sources */,
+				F7FE552C1C919B57001C1F6B /* EJMatterViewModel.m in Sources */,
 				F7A86D441C89427B006D5F18 /* EJChangePasswordViewModel.m in Sources */,
+				F7FE55341C919C24001C1F6B /* EJQueryDaishenAPIManager.m in Sources */,
 				F7A86D2F1C891997006D5F18 /* EJLoginViewModel.m in Sources */,
 				F7A86D321C891A79006D5F18 /* FTVerifier.m in Sources */,
 				F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */,

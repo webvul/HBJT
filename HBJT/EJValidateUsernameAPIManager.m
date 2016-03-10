@@ -11,9 +11,12 @@
 
 @implementation EJValidateUsernameAPIManager
 
-- (instancetype)initWithParams:(NSDictionary *)params
+- (instancetype)initWithUsername:(NSString *)usernameText
 {
-    self = [super initWith:kEJSNetworkAPINameValidateUsername params:params];
+    self = [super initWith:kEJSNetworkAPINameValidateUsername];
+    if (self) {
+        [self.params setObject:usernameText forKey:@"username"];
+    }
     return self;
 }
 

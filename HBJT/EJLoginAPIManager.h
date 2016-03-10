@@ -10,4 +10,6 @@
 
 @interface EJLoginAPIManager :EJSAPIManager
 
+- (instancetype)initWithUsername:(NSString *)usernameText password:(NSString *)password;
+
 @end

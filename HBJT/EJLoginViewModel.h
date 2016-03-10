@@ -10,8 +10,6 @@
 
 @interface EJLoginViewModel : FTViewModel
 
-
-
 //Receiver
 @property (strong, nonatomic) NSString *usernameText;
 @property (strong, nonatomic) NSString *passwordText;
