@@ -19,9 +19,9 @@
 @property (strong, nonatomic) NSURLSessionTask *task;
 @property (strong, nonatomic) NSString *requestMethod;
 @property (strong, nonatomic) id rawData;
+@property (assign, nonatomic) AFNetworkReachabilityStatus networkStatus;
 
 - (instancetype)init;
 - (void)launchRequestWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock;
-- (void)launchWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock;
 
 @end

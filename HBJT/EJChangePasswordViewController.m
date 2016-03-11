@@ -46,7 +46,9 @@
 
 - (void)bindViewModelForNotice
 {
+    @weakify(self);
     [self.viewModel.changePasswordHintSignal subscribeNext:^(id x) {
+        @strongify(self);
         if ([x isKindOfClass:[NSString class]]) {
             [self.hub setLabelText:x];
         } else if ([x boolValue]) {
@@ -55,6 +57,22 @@
         } else {
             [self.hub hide:YES afterDelay:1];
         }
+    }];
+}
+
+- (void)prepareOtherViewController
+{
+    @weakify(self);
+    [[[[self.viewModel.changePasswordHintSignal filter:^BOOL(id value) {
+        return [value isKindOfClass:[NSString class]];
+    }] filter:^BOOL(id value) {
+        return [value isEqualToString:@"密码修改成功"];
+    }] delay:1] subscribeNext:^(id x) {
+        @strongify(self);
+        self.oldPasswordTextField.text = @"";
+        self.passwordTextField.text = @"";
+        self.confirmTextField.text = @"";
+        [self.navigationController popToRootViewControllerAnimated:YES];
     }];
 }
 

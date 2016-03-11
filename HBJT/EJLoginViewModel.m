@@ -66,10 +66,10 @@
     } completed:^{
         @strongify(self);
         self.userinfo = self.loginAPIManager.data;
-        [[AppDelegate sharedDelegate] setUsername:[self.userinfo objectForKey:@"userUsernaemString"]
+        [[AppDelegate sharedDelegate] setUsername:[self.userinfo objectForKey:@"userUsernameString"]
                                              name:[self.userinfo objectForKey:@"userNameString"]
                                                id:[self.userinfo objectForKey:@"userIDString"]
-                                           number:[self.userinfo objectForKey:@"userNumerString"]
+                                           number:[self.userinfo objectForKey:@"userNumberString"]
                                             phone:[self.userinfo objectForKey:@"userPhoneString"]
                                           address:[self.userinfo objectForKey:@"userAddressString"]];
         self.loginTintText = @"登录成功";

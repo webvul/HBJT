@@ -94,7 +94,7 @@
         self.isRegisterProceed = NO;
         return;
     }
-    if (![FTVerifier verify:self.addressText withRegex:@"^.{6,16}$"])
+    if (![FTVerifier verify:self.addressText withRegex:@"^.{2,256}$"])
     {
         self.registerHintText = @"联系地址格式不正确";
         self.isRegisterProceed = NO;

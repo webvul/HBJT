@@ -7,7 +7,25 @@
 //
 
 #import "EJMatterViewController.h"
+#import "EJMatterViewModel.h"
+
+
+@interface EJMatterViewController ()
+
+@property (strong, nonatomic) UITableView *tableView;
+
+@property (strong, nonatomic) MBProgressHUD *hub;
+@property (strong, nonatomic) EJMatterViewModel *viewModel;
+
+@end
 
 @implementation EJMatterViewController
+
+- (void)preparedWithSender:(id)sender
+{
+    //self.viewModel
+}
+
+
 
 @end

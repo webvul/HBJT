@@ -102,12 +102,12 @@ CGFloat scrollViewOffsetx;
 {
     [super viewWillAppear:animated];
     [self.viewModel connect];
-    [self.navigationController setNavigationBarHidden:YES];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [[AppDelegate sharedDelegate] setkeyboardDistance];

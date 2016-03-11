@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Change Password View Controller-->
+        <!--修改密码-->
         <scene sceneID="lew-uT-17P">
             <objects>
-                <viewController storyboardIdentifier="password" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jcr-bq-IZX" customClass="EJChangePasswordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="password" title="修改密码" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jcr-bq-IZX" customClass="EJChangePasswordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dwZ-DM-Pzm"/>
                         <viewControllerLayoutGuide type="bottom" id="uHt-pb-abc"/>
@@ -26,13 +26,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入原密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dph-9F-7lU">
-                                        <rect key="frame" x="86" y="0.0" width="258" height="40"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入原密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dph-9F-7lU">
+                                        <rect key="frame" x="85" y="0.0" width="258" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="7uA-0f-JPv"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -60,7 +60,7 @@
                                             <constraint firstAttribute="height" constant="40" id="AmB-4P-b8H"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -97,7 +97,7 @@
                                             <constraint firstAttribute="height" constant="40" id="Wk1-Wx-9bt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="alphabet" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fs6-AX-0H7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="661.5" y="306.5"/>
+            <point key="canvasLocation" x="646.5" y="325.5"/>
         </scene>
         <!--Modify Userinfo View Controller-->
         <scene sceneID="6fN-mn-jg9">
@@ -331,7 +331,6 @@
                         <outlet property="modifyUserinfoButton" destination="gi6-iT-fqW" id="NPJ-6a-vER"/>
                         <outlet property="nameTextField" destination="JKy-uN-cGf" id="keU-Zi-NQr"/>
                         <outlet property="numberTextField" destination="15M-ZH-m5b" id="lvT-Ob-MUq"/>
-                        <outlet property="passwordTextField" destination="JKy-uN-cGf" id="qkw-FX-zHz"/>
                         <outlet property="phoneTextField" destination="rnQ-2Z-dFe" id="YCN-wD-wvC"/>
                         <outlet property="usernameTextField" destination="zpm-9Q-3MV" id="Rr3-tW-HLc"/>
                     </connections>

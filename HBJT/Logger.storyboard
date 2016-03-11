@@ -527,7 +527,7 @@
                                             <constraint firstAttribute="height" constant="40" id="pIu-8Y-DBR"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="Bh8-fc-7OK" id="qwE-21-alr"/>
                                         </connections>

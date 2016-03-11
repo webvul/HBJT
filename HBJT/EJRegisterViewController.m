@@ -42,10 +42,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self prepareOtherViewController];
-    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -115,6 +111,7 @@
     if (_viewModel == nil) {
         _viewModel = [EJRegisterViewModel viewModel];
         [self bindViewModel];
+        [self prepareOtherViewController];
     }
     return _viewModel;
 }

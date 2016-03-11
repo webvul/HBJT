@@ -15,13 +15,12 @@
 {
     self = [super initWith:kEJSNetworkAPINameRegister];
     if (self) {
-        NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
-        [params setObject:usernameText forKey:@"username"];
-        [params setObject:[EJSNetwork encryptedPassword:passwordText] forKey:@"password"];
-        [params setObject:nameText forKey:@"realName"];
-        [params setObject:numberText forKey:@"cardnum"];
-        [params setObject:phoneText forKey:@"mobilephone"];
-        [params setObject:addressText forKey:@"contractaddress"];
+        [self.params setObject:usernameText forKey:@"username"];
+        [self.params setObject:[EJSNetwork encryptedPassword:passwordText] forKey:@"password"];
+        [self.params setObject:nameText forKey:@"realName"];
+        [self.params setObject:numberText forKey:@"cardnum"];
+        [self.params setObject:phoneText forKey:@"mobilephone"];
+        [self.params setObject:addressText forKey:@"contractaddress"];
     }
     return self;
 }

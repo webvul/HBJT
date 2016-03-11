@@ -31,6 +31,7 @@
 		F7AB19081C86CC2A00723EC2 /* UIViewController+FTBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AB19071C86CC2A00723EC2 /* UIViewController+FTBinding.m */; };
 		F7AC66BD1C8FB75E00BC8456 /* EJMenuViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AC66BC1C8FB75E00BC8456 /* EJMenuViewModel.m */; };
 		F7AC66C01C8FFDA200BC8456 /* EJUserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AC66BF1C8FFDA200BC8456 /* EJUserAgreementViewController.m */; };
+		F7AEC05E1C926CF6003DD341 /* EJMatterIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AEC05D1C926CF6003DD341 /* EJMatterIndexViewController.m */; };
 		F7C14FCA1C8434E200779833 /* Index.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C14FC81C8434E200779833 /* Index.storyboard */; };
 		F7C14FCB1C8434E200779833 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C14FC91C8434E200779833 /* Menu.storyboard */; };
 		F7C14FDC1C853A9B00779833 /* FTAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C14FD01C853A9B00779833 /* FTAPIManager.m */; };
@@ -113,6 +114,8 @@
 		F7AC66BC1C8FB75E00BC8456 /* EJMenuViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJMenuViewModel.m; sourceTree = "<group>"; };
 		F7AC66BE1C8FFDA200BC8456 /* EJUserAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJUserAgreementViewController.h; sourceTree = "<group>"; };
 		F7AC66BF1C8FFDA200BC8456 /* EJUserAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJUserAgreementViewController.m; sourceTree = "<group>"; };
+		F7AEC05C1C926CF6003DD341 /* EJMatterIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJMatterIndexViewController.h; sourceTree = "<group>"; };
+		F7AEC05D1C926CF6003DD341 /* EJMatterIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJMatterIndexViewController.m; sourceTree = "<group>"; };
 		F7C14FC71C84224600779833 /* EJFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EJFramework.h; path = HBJT/EJFramework.h; sourceTree = "<group>"; };
 		F7C14FC81C8434E200779833 /* Index.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Index.storyboard; sourceTree = "<group>"; };
 		F7C14FC91C8434E200779833 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
@@ -356,10 +359,10 @@
 		F7DFF92D1C7D74EF00A24DB5 /* HBJT */ = {
 			isa = PBXGroup;
 			children = (
-				F7FE552D1C919B6E001C1F6B /* EJMatter */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
 				F77333AC1C7D974E00E2FD20 /* EJS */,
+				F7FE552D1C919B6E001C1F6B /* EJMatter */,
 				F716BC661C86880100516DF4 /* EJIndex */,
 				F7F284A61C87EB6400027DF6 /* EJMenu */,
 				F7A86D291C8917A3006D5F18 /* EJLogger */,
@@ -403,6 +406,8 @@
 			isa = PBXGroup;
 			children = (
 				F7FE55441C91A480001C1F6B /* Matter.storyboard */,
+				F7AEC05C1C926CF6003DD341 /* EJMatterIndexViewController.h */,
+				F7AEC05D1C926CF6003DD341 /* EJMatterIndexViewController.m */,
 				F7FE55271C919B24001C1F6B /* EJMatterViewController.h */,
 				F7FE55281C919B24001C1F6B /* EJMatterViewController.m */,
 				F7FE552A1C919B57001C1F6B /* EJMatterViewModel.h */,
@@ -601,6 +606,7 @@
 				F7C1596F1C8589F000779833 /* EJMenuTableViewController.m in Sources */,
 				F7A86D351C891B2E006D5F18 /* EJLoginAPIManager.m in Sources */,
 				F7FE55231C9181FA001C1F6B /* EJChangePasswordAPIManager.m in Sources */,
+				F7AEC05E1C926CF6003DD341 /* EJMatterIndexViewController.m in Sources */,
 				F716BC651C86872500516DF4 /* EJIndexViewModel.m in Sources */,
 				F7FE552C1C919B57001C1F6B /* EJMatterViewModel.m in Sources */,
 				F7A86D441C89427B006D5F18 /* EJChangePasswordViewModel.m in Sources */,

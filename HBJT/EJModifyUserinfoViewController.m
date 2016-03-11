@@ -26,25 +26,28 @@
 
 - (void)viewDidLoad
 {
+    self.usernameTextField.placeholder = @"1111111";
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.viewModel connect];
+    [self viewModel];
 }
 
 #pragma mark - Reactive Method
 
 - (void)bindViewModelForNotice
 {
-    RAC(self.usernameTextField, placeholder) = self.viewModel.usernamePlaceHolderSiganal;
-    RAC(self.nameTextField, placeholder) = self.viewModel.namePlaceHolderSiganal;
-    RAC(self.numberTextField, placeholder) = self.viewModel.numberPlaceHolderSiganal;
-    RAC(self.phoneTextField, placeholder) = self.viewModel.phonePlaceHolderSiganal;
-    RAC(self.addressTextField, placeholder) = self.viewModel.addressPlaceHolderSiganal;
+    RAC(self.usernameTextField, placeholder) = [self.viewModel.usernamePlaceHolderSiganal replayLast];
+    RAC(self.nameTextField, placeholder) = [self.viewModel.namePlaceHolderSiganal replayLast];
+    RAC(self.numberTextField, placeholder) = [self.viewModel.numberPlaceHolderSiganal replayLast];
+    RAC(self.phoneTextField, placeholder) = [self.viewModel.phonePlaceHolderSiganal replayLast];
+    RAC(self.addressTextField, placeholder) = [self.viewModel.addressPlaceHolderSiganal replayLast];
+    @weakify(self);
     [self.viewModel.modifyUserinfoHintSignal subscribeNext:^(id x) {
+        @strongify(self);
         if ([x isKindOfClass:[NSString class]]) {
             [self.hub setLabelText:x];
         } else if ([x boolValue]) {
@@ -53,6 +56,17 @@
         } else {
             [self.hub hide:YES afterDelay:1];
         }
+    }];
+    [[[self.viewModel.modifyUserinfoHintSignal filter:^BOOL(id value) {
+        return [value isKindOfClass:[NSString class]];
+    }] filter:^BOOL(id value) {
+        return [value isEqualToString:@"修改成功"];
+    }] subscribeNext:^(id x) {
+        @strongify(self);
+        self.nameTextField.text = @"";
+        self.numberTextField.text = @"";
+        self.phoneTextField.text = @"";
+        self.addressTextField.text = @"";
     }];
 }
 
@@ -72,6 +86,7 @@
 {
     if (_viewModel == nil) {
         _viewModel = [EJModifyUserinfoViewModel viewModel];
+        [self.viewModel connect];
         [self bindViewModel];
     }
     return _viewModel;

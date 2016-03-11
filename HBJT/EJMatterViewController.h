@@ -6,7 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "EJFramework.h"
 
 @interface EJMatterViewController : UIViewController
 

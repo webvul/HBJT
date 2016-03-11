@@ -38,7 +38,7 @@
         [subscriber sendNext:nil];
         [self.modifyUserinfoAPIManager launchRequestWithSuccess:^(id responseObject) {
             @strongify(self);
-            if ([self.modifyUserinfoAPIManager newStatus]) {
+            if (![self.modifyUserinfoAPIManager newStatus]) {
                 [subscriber sendCompleted];
             } else
             {
@@ -55,8 +55,45 @@
 {
     self.isModifyUserinfoProceed = YES;
     self.modifyUserinfoHintText = @"正在修改";
-    self.modifyUserinfoAPIManager = [[EJModifyUserinfoAPIManager alloc]initWithID:[[AppDelegate sharedDelegate] userIDString] name:self.nameText number:self.numberText phone:self.phoneText address:self.addressText];
+    AppDelegate *delegate = [AppDelegate sharedDelegate];
+    NSString *number = [[NSString alloc]init];
+    NSString *name = [NSString stringWithString:([self.nameText isEqualToString:@""]?
+                      [delegate userNameString]:
+                      self.nameText)];
+    number = ([self.numberText isEqualToString:@""]?
+                        [delegate userNumberString]:
+                        self.numberText);
+    NSString *phone = ([self.phoneText isEqualToString:@""]?
+                       [delegate userPhoneString]:
+                       self.phoneText);
+    NSString *address = ([self.addressText isEqualToString:@""]?
+                         [delegate userAddressString]:
+                         self.addressText);
+    if (![FTVerifier verify:name withRegex:@"^[\u4e00-\u9fa5]{2,8}$"]) {
+        self.modifyUserinfoHintText = @"姓名格式不正确";
+        self.isModifyUserinfoProceed = NO;
+        return;
+    }
+    if (![FTVerifier validateIdentityCardNumberString:number]) {
+        self.modifyUserinfoHintText = @"身份证号格式不正确";
+        self.isModifyUserinfoProceed = NO;
+        return;
+    }
+    if (![FTVerifier verify:phone withRegex:@"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|70)\\d{8}$"]) {
+        self.modifyUserinfoHintText = @"手机号码格式不正确";
+        self.isModifyUserinfoProceed = NO;
+        return;
+    }
+    if (![FTVerifier verify:address withRegex:@"^.{2,256}$"])
+    {
+        self.modifyUserinfoHintText = @"联系地址格式不正确";
+        self.isModifyUserinfoProceed = NO;
+        return;
+    }
+    NSLog(@"%@.%@.%@.%@",name,number,phone,address);
+    self.modifyUserinfoAPIManager = [[EJModifyUserinfoAPIManager alloc]initWithID:[[AppDelegate sharedDelegate] userIDString] name:name number:number phone:phone address:address];
     @weakify(self);
+    @weakify(delegate);
     [self.modifyUserinfoSignal subscribeNext:^(id x) {
     } error:^(NSError *error) {
         @strongify(self);
@@ -64,12 +101,13 @@
         self.isModifyUserinfoProceed = NO;
     } completed:^{
         @strongify(self);
+        @strongify(delegate);
+        [delegate modifyName:name
+                      number:number
+                       phone:phone
+                     address:address];
         self.modifyUserinfoHintText = @"修改成功";
         self.isModifyUserinfoProceed = NO;
-        [[AppDelegate sharedDelegate] modifyName:self.nameText
-                                          number:self.numberText
-                                           phone:self.phoneText
-                                         address:self.addressText];
     }];
 }
 
@@ -77,7 +115,7 @@
 {
     @weakify(self);
     return [[signal map:^id(id value) {
-        return ([value isEqualToString:@"0"]? @"": value);
+        return ([value isEqualToString:@"0"]? @"请补全信息": value);
     }] filter:^BOOL(id value) {
         @strongify(self);
         return self.isConnected;

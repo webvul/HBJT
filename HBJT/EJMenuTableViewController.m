@@ -34,11 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createLayoutConstraint];
-    
-    [RACObserve([AppDelegate sharedDelegate], currentUser) subscribeNext:^(id x) {
-        NSString *name = [[AppDelegate sharedDelegate] userNameString];
-        [self.usernameLabelButton setTitle:([name isEqualToString:@"0"]?[[AppDelegate sharedDelegate] userUsernameString]: name) forState:UIControlStateNormal];
-    }];
 }
 
 - (void)createLayoutConstraint
@@ -101,16 +96,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-
     if (indexPath.section == 1) {
-     switch (indexPath.row) {
-         case 0:
-             [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateInitialViewController]];
-             NSLog(@"1");
-    // [self pushMenuControllerNamed:@"section" inStoryboardNamed:@"Matters"];
-     break;
-     }
+        switch (indexPath.row) {
+            case 0:
+                [[AppDelegate sharedDelegate] closeDrawerNeedReopen:YES];
+                [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Matter" bundle:nil] instantiateInitialViewController]];
+                break;
+        }
+    }
+    if (indexPath.section == 3) {
+        switch (indexPath.row) {
+            case 0:
+                [[AppDelegate sharedDelegate] closeDrawerNeedReopen:YES];
+                [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateInitialViewController]];
+                break;
+            case 1:
+                [[AppDelegate sharedDelegate] closeDrawerNeedReopen:YES];
+                [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateViewControllerWithIdentifier:@"password"]];
+                break;
+            case 2:
+                [[AppDelegate sharedDelegate] setCurrentUser:NO];
+                break;
+            default:
+                break;
+        }
     }
     // case 1:
      /*

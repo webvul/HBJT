@@ -18,8 +18,12 @@
         self.url = @"https://raw.githubusercontent.com/fangqiuming/FTools/test/FTools/TestResponse";
         self.requestSerializer = [AFHTTPRequestSerializer serializer];
         self.requestMethod = @"POST";
+        self.requestSerializer.timeoutInterval = 10;
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            self.networkStatus = status;
+        }];
         }
     return self;
 }
@@ -35,19 +39,17 @@
         @strongify(self);
         if (error) {
             NSLog(@"API MANAGER DID FAIL");
+            [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
             failureBlock(error);
         } else {
             NSLog(@"API MANAGER DID SUCCEED");
             self.rawData = responseObject;
+            [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
             successBlock(responseObject);
         }
     }];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [self.task resume];
-}
-
-- (void)launchWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock
-{
-    //Do nothing.
 }
 
 - (void)dealloc

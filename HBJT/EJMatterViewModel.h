@@ -10,4 +10,5 @@
 
 @interface EJMatterViewModel : FTViewModel
 
+
 @end

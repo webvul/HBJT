@@ -32,6 +32,9 @@
     [self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
     NSLog(@"App Launched");
+    [self fakeLogin];
+    AppDelegate *delegate = [AppDelegate sharedDelegate];
+    NSLog(@"%@",[delegate userAddressString]);
     return YES;
 }
 
@@ -70,6 +73,12 @@
     NSString *functionCaller = [array objectAtIndex:4];
     NSLog(@"%@ %@ is Calling Appdelegate",classCaller,functionCaller);
     return [[UIApplication sharedApplication] delegate];
+}
+
+- (NSString *)userUsernameString
+{
+    NSLog(@"%@,%@,%@,%@,%@,%@",_userUsernameString, _userIDString, _userNameString, _userNumberString, _userPhoneString, _userAddressString);
+    return _userUsernameString;
 }
 
 - (void)setUsername:(NSString *)userUsernameString name:(NSString *)userNameString id:(NSString *)userIDString number:(NSString *)userNumberString phone:(NSString *)userPhoneString address:(NSString *)userAddressString
@@ -131,6 +140,7 @@
 {
     [self toggleDrawerOpenGesture:NO];
     [self.rootNavigationController pushViewController:viewController animated:YES];
+    [self.rootNavigationController setNavigationBarHidden:NO];
 
 }
 
@@ -146,6 +156,10 @@
 
 #pragma mark - Private Methods
 
+- (void)fakeLogin
+{
+    [self setUsername:@"void" name:@"空" id:@"null" number:@"0" phone:@"invalid" address:@"not found (404)"];
+}
 
 
 #pragma mark - Getters

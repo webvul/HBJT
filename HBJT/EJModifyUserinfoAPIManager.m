@@ -16,7 +16,7 @@
     if (self) {
         [self.params setObject:userIDString forKey:@"id"];
         [self.params setObject:nameText forKey:@"realName"];
-        [self.params setObject:numberText forKey:@"carenum"];
+        [self.params setObject:numberText forKey:@"cardnum"];
         [self.params setObject:phoneText forKey:@"mobilephone"];
         [self.params setObject:addressText forKey:@"contractaddress"];
     }

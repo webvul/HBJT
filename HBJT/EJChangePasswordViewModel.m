@@ -33,9 +33,9 @@
     self.changePasswordSignal = [[[RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         [subscriber sendNext:nil];
-        [self.verityPasswordAPIManager launchWithSuccess:^(id responseObject) {
+        [self.verityPasswordAPIManager launchRequestWithSuccess:^(id responseObject) {
             @strongify(self);
-            if ([self.verityPasswordAPIManager newStatus]) {
+            if (![self.verityPasswordAPIManager newStatus]) {
                 [subscriber sendCompleted];
             }
             else
@@ -49,9 +49,9 @@
     }] then:^RACSignal *{
         return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
             @strongify(self);
-            [self.changePasswordAPIManager launchWithSuccess:^(id responseObject) {
+            [self.changePasswordAPIManager launchRequestWithSuccess:^(id responseObject) {
                 @strongify(self);
-                if ([self.changePasswordAPIManager newStatus]) {
+                if (![self.changePasswordAPIManager newStatus]) {
                     [subscriber sendCompleted];
                 } else
                 {
@@ -72,12 +72,12 @@
 {
     self.isChangePasswordProceed = YES;
     self.changePasswordHintText = @"正在修改";
-    if ([FTVerifier verify:self.oldpasswordText withRegex:@"^.{6,11}$"]) {
+    if (![FTVerifier verify:self.oldpasswordText withRegex:@"^.{6,11}$"]) {
         self.changePasswordHintText = @"原密码格式不正确";
         self.isChangePasswordProceed = NO;
         return;
     }
-    if ([FTVerifier verify:self.passwordText withRegex:@"^.{6,11}$"]) {
+    if (![FTVerifier verify:self.passwordText withRegex:@"^.{6,11}$"]) {
         self.changePasswordHintText = @"新密码格式不正确";
         self.isChangePasswordProceed = NO;
         return;
@@ -94,7 +94,7 @@
         self.changePasswordHintText = (self.changePasswordAPIManager.status == EJSAPIManagerStatusUnset? self.verityPasswordAPIManager.statusDescription: self.changePasswordAPIManager.statusDescription);
         self.isChangePasswordProceed = NO;
     } completed:^{
-        self.changePasswordHintText = @"修改成功";
+        self.changePasswordHintText = @"密码修改成功";
         self.isChangePasswordProceed = NO;
     }];
 }
