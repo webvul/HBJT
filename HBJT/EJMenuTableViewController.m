@@ -104,6 +104,17 @@
                 break;
         }
     }
+    if (indexPath.section ==2) {
+        switch (indexPath.row) {
+            case 0:
+                [[AppDelegate sharedDelegate] closeDrawerNeedReopen:YES];
+                [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Suggestion" bundle:nil] instantiateInitialViewController]];
+                break;
+                
+            default:
+                break;
+        }
+    }
     if (indexPath.section == 3) {
         switch (indexPath.row) {
             case 0:

@@ -23,5 +23,6 @@
 
 - (instancetype)init;
 - (void)launchRequestWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (void)cancel;
 
 @end

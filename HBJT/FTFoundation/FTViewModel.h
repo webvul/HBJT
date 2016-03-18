@@ -12,6 +12,9 @@
 @interface FTViewModel : NSObject
 
 @property (assign, nonatomic) BOOL isConnected;
+@property (assign, nonatomic) BOOL isNetworkProceed;
+@property (strong, nonatomic, nullable) NSString *networkHintText;
+@property (strong, nonatomic, nullable) RACSignal *networkHintSignal;
 
 + (nonnull instancetype)viewModel;
 /**

@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--修改密码-->
+        <!--Change Password View Controller-->
         <scene sceneID="lew-uT-17P">
             <objects>
-                <viewController storyboardIdentifier="password" title="修改密码" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jcr-bq-IZX" customClass="EJChangePasswordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="password" useStoryboardIdentifierAsRestorationIdentifier="YES" id="jcr-bq-IZX" customClass="EJChangePasswordViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dwZ-DM-Pzm"/>
                         <viewControllerLayoutGuide type="bottom" id="uHt-pb-abc"/>

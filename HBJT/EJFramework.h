@@ -9,7 +9,6 @@
 #ifndef EJFramework_h
 #define EJFramework_h
 
-
 #endif /* EJFramework_h */
 
 #import <AFNetworking/AFNetworking.h>
@@ -23,6 +22,7 @@
 #import <MMDrawerController/MMDrawerVisualState.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <MJRefresh/MJRefresh.h>
 
 #import "FTFoundation/FTFoundation.h"
 

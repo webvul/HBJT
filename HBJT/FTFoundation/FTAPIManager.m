@@ -30,26 +30,32 @@
 
 - (void)launchRequestWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock
 {
+    self.rawData = nil;
     NSURLRequest *request = [self.requestSerializer requestWithMethod:self.requestMethod URLString:self.url parameters:self.params error:nil];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.responseSerializer = self.responseSerializer;
-    @weakify(self);
+    //@weakify(self);
     self.task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        @strongify(self);
+        //@strongify(self);
         if (error) {
-            NSLog(@"API MANAGER DID FAIL");
+            NSLog(@"API MANAGER DID FAIL: %@", error);
             [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
             failureBlock(error);
         } else {
-            NSLog(@"API MANAGER DID SUCCEED");
             self.rawData = responseObject;
+            NSLog(@"API MANAGER DID SUCCEED");
             [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
             successBlock(responseObject);
         }
     }];
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [self.task resume];
+}
+
+- (void)cancel
+{
+    [self.task cancel];
 }
 
 - (void)dealloc

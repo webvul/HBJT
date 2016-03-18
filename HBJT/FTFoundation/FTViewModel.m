@@ -56,5 +56,15 @@
     NSLog(@"%@ VIEWMODEL DEALLOCING",[self class]);
 }
 
+- (RACSignal *)networkHintSignal
+{
+    if (_networkHintSignal == nil) {
+        _networkHintSignal = [[RACObserve(self, isNetworkProceed) merge:RACObserve(self, networkHintText)] filter:^BOOL(id value) {
+            return _isConnected;
+        }];
+    }
+    return _networkHintSignal;
+}
+
 
 @end

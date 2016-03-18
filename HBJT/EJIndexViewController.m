@@ -56,7 +56,7 @@ CGFloat scrollViewOffsetx;
                         self.button5, self.button6, self.button7, self.button8];
     self.imageViewArray = [[NSMutableArray alloc]init];
     self.numberOfSrollViewPage = kEJSSetNumberOfIndexSrollViewPage+2;
-    self.scrollViewWidth = self.scrollView.frame.size.width;
+    self.scrollViewWidth = self.view.frame.size.width -40;
     for (NSInteger i=0; i<self.numberOfSrollViewPage; i++) {
         UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
         [imageView setContentMode:UIViewContentModeScaleAspectFill];
@@ -76,6 +76,7 @@ CGFloat scrollViewOffsetx;
             make.size.and.top.equalTo(self.scrollView);
             make.leading.equalTo(self.scrollContentView).offset(self.scrollViewWidth*i);
         }];
+        //imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.backgroundColor = [UIColor colorWithHue:(CGFloat)((double)i/(double)self.imageViewArray.count) saturation:1 brightness:1 alpha:1];
         i++;
     }
@@ -88,6 +89,7 @@ CGFloat scrollViewOffsetx;
 {
     [super viewWillLayoutSubviews];
     //没用考虑横屏的情况
+    NSLog(@"%f,%f",self.scrollView.contentOffset.x,self.scrollView.contentOffset.y);
     self.scrollViewOffsetHolder = self.scrollView.contentOffset;
 }
 
@@ -101,13 +103,13 @@ CGFloat scrollViewOffsetx;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
     [self.viewModel connect];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         [[AppDelegate sharedDelegate] setkeyboardDistance];
@@ -120,6 +122,7 @@ CGFloat scrollViewOffsetx;
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO];
     [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:NO];
     [self.viewModel disconnect];
 }
@@ -139,6 +142,7 @@ CGFloat scrollViewOffsetx;
     @weakify(self);
     RAC(self.viewModel, scrollViewOffset) = [RACObserve(self.scrollView, contentOffset) map:^id(id value) {
         @strongify(self);
+        NSLog(@"%@",@(self.scrollView.contentOffset.x/self.scrollViewWidth));
         return @(self.scrollView.contentOffset.x/self.scrollViewWidth);
    }];
 }
@@ -152,14 +156,16 @@ CGFloat scrollViewOffsetx;
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*[x floatValue], 0) animated:NO];
     }];
     RAC(self.pageControl, currentPage) = self.viewModel.pageIndicatorTintSignal;
-    
-    [[self.button8 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"ServicesGuild" bundle:nil] instantiateInitialViewController] animated:YES];
-    }];
 }
 
 - (void)prepareOtherViewController
 {
+    [[self.button8 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"ServicesGuild" bundle:nil] instantiateInitialViewController] animated:YES];
+    }];
+    [[self.button0 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"News" bundle:nil] instantiateInitialViewController] animated:YES];
+    }];
     [[self.menuButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [[AppDelegate sharedDelegate] openDrawer];
     }];

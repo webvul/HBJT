@@ -15,7 +15,7 @@
 + (void)load
 {
     [super load];
-    [FTIntercepter sharedInstance];
+    //[FTIntercepter sharedInstance];
 }
 
 + (instancetype)sharedInstance
