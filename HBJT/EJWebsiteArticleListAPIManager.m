@@ -66,7 +66,7 @@
     self.data = analyzer.data;
     self.status = (NSInteger)analyzer.status;
     self.statusDescription = analyzer.responseDescription;
-    NSLog(@"Data Made(%tu):%@ %@",self.status,self.statusDescription,self.data);
+    //NSLog(@"Data Made(%tu):%@ %@",self.status,self.statusDescription,self.data);
 }
 
 - (EJSAPIManagerStatus)newStatus

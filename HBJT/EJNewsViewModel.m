@@ -42,7 +42,6 @@
 
 - (void)reload
 {
-    NSLog(@"%@",self.websiteArticleListAPIManager);
     [self.websiteArticleListAPIManager prepareRequestFirstPage];
     [self loadArticleList];
 }

@@ -9,7 +9,7 @@
 #import "EJIndexViewController.h"
 #import "AppDelegate.h"
 #import "EJIndexViewModel.h"
-#import "EJS/EJS.h"
+#import "EJS/EJS.h"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
 
 @interface EJIndexViewController ()
@@ -27,6 +27,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *button7;
 @property (strong, nonatomic) IBOutlet UIButton *button8;
 @property (strong, nonatomic) IBOutlet UIButton *menuButton;
+@property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *scrollContentView;
@@ -89,7 +90,6 @@ CGFloat scrollViewOffsetx;
 {
     [super viewWillLayoutSubviews];
     //没用考虑横屏的情况
-    NSLog(@"%f,%f",self.scrollView.contentOffset.x,self.scrollView.contentOffset.y);
     self.scrollViewOffsetHolder = self.scrollView.contentOffset;
 }
 
@@ -105,6 +105,7 @@ CGFloat scrollViewOffsetx;
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
     [self.viewModel connect];
+    [self.viewModel loadPictures];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -131,7 +132,6 @@ CGFloat scrollViewOffsetx;
     
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    self.viewModel = nil;
 }
 
 #pragma mark - Reactive Method
@@ -142,7 +142,7 @@ CGFloat scrollViewOffsetx;
     @weakify(self);
     RAC(self.viewModel, scrollViewOffset) = [RACObserve(self.scrollView, contentOffset) map:^id(id value) {
         @strongify(self);
-        NSLog(@"%@",@(self.scrollView.contentOffset.x/self.scrollViewWidth));
+        //NSLog(@"%@",@(self.scrollView.contentOffset.x/self.scrollViewWidth));
         return @(self.scrollView.contentOffset.x/self.scrollViewWidth);
    }];
 }
@@ -156,16 +156,47 @@ CGFloat scrollViewOffsetx;
         [self.scrollView setContentOffset:CGPointMake(self.scrollView.frame.size.width*[x floatValue], 0) animated:NO];
     }];
     RAC(self.pageControl, currentPage) = self.viewModel.pageIndicatorTintSignal;
+    [self.viewModel.pageIndicatorTintSignal subscribeNext:^(id x) {
+        if (self.viewModel.picturesCaptionList.count == 4) {
+            self.captionLabel.text = [NSString stringWithFormat:@" %@",self.viewModel.picturesCaptionList[[x integerValue]]];
+        }
+    }];
+    [self.viewModel.networkHintSignal subscribeNext:^(id x) {
+        if ([x isKindOfClass:[NSString class]]) {
+            if ([x isEqualToString:@"读取成功"]) {
+                self.captionLabel.hidden = NO;
+                [self.imageViewArray[0] sd_setImageWithURL:self.viewModel.picturesURLList[3] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
+                [self.imageViewArray[1] sd_setImageWithURL:self.viewModel.picturesURLList[0] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
+                [self.imageViewArray[2] sd_setImageWithURL:self.viewModel.picturesURLList[1] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
+                [self.imageViewArray[3] sd_setImageWithURL:self.viewModel.picturesURLList[2] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
+                [self.imageViewArray[4] sd_setImageWithURL:self.viewModel.picturesURLList[3] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
+                [self.imageViewArray[5] sd_setImageWithURL:self.viewModel.picturesURLList[0] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
+            }
+            else
+            {
+                [self.viewModel loadPictures];
+            }
+        }
+    }];
 }
 
 - (void)prepareOtherViewController
 {
     [[self.button8 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"ServicesGuild" bundle:nil] instantiateInitialViewController] animated:YES];
+        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateInitialViewController] animated:YES];
     }];
-    [[self.button0 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"News" bundle:nil] instantiateInitialViewController] animated:YES];
-    }];
+    NSInteger i = 0;
+    for (UIButton *newsButton in self.buttonArray) {
+        if (i == 6) {
+            break;
+        }
+        [[newsButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            UIViewController *newsViewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil] instantiateInitialViewController];
+            [self prepareViewController:newsViewController withSender:@(i)];
+            [self.navigationController pushViewController:newsViewController animated:YES];
+        }];
+        i++;
+    }
     [[self.menuButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [[AppDelegate sharedDelegate] openDrawer];
     }];

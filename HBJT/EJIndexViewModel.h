@@ -6,7 +6,7 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJFramework.h"
+#import "EJS.h"
 
 @interface EJIndexViewModel : FTViewModel
 
@@ -16,5 +16,9 @@
 //Sender
 @property (strong, nonatomic) RACSignal *pageIndicatorTintSignal;
 @property (strong, nonatomic) RACSignal *scrollViewRotateSignal;
+@property (strong, nonatomic) NSArray *picturesURLList;
+@property (strong, nonatomic) NSArray *picturesCaptionList;
+
+- (void)loadPictures;
 
 @end

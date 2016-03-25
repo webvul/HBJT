@@ -46,11 +46,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _viewModel = [EJNewsViewModel viewModel];
     self.buttonArray = @[self.button0,self.button1,self.button2,self.button3,self.button4,self.button5];
     self.labelArray = @[self.buttonLabel0,self.buttonLabel1,self.buttonLabel2,self.buttonLabel3,self.buttonLabel4,self.buttonLabel5];
-    [self bindViewModel];
-    [self.viewModel connect];
     self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.viewModel reload];
     }];
@@ -153,12 +150,10 @@
     } else if (tableView == self.tableView1)
     {
         dataSource = self.currentDataSource;
-        NSLog(@"%@",self.currentDataSource);
     } else if (tableView == self.tableView2)
     {
         dataSource = self.nextDataSource;
     }
-    NSLog(@"11111%@",dataSource);
     NSDictionary *articleData = dataSource[indexPath.row];
     if ([articleData objectForKey:@"articleThumbnailURL"] == [NSNull null]) {
         EJNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"news"];
@@ -197,7 +192,6 @@
             @strongify(self);
             self.viewModel.currentTabIndex = i;
             [self.tableView1.mj_header beginRefreshing];
-            NSLog(@"%@",self.mainScrollView.mj_header);
             //[self.viewModel reload];
         }];
         i++;
@@ -227,7 +221,7 @@
         }
     }];
     
-    [self.viewModel.tabNumberSiganl subscribeNext:^(id x) {
+    [[self.viewModel.tabNumberSiganl repeat] subscribeNext:^(id x) {
         NSInteger i = [x integerValue];
         [self.controlScrollView setContentOffset:CGPointMake((80*6 - self.view.frame.size.width)/5*i, 0) animated:YES];
         for (UILabel *buttonLabel in self.labelArray) {
@@ -240,8 +234,17 @@
 
 - (void)preparedWithSender:(id)sender
 {
-    self.viewModel.currentTabIndex += [sender integerValue];
+    self.viewModel.currentTabIndex = [sender integerValue];
 }
 
+- (EJNewsViewModel *)viewModel
+{
+    if (_viewModel == nil) {
+        _viewModel = [EJNewsViewModel viewModel];
+        [_viewModel connect];
+        [self bindViewModel];
+    }
+    return _viewModel;
+}
 
 @end

@@ -188,7 +188,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="umb-as-y2H">
                                         <rect key="frame" x="0.0" y="0.0" width="1125" height="607"/>
                                         <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tHS-gx-76V" userLabel="Table View 0">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tHS-gx-76V" userLabel="Table View 0">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -405,7 +405,7 @@
                                                     <outlet property="delegate" destination="roU-IX-Fnu" id="qU3-tl-fea"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf1-kj-pYW" userLabel="Table View 1">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf1-kj-pYW" userLabel="Table View 1">
                                                 <rect key="frame" x="375" y="0.0" width="375" height="607"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -622,7 +622,7 @@
                                                     <outlet property="delegate" destination="roU-IX-Fnu" id="427-c8-dl9"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="llL-cd-YHm" userLabel="Table View 2">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="llL-cd-YHm" userLabel="Table View 2">
                                                 <rect key="frame" x="750" y="0.0" width="375" height="607"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -859,7 +859,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="umb-as-y2H" secondAttribute="trailing" id="Tk4-KQ-lB8"/>
-                                    <constraint firstAttribute="bottom" secondItem="umb-as-y2H" secondAttribute="bottom" id="Ydg-Tn-qRI"/>
+                                    <constraint firstAttribute="bottom" secondItem="umb-as-y2H" secondAttribute="bottom" priority="250" id="Ydg-Tn-qRI"/>
                                     <constraint firstItem="umb-as-y2H" firstAttribute="centerY" secondItem="PLm-C5-hDC" secondAttribute="centerY" id="cOd-EP-0AG"/>
                                     <constraint firstItem="umb-as-y2H" firstAttribute="leading" secondItem="PLm-C5-hDC" secondAttribute="leading" id="row-Z4-FIU"/>
                                 </constraints>
@@ -1047,7 +1047,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="T4A-J3-TEf" firstAttribute="leading" secondItem="fOd-LW-plE" secondAttribute="leading" id="AaF-xp-OVh"/>
-                            <constraint firstItem="8Ln-oL-7YQ" firstAttribute="top" secondItem="umb-as-y2H" secondAttribute="bottom" id="CqP-gP-BVp"/>
                             <constraint firstAttribute="trailing" secondItem="PLm-C5-hDC" secondAttribute="trailing" id="Mrr-dL-2uR"/>
                             <constraint firstItem="8Ln-oL-7YQ" firstAttribute="top" secondItem="PLm-C5-hDC" secondAttribute="bottom" id="fyu-P1-0vF"/>
                             <constraint firstItem="T4A-J3-TEf" firstAttribute="top" secondItem="BoF-dX-00l" secondAttribute="bottom" id="gcp-J6-5ht"/>

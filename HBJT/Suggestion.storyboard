@@ -39,7 +39,7 @@
                                                         <constraint firstAttribute="width" constant="16" id="BGF-hu-wEb"/>
                                                         <constraint firstAttribute="height" constant="16" id="DRN-W0-LnF"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="BFD7D546-FBB5-4A75-B58A-C89092FD4CBF"/>
+                                                    <state key="normal" title="Button" image="53BCCD30-B660-46C5-818A-0784F410333D"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -240,7 +240,7 @@
                                                         <constraint firstAttribute="height" constant="16" id="BeK-Fk-WLy"/>
                                                         <constraint firstAttribute="width" constant="16" id="ZSy-lR-TRm"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button" image="BFD7D546-FBB5-4A75-B58A-C89092FD4CBF"/>
+                                                    <state key="normal" title="Button" image="53BCCD30-B660-46C5-818A-0784F410333D"/>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -384,7 +384,7 @@
                                                         <constraint firstAttribute="height" constant="28" id="WM0-6q-fFo"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal" title="获取验证码" backgroundImage="44CDDA2D-458C-411C-B6E8-E635920F4A15"/>
+                                                    <state key="normal" title="获取验证码" backgroundImage="0EF431F0-FE26-4A70-9B2D-B7DAA97A4761"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -761,7 +761,7 @@
                                                         <constraint firstAttribute="height" constant="28" id="hwe-PM-PtQ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal" title="获取验证码" backgroundImage="44CDDA2D-458C-411C-B6E8-E635920F4A15"/>
+                                                    <state key="normal" title="获取验证码" backgroundImage="0EF431F0-FE26-4A70-9B2D-B7DAA97A4761"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1018,25 +1018,17 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="commitButton" destination="ksC-Mh-0TW" id="4Gm-am-It0"/>
-                        <outlet property="confirmTextField" destination="JMw-pv-4TF" id="ncf-lS-dH5"/>
-                        <outlet property="nameTextField" destination="CO5-mL-ABR" id="Oge-S0-n40"/>
-                        <outlet property="numberTextField" destination="YFC-Ml-6gH" id="qd8-BD-87r"/>
-                        <outlet property="passwordTextField" destination="XcX-VN-ipe" id="Wb6-zj-cUh"/>
-                        <outlet property="registerButton" destination="ksC-Mh-0TW" id="uW6-hA-P7G"/>
                         <outlet property="suggestionTextField" destination="Yja-QF-LG6" id="CIw-z4-L49"/>
-                        <outlet property="usernameTextField" destination="Yja-QF-LG6" id="gnt-Oo-ZrF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8p1-sg-8LW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="824" y="67"/>
+            <point key="canvasLocation" x="863" y="166"/>
         </scene>
     </scenes>
     <resources>
         <image name="001_r11_c1" width="300" height="35"/>
-        <image name="10.fw" width="24" height="24"/>
-        <image name="11.fw" width="24" height="24"/>
-        <image name="44CDDA2D-458C-411C-B6E8-E635920F4A15" width="300" height="35">
+        <image name="0EF431F0-FE26-4A70-9B2D-B7DAA97A4761" width="300" height="35">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1787,7 +1779,9 @@ vgDDANoA3ADerZCtla2gramtvK3Arcut1K3ZreGt5K3prfit/K4DrguuGK4drh+uIa4mri6uMa42rj6u
 Qa5TrlauWwAAAAAAAAIBAAAAAAAAAEEAAAAAAAAAAAAAAAAAAK5dA
 </mutableData>
         </image>
-        <image name="BFD7D546-FBB5-4A75-B58A-C89092FD4CBF" width="17" height="16">
+        <image name="10.fw" width="24" height="24"/>
+        <image name="11.fw" width="24" height="24"/>
+        <image name="53BCCD30-B660-46C5-818A-0784F410333D" width="17" height="16">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

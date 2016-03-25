@@ -186,7 +186,7 @@
     if (_drawerController == nil) {
         _drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.rootNavigationController leftDrawerViewController:nil];
         [_drawerController setShowsShadow:NO];
-        [_drawerController setMaximumLeftDrawerWidth:240.0];
+        [_drawerController setMaximumLeftDrawerWidth:self.window.frame.size.width*0.75];
         [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
         [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
         [_drawerController setShouldStretchDrawer:NO];

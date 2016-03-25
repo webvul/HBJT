@@ -73,7 +73,6 @@
         self.networkHintText = @"查询成功";
         self.isNetworkProceed = NO;
     }];
-
 }
 
 - (EJQueryAPIManager *)queryAPIManager
