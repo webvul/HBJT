@@ -9,6 +9,7 @@
 #import "EJGuildViewModel.h"
 #import "EJAreaListAPIManager.h"
 #import "EJSectionListAPIManager.h"
+
 #import "EJS.h"
 
 
@@ -16,6 +17,7 @@
 
 @property (strong, nonatomic) EJAreaListAPIManager *areaListAPIManager;
 @property (strong, nonatomic) EJSectionListAPIManager *sectionListAPIManager;
+
 
 @property (nonatomic, strong) RACSignal *areaListSignal;
 @property (nonatomic, strong) NSArray *areaArray;
@@ -59,7 +61,6 @@
 
 - (void)loadAreaList
 {
-
         self.isNetworkProceed = YES;
         self.networkHintText = @"正在获取区域信息";
         [self.areaListSignal subscribeError:^(NSError *error) {

@@ -11,6 +11,12 @@
 #import "EJGuildPrimaryItemTableViewController.h"
 
 @interface EJGuildViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *tabLabel0;
+@property (weak, nonatomic) IBOutlet UIButton *tabButton0;
+@property (weak, nonatomic) IBOutlet UILabel *tabLabel2;
+@property (weak, nonatomic) IBOutlet UIButton *tabButton1;
+@property (weak, nonatomic) IBOutlet UILabel *tabLabel1;
+@property (weak, nonatomic) IBOutlet UIButton *tabButton2;
 @property (weak, nonatomic) IBOutlet UIView *guildView;
 @property (weak, nonatomic) IBOutlet UILabel *cityLabel;
 @property (weak, nonatomic) IBOutlet UIButton *locateButton;
@@ -150,28 +156,7 @@
             }
         }
     }];
-    @weakify(self);
-    [[self.switchCityButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        @strongify(self);
-        if (self.viewModel.cityArray != nil) {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请选择所在区域"
-                                                                           message:nil
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            NSInteger i = 0;
-            for (NSDictionary *cityInfo in self.viewModel.cityArray) {
-                UIAlertAction* cityAction = [UIAlertAction actionWithTitle:[cityInfo objectForKey:@"areaName"] style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction * action) {
-                                                                          @strongify(self);
-                                                                          self.viewModel.currentCityIndex = i;
-                                                                          self.cityLabel.text = [self.viewModel.cityArray[self.viewModel.currentCityIndex] objectForKey:@"areaName"];
-                                                                          [self loadAreaScrollView];
-                                                                      }];
-                [alert addAction:cityAction];
-                i ++;
-            }
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-    }];
+
     [self.viewModel.networkHintSignal subscribeNext:^(id x) {
         if ([x isKindOfClass:[NSString class]]) {
             [self.hub setLabelText:x];
@@ -186,6 +171,45 @@
 
 - (void)bindViewModelForNotice
 {
-    
+    @weakify(self);
+    [[self.switchCityButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(self);
+        if (self.viewModel.cityArray != nil) {
+            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请选择所在区域"
+                                                                           message:nil
+                                                                    preferredStyle:UIAlertControllerStyleAlert];
+            NSInteger i = 0;
+            for (NSDictionary *cityInfo in self.viewModel.cityArray) {
+                UIAlertAction* cityAction = [UIAlertAction actionWithTitle:[cityInfo objectForKey:@"areaName"] style:UIAlertActionStyleDefault
+                                                                   handler:^(UIAlertAction * action) {
+                                                                       @strongify(self);
+                                                                       self.viewModel.currentCityIndex = i;
+                                                                       self.cityLabel.text = [self.viewModel.cityArray[self.viewModel.currentCityIndex] objectForKey:@"areaName"];
+                                                                       [self loadAreaScrollView];
+                                                                   }];
+                [alert addAction:cityAction];
+                i ++;
+            }
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    }];
+    [[self.tabButton0 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        self.guildView.hidden = NO;
+        self.tabLabel0.hidden = NO;
+        self.tabLabel1.hidden = YES;
+        self.tabLabel2.hidden = YES;
+    }];
+    [[self.tabButton1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        self.guildView.hidden = YES;
+        self.tabLabel0.hidden = YES;
+        self.tabLabel1.hidden = NO;
+        self.tabLabel2.hidden = YES;
+    }];
+    [[self.tabButton2 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        self.guildView.hidden = YES;
+        self.tabLabel0.hidden = YES;
+        self.tabLabel1.hidden = YES;
+        self.tabLabel2.hidden = NO;
+    }];
 }
 @end

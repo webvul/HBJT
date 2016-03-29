@@ -6,10 +6,10 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--News Detail View Controller-->
         <scene sceneID="ueg-SV-xEI">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gcQ-iY-RJD" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Detail" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gcQ-iY-RJD" customClass="EJNewsDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y5f-sP-4Wn"/>
                         <viewControllerLayoutGuide type="bottom" id="Zpq-b3-OfM"/>
@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7gc-gb-cot">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gc-gb-cot">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6CY-U9-o45">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6CY-U9-o45">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="1500"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fx-x4-kup">
@@ -55,7 +55,7 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016年春运“情满旅途”活动启动" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzU-Eb-iVl">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzU-Eb-iVl">
                                                 <rect key="frame" x="32" y="22" width="553" height="36"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="36" id="uW8-59-j8L"/>
@@ -98,33 +98,20 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="201601250851057" translatesAutoresizingMaskIntoConstraints="NO" id="js1-Zh-v89">
-                                                <rect key="frame" x="20" y="115" width="560" height="201"/>
-                                            </imageView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8bA-nD-kUi">
-                                                <rect key="frame" x="20" y="336" width="560" height="783"/>
+                                            <webView contentMode="scaleToFill" misplaced="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0c-e5-LDH">
+                                                <rect key="frame" x="10" y="115" width="580" height="1375"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <string key="text">1月24日，2016年春运第一天。交通运输部、公安部、国家安监总局、全国总工会、共青团中央，以“亲情服务，温暖春运旅途”为主题，在武汉杨春湖客运换乘中心共同启动2016年春运“情满旅途”活动。交通运输部党组成员兼运输服务司司长刘小明在启动仪式上表示，要将为民服务的理念、便民惠民的举措、平安交通的创建贯穿活动全过程，让春运旅途更有温度感、广大旅客更有获得感、群众出行更有安全感。湖北省副省长许克振，省交通运输厅厅长尤习贵，副厅长谢强出席启动仪式。
-　　据悉，交通运输部等5部门近期联合印发了《关于春运期间深入开展“情满旅途”活动的通知》，要求相关部门进一步深化“情满旅途”活动举措，全力做好春运服务保障工作，让广大旅客切实感受到一体化的出行服务、精细化的安全服务、多元化的购票服务、人性化的候乘服务、精准化的信息服务、优质化的路网服务、均等化的惠民服务、亲情化的志愿服务、便民化的热线服务等“九化服务”在身边、伴旅途。
-　　刘小明指出，“情满旅途”重在行动，贵在落实。记者了解到，全国交通运输系统将紧紧围绕“九化”服务要求，不断丰富便民惠民举措，切实增进广大旅客的出行体验与获得感。主要举措有：一是统筹运力资源调度，发挥不同运输方式比较优势和组合效率，努力为旅客提供一体化的出行服务；二是严格落实企业安全生产主体责任，细化各项管控措施，努力为旅客提供精细化的安全服务；三是增开售票窗口，延长售票时限，积极开展网络购票、手机客户端购票，努力为旅客提供多元化的购票服务；四是加强枢纽场站运营管理，落实服务标准规范，开辟特需通道，努力为旅客提供人性化的候乘服务；五是多渠道及时公布运力安排、班次调整、客票余额、公路路况等信息，努力为旅客提供精准化的信息服务；六是做好公路养护巡检巡查，充分发挥ETC系统联网优势，提高车辆通行效率，努力为旅客提供优质化的路网服务；七是组织好“农民工平安返乡（岗）优质服务竞赛”，开展爱心帮扶活动，努力为旅客提供均等化的惠民服务；八是以客运枢纽、高速公路服务区等为重点，组织开展形式多样的志愿者活动，努力为旅客提供亲情化的志愿服务；九是发挥12328等各类交通运输服务监督电话作用，主动接受社会监督，及时回应公众诉求，努力为旅客提供便民化的热线服务。
-　　春运期间，湖北省交通运输系统将加大运力供给，全力保障广大旅客出行。湖北省交通运输厅还与武汉铁路局、民航湖北安监局协同配合，围绕“情满旅途”活动采取了多项便民服务举措，加强铁路、公路、水路、民航等运输方式间的接续接驳，受到旅客欢迎。
-　　公安部、国家安监总局、全国总工会、共青团中央有关司局领导出席了2016年春运“情满旅途”活动启动仪式，湖北省政府、湖北省交通运输厅、武汉铁路局、武汉市政府、武汉市交通运输委有关领导参加。</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                            </webView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="q0c-e5-LDH" secondAttribute="bottom" constant="10" id="0Lg-P8-r89"/>
                                             <constraint firstItem="7C4-bN-FkI" firstAttribute="leading" secondItem="VxK-Sm-Qqr" secondAttribute="trailing" constant="5" id="0eC-QS-gaN"/>
                                             <constraint firstItem="5gk-hx-nXn" firstAttribute="leading" secondItem="v3G-WG-E4U" secondAttribute="trailing" constant="5" id="5Xi-yH-Xv1"/>
                                             <constraint firstItem="emG-zh-QES" firstAttribute="top" secondItem="zcL-FX-Y2t" secondAttribute="bottom" constant="15" id="6Cv-iQ-Msf"/>
                                             <constraint firstItem="VxK-Sm-Qqr" firstAttribute="baseline" secondItem="zcL-FX-Y2t" secondAttribute="baseline" id="9Gf-kx-OFU"/>
-                                            <constraint firstItem="js1-Zh-v89" firstAttribute="leading" secondItem="emG-zh-QES" secondAttribute="leading" id="AbF-zm-rXf"/>
                                             <constraint firstItem="zcL-FX-Y2t" firstAttribute="top" secondItem="qzU-Eb-iVl" secondAttribute="bottom" constant="18" id="F0V-wC-Mfw"/>
                                             <constraint firstItem="0Ga-3f-Vz0" firstAttribute="leading" secondItem="6CY-U9-o45" secondAttribute="leading" constant="20" id="F2m-w3-7eK"/>
-                                            <constraint firstAttribute="trailing" secondItem="8bA-nD-kUi" secondAttribute="trailing" constant="20" id="HpE-Fc-reX"/>
-                                            <constraint firstAttribute="height" constant="1500" id="J7J-Zx-JTC"/>
-                                            <constraint firstItem="8bA-nD-kUi" firstAttribute="leading" secondItem="6CY-U9-o45" secondAttribute="leading" constant="20" id="JFJ-7m-q6h"/>
                                             <constraint firstItem="6Fx-x4-kup" firstAttribute="centerY" secondItem="zcL-FX-Y2t" secondAttribute="centerY" id="KB2-Nw-yII"/>
                                             <constraint firstItem="v3G-WG-E4U" firstAttribute="leading" secondItem="7C4-bN-FkI" secondAttribute="trailing" constant="10" id="KLi-cG-Qb8"/>
                                             <constraint firstItem="emG-zh-QES" firstAttribute="leading" secondItem="6CY-U9-o45" secondAttribute="leading" constant="20" id="Lc9-16-xPV"/>
@@ -132,17 +119,17 @@
                                             <constraint firstItem="5gk-hx-nXn" firstAttribute="top" secondItem="7C4-bN-FkI" secondAttribute="top" id="PDI-hH-I1B"/>
                                             <constraint firstItem="5gk-hx-nXn" firstAttribute="bottom" secondItem="7C4-bN-FkI" secondAttribute="bottom" id="PLA-AZ-dtV"/>
                                             <constraint firstItem="qzU-Eb-iVl" firstAttribute="leading" secondItem="6CY-U9-o45" secondAttribute="leading" constant="32" id="SaT-Hd-Kbw"/>
-                                            <constraint firstItem="8bA-nD-kUi" firstAttribute="top" secondItem="js1-Zh-v89" secondAttribute="bottom" constant="20" id="VWX-k7-MZf"/>
-                                            <constraint firstItem="js1-Zh-v89" firstAttribute="trailing" secondItem="emG-zh-QES" secondAttribute="trailing" id="Wja-GV-bFz"/>
                                             <constraint firstItem="zcL-FX-Y2t" firstAttribute="leading" secondItem="6CY-U9-o45" secondAttribute="leading" constant="33" id="Wzh-tV-Zrd"/>
                                             <constraint firstItem="qzU-Eb-iVl" firstAttribute="top" secondItem="6CY-U9-o45" secondAttribute="top" constant="22" id="aue-S6-VdI"/>
                                             <constraint firstItem="zcL-FX-Y2t" firstAttribute="leading" secondItem="6Fx-x4-kup" secondAttribute="trailing" id="bUn-Da-oyR"/>
-                                            <constraint firstItem="js1-Zh-v89" firstAttribute="top" secondItem="emG-zh-QES" secondAttribute="bottom" constant="10" id="d5u-fI-cHZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="q0c-e5-LDH" secondAttribute="trailing" constant="10" id="hlk-uk-L5E"/>
+                                            <constraint firstItem="q0c-e5-LDH" firstAttribute="top" secondItem="emG-zh-QES" secondAttribute="bottom" constant="10" id="jP1-Gn-hAa"/>
                                             <constraint firstAttribute="trailing" secondItem="qzU-Eb-iVl" secondAttribute="trailing" constant="15" id="kAL-J6-Ua2"/>
                                             <constraint firstItem="0Ga-3f-Vz0" firstAttribute="centerY" secondItem="qzU-Eb-iVl" secondAttribute="centerY" id="lf3-Ny-iLL"/>
                                             <constraint firstAttribute="trailing" secondItem="emG-zh-QES" secondAttribute="trailing" constant="20" id="pI8-2Y-0w9"/>
                                             <constraint firstAttribute="trailing" secondItem="5gk-hx-nXn" secondAttribute="trailing" constant="15" id="qbl-44-ePo"/>
                                             <constraint firstItem="VxK-Sm-Qqr" firstAttribute="bottom" secondItem="v3G-WG-E4U" secondAttribute="bottom" id="tRF-ZD-FMx"/>
+                                            <constraint firstItem="q0c-e5-LDH" firstAttribute="leading" secondItem="6CY-U9-o45" secondAttribute="leading" constant="10" id="vFH-ya-r5u"/>
                                             <constraint firstItem="v3G-WG-E4U" firstAttribute="width" secondItem="VxK-Sm-Qqr" secondAttribute="width" id="xmM-Le-Yai"/>
                                             <constraint firstItem="VxK-Sm-Qqr" firstAttribute="centerY" secondItem="7C4-bN-FkI" secondAttribute="centerY" id="xtO-py-yEg"/>
                                         </constraints>
@@ -163,8 +150,17 @@
                             <constraint firstItem="Zpq-b3-OfM" firstAttribute="top" secondItem="7gc-gb-cot" secondAttribute="bottom" id="NcZ-Vs-OID"/>
                             <constraint firstAttribute="trailing" secondItem="7gc-gb-cot" secondAttribute="trailing" id="OI5-7n-dOc"/>
                             <constraint firstItem="7gc-gb-cot" firstAttribute="top" secondItem="y5f-sP-4Wn" secondAttribute="bottom" id="XAv-ab-0oK"/>
+                            <constraint firstItem="6CY-U9-o45" firstAttribute="height" secondItem="RMb-91-y79" secondAttribute="height" id="ffN-kV-caj"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="zcL-FX-Y2t" id="StT-dj-Jqq"/>
+                        <outlet property="laudButton" destination="v3G-WG-E4U" id="5gQ-15-dZx"/>
+                        <outlet property="laudLabel" destination="5gk-hx-nXn" id="YIz-cs-Z5h"/>
+                        <outlet property="readLabel" destination="7C4-bN-FkI" id="Jjc-AS-Eda"/>
+                        <outlet property="titleLabel" destination="qzU-Eb-iVl" id="dg2-7e-rnB"/>
+                        <outlet property="webView" destination="q0c-e5-LDH" id="3za-X3-fOM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jbl-5p-dZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -405,7 +401,7 @@
                                                     <outlet property="delegate" destination="roU-IX-Fnu" id="qU3-tl-fea"/>
                                                 </connections>
                                             </tableView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf1-kj-pYW" userLabel="Table View 1">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zf1-kj-pYW" userLabel="Table View 1">
                                                 <rect key="frame" x="375" y="0.0" width="375" height="607"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <prototypes>
@@ -1088,6 +1084,5 @@
         <image name="009_r09.fw" width="28" height="12"/>
         <image name="07.fw" width="24" height="24"/>
         <image name="08.fw" width="24" height="24"/>
-        <image name="201601250851057" width="375" height="201"/>
     </resources>
 </document>

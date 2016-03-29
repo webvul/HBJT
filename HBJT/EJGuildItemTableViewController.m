@@ -46,6 +46,13 @@
 
 #pragma mark - Table view data source
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Detail"];
+    [self prepareViewController:viewController withSender:[self.viewModel.itemList[indexPath.row] objectForKey:@"id"]];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.viewModel.itemList.count;
@@ -61,13 +68,6 @@
     // Configure the cell...
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    EJGuildItemTableViewController *tableViewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Item"];
-    [self prepareViewController:tableViewController withSender:[self.viewModel.itemList[indexPath.row] objectForKey:@"id"]];
-    [self.navigationController pushViewController:tableViewController animated:YES];
 }
 
 - (void)bindViewModelForNotice

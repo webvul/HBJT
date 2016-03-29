@@ -51,6 +51,7 @@
     self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.viewModel reload];
     }];
+    [self bindViewModel];
 }
 
 - (void)viewDidLayoutSubviews
@@ -123,7 +124,18 @@
     return 101;
 }
 
-   
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *newsTitle = [self.viewModel.data[indexPath.row] objectForKey:@"articleTitle"];
+    NSString *newsID = [[self.viewModel.data[indexPath.row] objectForKey:@"articleID"] stringValue];
+    NSString *newsDate = [self.viewModel.data[indexPath.row] objectForKey:@"articleTime"];
+    NSString *newsRead = [[self.viewModel.data[indexPath.row] objectForKey:@"articleReadNumber"] stringValue];
+    NSString *newsLaud = [[self.viewModel.data[indexPath.row] objectForKey:@"articleLaudNumber"] stringValue];
+
+    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil] instantiateViewControllerWithIdentifier:@"Detail"];
+    [self prepareViewController:viewController withSender:@{@"newsTitle":newsTitle,@"newsID":newsID,@"newsDate":newsDate,@"newsRead":newsRead,@"newsLaud":newsLaud}];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
    
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -221,7 +233,7 @@
         }
     }];
     
-    [[self.viewModel.tabNumberSiganl repeat] subscribeNext:^(id x) {
+    [self.viewModel.tabNumberSiganl subscribeNext:^(id x) {
         NSInteger i = [x integerValue];
         [self.controlScrollView setContentOffset:CGPointMake((80*6 - self.view.frame.size.width)/5*i, 0) animated:YES];
         for (UILabel *buttonLabel in self.labelArray) {
@@ -242,7 +254,6 @@
     if (_viewModel == nil) {
         _viewModel = [EJNewsViewModel viewModel];
         [_viewModel connect];
-        [self bindViewModel];
     }
     return _viewModel;
 }

@@ -49,6 +49,16 @@
                                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXN-hz-Ej3" userLabel="办事指南">
+                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="40"/>
+                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="lA0-fL-1oG"/>
+                                                        </constraints>
+                                                        <state key="normal" title="办事指南">
+                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="keR-hZ-Rvs">
                                                         <rect key="frame" x="250" y="38" width="125" height="2"/>
                                                         <color key="backgroundColor" red="0.16862745100000001" green="0.51764705879999995" blue="0.82745098039999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,16 +89,6 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXN-hz-Ej3" userLabel="办事指南">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="40"/>
-                                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="40" id="lA0-fL-1oG"/>
-                                                        </constraints>
-                                                        <state key="normal" title="办事指南">
-                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </state>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -348,6 +348,12 @@
                         <outlet property="guildView" destination="InU-27-30p" id="aHR-Ah-wBp"/>
                         <outlet property="locateButton" destination="AxZ-jH-y20" id="ESE-Ln-eaU"/>
                         <outlet property="switchCityButton" destination="IBH-TD-wry" id="Naj-SQ-Rpa"/>
+                        <outlet property="tabButton0" destination="mXN-hz-Ej3" id="jJh-lR-GRj"/>
+                        <outlet property="tabButton1" destination="PsS-fk-sVW" id="2gp-mi-GVg"/>
+                        <outlet property="tabButton2" destination="mHl-0o-qfh" id="olw-DV-thg"/>
+                        <outlet property="tabLabel0" destination="ncP-ac-VTz" id="vyb-8S-exN"/>
+                        <outlet property="tabLabel1" destination="eJh-NU-2hl" id="1gl-nb-cwx"/>
+                        <outlet property="tabLabel2" destination="keR-hZ-Rvs" id="f8t-Tq-Ert"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CO6-a6-GZE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -358,7 +364,7 @@
         <scene sceneID="oWQ-aQ-UNk">
             <objects>
                 <tableViewController storyboardIdentifier="Item" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Fyr-6K-UJC" customClass="EJGuildItemTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" id="YPA-V9-opb">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="77" sectionHeaderHeight="28" sectionFooterHeight="28" id="YPA-V9-opb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -366,6 +372,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="zZv-cn-zPR">
+                            <rect key="frame" x="0.0" y="342" width="375" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Item" id="oKE-za-2RX" customClass="EJGuildItemTableViewCell">
                                 <rect key="frame" x="0.0" y="188" width="375" height="77"/>
@@ -404,7 +415,6 @@
                                 <connections>
                                     <outlet property="subLabel" destination="ogK-AJ-RN0" id="8Jl-n1-JkE"/>
                                     <outlet property="titleLabel" destination="jHw-Ge-ryq" id="jDg-hZ-Rx1"/>
-                                    <segue destination="KtJ-7Y-stt" kind="show" id="5tf-m7-5xU"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="77" id="gxq-Bo-sbs">
@@ -442,10 +452,10 @@
             </objects>
             <point key="canvasLocation" x="1309.5" y="326.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Guild Item Detail View Controller-->
         <scene sceneID="QIU-iU-O7k">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="KtJ-7Y-stt" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Detail" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KtJ-7Y-stt" customClass="EJGuildItemDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Pbw-Wf-eEm"/>
                         <viewControllerLayoutGuide type="bottom" id="YjH-Oh-cse"/>
@@ -631,12 +641,6 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请材料" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg0-9i-n9M">
-                                                <rect key="frame" x="126" y="335" width="222" height="16"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="项目审批名称" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLn-vA-xY1">
                                                 <rect key="frame" x="126" y="25" width="222" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -645,6 +649,12 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请材料" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDB-zo-YW0">
                                                 <rect key="frame" x="26" y="335" width="80" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请材料" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="50" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gg0-9i-n9M">
+                                                <rect key="frame" x="126" y="335" width="222" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -741,6 +751,19 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="itemComplaintLabel" destination="q6b-gd-zqe" id="duE-X6-3B9"/>
+                        <outlet property="itemConsultationLabel" destination="wkH-4c-qMp" id="d75-lB-QNO"/>
+                        <outlet property="itemDocumentLabel" destination="gg0-9i-n9M" id="Ph5-Hg-vbP"/>
+                        <outlet property="itemImplementOfficeLabel" destination="FI6-Ej-KBH" id="NKP-tf-383"/>
+                        <outlet property="itemLegalLabel" destination="rEp-aL-F9u" id="I76-4m-M5Y"/>
+                        <outlet property="itemLocationLabel" destination="d9e-NE-34w" id="8zm-Li-yNp"/>
+                        <outlet property="itemNameLabel" destination="xLn-vA-xY1" id="PDg-pj-fg1"/>
+                        <outlet property="itemParticipateOfficeLabel" destination="k8Z-Jq-GEB" id="YMA-8Z-5CN"/>
+                        <outlet property="itemSetupOfficeLabel" destination="0Jn-WP-Z0Z" id="uw0-yt-Ebb"/>
+                        <outlet property="itemTermLabel" destination="DuX-HQ-Uhg" id="PXi-qq-AaR"/>
+                        <outlet property="itemUndertakeOfficeLabel" destination="IKF-Hv-Vuu" id="l3d-Em-oni"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yf7-6W-xnz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -758,6 +781,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="7n4-Bl-elP">
+                            <rect key="frame" x="0.0" y="342" width="375" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Item" id="dgK-e0-2tC" customClass="EJGuildItemTableViewCell">
                                 <rect key="frame" x="0.0" y="188" width="375" height="77"/>
