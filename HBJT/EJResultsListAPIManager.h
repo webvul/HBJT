@@ -10,4 +10,6 @@
 
 @interface EJResultsListAPIManager : EJSAPIManager
 
+- (instancetype)initWithPageNumber:(NSInteger)pageNumber;
+
 @end

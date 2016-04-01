@@ -32,9 +32,8 @@
     [self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
     NSLog(@"App Launched");
-    [self fakeLogin];
+    //[self fakeLogin];
     AppDelegate *delegate = [AppDelegate sharedDelegate];
-    NSLog(@"%@",[delegate userAddressString]);
     return YES;
 }
 
@@ -177,6 +176,7 @@
     if (_rootNavigationController == nil) {
         _rootNavigationController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateViewControllerWithIdentifier:@"Root"];
         //_rootNavigationController.navigationBar.tintColor = [UIColor colorWithRed:0.169 green:0.518 blue:0.827 alpha:0.1];
+        NSLog(@"%@",_rootNavigationController);
     }
     return _rootNavigationController;
 }

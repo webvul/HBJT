@@ -10,6 +10,8 @@
 #import "EJSuggestionViewModel.h"
 
 @interface EJSuggestionViewController ()
+@property (assign, nonatomic) BOOL isLetter;
+@property (weak, nonatomic) IBOutlet UILabel *suggestLabel;
 @property (strong, nonatomic) IBOutlet UIButton *commitButton;
 @property (strong, nonatomic) IBOutlet UITextField *suggestionTextField;
 @property (strong, nonatomic) EJSuggestionViewModel *viewModel;
@@ -22,6 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = (self.isLetter?@"我的留言":@"审批建议");
+    self.suggestLabel.text = (self.isLetter?@"留言内容":@"建议内容");
+    self.suggestionTextField.placeholder = (self.isLetter?@"请输入您的留言":@"请输入建议内容");
 }
 
 - (void)bindViewModelToUpdate
@@ -48,6 +53,13 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)preparedWithSender:(id)sender
+{
+    if (sender) {
+        self.isLetter = YES;
+    }
 }
 
 /*

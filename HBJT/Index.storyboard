@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lP9-3m-EFb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lP9-3m-EFb">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -26,7 +26,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rUU-DZ-eYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="261" y="206"/>
+            <point key="canvasLocation" x="22" y="205"/>
         </scene>
         <!--Index View Controller-->
         <scene sceneID="xF7-du-xBx">
@@ -191,15 +191,6 @@
                                     <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T71-z2-yam">
-                                <rect key="frame" x="152" y="514" width="72" height="72"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="T71-z2-yam" secondAttribute="height" multiplier="1:1" id="EXA-HR-g9c"/>
-                                </constraints>
-                                <state key="normal" title="动态路况" backgroundImage="0a_r5_c3">
-                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Omb-1H-ZDC">
                                 <rect key="frame" x="273" y="514" width="72" height="72"/>
                                 <constraints>
@@ -335,6 +326,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T71-z2-yam">
+                                <rect key="frame" x="30" y="491" width="72" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="T71-z2-yam" secondAttribute="height" multiplier="1:1" id="EXA-HR-g9c"/>
+                                </constraints>
+                                <state key="normal" title="动态路况" backgroundImage="0a_r5_c3">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -438,7 +438,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TRw-w7-h08" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823.5" y="182.5"/>
+            <point key="canvasLocation" x="604.5" y="204.5"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="tjl-XE-xIz">
+            <objects>
+                <viewController storyboardIdentifier="Web" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QiL-dN-5gy" customClass="EJWebViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Koc-On-wQf"/>
+                        <viewControllerLayoutGuide type="bottom" id="9HO-Ct-1lI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jyw-zT-5Xo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIT-GM-eaZ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9HO-Ct-1lI" firstAttribute="top" secondItem="GIT-GM-eaZ" secondAttribute="bottom" id="Edy-Xc-F36"/>
+                            <constraint firstAttribute="trailing" secondItem="GIT-GM-eaZ" secondAttribute="trailing" id="dwK-Kf-uVt"/>
+                            <constraint firstItem="GIT-GM-eaZ" firstAttribute="leading" secondItem="jyw-zT-5Xo" secondAttribute="leading" id="uUE-db-1PH"/>
+                            <constraint firstItem="GIT-GM-eaZ" firstAttribute="top" secondItem="Koc-On-wQf" secondAttribute="bottom" id="ulN-fA-MnT"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="webView" destination="GIT-GM-eaZ" id="sh4-lz-XH8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xcU-Z7-hJL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1049.5" y="199.5"/>
         </scene>
     </scenes>
     <resources>

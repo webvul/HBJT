@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (strong, nonatomic) EJNewsDetailViewModel *viewModel;
+@property (strong, nonatomic) MBProgressHUD *hub;
 
 @end
 
@@ -26,6 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [[self.laudButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [self.hub hide:YES afterDelay:1.0];
+        self.laudLabel.text = [@([self.laudLabel.text integerValue]+1) stringValue];
+        self.laudButton.enabled = NO;
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,6 +59,11 @@
         self.viewModel.articleRead = [sender objectForKey:@"newsRead"];
         self.viewModel.articleLaud = [sender objectForKey:@"newsLaud"];
     }
+}
+
+- (void)bindViewModelToUpdate
+{
+
 }
 
 - (void)bindViewModelForNotice

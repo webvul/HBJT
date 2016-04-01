@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EJGuildViewController : UIViewController
+@interface EJGuildViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

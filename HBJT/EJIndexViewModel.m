@@ -62,6 +62,7 @@
     } completed:^{
         NSMutableArray *urlList = [[NSMutableArray alloc] init];
         NSMutableArray *capitonList = [[NSMutableArray alloc] init];
+        NSMutableArray *data = [[NSMutableArray alloc] init];
         NSInteger i = 0;
         for (NSDictionary *articleInfo in [self.indexPicturesAPIManager.data objectForKey:@"articleList"]) {
             if (i == 4) {
@@ -69,10 +70,12 @@
             }
             [urlList addObject:[articleInfo objectForKey:@"articleThumbnailURL"]];
             [capitonList addObject:[articleInfo objectForKey:@"articleTitle"]];
+            [data addObject:articleInfo];
             i ++;
         }
         self.picturesURLList = [urlList copy];
         self.picturesCaptionList = [capitonList copy];
+        self.data = [data copy];
         self.networkHintText = self.indexPicturesAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     }];

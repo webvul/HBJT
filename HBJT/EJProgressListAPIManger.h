@@ -10,4 +10,6 @@
 
 @interface EJProgressListAPIManger : EJSAPIManager
 
+- (instancetype)initWithPageNumber:(NSInteger) pageNumber;
+
 @end

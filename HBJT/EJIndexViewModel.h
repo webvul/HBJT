@@ -18,6 +18,7 @@
 @property (strong, nonatomic) RACSignal *scrollViewRotateSignal;
 @property (strong, nonatomic) NSArray *picturesURLList;
 @property (strong, nonatomic) NSArray *picturesCaptionList;
+@property (strong, nonatomic) NSArray *data;
 
 - (void)loadPictures;
 

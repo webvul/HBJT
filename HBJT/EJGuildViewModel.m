@@ -9,6 +9,8 @@
 #import "EJGuildViewModel.h"
 #import "EJAreaListAPIManager.h"
 #import "EJSectionListAPIManager.h"
+#import "EJResultsListAPIManager.h"
+#import "EJProgressListAPIManger.h"
 
 #import "EJS.h"
 
@@ -17,11 +19,15 @@
 
 @property (strong, nonatomic) EJAreaListAPIManager *areaListAPIManager;
 @property (strong, nonatomic) EJSectionListAPIManager *sectionListAPIManager;
+@property (strong, nonatomic) EJResultsListAPIManager *resultsListAPIManager;
+@property (strong, nonatomic) EJProgressListAPIManger *progressListAPIManager;
 
 
 @property (nonatomic, strong) RACSignal *areaListSignal;
 @property (nonatomic, strong) NSArray *areaArray;
 @property (nonatomic, strong) RACSignal *sectionListSignal;
+@property (nonatomic, strong) RACSignal *resultsListSiganl;
+@property (nonatomic, strong) RACSignal *progressListSignal;
 
 
 
@@ -32,11 +38,40 @@
 
 - (void)autoStart
 {
+    self.resultArray = [NSArray array];
     self.areaListAPIManager = [[EJAreaListAPIManager alloc]init];
     self.areaListSignal = [self createSignalForAPIManager:self.areaListAPIManager];
     self.sectionListSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [self.sectionListAPIManager launchRequestWithSuccess:^(id responseObject) {
             if (![self.sectionListAPIManager newStatus]) {
+                [subscriber sendCompleted];
+            }
+            else
+            {
+                [subscriber sendError:nil];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendError:error];
+        }];
+        return nil;
+    }];
+    self.progressListSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self.progressListAPIManager launchRequestWithSuccess:^(id responseObject) {
+            if (![self.progressListAPIManager newStatus]) {
+                [subscriber sendCompleted];
+            }
+            else
+            {
+                [subscriber sendError:nil];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendError:error];
+        }];
+        return nil;
+    }];
+    self.resultsListSiganl = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [self.resultsListAPIManager launchRequestWithSuccess:^(id responseObject) {
+            if (![self.resultsListAPIManager newStatus]) {
                 [subscriber sendCompleted];
             }
             else
@@ -91,6 +126,70 @@
     }
 }
 
+- (void)loadNew
+{
+    (self.currentTab?[self loadNewResultsList]:[self loadNewProgressList]);
+
+}
+
+- (void)loadMore
+{
+    (self.currentTab?[self loadMoreResultsList]:[self loadMoreProgressList]);
+}
+
+- (void)loadNewResultsList
+{
+    self.pageNumber = 1;
+    [self loadResultsList];
+}
+
+- (void)loadMoreResultsList
+{
+    self.pageNumber ++;
+    [self loadResultsList];
+}
+
+- (void)loadResultsList
+{
+    self.resultsListAPIManager = [[EJResultsListAPIManager alloc] initWithPageNumber:self.pageNumber];
+    self.isNetworkProceed = YES;
+    [self.resultsListSiganl subscribeError:^(NSError *error) {
+        self.networkHintText = self.resultsListAPIManager.statusDescription;
+        self.isNetworkProceed = NO;
+    } completed:^{
+        self.resultArray = [self.resultsListAPIManager.data objectForKey:@"itemArray"];
+        self.networkHintText = self.resultsListAPIManager.statusDescription;
+        self.isNetworkProceed = NO;
+    }];
+}
+
+- (void)loadNewProgressList
+{
+    self.pageNumber = 1;
+    [self loadProgressList];
+}
+
+- (void)loadMoreProgressList
+{
+    self.pageNumber ++;
+    [self loadProgressList];
+}
+
+- (void)loadProgressList
+{
+    self.progressListAPIManager = [[EJProgressListAPIManger alloc] initWithPageNumber:self.pageNumber];
+    self.isNetworkProceed = YES;
+    [self.progressListSignal subscribeError:^(NSError *error) {
+        self.networkHintText = self.progressListAPIManager.statusDescription;
+        self.isNetworkProceed = NO;
+    } completed:^{
+        self.resultArray = [self.progressListAPIManager.data objectForKey:@"itemArray"];
+        NSLog(@"%@",self.progressArray);
+        self.networkHintText = self.progressListAPIManager.statusDescription;
+        self.isNetworkProceed = NO;
+    }];
+}
+
 - (void)loadSectionList
 {
     if (self.areaArray) {
@@ -114,7 +213,7 @@
     if (_areaArray != nil) {
         NSMutableArray *cityList = [[NSMutableArray alloc]init];
         for (NSDictionary *areaInfo in _areaArray) {
-            if ([[areaInfo objectForKey:@"areaLevel"] integerValue] == 1 || [[areaInfo objectForKey:@"areaLevel"] integerValue] == 2) {
+            if ([[areaInfo objectForKey:@"areaLevel"] integerValue] == 2 ) {
                 [cityList addObject:areaInfo];
             }
         }
@@ -128,7 +227,7 @@
     if (_cityArray != nil) {
         NSMutableArray *districtList = [[NSMutableArray alloc]init];
         for (NSDictionary *areaInfo in _areaArray) {
-            if ([areaInfo objectForKey:@"parentCode"] == [_cityArray[_currentCityIndex] objectForKey:@"areaCode"] && [[areaInfo objectForKey:@"areaLevel"] integerValue] == 3) {
+            if ([areaInfo objectForKey:@"parentCode"] == [_cityArray[_currentCityIndex] objectForKey:@"areaCode"] /*&& [[areaInfo objectForKey:@"areaLevel"] integerValue] == 3*/) {
                 [districtList addObject:areaInfo];
             }
         }

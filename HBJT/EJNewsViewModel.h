@@ -21,5 +21,6 @@
 - (void)loadNextTab;
 - (void)reload;
 - (void)load;
+- (void)loadMore;
 
 @end

@@ -39,6 +39,7 @@
     self.showsHorizontalScrollIndicator = NO;
     self.showsVerticalScrollIndicator = NO;
     self.bounces = NO;
+    //self.directionalLockEnabled = YES;
     if (numberOfHorses > 0) {
         @weakify(self);
         [[[RACObserve(self, contentOffset) map:^id(id value) {

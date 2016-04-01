@@ -9,6 +9,7 @@
 #import "EJPasswordRetrieveViewController.h"
 
 @interface EJPasswordRetrieveViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextField;
 @property (weak, nonatomic) IBOutlet UITextField *smsCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *smsSenderButton;

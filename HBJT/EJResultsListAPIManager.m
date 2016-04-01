@@ -10,6 +10,14 @@
 
 @implementation EJResultsListAPIManager
 
-
+- (instancetype)initWithPageNumber:(NSInteger)pageNumber;
+{
+    self = [super initWith:kEJSNetworkAPINameResultsList];
+    if (self) {
+        [self.params setObject:@"15" forKey:@"pageSize"];
+        [self.params setObject:@(pageNumber) forKey:@"pageNumber"];
+    }
+    return self;
+}
 
 @end

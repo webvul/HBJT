@@ -9,7 +9,7 @@
 #import "EJIndexViewController.h"
 #import "AppDelegate.h"
 #import "EJIndexViewModel.h"
-#import "EJS/EJS.h"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+#import "EJS/EJS.h"
 
 
 @interface EJIndexViewController ()
@@ -29,13 +29,21 @@
 @property (strong, nonatomic) IBOutlet UIButton *menuButton;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 
+@property (strong, nonatomic) UIButton *imageButton0;
+@property (strong, nonatomic) UIButton *imageButton1;
+@property (strong, nonatomic) UIButton *imageButton2;
+@property (strong, nonatomic) UIButton *imageButton3;
+@property (strong, nonatomic) NSArray *imageButtonArray;
+
+
+
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *scrollContentView;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *scrollContentViewAspect;
 
 @property (strong, nonatomic) NSArray *buttonArray;
-@property (strong, nonatomic) NSMutableArray *imageViewArray;
+@property (strong, nonatomic) NSMutableArray  <UIImageView *> *imageViewArray;
 
 @property (assign, nonatomic) NSInteger numberOfSrollViewPage;
 @property (assign, nonatomic) CGFloat scrollViewWidth;
@@ -171,6 +179,29 @@ CGFloat scrollViewOffsetx;
                 [self.imageViewArray[3] sd_setImageWithURL:self.viewModel.picturesURLList[2] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
                 [self.imageViewArray[4] sd_setImageWithURL:self.viewModel.picturesURLList[3] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
                 [self.imageViewArray[5] sd_setImageWithURL:self.viewModel.picturesURLList[0] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
+
+                self.imageButton0 = [[UIButton alloc] initWithFrame:self.imageViewArray[1].frame];
+                self.imageButton1 = [[UIButton alloc] initWithFrame:self.imageViewArray[2].frame];
+                self.imageButton2 = [[UIButton alloc] initWithFrame:self.imageViewArray[3].frame];
+                self.imageButton3 = [[UIButton alloc] initWithFrame:self.imageViewArray[4].frame];
+                self.imageButtonArray = @[self.imageButton0, self.imageButton1, self.imageButton2, self.imageButton3];
+                NSInteger i = 0;
+                for (UIButton *imageButton in self.imageButtonArray) {
+                    [self.scrollContentView addSubview:imageButton];
+                    [[imageButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+                        NSString *newsTitle = [self.viewModel.data[i] objectForKey:@"articleTitle"];
+                        NSString *newsID = [[self.viewModel.data[i] objectForKey:@"articleID"] stringValue];
+                        NSString *newsDate = [self.viewModel.data[i] objectForKey:@"articleTime"];
+                        NSString *newsRead = [[self.viewModel.data[i] objectForKey:@"articleReadNumber"] stringValue];
+                        NSString *newsLaud = [[self.viewModel.data[i] objectForKey:@"articleLaudNumber"] stringValue];
+                        
+                        UIViewController *viewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil] instantiateViewControllerWithIdentifier:@"Detail"];
+                        [self prepareViewController:viewController withSender:@{@"newsTitle":newsTitle,@"newsID":newsID,@"newsDate":newsDate,@"newsRead":newsRead,@"newsLaud":newsLaud}];
+                        [self.navigationController pushViewController:viewController animated:YES];
+
+                    }];
+                    i ++;
+                }
             }
             else
             {
@@ -182,6 +213,8 @@ CGFloat scrollViewOffsetx;
 
 - (void)prepareOtherViewController
 {
+    AppDelegate *appDelegate = [AppDelegate sharedDelegate];
+    @weakify(appDelegate);
     [[self.button8 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateInitialViewController] animated:YES];
     }];
@@ -198,7 +231,22 @@ CGFloat scrollViewOffsetx;
         i++;
     }
     [[self.menuButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        [[AppDelegate sharedDelegate] openDrawer];
+                @strongify(appDelegate);
+        [appDelegate openDrawer];
+    }];
+    [[self.button7 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(appDelegate);
+        UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
+        NSString *url = [[EJSNetwork urlList] objectForKey:kEJSNetworkAPINameTraffic];
+        [self prepareViewController:viewController withSender:@{@"title":@"动态路况",@"url":url}];
+        [appDelegate push:viewController];
+    }];
+    [[self.button6 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(appDelegate);
+        UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
+        NSString *url = [[EJSNetwork urlList] objectForKey:kEJSNetworkAPINameFee];
+        [self prepareViewController:viewController withSender:@{@"title":@"规范查询",@"url":url}];
+        [appDelegate push:viewController];
     }];
 }
 

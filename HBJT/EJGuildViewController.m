@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *areaScrollView;
 @property (weak, nonatomic) IBOutlet UIView *areaScrollContentView;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *districtButtonArray;
 @property (strong, nonatomic) NSMutableArray *sectionButtonArray;
 @property (strong, nonatomic) MBProgressHUD *hub;
@@ -34,6 +35,12 @@
 
 - (void)viewDidLoad
 {
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self.viewModel loadNew];
+    }];
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        [self.viewModel loadMore];
+    }];
     self.viewModel = [EJGuildViewModel viewModel];
     [self bindViewModel];
     [self.viewModel connect];
@@ -112,6 +119,15 @@
         }];
     }
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Result"];;
+    NSString *itemID = [self.viewModel.resultArray[indexPath.row] objectForKey:@"id"];
+    NSNumber *resultType = @(self.viewModel.currentTab);
+    [self prepareViewController:viewController withSender:@{@"id":itemID,@"type":resultType}];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
     
 
 - (void)viewDidLayoutSubviews
@@ -119,7 +135,7 @@
     [super viewDidLayoutSubviews];
     UIScrollView *scrollView = (UIScrollView *)self.guildView.superview;
     if (self.sectionButtonArray.count > 0) {
-        scrollView.scrollEnabled = (((UIButton *)self.sectionButtonArray.lastObject).frame.origin.y > self.guildView.frame.size.height - 34-27);
+        scrollView.scrollEnabled = (((UIButton *)self.sectionButtonArray.lastObject).frame.origin.y > self.guildView.frame.size.height - 34 - 27);
         //NSLog(@"%f,%f", ((UIButton *)self.sectionButtonArray.lastObject).frame.origin.y,self.guildView.frame.size.height - 34-27);
     }
     else
@@ -130,6 +146,23 @@
     {
         [scrollView setContentOffset:(CGPoint){0,0} animated:YES];
     }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"%tu",self.viewModel.resultArray.count);
+    return self.viewModel.resultArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
+    }
+    cell.textLabel.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extItemname"];
+    cell.detailTextLabel.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extCode"];
+    return cell;
 }
 
 - (void)bindViewModelToUpdate
@@ -148,12 +181,20 @@
             {
                 [self loadSectionButtons];
             }
+            else if ([x isEqualToString:@"事项获取成功"])
+            {
+                [self.tableView.mj_header endRefreshing];
+                [self.tableView reloadData];
+            }
             else
             {
-                if (self.viewModel.cityArray == nil) {
+                if (self.viewModel.cityArray == nil && self.guildView.hidden == NO)
+                {
                     [self.viewModel loadAreaList];
                 }
+                [self.tableView.mj_header endRefreshing];
             }
+
         }
     }];
 
@@ -161,10 +202,10 @@
         if ([x isKindOfClass:[NSString class]]) {
             [self.hub setLabelText:x];
         } else if ([x boolValue]) {
-            self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            //[self.hub setYOffset:-64];
+            self.hub = [MBProgressHUD showHUDAddedTo:self.guildView animated:YES];
+            [self.hub setYOffset:-40];
         } else {
-            [self.hub hide:YES afterDelay:1];
+            [self.hub hide:YES];
         }
     }];
 }
@@ -198,18 +239,25 @@
         self.tabLabel0.hidden = NO;
         self.tabLabel1.hidden = YES;
         self.tabLabel2.hidden = YES;
+        [self.tableView.mj_header endRefreshing];
     }];
     [[self.tabButton1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         self.guildView.hidden = YES;
         self.tabLabel0.hidden = YES;
         self.tabLabel1.hidden = NO;
         self.tabLabel2.hidden = YES;
+        self.viewModel.currentTab = 0;
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_header beginRefreshing];
     }];
     [[self.tabButton2 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         self.guildView.hidden = YES;
         self.tabLabel0.hidden = YES;
         self.tabLabel1.hidden = YES;
         self.tabLabel2.hidden = NO;
+        self.viewModel.currentTab = 1;
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_header beginRefreshing];
     }];
 }
 @end

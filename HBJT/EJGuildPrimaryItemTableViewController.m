@@ -60,6 +60,7 @@
 {
     EJGuildItemTableViewController *tableViewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Item"];
     [self prepareViewController:tableViewController withSender:[self.viewModel.itemList[indexPath.row] objectForKey:@"id"]];
+    NSLog(@"%@",self.navigationController);
     [self.navigationController pushViewController:tableViewController animated:YES];
 }
 

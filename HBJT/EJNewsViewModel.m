@@ -40,6 +40,28 @@
     }];
 }
 
+- (void)loadMore
+{
+    [self.websiteArticleListAPIManager prepareRequestNextPage];
+    if (self.isNetworkProceed == YES) {
+        [self.websiteArticleListAPIManager cancel];
+        self.networkHintText = @"取消";
+        self.isNetworkProceed = NO;
+    }
+    self.isNetworkProceed = YES;
+    self.networkHintText = @"正在读取";
+    [self.websiteArticleListAPIManager setCategoryID:self.currentCategory];
+    [self.loadArticleSignal subscribeError:^(NSError *error) {
+        self.networkHintText = self.websiteArticleListAPIManager.statusDescription;
+        self.isNetworkProceed = NO;
+    } completed:^{
+        [self.data addObjectsFromArray:[self.websiteArticleListAPIManager.data objectForKey:@"articleList"]];
+        self.networkHintText = self.websiteArticleListAPIManager.statusDescription;
+        self.isNetworkProceed = NO;
+    }];
+
+}
+
 - (void)reload
 {
     [self.websiteArticleListAPIManager prepareRequestFirstPage];
@@ -105,25 +127,25 @@
 {
     switch (self.currentTabIndex) {
         case 0:
-            return EJWebsiteArtcleCategoryTPLB;
+            return EJWebsiteArtcleCategoryTZKX;
             break;
         case 1:
             return EJWebsiteArtcleCategoryTPXW;
             break;
         case 2:
-            return EJWebsiteArtcleCategoryTZDT;
-            break;
-        case 3:
             return EJWebsiteArtcleCategoryTZGG;
             break;
+        case 3:
+            return EJWebsiteArtcleCategoryTZDT;
+            break;
         case 4:
-            return EJWebsiteArtcleCategoryYWKB;
+            return EJWebsiteArtcleCategorySZSM;
             break;
         case 5:
             return EJWebsiteArtcleCategoryZBTB;
             break;
         default:
-            return EJWebsiteArtcleCategoryTPLB;
+            return EJWebsiteArtcleCategoryTZKX;
             break;
     }
 }

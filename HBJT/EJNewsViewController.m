@@ -48,8 +48,14 @@
     // Do any additional setup after loading the view.
     self.buttonArray = @[self.button0,self.button1,self.button2,self.button3,self.button4,self.button5];
     self.labelArray = @[self.buttonLabel0,self.buttonLabel1,self.buttonLabel2,self.buttonLabel3,self.buttonLabel4,self.buttonLabel5];
+    @weakify(self);
     self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        @strongify(self);
         [self.viewModel reload];
+    }];
+    self.tableView1.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        @strongify(self);
+        [self.viewModel loadMore];
     }];
     [self bindViewModel];
 }
@@ -75,6 +81,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [self.controlScrollView setContentOffset:CGPointMake((80*6 - self.view.frame.size.width)/5*self.viewModel.currentTabIndex, 0) animated:NO];
     [super viewDidAppear:animated];
     @weakify(self);
     self.mainScrollView.showsVerticalScrollIndicator = NO;
@@ -203,7 +210,13 @@
         [[button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
             @strongify(self);
             self.viewModel.currentTabIndex = i;
-            [self.tableView1.mj_header beginRefreshing];
+            if (self.viewModel.isNetworkProceed) {
+                [self.viewModel reload];
+            }
+            else
+            {
+                [self.tableView1.mj_header beginRefreshing];
+            }
             //[self.viewModel reload];
         }];
         i++;

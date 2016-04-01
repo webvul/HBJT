@@ -9,10 +9,11 @@
 #import "EJS/EJS.h"
 
 typedef NS_ENUM(NSInteger, EJWebsiteArtcleCategory) {
-    EJWebsiteArtcleCategoryYWKB = 11216,
+    EJWebsiteArtcleCategoryTZKX = 11216,
     EJWebsiteArtcleCategoryTPXW = 11217,
     EJWebsiteArtcleCategoryTZGG = 11218,
     EJWebsiteArtcleCategoryTZDT = 11219,
+    EJWebsiteArtcleCategorySZSM = 11221,
     EJWebsiteArtcleCategoryZBTB = 11220,
     EJWebsiteArtcleCategoryTPLB = 11270
 };

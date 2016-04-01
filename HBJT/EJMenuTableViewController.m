@@ -15,6 +15,8 @@
 @interface EJMenuTableViewController ()
 @property (strong, nonatomic) IBOutlet UIButton *usernameLabelButton;
 @property (strong, nonatomic) IBOutlet UIButton *loginLabelButton;
+@property (weak, nonatomic) IBOutlet UIButton *letterButton;
+@property (weak, nonatomic) IBOutlet UIButton *surveyButton;
 
 @property (strong, nonatomic) IBOutlet UIButton *loginButton;
 @property (strong, nonatomic) IBOutlet UITableViewCell *matterCell;
@@ -96,19 +98,29 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    AppDelegate *appDelegate = [AppDelegate sharedDelegate];
     if (indexPath.section == 1) {
-        switch (indexPath.row) {
-            case 0:
-                [[AppDelegate sharedDelegate] closeDrawerNeedReopen:YES];
-                [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Matter" bundle:nil] instantiateInitialViewController]];
-                break;
+        if ([appDelegate currentUser] == NO) {
+            [appDelegate closeDrawerNeedReopen:NO];
+            [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
+        } else {
+            switch (indexPath.row) {
+                case 0:
+                    [appDelegate closeDrawerNeedReopen:YES];
+                    [appDelegate push:[[UIStoryboard storyboardWithName:@"Matter" bundle:nil] instantiateInitialViewController]];
+                    break;
+                case 1:
+                    [appDelegate closeDrawerNeedReopen:YES];
+                    [appDelegate push:[[UIStoryboard storyboardWithName:@"Matter" bundle:nil] instantiateViewControllerWithIdentifier:@"matter"]];
+                    break;
+            }
         }
     }
     if (indexPath.section ==2) {
         switch (indexPath.row) {
             case 0:
-                [[AppDelegate sharedDelegate] closeDrawerNeedReopen:YES];
-                [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Suggestion" bundle:nil] instantiateInitialViewController]];
+                [appDelegate closeDrawerNeedReopen:YES];
+                [appDelegate push:[[UIStoryboard storyboardWithName:@"Suggestion" bundle:nil] instantiateInitialViewController]];
                 break;
                 
             default:
@@ -118,54 +130,20 @@
     if (indexPath.section == 3) {
         switch (indexPath.row) {
             case 0:
-                [[AppDelegate sharedDelegate] closeDrawerNeedReopen:YES];
-                [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateInitialViewController]];
+                [appDelegate closeDrawerNeedReopen:YES];
+                [appDelegate push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateInitialViewController]];
                 break;
             case 1:
-                [[AppDelegate sharedDelegate] closeDrawerNeedReopen:YES];
-                [[AppDelegate sharedDelegate] push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateViewControllerWithIdentifier:@"password"]];
+                [appDelegate closeDrawerNeedReopen:YES];
+                [appDelegate push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateViewControllerWithIdentifier:@"password"]];
                 break;
             case 2:
-                [[AppDelegate sharedDelegate] setCurrentUser:NO];
+                [appDelegate setCurrentUser:NO];
                 break;
             default:
                 break;
         }
     }
-    // case 1:
-     /*
-     break;
-     default:
-     break;
-     }
-     }
-     if (indexPath.section == 2) {
-     switch (indexPath.row) {
-     case 0:
-     [self pushMenuControllerNamed:@"suggestion" inStoryboardNamed:@"Suggestion"];
-     break;
-     case 1:
-     [self pushMenuControllerNamed:@"survey" inStoryboardNamed:@"Suggestion"];
-     break;
-     case 2:
-     [self pushMenuControllerNamed:@"agree" inStoryboardNamed:@"Logger"];
-     break;
-     default:
-     break;
-     }
-     }
-     if (indexPath.section == 3) {
-     switch (indexPath.row) {
-     case 0:
-     [self pushMenuControllerNamed:@"userinfo" inStoryboardNamed:@"Userinfo"];
-     break;
-     case 1:
-     [self pushMenuControllerNamed:@"password" inStoryboardNamed:@"Userinfo"];
-     break;
-     default:
-     break;
-     }
-     }*/
     
 }
 #pragma - Reactive methods
@@ -179,7 +157,23 @@
         [appDelegate closeDrawerNeedReopen:NO];
         [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
     }];
+    [[self.letterButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(appDelegate);
+        [appDelegate closeDrawerNeedReopen:YES];
+        UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Suggestion" bundle:nil]instantiateInitialViewController];
+        [self prepareViewController:viewController withSender:@(1)];
+        [appDelegate push:viewController];
+    }];
+    [[self.surveyButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        @strongify(appDelegate);
+        [appDelegate closeDrawerNeedReopen:YES];
+        UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
+        NSString *url = [[EJSNetwork urlList] objectForKey:kEJSNetworkAPINameSurvey];
+        [self prepareViewController:viewController withSender:@{@"title":@"在线调查",@"url":url}];
+        [appDelegate push:viewController];
+    }];
 }
+
 
 - (void)bindViewModelForNotice
 {
