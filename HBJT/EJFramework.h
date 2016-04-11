@@ -10,7 +10,7 @@
 #define EJFramework_h
 
 #endif /* EJFramework_h */
-
+#import "ParentViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import <Aspects/Aspects.h>
 #import <CocoaSecurity/CocoaSecurity.h>

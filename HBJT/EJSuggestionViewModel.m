@@ -20,11 +20,26 @@
 
 - (void)autoStart
 {
-    self.suggestSignal = [self createSignalForAPIManager:self.suggestionAPIManager];
+    self.suggestSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [subscriber sendNext:nil];
+        [self.suggestionAPIManager launchRequestWithSuccess:^(id responseObject) {
+            if (![self.suggestionAPIManager newStatus]) {
+                [subscriber sendCompleted];
+            }
+            else
+            {
+                [subscriber sendError:nil];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendError:error];
+        }];
+        return nil;
+    }];
 }
 
 - (void)suggest
 {
+    self.suggestionAPIManager = [[EJSuggestionAPIManager alloc]initWithSuggestion:self.suggestionText];
     [self subscribeNetworkSignal:self.suggestSignal apiManger:self.suggestionAPIManager];
 }
 

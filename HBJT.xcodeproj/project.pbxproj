@@ -18,6 +18,7 @@
 		F731A4E01CA0DBFF00A0A2A5 /* EJGuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F731A4DF1CA0DBFF00A0A2A5 /* EJGuildViewController.m */; };
 		F731A4E61CA0DCFD00A0A2A5 /* EJGuildViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F731A4E51CA0DCFD00A0A2A5 /* EJGuildViewModel.m */; };
 		F731A4E91CA0E02B00A0A2A5 /* EJAreaListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F731A4E81CA0E02B00A0A2A5 /* EJAreaListAPIManager.m */; };
+		F731A98D1CB64E3F00E31D6D /* ParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F731A98B1CB64E3F00E31D6D /* ParentViewController.m */; };
 		F734D27B1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */; };
 		F73ED97E1C979E74006AF2A0 /* FTViewModel+EJSAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F73ED97D1C979E74006AF2A0 /* FTViewModel+EJSAPIManager.m */; };
 		F73ED98B1C97B813006AF2A0 /* EJNewsPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F73ED98A1C97B813006AF2A0 /* EJNewsPictureTableViewCell.m */; };
@@ -124,6 +125,8 @@
 		F731A4E51CA0DCFD00A0A2A5 /* EJGuildViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJGuildViewModel.m; sourceTree = "<group>"; };
 		F731A4E71CA0E02B00A0A2A5 /* EJAreaListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJAreaListAPIManager.h; sourceTree = "<group>"; };
 		F731A4E81CA0E02B00A0A2A5 /* EJAreaListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJAreaListAPIManager.m; sourceTree = "<group>"; };
+		F731A98B1CB64E3F00E31D6D /* ParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParentViewController.m; path = HBJT/ParentViewController.m; sourceTree = "<group>"; };
+		F731A98C1CB64E3F00E31D6D /* ParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParentViewController.h; path = HBJT/ParentViewController.h; sourceTree = "<group>"; };
 		F734D2791C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTKeyboardTapGestureRecognizer.h; sourceTree = "<group>"; };
 		F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTKeyboardTapGestureRecognizer.m; sourceTree = "<group>"; };
 		F73ED97C1C979E74006AF2A0 /* FTViewModel+EJSAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FTViewModel+EJSAPIManager.h"; path = "HBJT/FTViewModel+EJSAPIManager.h"; sourceTree = SOURCE_ROOT; };
@@ -516,6 +519,8 @@
 		F7DFF9051C7D595500A24DB5 = {
 			isa = PBXGroup;
 			children = (
+				F731A98B1CB64E3F00E31D6D /* ParentViewController.m */,
+				F731A98C1CB64E3F00E31D6D /* ParentViewController.h */,
 				F7DFF92D1C7D74EF00A24DB5 /* HBJT */,
 				F7C14FC71C84224600779833 /* EJFramework.h */,
 				F7DFF9301C7D74EF00A24DB5 /* Assets.xcassets */,
@@ -766,6 +771,7 @@
 			files = (
 				F7AF7BC61CA9040D001814E5 /* EJNewsDetailViewModel.m in Sources */,
 				F79084EC1CA5382900E48E2C /* EJGuildItemViewModel.m in Sources */,
+				F731A98D1CB64E3F00E31D6D /* ParentViewController.m in Sources */,
 				F7A67E6C1CA40B6C00A64DE1 /* EJSectionListAPIManager.m in Sources */,
 				F7C159721C858B4200779833 /* EJIndexViewController.m in Sources */,
 				F7AB54831CAD04A700114DD1 /* EJWebViewController.m in Sources */,

@@ -26,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self returnBack];
+    self.navigationItem.titleView=[self returnTitle:@"资讯详情"];
     // Do any additional setup after loading the view.
     [[self.laudButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

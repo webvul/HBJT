@@ -7,6 +7,6 @@
 //
 
 #import "EJFramework.h"
-@interface EJResultDetailViewController : UIViewController
+@interface EJResultDetailViewController : ParentViewController
 
 @end

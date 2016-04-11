@@ -32,6 +32,7 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
+  - QQ_XGPush (2.4.6)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -50,6 +51,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - MJRefresh
   - MMDrawerController
+  - QQ_XGPush
   - ReactiveCocoa
   - SDWebImage/Core
 
@@ -62,6 +64,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
+  QQ_XGPush: a4aff943fbde8d4f79245ff5ca6a4786a6433d63
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
 

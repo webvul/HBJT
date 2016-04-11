@@ -8,6 +8,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import "FTools.h"
 
 @interface FTAPIManager : NSObject
 
@@ -16,10 +17,12 @@
 @property (strong, nonatomic) AFHTTPRequestSerializer *requestSerializer;
 @property (strong, nonatomic) AFHTTPResponseSerializer *responseSerializer;
 @property (strong, nonatomic) NSURLSessionTask *task;
-@property (strong, nonatomic) NSURLRequest *request;
+@property (strong, nonatomic) NSString *requestMethod;
 @property (strong, nonatomic) id rawData;
+@property (assign, nonatomic) AFNetworkReachabilityStatus networkStatus;
 
+- (instancetype)init;
 - (void)launchRequestWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock;
-- (void)launchWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock;
+- (void)cancel;
 
 @end

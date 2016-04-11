@@ -66,7 +66,7 @@
             self.indexOfCurrentHorse = floor(modifiedRelativeContentOffset + 0.5);
             return (relativeContentOffset >= numberOfHorses + 0.99? @(1):(relativeContentOffset <= 0.01? @(numberOfHorses): nil));
         }] filter:^BOOL(id value) {
-            return value;
+            return [value boolValue];
         }] subscribeNext:^(id x) {
             @strongify(self);
             //NSLog(@"previous or next");

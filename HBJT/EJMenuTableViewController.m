@@ -169,7 +169,7 @@
         [appDelegate closeDrawerNeedReopen:YES];
         UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
         NSString *url = [[EJSNetwork urlList] objectForKey:kEJSNetworkAPINameSurvey];
-        [self prepareViewController:viewController withSender:@{@"title":@"在线调查",@"url":url,@"offset":@(-50)}];
+        [self prepareViewController:viewController withSender:@{@"title":@"在线调查",@"url":url,@"offset":@(-50-64)}];
         [appDelegate push:viewController];
     }];
 }

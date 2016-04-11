@@ -12,7 +12,6 @@ static void *viewModelKey = &viewModelKey;
 
 @implementation UIViewController (FTBinding)
 
-
 -(void)setViewModel:(FTViewModel *)viewModel
 {
     objc_setAssociatedObject(self, & viewModelKey, viewModel, OBJC_ASSOCIATION_COPY);
@@ -21,6 +20,12 @@ static void *viewModelKey = &viewModelKey;
 -(FTViewModel *)viewModel
 {
     return objc_getAssociatedObject(self, &viewModelKey);
+}
+
+- (void)bindViewModel
+{
+    [self bindViewModelToUpdate];
+    [self bindViewModelForNotice];
 }
 
 - (void)bindViewModelToUpdate
@@ -40,13 +45,12 @@ static void *viewModelKey = &viewModelKey;
 
 - (void)preparedWithSender:(__nullable id)sender
 {
-    [self.viewModel startWithSender:sender];
+    
 }
 
 - (void)prepareViewController:(nonnull UIViewController *)viewContorller withSender:(__nullable id)sender
 {
     [viewContorller preparedWithSender:sender];
-    [self.navigationController pushViewController:viewContorller animated:YES];
 }
 
 @end

@@ -33,7 +33,7 @@
     [self.window makeKeyAndVisible];
     NSLog(@"App Launched");
     //[self fakeLogin];
-    AppDelegate *delegate = [AppDelegate sharedDelegate];
+    //AppDelegate *delegate = [AppDelegate sharedDelegate];
     return YES;
 }
 
@@ -175,7 +175,7 @@
 {
     if (_rootNavigationController == nil) {
         _rootNavigationController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateViewControllerWithIdentifier:@"Root"];
-        //_rootNavigationController.navigationBar.tintColor = [UIColor colorWithRed:0.169 green:0.518 blue:0.827 alpha:0.1];
+        _rootNavigationController.navigationBar.tintColor = naviBG;
         NSLog(@"%@",_rootNavigationController);
     }
     return _rootNavigationController;

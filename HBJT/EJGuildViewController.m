@@ -35,6 +35,9 @@
 
 - (void)viewDidLoad
 {
+    [self returnBack];
+    self.navigationItem.titleView=[self returnTitle:@"行政审批"];
+    
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self.viewModel loadNew];
     }];
@@ -184,6 +187,7 @@
             else if ([x isEqualToString:@"事项获取成功"])
             {
                 [self.tableView.mj_header endRefreshing];
+                [self.tableView.mj_footer endRefreshing];
                 [self.tableView reloadData];
             }
             else

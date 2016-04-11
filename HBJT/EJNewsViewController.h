@@ -8,6 +8,6 @@
 
 #import "EJFramework.h"
 
-@interface EJNewsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EJNewsViewController : ParentViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

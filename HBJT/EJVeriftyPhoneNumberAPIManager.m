@@ -12,7 +12,7 @@
 
 - (instancetype)initWithPhoneNumber:(NSString *)phoneNumber
 {
-    self = [super initWith:kEJSNetworkAPINameRetrievePassword];
+    self = [super initWith:kEJSNetworkAPINameSendSMS];
     if (self) {
         [self.params setObject:phoneNumber forKey:@"phonenumber"];
     }

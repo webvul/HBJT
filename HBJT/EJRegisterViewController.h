@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ParentViewController.h"
 
-@interface EJRegisterViewController : UIViewController
+@interface EJRegisterViewController : ParentViewController
 
 @end

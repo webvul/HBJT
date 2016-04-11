@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface EJGuildViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+#import "ParentViewController.h"
+@interface EJGuildViewController : ParentViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

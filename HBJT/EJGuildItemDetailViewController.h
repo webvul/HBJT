@@ -8,6 +8,6 @@
 
 #import "EJFramework.h"
 
-@interface EJGuildItemDetailViewController : UIViewController
+@interface EJGuildItemDetailViewController : ParentViewController
 
 @end

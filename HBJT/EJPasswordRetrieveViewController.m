@@ -27,6 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self returnBack];
+    self.navigationItem.titleView=[self returnTitle:@"忘记密码"];
     // Do any additional setup after loading the view.
     [self bindViewModel];
 }
@@ -38,10 +41,12 @@
     RAC(self.viewModel, codeText) = self.smsCodeTextField.rac_textSignal;
     RAC(self.viewModel, passwordText) = self.passwordTextField.rac_textSignal;
     RAC(self.viewModel, repeatPasswordText) = self.confirmTextField.rac_textSignal;
-    [[self.smsSenderButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+    [[self.smsSenderButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x){
+        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         [self.viewModel verifyPhone];
     }];
     [[self.passwordRetrieveButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         [self.viewModel retrievePassword];
     }];
 }

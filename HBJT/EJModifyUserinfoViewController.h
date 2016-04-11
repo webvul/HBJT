@@ -8,7 +8,7 @@
 
 #import "EJFramework.h"
 
-@interface EJModifyUserinfoViewController : UIViewController
+@interface EJModifyUserinfoViewController : ParentViewController
 
 
 

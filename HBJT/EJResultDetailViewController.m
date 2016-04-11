@@ -28,6 +28,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    [self returnBack];
+    self.navigationItem.titleView=[self returnTitle:@"结果公示详细"];
+    
     // Do any additional setup after loading the view.[
     [self bindViewModel];
     [self.viewModel load];
@@ -55,8 +60,8 @@
                 NSLog(@"%@",self.viewModel.data);
                 self.resultNameLabel.text = [self.viewModel.data objectForKey:@"resultName"];
                 self.resultSubmitDateLabel.text = [self.viewModel.data objectForKey:@"resultSubmitDate"];
-                self.resultEstimateTimeLabel.text = [self.viewModel.data objectForKey:@"resultEstimateTime"];
-                self.resultNameLabel.text = [self.viewModel.data objectForKey:@"resultNumber"];
+                self.resultEstimateTimeLabel.text = ([self.viewModel.data objectForKey:@"resultEstimateTime"]? [[[self.viewModel.data objectForKey:@"resultEstimateTime"] stringValue] stringByAppendingString:@"天"]: nil);
+                self.resultNumberLabel.text = [self.viewModel.data objectForKey:@"resultNumber"];
 
                 self.resultProposerLabel.text = [self.viewModel.data objectForKey:@"resultProposer"];
 

@@ -217,6 +217,8 @@ CGFloat scrollViewOffsetx;
     @weakify(appDelegate);
     [[self.button8 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateInitialViewController] animated:YES];
+        [appDelegate setNeedDrawerReopen:NO];
+
     }];
     NSInteger i = 0;
     for (UIButton *newsButton in self.buttonArray) {
@@ -227,6 +229,7 @@ CGFloat scrollViewOffsetx;
             UIViewController *newsViewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil] instantiateInitialViewController];
             [self prepareViewController:newsViewController withSender:@(i)];
             [self.navigationController pushViewController:newsViewController animated:YES];
+            [appDelegate setNeedDrawerReopen:NO];
         }];
         i++;
     }
@@ -238,14 +241,16 @@ CGFloat scrollViewOffsetx;
         @strongify(appDelegate);
         UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
         NSString *url = [[EJSNetwork urlList] objectForKey:kEJSNetworkAPINameTraffic];
-        [self prepareViewController:viewController withSender:@{@"title":@"动态路况",@"url":url,@"offset":@(-50)}];
+        [self prepareViewController:viewController withSender:@{@"title":@"动态路况",@"url":url,@"offset":@(-50-64)}];
+        [appDelegate setNeedDrawerReopen:NO];
         [appDelegate push:viewController];
     }];
     [[self.button6 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(appDelegate);
         UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
         NSString *url = [[EJSNetwork urlList] objectForKey:kEJSNetworkAPINameFee];
-        [self prepareViewController:viewController withSender:@{@"title":@"规范查询",@"url":url}];
+        [self prepareViewController:viewController withSender:@{@"title":@"规费查询",@"url":url,@"offset":@(-64)}];
+        [appDelegate setNeedDrawerReopen:NO];
         [appDelegate push:viewController];
     }];
 }

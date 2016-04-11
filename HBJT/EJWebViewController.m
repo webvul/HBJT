@@ -24,6 +24,7 @@
     // Do any additional setup after loading the view.
     //http://wx.hbjt.gov.cn/info/iList.jsp?cat_id=11272
     NSLog(@"%@",self.url);
+    [self returnBack];
     self.webRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
     NSLog(@"%@",self.webRequest);
     [self.webView loadRequest:self.webRequest];
@@ -32,6 +33,8 @@
         NSLog(@"%@",@(self.webViewOffset+64));
     }];
     self.webView.scrollView.bounces = NO;
+    self.navigationItem.titleView=[self returnTitle: self.title];
+
 }
 
 - (void)didReceiveMemoryWarning {

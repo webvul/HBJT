@@ -28,7 +28,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.viewModel loadItemList];
-
+    self.navigationItem.titleView=[self returnTitle:@"办事指南"];
+    [self returnBack];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,6 +108,38 @@
     return _viewModel;
 }
 
+-(void)returnBack{
+    UIButton *leftBackBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+    leftBackBtn.frame=CGRectMake(0, 0, 50, 44);
+    leftBackBtn.backgroundColor=[UIColor clearColor];
+    
+    UIImageView *sizeTitleImg=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"02.fw"]];
+    sizeTitleImg.frame=CGRectMake(5,10 ,24,24);
+    [leftBackBtn  addSubview:sizeTitleImg];
+    
+    
+    [leftBackBtn addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil action:nil];
+    negativeSpacer.width = -15;
+    UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBackBtn];
+    self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftBarButtonItem];
+}
+
+-(UILabel *)returnTitle:(NSString *)title{
+    UILabel *titleLab=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    titleLab.font=[UIFont systemFontOfSize:20.0f];
+    titleLab.backgroundColor=[UIColor clearColor];
+    titleLab.textAlignment=NSTextAlignmentCenter;
+    titleLab.textColor=[UIColor whiteColor];
+    titleLab.text=title;
+    return titleLab;
+}
+
+-(void)goBack{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];

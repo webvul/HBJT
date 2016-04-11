@@ -36,6 +36,7 @@
 - (void)prepareRequestNextPage
 {
     self.pageNumber ++;
+    NSLog(@"%tu",self.pageNumber);
     [self.params setObject:@(self.pageNumber) forKey:@"pageNumber"];
 }
 

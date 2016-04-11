@@ -11,5 +11,6 @@ pod 'MMDrawerController'
 pod 'ReactiveCocoa'
 pod 'SDWebImage/Core'
 pod 'MJRefresh'
+pod 'QQ_XGPush'
 
 xcodeproj 'HBJT.xcodeproj'

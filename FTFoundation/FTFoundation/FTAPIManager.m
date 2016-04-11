@@ -17,40 +17,51 @@
         self.params = [[NSMutableDictionary alloc]init];
         self.url = @"https://raw.githubusercontent.com/fangqiuming/FTools/test/FTools/TestResponse";
         self.requestSerializer = [AFHTTPRequestSerializer serializer];
+        self.requestMethod = @"POST";
+        self.requestSerializer.timeoutInterval = 10;
         self.responseSerializer = [AFJSONResponseSerializer serializer];
         self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
-        self.request = [self.requestSerializer requestWithMethod:@"POST" URLString:self.url parameters:self.params error:nil];
-    }
+        [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+            self.networkStatus = status;
+        }];
+        }
     return self;
 }
 
 - (void)launchRequestWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock
 {
+    self.rawData = nil;
+    NSURLRequest *request = [self.requestSerializer requestWithMethod:self.requestMethod URLString:self.url parameters:self.params error:nil];
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.responseSerializer = self.responseSerializer;
-    @weakify(self);
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:self.request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        @strongify(self);
+    //@weakify(self);
+    self.task = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        //@strongify(self);
         if (error) {
-            NSLog(@"API MANAGER DID FAIL");
+            NSLog(@"API MANAGER DID FAIL: %@", error);
+            [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
             failureBlock(error);
         } else {
-            NSLog(@"API MANAGER DID SUCCEED");
             self.rawData = responseObject;
+            NSLog(@"API MANAGER DID SUCCEED");
+            //NSLog(@"%@",responseObject);
+            [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
             successBlock(responseObject);
         }
     }];
-    [dataTask resume];
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [self.task resume];
 }
 
-- (void)launchWithSuccess:(void(^)(id responseObject))successBlock failure:(void(^)(NSError *error))failureBlock
+- (void)cancel
 {
-    //Do nothing.
+    [self.task cancel];
 }
 
 - (void)dealloc
 {
+    [self.task cancel];
     NSLog(@"[%@ APIMANAGER DEALLOCING]", self);
 }
 

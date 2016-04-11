@@ -26,6 +26,9 @@
 
 - (void)viewDidLoad
 {
+    [self returnBack];
+    self.navigationItem.titleView=[self returnTitle:@"个人资料"];
+    
     self.usernameTextField.placeholder = @"1111111";
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];
 }

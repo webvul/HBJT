@@ -8,6 +8,6 @@
 
 #import "EJFramework.h"
 
-@interface EJMatterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface EJMatterViewController : ParentViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

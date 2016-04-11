@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EJWebViewController : UIViewController
+@interface EJWebViewController : ParentViewController
 
 @end

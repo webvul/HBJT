@@ -22,6 +22,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *agreeLabelButton;
 @property (strong, nonatomic) IBOutlet UIButton *agreeButton;
 @property (strong, nonatomic) EJRegisterViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) MBProgressHUD *hub;
 @end
 
@@ -29,6 +30,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self returnBack];
+    self.navigationItem.titleView = [self returnTitle:@"用户注册"];
+    self.scrollView.scrollEnabled = (self.view.frame.size.height < 500);
     // Do any additional setup after loading the view.
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];
 }

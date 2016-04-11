@@ -19,29 +19,51 @@
 {
     self = [super init];
     if (self) {
-        [self modulate];
+        [self autoStart];
     }
     return self;
 }
 
-- (void)startWithSender:(id)sender
+- (void)autoStart
 {
     
 }
 
-- (void)modulate
+- (void)start
 {
-
+    NSAssert(YES, @"必须同时重写start和stop方法");
+    [self stop];
 }
 
-- (void)didReceiveMemoryWarning
+- (void)connect
 {
-    
+    self.isConnected = YES;
+}
+
+- (void)disconnect
+{
+    self.isConnected = NO;
+}
+
+- (void)stop
+{
+    NSAssert(YES, @"必须同时重写start和stop方法");
+    [self start];
 }
 
 - (void)dealloc
 {
-    NSLog(@"[%@ VIEWMODEL DEALLOCING]",self);
+    NSLog(@"%@ VIEWMODEL DEALLOCING",[self class]);
+}
+
+- (RACSignal *)networkHintSignal
+{
+    if (_networkHintSignal == nil) {
+        _networkHintSignal = [[RACObserve(self, isNetworkProceed) merge:RACObserve(self, networkHintText)] filter:^BOOL(id value) {
+            return _isConnected;
+        }];
+    }
+    return _networkHintSignal;
 }
 
 

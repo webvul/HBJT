@@ -8,6 +8,6 @@
 
 #import "EJFramework.h"
 
-@interface EJChangePasswordViewController : UIViewController
+@interface EJChangePasswordViewController : ParentViewController
 
 @end

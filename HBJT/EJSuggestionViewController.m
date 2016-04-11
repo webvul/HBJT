@@ -15,6 +15,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *commitButton;
 @property (strong, nonatomic) IBOutlet UITextField *suggestionTextField;
 @property (strong, nonatomic) EJSuggestionViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextView *suggestionTextView;
 @property (strong, nonatomic) MBProgressHUD *hub;
 
 @end
@@ -24,9 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = (self.isLetter?@"我的留言":@"审批建议");
+    
+    [self returnBack];
+    self.navigationItem.titleView=[self returnTitle:(self.isLetter?@"我的留言":@"审批建议")];
+    self.scrollView.scrollEnabled = (self.view.frame.size.height < 500);
+
     self.suggestLabel.text = (self.isLetter?@"留言内容":@"建议内容");
     self.suggestionTextField.placeholder = (self.isLetter?@"请输入您的留言":@"请输入建议内容");
+    [self bindViewModel];
 }
 
 - (void)bindViewModelToUpdate
@@ -34,6 +41,7 @@
     [[self.commitButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.viewModel suggest];
     }];
+    RAC(self.viewModel, suggestionText) = [self.suggestionTextView rac_textSignal];
 }
 
 - (void)bindViewModelForNotice

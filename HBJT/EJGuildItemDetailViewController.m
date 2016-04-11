@@ -32,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self returnBack];
+    self.navigationItem.titleView=[self returnTitle:@"办事指南"];
 }
 
 - (void)viewWillAppear:(BOOL)animated

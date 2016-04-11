@@ -8,6 +8,6 @@
 
 #import "EJFramework.h"
 
-@interface EJSuggestionViewController : UIViewController
+@interface EJSuggestionViewController : ParentViewController
 
 @end

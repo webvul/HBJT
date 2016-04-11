@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad
 {
+    [self returnBack];
+    
     [self bindViewModel];
     //[self createLayoutConstraints];
 }
@@ -91,6 +93,10 @@
 {
     if ([sender isKindOfClass:[NSNumber class]]) {
         self.viewModel.section = [sender integerValue];
+        
+        NSArray *titleArray = @[@"我的草稿件",@"我的待审件",@"我的受理件",@"我的退回件",@"我的已办件",@"我的评议件"];
+        self.navigationItem.titleView=[self returnTitle:titleArray[[sender integerValue]]];
+        
     }
 }
 
