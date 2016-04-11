@@ -18,7 +18,6 @@
 		F731A4E01CA0DBFF00A0A2A5 /* EJGuildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F731A4DF1CA0DBFF00A0A2A5 /* EJGuildViewController.m */; };
 		F731A4E61CA0DCFD00A0A2A5 /* EJGuildViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F731A4E51CA0DCFD00A0A2A5 /* EJGuildViewModel.m */; };
 		F731A4E91CA0E02B00A0A2A5 /* EJAreaListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F731A4E81CA0E02B00A0A2A5 /* EJAreaListAPIManager.m */; };
-		F731A98D1CB64E3F00E31D6D /* ParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F731A98B1CB64E3F00E31D6D /* ParentViewController.m */; };
 		F734D27B1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */; };
 		F73ED97E1C979E74006AF2A0 /* FTViewModel+EJSAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F73ED97D1C979E74006AF2A0 /* FTViewModel+EJSAPIManager.m */; };
 		F73ED98B1C97B813006AF2A0 /* EJNewsPictureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F73ED98A1C97B813006AF2A0 /* EJNewsPictureTableViewCell.m */; };
@@ -38,6 +37,7 @@
 		F79662021CAA1BBF00C92174 /* EJPasswordRetrieveViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F79662011CAA1BBF00C92174 /* EJPasswordRetrieveViewModel.m */; };
 		F79662051CAA29CA00C92174 /* EJResultsListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F79662041CAA29CA00C92174 /* EJResultsListAPIManager.m */; };
 		F796620B1CAA2B8C00C92174 /* EJProgressListAPIManger.m in Sources */ = {isa = PBXBuildFile; fileRef = F796620A1CAA2B8C00C92174 /* EJProgressListAPIManger.m */; };
+		F7A2BBFF1CBB820A00235F1A /* ParentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */; };
 		F7A5B8E61C895CBC00672967 /* EJRegisterAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A5B8E51C895CBC00672967 /* EJRegisterAPIManager.m */; };
 		F7A5B8E91C8969F600672967 /* EJRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7A5B8E81C8969F600672967 /* EJRegisterViewController.m */; };
 		F7A67E671CA3DE5D00A64DE1 /* GuildDistrictButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7A67E661CA3DE5D00A64DE1 /* GuildDistrictButton.xib */; };
@@ -125,8 +125,6 @@
 		F731A4E51CA0DCFD00A0A2A5 /* EJGuildViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJGuildViewModel.m; sourceTree = "<group>"; };
 		F731A4E71CA0E02B00A0A2A5 /* EJAreaListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJAreaListAPIManager.h; sourceTree = "<group>"; };
 		F731A4E81CA0E02B00A0A2A5 /* EJAreaListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJAreaListAPIManager.m; sourceTree = "<group>"; };
-		F731A98B1CB64E3F00E31D6D /* ParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParentViewController.m; path = HBJT/ParentViewController.m; sourceTree = "<group>"; };
-		F731A98C1CB64E3F00E31D6D /* ParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParentViewController.h; path = HBJT/ParentViewController.h; sourceTree = "<group>"; };
 		F734D2791C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTKeyboardTapGestureRecognizer.h; sourceTree = "<group>"; };
 		F734D27A1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTKeyboardTapGestureRecognizer.m; sourceTree = "<group>"; };
 		F73ED97C1C979E74006AF2A0 /* FTViewModel+EJSAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FTViewModel+EJSAPIManager.h"; path = "HBJT/FTViewModel+EJSAPIManager.h"; sourceTree = SOURCE_ROOT; };
@@ -164,6 +162,8 @@
 		F79662041CAA29CA00C92174 /* EJResultsListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJResultsListAPIManager.m; sourceTree = "<group>"; };
 		F79662091CAA2B8C00C92174 /* EJProgressListAPIManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJProgressListAPIManger.h; sourceTree = "<group>"; };
 		F796620A1CAA2B8C00C92174 /* EJProgressListAPIManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJProgressListAPIManger.m; sourceTree = "<group>"; };
+		F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParentViewController.m; sourceTree = "<group>"; };
+		F7A2BBFE1CBB820A00235F1A /* ParentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParentViewController.h; sourceTree = "<group>"; };
 		F7A5B8E41C895CBC00672967 /* EJRegisterAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJRegisterAPIManager.h; sourceTree = "<group>"; };
 		F7A5B8E51C895CBC00672967 /* EJRegisterAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJRegisterAPIManager.m; sourceTree = "<group>"; };
 		F7A5B8E71C8969F600672967 /* EJRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJRegisterViewController.h; sourceTree = "<group>"; };
@@ -519,8 +519,6 @@
 		F7DFF9051C7D595500A24DB5 = {
 			isa = PBXGroup;
 			children = (
-				F731A98B1CB64E3F00E31D6D /* ParentViewController.m */,
-				F731A98C1CB64E3F00E31D6D /* ParentViewController.h */,
 				F7DFF92D1C7D74EF00A24DB5 /* HBJT */,
 				F7C14FC71C84224600779833 /* EJFramework.h */,
 				F7DFF9301C7D74EF00A24DB5 /* Assets.xcassets */,
@@ -545,6 +543,8 @@
 		F7DFF92D1C7D74EF00A24DB5 /* HBJT */ = {
 			isa = PBXGroup;
 			children = (
+				F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */,
+				F7A2BBFE1CBB820A00235F1A /* ParentViewController.h */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
 				F73ED97B1C979D73006AF2A0 /* EJSuggestion */,
@@ -771,7 +771,7 @@
 			files = (
 				F7AF7BC61CA9040D001814E5 /* EJNewsDetailViewModel.m in Sources */,
 				F79084EC1CA5382900E48E2C /* EJGuildItemViewModel.m in Sources */,
-				F731A98D1CB64E3F00E31D6D /* ParentViewController.m in Sources */,
+				F7A2BBFF1CBB820A00235F1A /* ParentViewController.m in Sources */,
 				F7A67E6C1CA40B6C00A64DE1 /* EJSectionListAPIManager.m in Sources */,
 				F7C159721C858B4200779833 /* EJIndexViewController.m in Sources */,
 				F7AB54831CAD04A700114DD1 /* EJWebViewController.m in Sources */,
