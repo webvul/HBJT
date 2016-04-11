@@ -10,6 +10,15 @@
 #import "EJResultDetailViewModel.h"
 
 @interface EJResultDetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *resultNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultSubmitDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultEstimateTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultProposerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultStepLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultAcceptDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *resultSourceLabel;
 
 @property (strong, nonatomic) EJResultDetailViewModel *viewModel;
 
@@ -40,22 +49,23 @@
 
 - (void)bindViewModelForNotice
 {
-    self.viewModel.networkHintSignal subscribeNext:^(id x) {
+    [self.viewModel.networkHintSignal subscribeNext:^(id x) {
         if ([x isKindOfClass:[NSString class]]) {
             if ([x isEqualToString:@"事项获取成功"]) {
-                self.
-                [self transferNonull:@"extItemname" named:@"resultName"];
-                [self transferNonull:@"createTime" named:@"resultSubmitDate"];
-                [self transferNonull:@"leftDateNumber" named:@"resultEstimateTime"];
-                [self transferNonull:@"extCode" named:@"resultNumber"];
-                [self transferNonull:@"extUsername" named:@"resultProposer"];
-                [self transferNonull:@"flowStatus" named:@"resultStep"];
-                [self transferNonull:@"completeStatus" named:@"result"];
-                [self transferNonull:@"acceptTime" named:@"resultAcceptDate"];
+                NSLog(@"%@",self.viewModel.data);
+                self.resultNameLabel.text = [self.viewModel.data objectForKey:@"resultName"];
+                self.resultSubmitDateLabel.text = [self.viewModel.data objectForKey:@"resultSubmitDate"];
+                self.resultEstimateTimeLabel.text = [self.viewModel.data objectForKey:@"resultEstimateTime"];
+                self.resultNameLabel.text = [self.viewModel.data objectForKey:@"resultNumber"];
 
+                self.resultProposerLabel.text = [self.viewModel.data objectForKey:@"resultProposer"];
+
+                self.resultStepLabel.text = [self.viewModel.data objectForKey:@"resultStep"];
+                self.resultLabel.text = [self.viewModel.data objectForKey:@"result"];
+                self.resultAcceptDateLabel.text = [self.viewModel.data objectForKey:@"resultAcceptDate"];
             }
         }
-    }
+    }];
 }
 
 - (EJResultDetailViewModel *)viewModel

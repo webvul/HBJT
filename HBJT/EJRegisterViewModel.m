@@ -73,7 +73,7 @@
         self.registerHintText = @"密码格式不正确";
         self.isRegisterProceed = NO;
         return;
-    }/*
+    }
     if (![self.confirmText isEqualToString:self.passwordText]) {
         self.registerHintText = @"密码两次输入不一致";
         self.isRegisterProceed = NO;
@@ -104,7 +104,7 @@
         self.registerHintText = @"请确认同意用户协议";
         self.isRegisterProceed = NO;
         return;
-    }*/
+    }
     self.validateUsernameAPIManager = [[EJValidateUsernameAPIManager alloc]initWithUsername:self.usernameText];
     self.registerAPIManager = [[EJRegisterAPIManager alloc] initWithUsername:self.usernameText password:self.passwordText name:self.nameText number:self.numberText phone:self.phoneText address:self.addressText];
     @weakify(self);

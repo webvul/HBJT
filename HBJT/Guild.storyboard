@@ -1140,6 +1140,17 @@
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="resultAcceptDateLabel" destination="bL4-K9-2kE" id="5g2-57-m46"/>
+                        <outlet property="resultEstimateTimeLabel" destination="QxZ-97-dx2" id="QrL-xx-lfK"/>
+                        <outlet property="resultLabel" destination="EkT-Qr-ls1" id="czT-ir-SAo"/>
+                        <outlet property="resultNameLabel" destination="FEM-s0-qeO" id="cRV-75-TWW"/>
+                        <outlet property="resultNumberLabel" destination="7Fa-X6-yoz" id="0ip-SD-kVd"/>
+                        <outlet property="resultProposerLabel" destination="oZN-vR-Vca" id="rEn-P2-IpY"/>
+                        <outlet property="resultSourceLabel" destination="e1D-cl-Vy1" id="zz1-QE-NBI"/>
+                        <outlet property="resultStepLabel" destination="Zc0-3y-gEF" id="yMZ-mW-u1a"/>
+                        <outlet property="resultSubmitDateLabel" destination="xad-4y-mYX" id="8jl-2r-UnD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="81l-rq-KFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

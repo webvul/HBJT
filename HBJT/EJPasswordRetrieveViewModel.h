@@ -6,8 +6,18 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "FTViewModel.h"
+#import "EJFramework.h"
 
 @interface EJPasswordRetrieveViewModel : FTViewModel
+
+@property (nonatomic, strong) NSString *usernameText;
+@property (nonatomic, strong) NSString *phoneNumberText;
+@property (nonatomic, strong) NSString *passwordText;
+@property (nonatomic, strong) NSString *repeatPasswordText;
+@property (strong, nonatomic) NSString *codeText;
+
+
+- (void)verifyPhone;
+- (void)retrievePassword;
 
 @end

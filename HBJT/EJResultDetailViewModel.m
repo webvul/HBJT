@@ -55,8 +55,8 @@
         self.isNetworkProceed = NO;
     } completed:^{
         @strongify(self);
-        self.networkHintText = self.resultAPIManager.statusDescription;
         self.data = self.resultAPIManager.data;
+        self.networkHintText = self.resultAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     }];
 }

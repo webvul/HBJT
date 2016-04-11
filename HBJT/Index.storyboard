@@ -454,7 +454,7 @@
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GIT-GM-eaZ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -462,7 +462,7 @@
                             <constraint firstItem="9HO-Ct-1lI" firstAttribute="top" secondItem="GIT-GM-eaZ" secondAttribute="bottom" id="Edy-Xc-F36"/>
                             <constraint firstAttribute="trailing" secondItem="GIT-GM-eaZ" secondAttribute="trailing" id="dwK-Kf-uVt"/>
                             <constraint firstItem="GIT-GM-eaZ" firstAttribute="leading" secondItem="jyw-zT-5Xo" secondAttribute="leading" id="uUE-db-1PH"/>
-                            <constraint firstItem="GIT-GM-eaZ" firstAttribute="top" secondItem="Koc-On-wQf" secondAttribute="bottom" id="ulN-fA-MnT"/>
+                            <constraint firstItem="GIT-GM-eaZ" firstAttribute="top" secondItem="Koc-On-wQf" secondAttribute="bottom" priority="250" id="ulN-fA-MnT"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

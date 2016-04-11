@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSURLRequest *webRequest;
+@property (assign, nonatomic) CGFloat webViewOffset;
 
 @end
 
@@ -26,6 +27,11 @@
     self.webRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
     NSLog(@"%@",self.webRequest);
     [self.webView loadRequest:self.webRequest];
+    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(self.webViewOffset+64);
+        NSLog(@"%@",@(self.webViewOffset+64));
+    }];
+    self.webView.scrollView.bounces = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,6 +45,7 @@
     if ([sender isKindOfClass:[NSDictionary class]]) {
         self.url = [sender objectForKey:@"url"];
         self.title = [sender objectForKey:@"title"];
+        self.webViewOffset = [[sender objectForKey:@"offset"] floatValue];
     }
 }
 

@@ -238,7 +238,7 @@ CGFloat scrollViewOffsetx;
         @strongify(appDelegate);
         UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
         NSString *url = [[EJSNetwork urlList] objectForKey:kEJSNetworkAPINameTraffic];
-        [self prepareViewController:viewController withSender:@{@"title":@"动态路况",@"url":url}];
+        [self prepareViewController:viewController withSender:@{@"title":@"动态路况",@"url":url,@"offset":@(-50)}];
         [appDelegate push:viewController];
     }];
     [[self.button6 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

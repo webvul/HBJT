@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w6T-l9-I1t">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="w6T-l9-I1t">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--Login Table View Controller-->
@@ -372,7 +372,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="confrimTextField" destination="73u-aY-sgf" id="LBr-KR-HMZ"/>
+                        <outlet property="confirmTextField" destination="73u-aY-sgf" id="gXT-gm-6Kv"/>
                         <outlet property="passwordRetrieveButton" destination="F97-uq-bsk" id="f0U-Rc-wh5"/>
                         <outlet property="passwordTextField" destination="SzV-17-7lz" id="kZ1-13-gHf"/>
                         <outlet property="phoneNumberTextField" destination="dlJ-xi-ID3" id="zoB-e1-pdj"/>

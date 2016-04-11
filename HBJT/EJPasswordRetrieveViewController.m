@@ -7,6 +7,7 @@
 //
 
 #import "EJPasswordRetrieveViewController.h"
+#import "EJPasswordRetrieveViewModel.h"
 
 @interface EJPasswordRetrieveViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -17,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *confirmTextField;
 @property (weak, nonatomic) IBOutlet UIButton *passwordRetrieveButton;
 
+@property (strong, nonatomic) EJPasswordRetrieveViewModel *viewModel;
+@property (strong, nonatomic) MBProgressHUD *hub;
+
 @end
 
 @implementation EJPasswordRetrieveViewController
@@ -24,11 +28,52 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self bindViewModel];
+}
+
+- (void)bindViewModelToUpdate
+{
+    RAC(self.viewModel, usernameText) = self.usernameTextField.rac_textSignal;
+    RAC(self.viewModel, phoneNumberText) = self.phoneNumberTextField.rac_textSignal;
+    RAC(self.viewModel, codeText) = self.smsCodeTextField.rac_textSignal;
+    RAC(self.viewModel, passwordText) = self.passwordTextField.rac_textSignal;
+    RAC(self.viewModel, repeatPasswordText) = self.confirmTextField.rac_textSignal;
+    [[self.smsSenderButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.viewModel verifyPhone];
+    }];
+    [[self.passwordRetrieveButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.viewModel retrievePassword];
+    }];
+}
+
+- (void)bindViewModelForNotice
+{
+    @weakify(self);
+    [self.viewModel.networkHintSignal subscribeNext:^(id x) {
+        @strongify(self);
+        if ([x isKindOfClass:[NSString class]]) {
+            [self.hub setLabelText:x];
+        } else if ([x boolValue]) {
+            self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            [self.hub setYOffset:0];
+        } else {
+            [self.hub hide:YES afterDelay:1];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (EJPasswordRetrieveViewModel *)viewModel
+{
+    if (_viewModel == nil) {
+        _viewModel = [EJPasswordRetrieveViewModel viewModel];
+        [_viewModel connect];
+    }
+    return _viewModel;
 }
 
 /*
