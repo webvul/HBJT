@@ -88,7 +88,6 @@
 		F7DFF93E1C7D74EF00A24DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9301C7D74EF00A24DB5 /* Assets.xcassets */; };
 		F7DFF93F1C7D74EF00A24DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9311C7D74EF00A24DB5 /* LaunchScreen.storyboard */; };
 		F7DFF9401C7D74EF00A24DB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9331C7D74EF00A24DB5 /* Main.storyboard */; };
-		F7DFF9411C7D74EF00A24DB5 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9351C7D74EF00A24DB5 /* Info.plist */; };
 		F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DFF9361C7D74EF00A24DB5 /* main.m */; };
 		F7E1B40C1C99460700536C6C /* UIScrollView+HATFCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E1B40B1C99460700536C6C /* UIScrollView+HATFCarousel.m */; };
 		F7F8F9FC1C881A54008758BF /* EJSSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F8F9FB1C881A54008758BF /* EJSSet.m */; };
@@ -642,6 +641,7 @@
 				F7DFF90C1C7D595500A24DB5 /* Resources */,
 				996E26FD4FCC70481B768D34 /* Embed Pods Frameworks */,
 				94B26B06815CC2059AF01EFE /* Copy Pods Resources */,
+				F7A2BC001CBB848D00235F1A /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -658,7 +658,7 @@
 		F7DFF9061C7D595500A24DB5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = fangqiuming;
 				TargetAttributes = {
 					F7DFF90D1C7D595500A24DB5 = {
@@ -709,7 +709,6 @@
 				F73ED9901C97F7CC006AF2A0 /* News.storyboard in Resources */,
 				F7FE55451C91A480001C1F6B /* Matter.storyboard in Resources */,
 				F7FE551A1C91544C001C1F6B /* Userinfo.storyboard in Resources */,
-				F7DFF9411C7D74EF00A24DB5 /* Info.plist in Resources */,
 				F7A86D281C891731006D5F18 /* Logger.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +760,20 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		F7A2BC001CBB848D00235F1A /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\nif [ \"${CONFIGURATION}\" = \"Release\" ]; then\nbundleVersion=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"$INFOPLIST_FILE\")\ndate=$(date +%s)\ndate=$(expr $date - 1460000000)\ndate=$(echo $date|awk '{printf(\"%010d\\n\",$0)}')\ndate=${date:3:3}\nbuildNumber=${bundleVersion:4}\nbuildNumber=$(expr $buildNumber + 1)\nbuildNumber=$(echo $buildNumber|awk '{printf(\"%03d\\n\",$0)}')\nbuildVersion=${date}\"$buildNumber\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildVersion\" \"$INFOPLIST_FILE\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildVersion\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -962,7 +975,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = hbjt/Info.plist;
+				INFOPLIST_FILE = HBJT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1005,7 +1018,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = hbjt/Info.plist;
+				INFOPLIST_FILE = HBJT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

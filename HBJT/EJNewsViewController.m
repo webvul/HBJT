@@ -106,7 +106,11 @@
         [self.viewModel loadNextTab];
         [self.tableView1.mj_header beginRefreshing];
     }];
-    [self.tableView1.mj_header beginRefreshing];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.tableView1.mj_header beginRefreshing];
+        
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -243,7 +247,6 @@
             if (![x boolValue]) {
                 [self.tableView1.mj_header endRefreshing];
                 [self.tableView1.mj_footer endRefreshing];
-               
 
             } else
             {

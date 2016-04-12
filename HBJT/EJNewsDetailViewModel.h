@@ -20,5 +20,5 @@
 
 
 - (void)loadArticleDetail;
-
+- (void)laud;
 @end

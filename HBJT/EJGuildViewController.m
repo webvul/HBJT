@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSMutableArray *sectionButtonArray;
 @property (strong, nonatomic) MBProgressHUD *hub;
 @property (strong, nonatomic) EJGuildViewModel *viewModel;
+@property (assign, nonatomic) NSInteger retryTime;
 @end
 
 @implementation EJGuildViewController
@@ -48,6 +49,12 @@
     [self bindViewModel];
     [self.viewModel connect];
     [self.viewModel loadAreaList];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.retryTime = 0;
 }
 
 - (void)loadAreaScrollView
@@ -194,7 +201,10 @@
             {
                 if (self.viewModel.cityArray == nil && self.guildView.hidden == NO)
                 {
-                    [self.viewModel loadAreaList];
+                    self.retryTime ++;
+                    if (self.retryTime <= 3) {
+                        [self.viewModel loadAreaList];
+                    }
                 }
                 [self.tableView.mj_header endRefreshing];
             }

@@ -39,6 +39,21 @@
         }];
         return nil;
     }];
+    self.laudSiganl = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        [self.laudAPIManger launchRequestWithSuccess:^(id responseObject) {
+            if ([self.detailAPIManger newStatus]) {
+                [subscriber sendError:nil];
+            }
+            else
+            {
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendError:error];
+        }];
+        return nil;
+    }];
 }
 
 - (void)loadArticleDetail
@@ -52,10 +67,28 @@
         self.networkHintText = self.detailAPIManger.statusDescription;
         self.isNetworkProceed = NO;
     } completed:^{
+        @strongify(self);
+
         self.htmlString = [self.detailAPIManger.data objectForKey:@"htmlString"];
         self.networkHintText = self.detailAPIManger.statusDescription;
         self.isNetworkProceed = NO;
     }];
 }
 
+
+- (void)laud
+{
+    @weakify(self);
+    self.laudAPIManger = [[EJWebsiteArticleLaudAPIManager alloc] initWithArticleID:self.articleID];
+    self.isNetworkProceed = YES;
+    self.networkHintText = @"点赞中";
+    [self.laudSiganl subscribeError:^(NSError *error) {
+        @strongify(self);
+        self.networkHintText = self.detailAPIManger.statusDescription;
+        self.isNetworkProceed = NO;
+    } completed:^{
+        self.networkHintText = self.detailAPIManger.statusDescription;
+        self.isNetworkProceed = NO;
+    }];
+}
 @end

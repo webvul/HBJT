@@ -33,7 +33,7 @@
     [self.window makeKeyAndVisible];
     NSLog(@"App Launched");
     //[self fakeLogin];
-    //AppDelegate *delegate = [AppDelegate sharedDelegate];
+    [self registerNofitication];
     return YES;
 }
 
@@ -223,4 +223,11 @@
     }
     return _newsViewController;
 }
+
+#pragma mark - 腾讯信鸽
+
+- (void) registerNofitication {
+
+}
+
 @end

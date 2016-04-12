@@ -34,6 +34,7 @@
         [self.hub hide:YES afterDelay:1.0];
         self.laudLabel.text = [@([self.laudLabel.text integerValue]+1) stringValue];
         self.laudButton.enabled = NO;
+        [self.viewModel laud];
     }];
 }
 
@@ -77,6 +78,16 @@
             if ([x isEqualToString:@"读取成功"]) {
                 [self.webView loadHTMLString:self.viewModel.htmlString baseURL:nil];
             }
+        }
+    }];
+    [self.viewModel.networkHintSignal subscribeNext:^(id x) {
+        if ([x isKindOfClass:[NSString class]]) {
+            [self.hub setLabelText:x];
+        } else if ([x boolValue]) {
+            self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            //[self.hub setYOffset:-64];
+        } else {
+            [self.hub hide:YES afterDelay:1];
         }
     }];
 }
