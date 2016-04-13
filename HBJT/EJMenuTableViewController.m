@@ -128,20 +128,27 @@
         }
     }
     if (indexPath.section == 3) {
-        switch (indexPath.row) {
-            case 0:
-                [appDelegate closeDrawerNeedReopen:YES];
-                [appDelegate push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateInitialViewController]];
-                break;
-            case 1:
-                [appDelegate closeDrawerNeedReopen:YES];
-                [appDelegate push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateViewControllerWithIdentifier:@"password"]];
-                break;
-            case 2:
-                [appDelegate setCurrentUser:NO];
-                break;
-            default:
-                break;
+        if ([appDelegate currentUser] == NO) {
+            [appDelegate closeDrawerNeedReopen:NO];
+            [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
+        }
+        else
+        {
+            switch (indexPath.row) {
+                case 0:
+                    [appDelegate closeDrawerNeedReopen:YES];
+                    [appDelegate push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateInitialViewController]];
+                    break;
+                case 1:
+                    [appDelegate closeDrawerNeedReopen:YES];
+                    [appDelegate push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateViewControllerWithIdentifier:@"password"]];
+                    break;
+                case 2:
+                    [appDelegate setCurrentUser:NO];
+                    break;
+                default:
+                    break;
+            }
         }
     }
     
@@ -183,8 +190,6 @@
             self.loginLabelButton.hidden = YES;
             self.loginButton.enabled = NO;
             [self.usernameLabelButton setTitle:x forState:UIControlStateNormal];
-            self.passwordCell.hidden = NO;
-            self.userinfoCell.hidden = NO;
             self.logoutCell.hidden = NO;
         } else if (![x boolValue])
         {
@@ -192,8 +197,6 @@
             self.loginLabelButton.hidden = NO;
             self.loginButton.enabled = YES;
             [self.usernameLabelButton setTitle:@"" forState:UIControlStateNormal];
-            self.passwordCell.hidden = YES;
-            self.userinfoCell.hidden = YES;
             self.logoutCell.hidden = YES;
         }
     }];

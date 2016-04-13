@@ -53,10 +53,6 @@
     self.buttonArray = @[self.button0,self.button1,self.button2,self.button3,self.button4,self.button5];
     self.labelArray = @[self.buttonLabel0,self.buttonLabel1,self.buttonLabel2,self.buttonLabel3,self.buttonLabel4,self.buttonLabel5];
     @weakify(self);
-    self.tableView1.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        @strongify(self);
-        [self.viewModel reload];
-    }];
     self.tableView1.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         @strongify(self);
         [self.viewModel loadMore];
@@ -96,7 +92,7 @@
         [self.tableView0 reloadData];
         [self.tableView2 reloadData];
         [self.viewModel loadPreviousTab];
-        [self.tableView1.mj_header beginRefreshing];
+        [self.viewModel reload];
     } nextBlock:^(NSInteger index) {
         @strongify(self);
         self.previousDataSource = self.currentDataSource;
@@ -104,13 +100,10 @@
         [self.tableView0 reloadData];
         [self.tableView2 reloadData];
         [self.viewModel loadNextTab];
-        [self.tableView1.mj_header beginRefreshing];
+        [self.viewModel reload];
     }];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [self.tableView1.mj_header beginRefreshing];
-        
-    });
+    [self.viewModel reload];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -223,7 +216,7 @@
             }
             else
             {
-                [self.tableView1.mj_header beginRefreshing];
+                [self.viewModel reload];
             }
             //[self.viewModel reload];
         }];
@@ -245,7 +238,6 @@
         } else
         {
             if (![x boolValue]) {
-                [self.tableView1.mj_header endRefreshing];
                 [self.tableView1.mj_footer endRefreshing];
 
             } else

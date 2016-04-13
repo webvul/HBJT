@@ -67,6 +67,9 @@
 		F7AF7BC61CA9040D001814E5 /* EJNewsDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF7BC51CA9040D001814E5 /* EJNewsDetailViewModel.m */; };
 		F7AF7BC91CA90535001814E5 /* EJWebsiteArticleDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF7BC81CA90535001814E5 /* EJWebsiteArticleDetailAPIManager.m */; };
 		F7AF7BCC1CA90558001814E5 /* EJWebsiteArticleLaudAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF7BCB1CA90558001814E5 /* EJWebsiteArticleLaudAPIManager.m */; };
+		F7B306A81CBDED8F00EFB0F5 /* EJFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306A71CBDED8F00EFB0F5 /* EJFollowViewController.m */; };
+		F7B306AC1CBDEDFF00EFB0F5 /* EJFollowViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */; };
+		F7B306AF1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */; };
 		F7B9F7571CAE149A00A48158 /* EJResultDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7561CAE149A00A48158 /* EJResultDetailAPIManager.m */; };
 		F7B9F75A1CAE14B700A48158 /* EJProgressDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7591CAE14B700A48158 /* EJProgressDetailAPIManager.m */; };
 		F7B9F75D1CAE189C00A48158 /* EJResultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F75C1CAE189C00A48158 /* EJResultDetailViewController.m */; };
@@ -219,6 +222,12 @@
 		F7AF7BC81CA90535001814E5 /* EJWebsiteArticleDetailAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJWebsiteArticleDetailAPIManager.m; sourceTree = "<group>"; };
 		F7AF7BCA1CA90558001814E5 /* EJWebsiteArticleLaudAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJWebsiteArticleLaudAPIManager.h; sourceTree = "<group>"; };
 		F7AF7BCB1CA90558001814E5 /* EJWebsiteArticleLaudAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJWebsiteArticleLaudAPIManager.m; sourceTree = "<group>"; };
+		F7B306A61CBDED8F00EFB0F5 /* EJFollowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJFollowViewController.h; sourceTree = "<group>"; };
+		F7B306A71CBDED8F00EFB0F5 /* EJFollowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowViewController.m; sourceTree = "<group>"; };
+		F7B306AA1CBDEDFF00EFB0F5 /* EJFollowViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJFollowViewModel.h; sourceTree = "<group>"; };
+		F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowViewModel.m; sourceTree = "<group>"; };
+		F7B306AD1CBDEE1800EFB0F5 /* EJFollowListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJFollowListAPIManager.h; sourceTree = "<group>"; };
+		F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowListAPIManager.m; sourceTree = "<group>"; };
 		F7B9F7551CAE149A00A48158 /* EJResultDetailAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJResultDetailAPIManager.h; sourceTree = "<group>"; };
 		F7B9F7561CAE149A00A48158 /* EJResultDetailAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJResultDetailAPIManager.m; sourceTree = "<group>"; };
 		F7B9F7581CAE14B700A48158 /* EJProgressDetailAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJProgressDetailAPIManager.h; sourceTree = "<group>"; };
@@ -264,7 +273,6 @@
 		F7DFF9361C7D74EF00A24DB5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HBJT/main.m; sourceTree = "<group>"; };
 		F7E1B40A1C99460700536C6C /* UIScrollView+HATFCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HATFCarousel.h"; sourceTree = "<group>"; };
 		F7E1B40B1C99460700536C6C /* UIScrollView+HATFCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HATFCarousel.m"; sourceTree = "<group>"; };
-		F7F8F9F41C88128F008758BF /* app服务接口信息0301.xlsx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "app服务接口信息0301.xlsx"; sourceTree = "<group>"; };
 		F7F8F9FA1C881A53008758BF /* EJSSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSSet.h; sourceTree = "<group>"; };
 		F7F8F9FB1C881A54008758BF /* EJSSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSSet.m; sourceTree = "<group>"; };
 		F7FE55191C91544C001C1F6B /* Userinfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Userinfo.storyboard; sourceTree = "<group>"; };
@@ -415,7 +423,6 @@
 		F77333AC1C7D974E00E2FD20 /* EJS */ = {
 			isa = PBXGroup;
 			children = (
-				F7F8F9F41C88128F008758BF /* app服务接口信息0301.xlsx */,
 				F7C14FE51C853BE700779833 /* EJS.h */,
 				F7F8F9FA1C881A53008758BF /* EJSSet.h */,
 				F7F8F9FB1C881A54008758BF /* EJSSet.m */,
@@ -501,6 +508,19 @@
 			name = APIManager;
 			sourceTree = "<group>";
 		};
+		F7B306A91CBDED9700EFB0F5 /* EJFollow */ = {
+			isa = PBXGroup;
+			children = (
+				F7B306A61CBDED8F00EFB0F5 /* EJFollowViewController.h */,
+				F7B306A71CBDED8F00EFB0F5 /* EJFollowViewController.m */,
+				F7B306AA1CBDEDFF00EFB0F5 /* EJFollowViewModel.h */,
+				F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */,
+				F7B306AD1CBDEE1800EFB0F5 /* EJFollowListAPIManager.h */,
+				F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */,
+			);
+			name = EJFollow;
+			sourceTree = "<group>";
+		};
 		F7C1596C1C8580A900779833 /* FTFoundation */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +571,7 @@
 				F7FE552D1C919B6E001C1F6B /* EJMatter */,
 				F716BC661C86880100516DF4 /* EJIndex */,
 				F7F284A61C87EB6400027DF6 /* EJMenu */,
+				F7B306A91CBDED9700EFB0F5 /* EJFollow */,
 				F731A4DD1CA0DBBB00A0A2A5 /* EJGuild */,
 				F7A86D291C8917A3006D5F18 /* EJLogger */,
 				F7F284A71C87EB6E00027DF6 /* EJNews */,
@@ -821,6 +842,7 @@
 				F7FE551D1C9154E5001C1F6B /* EJModifyUserinfoViewController.m in Sources */,
 				F7DFF93D1C7D74EF00A24DB5 /* AppDelegate.m in Sources */,
 				F7FE55431C919FA7001C1F6B /* EJChangePasswordViewController.m in Sources */,
+				F7B306A81CBDED8F00EFB0F5 /* EJFollowViewController.m in Sources */,
 				F7AC66C01C8FFDA200BC8456 /* EJUserAgreementViewController.m in Sources */,
 				F7AB19001C8698F100723EC2 /* EJNewsViewController.m in Sources */,
 				F7AF7BCC1CA90558001814E5 /* EJWebsiteArticleLaudAPIManager.m in Sources */,
@@ -841,6 +863,7 @@
 				F7A86D351C891B2E006D5F18 /* EJLoginAPIManager.m in Sources */,
 				F7FE55231C9181FA001C1F6B /* EJChangePasswordAPIManager.m in Sources */,
 				F7C4C9771C9647F200C36129 /* EJNewsViewModel.m in Sources */,
+				F7B306AC1CBDEDFF00EFB0F5 /* EJFollowViewModel.m in Sources */,
 				F7AEC05E1C926CF6003DD341 /* EJMatterIndexTableViewController.m in Sources */,
 				F731A4E61CA0DCFD00A0A2A5 /* EJGuildViewModel.m in Sources */,
 				F716BC651C86872500516DF4 /* EJIndexViewModel.m in Sources */,
@@ -848,6 +871,7 @@
 				F7A86D441C89427B006D5F18 /* EJChangePasswordViewModel.m in Sources */,
 				F7A86D2F1C891997006D5F18 /* EJLoginViewModel.m in Sources */,
 				F7A86D321C891A79006D5F18 /* FTVerifier.m in Sources */,
+				F7B306AF1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m in Sources */,
 				F79662051CAA29CA00C92174 /* EJResultsListAPIManager.m in Sources */,
 				F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */,
 				F7B9F75D1CAE189C00A48158 /* EJResultDetailViewController.m in Sources */,
