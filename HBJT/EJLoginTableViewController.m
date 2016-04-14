@@ -12,6 +12,8 @@
 #import "EJLoginViewModel.h"
 
 @interface EJLoginTableViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet UIButton *forgetButton;
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UIView *usernameCell;
@@ -120,6 +122,12 @@
         return [value isEqualToString:@"登录成功"];
     }] delay:1] subscribeNext:^(id x) {
         [self.navigationController popToRootViewControllerAnimated:YES];
+    }];
+    [[self.registerButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil] instantiateViewControllerWithIdentifier:@"Register" ] animated:YES];
+    }];
+    [[self.forgetButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil] instantiateViewControllerWithIdentifier:@"Forget" ] animated:YES];
     }];
 }
 

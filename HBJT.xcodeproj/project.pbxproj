@@ -1030,7 +1030,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.whhuiyu.hbjt;
 				PRODUCT_NAME = HBJT;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4a6dbc4e-678a-4094-a25c-47754968fab6";
 			};
 			name = Debug;
 		};
@@ -1041,7 +1041,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				INFOPLIST_FILE = HBJT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1073,7 +1073,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.whhuiyu.hbjt;
 				PRODUCT_NAME = HBJT;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4a6dbc4e-678a-4094-a25c-47754968fab6";
 			};
 			name = Release;
 		};

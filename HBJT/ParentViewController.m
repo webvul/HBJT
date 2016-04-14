@@ -25,7 +25,7 @@
     leftBackBtn.frame=CGRectMake(0, 0, 50, 44);
     leftBackBtn.backgroundColor=[UIColor clearColor];
     
-    UIImageView *sizeTitleImg=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"02.fw"]];
+    UIImageView *sizeTitleImg=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"02"]];
     sizeTitleImg.frame=CGRectMake(5,10 ,24,24);
     [leftBackBtn  addSubview:sizeTitleImg];
     

@@ -12,7 +12,7 @@
 
 //Receiver
 @property (assign, nonatomic) NSInteger numberOfSrollViewPage;
-@property (assign, nonatomic) NSNumber *scrollViewOffset;
+@property (strong, nonatomic) NSNumber *scrollViewOffset;
 //Sender
 @property (strong, nonatomic) RACSignal *pageIndicatorTintSignal;
 @property (strong, nonatomic) RACSignal *scrollViewRotateSignal;

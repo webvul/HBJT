@@ -33,7 +33,6 @@
     
     [self returnBack];
     self.navigationItem.titleView = [self returnTitle:@"用户注册"];
-    self.scrollView.scrollEnabled = (self.view.frame.size.height < 500);
     // Do any additional setup after loading the view.
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];
 }
@@ -42,6 +41,9 @@
 {
     [super viewWillAppear:animated];
     [self.viewModel connect];
+    self.scrollView.scrollEnabled = (self.view.frame.size.height < 500);
+    NSLog(@"%f,%d",self.view.frame.size.height,self.scrollView.scrollEnabled);
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -52,7 +54,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    self.viewModel = nil;
 }
 
 #pragma mark - Reactive Methods
@@ -79,7 +80,7 @@
 - (void)bindViewModelForNotice
 {
     [self.viewModel.userAgreedSingal subscribeNext:^(id x) {
-        self.agreeLabelButton.imageView.image = [UIImage imageNamed:([x boolValue]?@"06.fw":@"05.fw")];
+        self.agreeLabelButton.imageView.image = [UIImage imageNamed:([x boolValue]?@"06":@"05")];
     }];
     [self.viewModel.registerHintSignal subscribeNext:^(id x) {
         if ([x isKindOfClass:[NSString class]]) {

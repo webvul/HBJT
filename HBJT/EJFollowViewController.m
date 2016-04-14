@@ -10,6 +10,8 @@
 
 @interface EJFollowViewController ()
 
+@property (strong, nonatomic) NSString *string;
+
 @end
 
 @implementation EJFollowViewController
@@ -17,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)bind
+{
+    self.string;
 }
 
 - (void)didReceiveMemoryWarning {

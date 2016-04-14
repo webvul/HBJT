@@ -54,7 +54,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="2Wy-sm-KJM" secondAttribute="height" multiplier="1:1" id="Ava-di-SxH"/>
                                 </constraints>
-                                <state key="normal" image="02a.fw"/>
+                                <state key="normal" image="02a"/>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="001_r2_c1" translatesAutoresizingMaskIntoConstraints="NO" id="11i-aw-9Ay" userLabel="页眉文字">
                                 <rect key="frame" x="109" y="83" width="156" height="20"/>
@@ -478,7 +478,7 @@
     <resources>
         <image name="001" width="320" height="94"/>
         <image name="001_r2_c1" width="134" height="16"/>
-        <image name="02a.fw" width="24" height="24"/>
+        <image name="02a" width="300" height="35"/>
         <image name="0a_r1_c1" width="65" height="64"/>
         <image name="0a_r1_c3" width="65" height="64"/>
         <image name="0a_r1_c5" width="65" height="64"/>
