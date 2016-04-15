@@ -12,8 +12,10 @@
 
 @interface EJGuildItemTableViewController ()
 
+@property (strong, nonatomic) IBOutlet UILabel *mainLabel;
 @property (nonatomic, strong) EJGuildItemViewModel *viewModel;
 @property (nonatomic, strong) MBProgressHUD *hub;
+@property (strong, nonatomic) NSString *labelTitle;
 
 
 @end
@@ -26,12 +28,14 @@
     // Do any additional setup after loading the view.
     self.navigationItem.titleView=[self returnTitle:@"办事指南"];
     [self returnBack];
+    self.mainLabel.text = self.labelTitle;
 }
 
 - (void)preparedWithSender:(id)sender
 {
-    if ([sender isKindOfClass:[NSString class]]) {
-        self.viewModel.primaryItemIDString = sender;
+    if ([sender isKindOfClass:[NSDictionary class]]) {
+        self.viewModel.primaryItemIDString = [sender objectForKey:@"id"];
+        self.labelTitle = [NSString stringWithFormat:@"  %@",[sender objectForKey:@"name"]];
     }
 }
 
@@ -141,4 +145,6 @@
 -(void)goBack{
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 @end

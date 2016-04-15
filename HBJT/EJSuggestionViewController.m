@@ -70,6 +70,15 @@
     }
 }
 
+- (EJSuggestionViewModel *)viewModel
+{
+    if (_viewModel == nil) {
+        _viewModel = [EJSuggestionViewModel viewModel];
+        [_viewModel connect];
+    }
+    return _viewModel;
+}
+
 /*
 #pragma mark - Navigation
 

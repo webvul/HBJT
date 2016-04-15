@@ -562,8 +562,8 @@
 		F7DFF92D1C7D74EF00A24DB5 /* HBJT */ = {
 			isa = PBXGroup;
 			children = (
-				F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */,
 				F7A2BBFE1CBB820A00235F1A /* ParentViewController.h */,
+				F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
 				F73ED97B1C979D73006AF2A0 /* EJSuggestion */,

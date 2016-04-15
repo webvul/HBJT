@@ -56,11 +56,10 @@
     self.isModifyUserinfoProceed = YES;
     self.modifyUserinfoHintText = @"正在修改";
     AppDelegate *delegate = [AppDelegate sharedDelegate];
-    NSString *number = [[NSString alloc]init];
     NSString *name = [NSString stringWithString:([self.nameText isEqualToString:@""]?
                       [delegate userNameString]:
                       self.nameText)];
-    number = ([self.numberText isEqualToString:@""]?
+    NSString *number = ([self.numberText isEqualToString:@""]?
                         [delegate userNumberString]:
                         self.numberText);
     NSString *phone = ([self.phoneText isEqualToString:@""]?

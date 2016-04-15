@@ -15,9 +15,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *itemImplementOfficeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemUndertakeOfficeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemParticipateOfficeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *itemLegalLabel;
-@property (weak, nonatomic) IBOutlet UILabel *itemTermLabel;
-@property (weak, nonatomic) IBOutlet UILabel *itemDocumentLabel;
+@property (weak, nonatomic) IBOutlet UIWebView *itemLegalLabel;
+@property (weak, nonatomic) IBOutlet UIWebView *itemTermLabel;
+@property (weak, nonatomic) IBOutlet UIWebView *itemDocumentLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemLocationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemConsultationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *itemComplaintLabel;
@@ -64,9 +64,17 @@
     RAC(self, itemImplementOfficeLabel.text) = RACObserve(self.viewModel, itemImplementOffice);
     RAC(self, itemUndertakeOfficeLabel.text) = RACObserve(self.viewModel, itemUndertakeOffice);
     RAC(self, itemParticipateOfficeLabel.text) = RACObserve(self.viewModel, itemParticipateOffice);
-    RAC(self, itemLegalLabel.text) = RACObserve(self.viewModel, itemLegal);
-    RAC(self, itemTermLabel.text) = RACObserve(self.viewModel, itemTerm);
-    RAC(self, itemDocumentLabel.text) = RACObserve(self.viewModel, itemDocument);
+
+    [RACObserve(self.viewModel, itemLegal) subscribeNext:^(id x) {
+        [self.itemLegalLabel loadHTMLString:x baseURL:nil];
+    }];
+    [RACObserve(self.viewModel, itemTerm) subscribeNext:^(id x) {
+        [self.itemTermLabel loadHTMLString:x baseURL:nil];
+    }];
+    [RACObserve(self.viewModel, itemDocument) subscribeNext:^(id x) {
+        [self.itemDocumentLabel loadHTMLString:x baseURL:nil];
+    }];
+    
     RAC(self, itemLocationLabel.text) = RACObserve(self.viewModel, itemLocation);
     RAC(self, itemConsultationLabel.text) = RACObserve(self.viewModel, itemConsultation);
     RAC(self, itemComplaintLabel.text) = RACObserve(self.viewModel, itemComplaint);

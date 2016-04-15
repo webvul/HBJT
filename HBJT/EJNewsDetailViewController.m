@@ -30,9 +30,6 @@
     self.navigationItem.titleView=[self returnTitle:@"资讯详情"];
     // Do any additional setup after loading the view.
     [[self.laudButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [self.hub hide:YES afterDelay:1.0];
-        self.laudLabel.text = [@([self.laudLabel.text integerValue]+1) stringValue];
         self.laudButton.enabled = NO;
         [self.viewModel laud];
     }];
@@ -72,11 +69,14 @@
 - (void)bindViewModelForNotice
 {
     //RAC(self, titleLabel.text) = RACObserve(self.viewModel, articleTitle);
-    [self.webView loadHTMLString:self.viewModel.htmlString baseURL:nil];
+    //[self.webView loadHTMLString:self.viewModel.htmlString baseURL:nil];
     [self.viewModel.networkHintSignal subscribeNext:^(id x) {
         if ([x isKindOfClass:[NSString class]]) {
             if ([x isEqualToString:@"读取成功"]) {
                 [self.webView loadHTMLString:self.viewModel.htmlString baseURL:nil];
+            }
+            if ([x isEqualToString:@"点赞成功"]) {
+                self.laudLabel.text = [@([self.laudLabel.text integerValue]+1) stringValue];
             }
         }
     }];

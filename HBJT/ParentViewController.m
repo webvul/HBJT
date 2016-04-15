@@ -19,7 +19,6 @@
 @implementation ParentViewController
 #pragma mark----------nav
 -(void)returnBack{
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     UIButton *leftBackBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     
     leftBackBtn.frame=CGRectMake(0, 0, 50, 44);
@@ -109,6 +108,13 @@
 -(void)sureButton{
     
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
 
 -(UILabel *)returnTitle:(NSString *)title{

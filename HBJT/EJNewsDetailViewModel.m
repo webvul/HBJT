@@ -87,7 +87,7 @@
         self.networkHintText = self.detailAPIManger.statusDescription;
         self.isNetworkProceed = NO;
     } completed:^{
-        self.networkHintText = self.detailAPIManger.statusDescription;
+        self.networkHintText = @"点赞成功";
         self.isNetworkProceed = NO;
     }];
 }

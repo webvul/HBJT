@@ -60,8 +60,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EJGuildItemTableViewController *tableViewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Item"];
-    [self prepareViewController:tableViewController withSender:[self.viewModel.itemList[indexPath.row] objectForKey:@"id"]];
-    NSLog(@"%@",self.navigationController);
+    NSString *itemid = [self.viewModel.itemList[indexPath.row] objectForKey:@"id"];
+    NSString *itemname = [self.viewModel.itemList[indexPath.row] objectForKey:@"itemname"];
+    [self prepareViewController:tableViewController withSender:@{@"id":itemid, @"name": itemname}];
     [self.navigationController pushViewController:tableViewController animated:YES];
 }
 

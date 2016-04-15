@@ -65,6 +65,17 @@
             [self.hub hide:YES afterDelay:1];
         }
     }];
+    [[RACObserve(self.viewModel, timeCount) map:^id(id value) {
+        if ([value integerValue]) {
+            return [NSString stringWithFormat:@"已发送(%tu)",[value integerValue]];
+        } else
+        {
+            return [NSString stringWithFormat:@"获取验证码"];
+
+        }
+    }] subscribeNext:^(id x) {
+        [self.smsSenderButton setTitle:x forState:UIControlStateNormal];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSString *passwordText;
 @property (nonatomic, strong) NSString *repeatPasswordText;
 @property (strong, nonatomic) NSString *codeText;
+@property (assign, nonatomic) NSInteger timeCount;
 
 
 - (void)verifyPhone;

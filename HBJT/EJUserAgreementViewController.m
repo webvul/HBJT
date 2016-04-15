@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     [self.textView setTextContainerInset:UIEdgeInsetsMake(0, 15, 0, 15)];
 }
 

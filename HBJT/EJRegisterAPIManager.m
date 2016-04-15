@@ -16,7 +16,7 @@
     self = [super initWith:kEJSNetworkAPINameRegister];
     if (self) {
         [self.params setObject:usernameText forKey:@"username"];
-        [self.params setObject:[EJSNetwork encryptedPassword:passwordText] forKey:@"password"];
+        [self.params setObject:passwordText forKey:@"password"];
         [self.params setObject:nameText forKey:@"realName"];
         [self.params setObject:numberText forKey:@"cardnum"];
         [self.params setObject:phoneText forKey:@"mobilephone"];

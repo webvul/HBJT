@@ -180,10 +180,11 @@
 
 - (void)push:(nonnull UIViewController *)viewController
 {
+    self.rootNavigationController.interactivePopGestureRecognizer.enabled = NO;
     [self toggleDrawerOpenGesture:NO];
     [self.rootNavigationController pushViewController:viewController animated:YES];
     [self.rootNavigationController setNavigationBarHidden:NO];
-
+    //self.rootNavigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (void)toggleDrawerOpenGesture:(BOOL)enbaled

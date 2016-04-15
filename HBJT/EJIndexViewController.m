@@ -28,6 +28,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *button8;
 @property (strong, nonatomic) IBOutlet UIButton *menuButton;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *label;
 
 @property (strong, nonatomic) UIButton *imageButton0;
 @property (strong, nonatomic) UIButton *imageButton1;
@@ -173,6 +174,7 @@ CGFloat scrollViewOffsetx;
         if ([x isKindOfClass:[NSString class]]) {
             if ([x isEqualToString:@"读取成功"]) {
                 self.captionLabel.hidden = NO;
+                self.label.hidden = NO;
                 [self.imageViewArray[0] sd_setImageWithURL:self.viewModel.picturesURLList[3] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
                 [self.imageViewArray[1] sd_setImageWithURL:self.viewModel.picturesURLList[0] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];
                 [self.imageViewArray[2] sd_setImageWithURL:self.viewModel.picturesURLList[1] placeholderImage:[UIImage imageNamed:@"PlaceHolder.jpg"]];

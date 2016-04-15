@@ -23,6 +23,9 @@
 @property (strong, nonatomic) NSString *code;
 
 
+
+
+
 @end
 
 @implementation EJPasswordRetrieveViewModel
@@ -62,10 +65,18 @@
         }];
         return nil;
     }];
+    [[RACSignal interval:1 onScheduler:[RACScheduler mainThreadScheduler]] subscribeNext:^(id x) {
+        if (self.timeCount > 0) {
+            self.timeCount --;
+        }
+    }];
 }
 
 - (void)verifyPhone
 {
+    if (self.timeCount > 0) {
+        return;
+    }
     self.isNetworkProceed = YES;
     self.networkHintText = @"正在发送请求";
     if (![FTVerifier verify:self.phoneNumberText withRegex:@"^1(3[0-9]|4[57]|5[0-35-9]|8[0-9]|70)\\d{8}$"]) {
@@ -74,6 +85,7 @@
         return;
     }
     self.phoneNumberAPIManager = [[EJVeriftyPhoneNumberAPIManager alloc] initWithPhoneNumber:self.phoneNumberText];
+    self.phoneNumber = self.phoneNumberText;
     [self.veriftySignal subscribeError:^(NSError *error) {
         self.networkHintText = self.phoneNumberAPIManager.statusDescription;
         self.isNetworkProceed = NO;
@@ -82,6 +94,7 @@
         self.phoneVerified = YES;
         self.networkHintText = self.phoneNumberAPIManager.statusDescription;
         self.isNetworkProceed = NO;
+        self.timeCount = 60;
     }];
 
 }

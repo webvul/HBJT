@@ -16,7 +16,7 @@
     self = [super initWith:kEJSNetworkAPINameLogin];
     if (self) {
         [self.params setObject:usernameText forKey:@"username"];
-        [self.params setObject:[EJSNetwork encryptedPassword:password] forKey:@"password"];
+        [self.params setObject:password forKey:@"password"];
     }
     return self;
 }

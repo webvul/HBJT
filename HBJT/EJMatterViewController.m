@@ -25,8 +25,8 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     [self returnBack];
-    
     [self bindViewModel];
     //[self createLayoutConstraints];
 }
@@ -40,6 +40,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     //self.dataSource = @[@{@"matterTitle":@"12"},@{@"matterTitle":@"11112"},@{@"matterTitle":@"122"}];
     [self.viewModel connect];
     [self.tableView.mj_header beginRefreshing];
