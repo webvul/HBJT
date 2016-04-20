@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self returnBack];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -29,7 +31,11 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.viewModel loadItemList];
     self.navigationItem.titleView=[self returnTitle:@"办事指南"];
-    [self returnBack];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -6,8 +6,8 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ParentViewController.h"
 
-@interface EJIndexViewController : UIViewController
+@interface EJIndexViewController : ParentViewController
 
 @end

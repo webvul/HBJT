@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     [self returnBack];
     self.navigationItem.titleView=[self returnTitle:@"我的办件"];
 }
@@ -65,6 +65,11 @@
     UIViewController *matterViewController = [[UIStoryboard storyboardWithName:@"Matter" bundle:nil] instantiateViewControllerWithIdentifier:@"matter"];
     [self prepareViewController:matterViewController withSender:@(indexPath.row)];
     [self.navigationController pushViewController:matterViewController animated:YES];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
 }
 
 /*

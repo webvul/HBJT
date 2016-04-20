@@ -10,6 +10,7 @@
 #import "EJIndexViewController.h"
 #import "EJMenuTableViewController.h"
 #import "EJNewsViewController.h"
+#import "RootNavgationController.h"
 #define _IPHONE80_ 80000
 
 @interface AppDelegate ()
@@ -19,7 +20,7 @@
 @property (strong, nonatomic) EJIndexViewController *indexViewController;
 @property (strong, nonatomic) EJMenuTableViewController *menuTableViewController;
 @property (strong, nonatomic) EJNewsViewController *newsViewController;
-@property (strong, nonatomic) UINavigationController *rootNavigationController;
+@property (strong, nonatomic) RootNavgationController *rootNavigationController;
 
 @end
 
@@ -37,48 +38,6 @@
     [self registerNofiticationWithOptions:launchOptions];
     return YES;
 }
-
-- (void)registerPushForIOS8{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
-    
-    //Types
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-    
-    //Actions
-    UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
-    
-    acceptAction.identifier = @"ACCEPT_IDENTIFIER";
-    acceptAction.title = @"Accept";
-    
-    acceptAction.activationMode = UIUserNotificationActivationModeForeground;
-    acceptAction.destructive = NO;
-    acceptAction.authenticationRequired = NO;
-    
-    //Categories
-    UIMutableUserNotificationCategory *inviteCategory = [[UIMutableUserNotificationCategory alloc] init];
-    
-    inviteCategory.identifier = @"INVITE_CATEGORY";
-    
-    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextDefault];
-    
-    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextMinimal];
-    
-    NSSet *categories = [NSSet setWithObjects:inviteCategory, nil];
-    
-    
-    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
-    
-    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-    
-    
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
-#endif
-}
-
-- (void)registerPush{
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-}
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -180,11 +139,10 @@
 
 - (void)push:(nonnull UIViewController *)viewController
 {
-    self.rootNavigationController.interactivePopGestureRecognizer.enabled = NO;
     [self toggleDrawerOpenGesture:NO];
+    NSLog(@"%@",self.rootNavigationController.viewControllers);
     [self.rootNavigationController pushViewController:viewController animated:YES];
     [self.rootNavigationController setNavigationBarHidden:NO];
-    //self.rootNavigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
 - (void)toggleDrawerOpenGesture:(BOOL)enbaled
@@ -231,7 +189,7 @@
         _drawerController = [[MMDrawerController alloc] initWithCenterViewController:self.rootNavigationController leftDrawerViewController:nil];
         [_drawerController setShowsShadow:NO];
         [_drawerController setMaximumLeftDrawerWidth:self.window.frame.size.width*0.75];
-        [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+        [_drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModePanningCenterView];
         [_drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
         [_drawerController setShouldStretchDrawer:NO];
         [_drawerController setDrawerVisualStateBlock:[MMDrawerVisualState swingingDoorVisualStateBlock]];
@@ -269,6 +227,48 @@
 }
 
 #pragma mark - 腾讯信鸽
+
+- (void)registerPushForIOS8{
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
+    
+    //Types
+    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    
+    //Actions
+    UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
+    
+    acceptAction.identifier = @"ACCEPT_IDENTIFIER";
+    acceptAction.title = @"Accept";
+    
+    acceptAction.activationMode = UIUserNotificationActivationModeForeground;
+    acceptAction.destructive = NO;
+    acceptAction.authenticationRequired = NO;
+    
+    //Categories
+    UIMutableUserNotificationCategory *inviteCategory = [[UIMutableUserNotificationCategory alloc] init];
+    
+    inviteCategory.identifier = @"INVITE_CATEGORY";
+    
+    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextDefault];
+    
+    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextMinimal];
+    
+    NSSet *categories = [NSSet setWithObjects:inviteCategory, nil];
+    
+    
+    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+#endif
+}
+
+- (void)registerPush{
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+}
+
 
 - (void) registerNofiticationWithOptions:(NSDictionary *)launchOptions {
     //[XGPush handleReceiveNotification:nil];

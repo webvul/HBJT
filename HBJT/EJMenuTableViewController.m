@@ -101,8 +101,8 @@
     AppDelegate *appDelegate = [AppDelegate sharedDelegate];
     if (indexPath.section == 1) {
         if ([appDelegate currentUser] == NO) {
-            [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
             [appDelegate closeDrawerNeedReopen:NO];
+            [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
         } else {
             switch (indexPath.row) {
                 case 0:

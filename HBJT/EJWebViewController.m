@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self returnBack];
     self.webRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
     [self.webView loadRequest:self.webRequest];
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -37,7 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self returnBack];
     self.navigationItem.titleView=[self returnTitle:@"行政审批"];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

@@ -24,7 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self returnBack];
     self.navigationItem.titleView=[self returnTitle:@"密码修改"];
     
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];

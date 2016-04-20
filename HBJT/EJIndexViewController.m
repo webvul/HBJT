@@ -115,18 +115,20 @@ CGFloat scrollViewOffsetx;
     [self.navigationController setNavigationBarHidden:YES];
     [self.viewModel connect];
     [self.viewModel loadPictures];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [[AppDelegate sharedDelegate] setkeyboardDistance];
+        [self prepareOtherViewController];
+        [[AppDelegate sharedDelegate] setLeftDrawerViewController];
+    });
+    [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:YES];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        [[AppDelegate sharedDelegate] setkeyboardDistance];
-        [self prepareOtherViewController];
-    });
-    [[AppDelegate sharedDelegate] setLeftDrawerViewController];
-    [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:YES];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated

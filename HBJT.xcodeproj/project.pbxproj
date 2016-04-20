@@ -70,6 +70,7 @@
 		F7B306A81CBDED8F00EFB0F5 /* EJFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306A71CBDED8F00EFB0F5 /* EJFollowViewController.m */; };
 		F7B306AC1CBDEDFF00EFB0F5 /* EJFollowViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */; };
 		F7B306AF1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */; };
+		F7B964271CC47F1900BE4C1E /* RootNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B964261CC47F1900BE4C1E /* RootNavgationController.m */; };
 		F7B9F7571CAE149A00A48158 /* EJResultDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7561CAE149A00A48158 /* EJResultDetailAPIManager.m */; };
 		F7B9F75A1CAE14B700A48158 /* EJProgressDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7591CAE14B700A48158 /* EJProgressDetailAPIManager.m */; };
 		F7B9F75D1CAE189C00A48158 /* EJResultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F75C1CAE189C00A48158 /* EJResultDetailViewController.m */; };
@@ -228,6 +229,8 @@
 		F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowViewModel.m; sourceTree = "<group>"; };
 		F7B306AD1CBDEE1800EFB0F5 /* EJFollowListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJFollowListAPIManager.h; sourceTree = "<group>"; };
 		F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowListAPIManager.m; sourceTree = "<group>"; };
+		F7B964251CC47F1900BE4C1E /* RootNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavgationController.h; sourceTree = "<group>"; };
+		F7B964261CC47F1900BE4C1E /* RootNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavgationController.m; sourceTree = "<group>"; };
 		F7B9F7551CAE149A00A48158 /* EJResultDetailAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJResultDetailAPIManager.h; sourceTree = "<group>"; };
 		F7B9F7561CAE149A00A48158 /* EJResultDetailAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJResultDetailAPIManager.m; sourceTree = "<group>"; };
 		F7B9F7581CAE14B700A48158 /* EJProgressDetailAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJProgressDetailAPIManager.h; sourceTree = "<group>"; };
@@ -566,6 +569,8 @@
 				F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
+				F7B964251CC47F1900BE4C1E /* RootNavgationController.h */,
+				F7B964261CC47F1900BE4C1E /* RootNavgationController.m */,
 				F73ED97B1C979D73006AF2A0 /* EJSuggestion */,
 				F77333AC1C7D974E00E2FD20 /* EJS */,
 				F7FE552D1C919B6E001C1F6B /* EJMatter */,
@@ -804,6 +809,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7AF7BC61CA9040D001814E5 /* EJNewsDetailViewModel.m in Sources */,
+				F7B964271CC47F1900BE4C1E /* RootNavgationController.m in Sources */,
 				F79084EC1CA5382900E48E2C /* EJGuildItemViewModel.m in Sources */,
 				F7A2BBFF1CBB820A00235F1A /* ParentViewController.m in Sources */,
 				F7A67E6C1CA40B6C00A64DE1 /* EJSectionListAPIManager.m in Sources */,

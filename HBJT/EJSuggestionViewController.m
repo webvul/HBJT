@@ -27,7 +27,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self returnBack];
     self.navigationItem.titleView=[self returnTitle:(self.isLetter?@"我的留言":@"审批建议")];
     self.scrollView.scrollEnabled = (self.view.frame.size.height < 500);
 

@@ -26,7 +26,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self returnBack];
     [self bindViewModel];
     //[self createLayoutConstraints];
 }

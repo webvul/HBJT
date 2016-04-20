@@ -31,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self returnBack];
     self.navigationItem.titleView = [self returnTitle:@"用户注册"];
     // Do any additional setup after loading the view.
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];

@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Root Navgation Controller-->
         <scene sceneID="IZY-XW-qvm">
             <objects>
-                <navigationController storyboardIdentifier="Root" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xu6-i9-e6f" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Root" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Xu6-i9-e6f" customClass="RootNavgationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="epR-uj-7AQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

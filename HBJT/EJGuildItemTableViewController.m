@@ -24,10 +24,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self returnBack];
     [self.viewModel loadItemList];
     // Do any additional setup after loading the view.
     self.navigationItem.titleView=[self returnTitle:@"办事指南"];
-    [self returnBack];
     self.mainLabel.text = self.labelTitle;
 }
 
@@ -47,6 +47,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
 }
 
 

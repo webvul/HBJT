@@ -16,7 +16,6 @@
 #define Screen_Height [UIScreen mainScreen].bounds.size.height
 
 @interface ParentViewController : UIViewController
-@property(nonatomic)BOOL isRight;
 /**
  *  设置标题
  */
@@ -26,27 +25,6 @@
  */
 -(void)returnBack;
 /**
- *  右按钮
- */
--(void)rightSureButton;
--(void)fristRightBtntitle:(NSString *)title withimage:(NSString *)imagename;
-
-/**
- *  弹出的view
- */
-@property(nonatomic,strong) UIView * popView;
-
-/**
- *  rootview
- */
-@property(nonatomic,strong) UIView * rootview;
-
-/**
- *  rootVC
- */
-@property(nonatomic,strong) UIViewController * rootVC;
-
-/**
  *  maskView
  */
 @property(nonatomic,strong) UIView * maskView;
@@ -54,9 +32,5 @@
 /**
  *  初始化 rootVC:根VC， popView:弹出的view
  */
--(void)createUI;
--(void)show;
--(void)close;
--(void)showRightView;
--(void)closeRightView;
+
 @end

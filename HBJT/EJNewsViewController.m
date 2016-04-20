@@ -47,7 +47,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self returnBack];
     self.navigationItem.titleView=[self returnTitle:@"湖北省交通运输厅"];
     
     self.buttonArray = @[self.button0,self.button1,self.button2,self.button3,self.button4,self.button5];

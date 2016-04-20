@@ -30,7 +30,6 @@
     [super viewDidLoad];
     
     
-    [self returnBack];
     self.navigationItem.titleView=[self returnTitle:@"结果公示详细"];
     
     // Do any additional setup after loading the view.[
