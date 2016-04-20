@@ -16,6 +16,8 @@
 @property (strong, nonatomic) EJWebsiteLaudNumberAPIManager *websiteLaudNumberAPIManager;
 @property (strong, nonatomic) RACSignal *loadArticleSignal;
 @property (strong, nonatomic) RACSignal *loadLaudNumberSiganl;
+@property (strong, nonatomic) NSMutableArray *dataArray;
+@property (strong, nonatomic) NSMutableArray *noMoreDataMark;
 
 @end
 
@@ -23,6 +25,11 @@
 
 - (void)autoStart
 {
+    self.dataArray = [NSMutableArray arrayWithCapacity:6];
+    for (NSInteger i = 0; i < 6; i++) {
+        [self.dataArray addObject:[NSArray array]];
+    }
+    self.noMoreDataMark = [@[@0, @0, @0, @0, @0, @0] mutableCopy];
     self.tabNumberSiganl = RACObserve(self, currentTabIndex);
     self.loadArticleSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [self.websiteArticleListAPIManager launchRequestWithSuccess:^(id responseObject) {
@@ -42,20 +49,29 @@
 
 - (void)loadMore
 {
-    [self.websiteArticleListAPIManager prepareRequestNextPage];
     if (self.isNetworkProceed == YES) {
         [self.websiteArticleListAPIManager cancel];
         self.networkHintText = @"取消";
         self.isNetworkProceed = NO;
     }
+    NSInteger index = self.currentTabIndex;
+    self.noMoreData = [self.noMoreDataMark[index] boolValue];
     self.isNetworkProceed = YES;
     self.networkHintText = @"正在读取";
+    if (self.noMoreData) {
+        self.networkHintText = @"读取成功";
+        self.isNetworkProceed = NO;
+        return;
+    }
+    [self.websiteArticleListAPIManager prepareRequestNextPage];
     [self.websiteArticleListAPIManager setCategoryID:self.currentCategory];
     [self.loadArticleSignal subscribeError:^(NSError *error) {
         self.networkHintText = self.websiteArticleListAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     } completed:^{
         [self.data addObjectsFromArray:[self.websiteArticleListAPIManager.data objectForKey:@"articleList"]];
+        self.noMoreDataMark[index] = @([[self.websiteArticleListAPIManager.data objectForKey:@"articleList"] count] < 15);
+        self.noMoreData = [self.noMoreDataMark[index] boolValue];
         self.networkHintText = self.websiteArticleListAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     }];
@@ -64,31 +80,31 @@
 
 - (void)reload
 {
+    NSInteger index = self.currentTabIndex;
+    self.noMoreData = self.noMoreDataMark[index];
     [self.websiteArticleListAPIManager prepareRequestFirstPage];
-    [self loadArticleList];
-}
-
-- (void)load
-{
-    [self.websiteArticleListAPIManager prepareRequestNextPage];
-    [self loadArticleList];
-}
-
-- (void)loadArticleList
-{
     if (self.isNetworkProceed == YES) {
         [self.websiteArticleListAPIManager cancel];
         self.networkHintText = @"取消";
         self.isNetworkProceed = NO;
     }
     self.isNetworkProceed = YES;
+    if ([self.dataArray[index] count]>1) {
+        self.data = self.dataArray[index];
+        self.networkHintText = @"读取成功";
+        self.isNetworkProceed = NO;
+        return;
+    }
     self.networkHintText = @"正在读取";
     [self.websiteArticleListAPIManager setCategoryID:self.currentCategory];
     [self.loadArticleSignal subscribeError:^(NSError *error) {
-        self.networkHintText = self.websiteArticleListAPIManager.statusDescription;
+        self.networkHintText = @"无可用网络连接";
         self.isNetworkProceed = NO;
     } completed:^{
-        self.data = [self.websiteArticleListAPIManager.data objectForKey:@"articleList"];
+        self.dataArray[index] = [self.websiteArticleListAPIManager.data objectForKey:@"articleList"];
+        self.data = self.dataArray[index];
+        self.noMoreDataMark[index] = @(self.data.count < 15);
+        self.noMoreData = [self.noMoreDataMark[index] boolValue];
         self.networkHintText = self.websiteArticleListAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     }];
@@ -97,13 +113,13 @@
 - (void)loadNextTab
 {
     self.currentTabIndex = [self nextTabIndex];
-    [self loadArticleList];
+    [self reload];
 }
 
 - (void)loadPreviousTab
 {
     self.currentTabIndex = [self previousTabIndex];
-    [self loadArticleList];
+    [self reload];
 }
 
 
@@ -156,6 +172,18 @@
         _websiteArticleListAPIManager = [[EJWebsiteArticleListAPIManager alloc] initWithCategoryID:[self currentCategory]];
     }
     return _websiteArticleListAPIManager;
+}
+
+- (NSMutableArray *)lastdata
+{
+    _lastdata = _dataArray[self.previousTabIndex];
+    return _lastdata;
+}
+
+- (NSMutableArray *)nextdata
+{
+    _nextdata = _dataArray[self.nextTabIndex];
+    return _nextdata;
 }
 
 @end

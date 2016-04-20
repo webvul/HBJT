@@ -16,6 +16,10 @@
 @property (assign, nonatomic) NSNumber *mainScrollViewOffset;
 @property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) RACSignal *tabNumberSiganl;
+@property (strong, nonatomic) NSMutableArray *lastdata;
+@property (strong, nonatomic) NSMutableArray *nextdata;
+@property (assign, nonatomic) BOOL noMoreData;
+
 
 - (void)loadPreviousTab;
 - (void)loadNextTab;

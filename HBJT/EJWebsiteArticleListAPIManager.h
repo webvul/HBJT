@@ -25,5 +25,4 @@ typedef NS_ENUM(NSInteger, EJWebsiteArtcleCategory) {
 - (void)prepareRequestFirstPage;
 - (void)prepareRequestNextPage;
 
-
 @end

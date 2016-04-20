@@ -52,7 +52,7 @@
     self.buttonArray = @[self.button0,self.button1,self.button2,self.button3,self.button4,self.button5];
     self.labelArray = @[self.buttonLabel0,self.buttonLabel1,self.buttonLabel2,self.buttonLabel3,self.buttonLabel4,self.buttonLabel5];
     @weakify(self);
-    self.tableView1.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView1.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         @strongify(self);
         [self.viewModel loadMore];
     }];
@@ -74,7 +74,6 @@
 - (void)clearCurrentDataSource
 {
     [self.currentDataSource removeAllObjects];
-    NSLog(@"%@",self.currentDataSource);
     [self.tableView1 reloadData];
 }
 
@@ -86,23 +85,22 @@
     self.mainScrollView.showsVerticalScrollIndicator = NO;
     [self.mainScrollView buildCarousel:1 previousBlock:^(NSInteger index) {
         @strongify(self);
-        self.nextDataSource = self.currentDataSource;
         [self clearCurrentDataSource];
+        [self.viewModel loadPreviousTab];
+        self.previousDataSource = self.viewModel.lastdata;
+        self.nextDataSource = self.viewModel.nextdata;
         [self.tableView0 reloadData];
         [self.tableView2 reloadData];
-        [self.viewModel loadPreviousTab];
-        [self.viewModel reload];
     } nextBlock:^(NSInteger index) {
         @strongify(self);
-        self.previousDataSource = self.currentDataSource;
         [self clearCurrentDataSource];
+        [self.viewModel loadNextTab];
+        self.previousDataSource = self.viewModel.lastdata;
+        self.nextDataSource = self.viewModel.nextdata;
         [self.tableView0 reloadData];
         [self.tableView2 reloadData];
-        [self.viewModel loadNextTab];
-        [self.viewModel reload];
     }];
     [self.viewModel reload];
-
 }
 
 - (void)didReceiveMemoryWarning {
@@ -125,10 +123,22 @@
     if (tableView == self.tableView1) {
         if (self.currentDataSource)
             if ([self.currentDataSource[indexPath.row] objectForKey:@"articleThumbnailURL"] != [NSNull null]) {
-                return 110 + self.view.frame.size.width/2;
+                return 100 + self.view.frame.size.width/2;
             }
     }
-    return 101;
+    if (tableView == self.tableView0) {
+        if (self.previousDataSource)
+            if ([self.previousDataSource[indexPath.row] objectForKey:@"articleThumbnailURL"] != [NSNull null]) {
+                return 100 + self.view.frame.size.width/2;
+            }
+    }
+    if (tableView == self.tableView2) {
+        if (self.nextDataSource)
+            if ([self.nextDataSource[indexPath.row] objectForKey:@"articleThumbnailURL"] != [NSNull null]) {
+                return 100 + self.view.frame.size.width/2;
+            }
+    }
+    return 90;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -174,6 +184,14 @@
         dataSource = self.nextDataSource;
     }
     NSDictionary *articleData = dataSource[indexPath.row];
+    if ([[articleData objectForKey:@"articleTitle"] isEqual: @"似乎已断开与互联网的连接"]) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"error"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"error"];
+        }
+        cell.textLabel.text = @"似乎已断开与互联网的连接";
+        return cell;
+    }
     if ([articleData objectForKey:@"articleThumbnailURL"] == [NSNull null]) {
         EJNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"news"];
         if (cell == nil) {
@@ -230,18 +248,23 @@
         @strongify(self);
         if ([x isKindOfClass:[NSString class]]) {
             if ([x isEqualToString:@"读取成功"]) {
-                self.currentDataSource = self.viewModel.data;
-                //NSLog(@"%@,%@",self.currentDataSource,self.viewModel.data);
+                self.currentDataSource = [self.viewModel.data mutableCopy];
                 [self.tableView1 reloadData];
+            }
+            else if([x isEqualToString:@"无可用网络连接"])
+            {
+                self.currentDataSource = [@[@{@"articleTitle":@"似乎已断开与互联网的连接",@"articleThumbnailURL":[NSNull null]}] mutableCopy];
+                [self.tableView1 reloadData];
+
             }
         } else
         {
             if (![x boolValue]) {
-                [self.tableView1.mj_footer endRefreshing];
+                 (self.viewModel.noMoreData? [self.tableView1.mj_footer endRefreshingWithNoMoreData]: [self.tableView1.mj_footer resetNoMoreData]);
 
             } else
             {
-
+                
             }
         }
     }];
