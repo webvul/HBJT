@@ -10,7 +10,6 @@
 
 @interface EJFollowViewController ()
 
-@property (strong, nonatomic) NSString *string;
 
 @end
 
@@ -23,7 +22,8 @@
 
 - (void)bind
 {
-    self.string;
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

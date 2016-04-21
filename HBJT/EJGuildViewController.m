@@ -6,9 +6,12 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
+#define SystemVersionLessThan(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 #import "EJGuildViewController.h"
 #import "EJGuildViewModel.h"
 #import "EJGuildPrimaryItemTableViewController.h"
+#import "EJGuildResultTableViewCell.h"
 
 @interface EJGuildViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *tabLabel0;
@@ -38,11 +41,7 @@
 {
     [super viewDidLoad];
     self.navigationItem.titleView=[self returnTitle:@"行政审批"];
-    
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self.viewModel loadNew];
-    }];
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self.viewModel loadMore];
     }];
     self.viewModel = [EJGuildViewModel viewModel];
@@ -142,30 +141,48 @@
 
 - (void)viewDidLayoutSubviews
 {
+    
     [super viewDidLayoutSubviews];
     UIScrollView *scrollView = (UIScrollView *)self.guildView.superview;
     if (self.sectionButtonArray.count > 0) {
         scrollView.scrollEnabled = (((UIButton *)self.sectionButtonArray.lastObject).frame.origin.y > self.guildView.frame.size.height - 34 - 27);
-        //NSLog(@"%f,%f", ((UIButton *)self.sectionButtonArray.lastObject).frame.origin.y,self.guildView.frame.size.height - 34-27);
+        NSLog(@"%f,%f", ((UIButton *)self.sectionButtonArray.lastObject).frame.origin.y,self.guildView.frame.size.height - 34-27);
+        NSLog(@"%@",((UIButton *)self.sectionButtonArray.lastObject));
     }
     else
     {
         scrollView.scrollEnabled = NO;
     }
+    if (SystemVersionLessThan(@"8.0")) {
+        scrollView.scrollEnabled = YES;
+    }
     if (!scrollView.scrollEnabled)
     {
         [scrollView setContentOffset:(CGPoint){0,0} animated:YES];
     }
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"%tu",self.viewModel.resultArray.count);
     return self.viewModel.resultArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if(!self.tabLabel1.hidden)
+    {
+        EJGuildResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultCell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = [[EJGuildResultTableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:@"ResultCell"];
+        }
+        cell.titleButton.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extItemname"];
+        cell.subtitleButton.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extCode"];
+        cell.resultButton.hidden = !([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"准予许可"]);
+        NSLog(@"%d %@",([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"准予许可"]),[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"]);
+        return cell;
+    }
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
@@ -202,7 +219,7 @@
                 if (self.viewModel.cityArray == nil && self.guildView.hidden == NO)
                 {
                     self.retryTime ++;
-                    if (self.retryTime <= 3) {
+                    if (self.retryTime <= 2) {
                         [self.viewModel loadAreaList];
                     }
                 }
@@ -227,25 +244,38 @@
 - (void)bindViewModelForNotice
 {
     @weakify(self);
+    
     [[self.switchCityButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         if (self.viewModel.cityArray != nil) {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请选择所在区域"
-                                                                           message:nil
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            NSInteger i = 0;
-            for (NSDictionary *cityInfo in self.viewModel.cityArray) {
-                UIAlertAction* cityAction = [UIAlertAction actionWithTitle:[cityInfo objectForKey:@"areaName"] style:UIAlertActionStyleDefault
-                                                                   handler:^(UIAlertAction * action) {
-                                                                       @strongify(self);
-                                                                       self.viewModel.currentCityIndex = i;
-                                                                       self.cityLabel.text = [self.viewModel.cityArray[self.viewModel.currentCityIndex] objectForKey:@"areaName"];
-                                                                       [self loadAreaScrollView];
-                                                                   }];
-                [alert addAction:cityAction];
-                i ++;
+            if (SystemVersionLessThan(@"8.0")) {
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"请选择所在区域" message:@"\n" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil];
+                for (NSDictionary *cityInfo in self.viewModel.cityArray) {
+                    [alert addButtonWithTitle:[cityInfo objectForKey:@"areaName"]];
+                }
+                [alert show];
+                
             }
-            [self presentViewController:alert animated:YES completion:nil];
+            else
+            {
+                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"请选择所在区域"
+                                                                               message:nil
+                                                                        preferredStyle:UIAlertControllerStyleAlert];
+                NSInteger i = 0;
+                for (NSDictionary *cityInfo in self.viewModel.cityArray) {
+                    UIAlertAction* cityAction = [UIAlertAction actionWithTitle:[cityInfo objectForKey:@"areaName"] style:UIAlertActionStyleDefault
+                                                                       handler:^(UIAlertAction * action) {
+                                                                           @strongify(self);
+                                                                           self.viewModel.currentCityIndex = i;
+                                                                           self.cityLabel.text = [self.viewModel.cityArray[self.viewModel.currentCityIndex] objectForKey:@"areaName"];
+                                                                           [self loadAreaScrollView];
+                                                                       }];
+                    [alert addAction:cityAction];
+                    i ++;
+                }
+                [self presentViewController:alert animated:YES completion:nil];
+            }
         }
     }];
     [[self.tabButton0 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
@@ -261,8 +291,7 @@
         self.tabLabel1.hidden = NO;
         self.tabLabel2.hidden = YES;
         self.viewModel.currentTab = 0;
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_header beginRefreshing];
+        [self.viewModel loadNew];
     }];
     [[self.tabButton2 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         self.guildView.hidden = YES;
@@ -270,8 +299,17 @@
         self.tabLabel1.hidden = YES;
         self.tabLabel2.hidden = NO;
         self.viewModel.currentTab = 1;
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_header beginRefreshing];
+        [self.viewModel loadNew];
     }];
 }
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    self.viewModel.currentCityIndex = buttonIndex - 1;
+    self.cityLabel.text = [self.viewModel.cityArray[self.viewModel.currentCityIndex] objectForKey:@"areaName"];
+    [self loadAreaScrollView];
+}
+
 @end

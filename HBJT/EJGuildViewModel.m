@@ -128,6 +128,7 @@
 
 - (void)loadNew
 {
+    self.resultArray = nil;
     (self.currentTab?[self loadNewResultsList]:[self loadNewProgressList]);
 
 }
@@ -157,7 +158,10 @@
         self.networkHintText = self.resultsListAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     } completed:^{
-        self.resultArray = [self.resultsListAPIManager.data objectForKey:@"itemArray"];
+        if (self.resultArray == nil) {
+            self.resultArray = [[NSArray alloc] init];
+        }
+        self.resultArray = [self.resultArray arrayByAddingObjectsFromArray:[self.resultsListAPIManager.data objectForKey:@"itemArray"]];
         self.networkHintText = self.resultsListAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     }];
@@ -183,7 +187,10 @@
         self.networkHintText = self.progressListAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     } completed:^{
-        self.resultArray = [self.progressListAPIManager.data objectForKey:@"itemArray"];
+        if (self.resultArray == nil) {
+            self.resultArray = [[NSArray alloc] init];
+        }
+        self.resultArray = [self.resultArray arrayByAddingObjectsFromArray:[self.progressListAPIManager.data objectForKey:@"itemArray"]];
         NSLog(@"%@",self.progressArray);
         self.networkHintText = self.progressListAPIManager.statusDescription;
         self.isNetworkProceed = NO;

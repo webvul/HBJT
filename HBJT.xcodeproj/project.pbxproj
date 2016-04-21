@@ -94,6 +94,7 @@
 		F7DFF9401C7D74EF00A24DB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9331C7D74EF00A24DB5 /* Main.storyboard */; };
 		F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DFF9361C7D74EF00A24DB5 /* main.m */; };
 		F7E1B40C1C99460700536C6C /* UIScrollView+HATFCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7E1B40B1C99460700536C6C /* UIScrollView+HATFCarousel.m */; };
+		F7EA97661CC8B54D00A2E77E /* EJGuildResultTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7EA97651CC8B54D00A2E77E /* EJGuildResultTableViewCell.m */; };
 		F7F8F9FC1C881A54008758BF /* EJSSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F7F8F9FB1C881A54008758BF /* EJSSet.m */; };
 		F7FE551A1C91544C001C1F6B /* Userinfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7FE55191C91544C001C1F6B /* Userinfo.storyboard */; };
 		F7FE551D1C9154E5001C1F6B /* EJModifyUserinfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FE551C1C9154E5001C1F6B /* EJModifyUserinfoViewController.m */; };
@@ -276,6 +277,8 @@
 		F7DFF9361C7D74EF00A24DB5 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HBJT/main.m; sourceTree = "<group>"; };
 		F7E1B40A1C99460700536C6C /* UIScrollView+HATFCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+HATFCarousel.h"; sourceTree = "<group>"; };
 		F7E1B40B1C99460700536C6C /* UIScrollView+HATFCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+HATFCarousel.m"; sourceTree = "<group>"; };
+		F7EA97641CC8B54D00A2E77E /* EJGuildResultTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJGuildResultTableViewCell.h; sourceTree = "<group>"; };
+		F7EA97651CC8B54D00A2E77E /* EJGuildResultTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJGuildResultTableViewCell.m; sourceTree = "<group>"; };
 		F7F8F9FA1C881A53008758BF /* EJSSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSSet.h; sourceTree = "<group>"; };
 		F7F8F9FB1C881A54008758BF /* EJSSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSSet.m; sourceTree = "<group>"; };
 		F7FE55191C91544C001C1F6B /* Userinfo.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Userinfo.storyboard; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 		F731A4DD1CA0DBBB00A0A2A5 /* EJGuild */ = {
 			isa = PBXGroup;
 			children = (
+				F7EA97641CC8B54D00A2E77E /* EJGuildResultTableViewCell.h */,
+				F7EA97651CC8B54D00A2E77E /* EJGuildResultTableViewCell.m */,
 				F7AF7BBE1CA8CE30001814E5 /* EJGuildItemDetailViewController.h */,
 				F7AF7BBF1CA8CE30001814E5 /* EJGuildItemDetailViewController.m */,
 				F7AF7BC11CA8DA53001814E5 /* EJGuildItemDetailViewModel.h */,
@@ -887,6 +892,7 @@
 				F7E1B40C1C99460700536C6C /* UIScrollView+HATFCarousel.m in Sources */,
 				F79662021CAA1BBF00C92174 /* EJPasswordRetrieveViewModel.m in Sources */,
 				F7AC66BD1C8FB75E00BC8456 /* EJMenuViewModel.m in Sources */,
+				F7EA97661CC8B54D00A2E77E /* EJGuildResultTableViewCell.m in Sources */,
 				F79084E61CA5257000E48E2C /* EJGuildItemTableViewCell.m in Sources */,
 				F796620B1CAA2B8C00C92174 /* EJProgressListAPIManger.m in Sources */,
 				F7AF7BC01CA8CE30001814E5 /* EJGuildItemDetailViewController.m in Sources */,

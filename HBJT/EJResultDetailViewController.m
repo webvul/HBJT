@@ -30,7 +30,7 @@
     [super viewDidLoad];
     
     
-    self.navigationItem.titleView=[self returnTitle:@"结果公示详细"];
+    self.navigationItem.titleView=[self returnTitle:@"详细信息"];
     
     // Do any additional setup after loading the view.[
     [self bindViewModel];
@@ -67,6 +67,7 @@
                 self.resultStepLabel.text = [self.viewModel.data objectForKey:@"resultStep"];
                 self.resultLabel.text = [self.viewModel.data objectForKey:@"result"];
                 self.resultAcceptDateLabel.text = [self.viewModel.data objectForKey:@"resultAcceptDate"];
+                self.resultSourceLabel.text = [self.viewModel.data objectForKey:@"resultResource"];
             }
         }
     }];
