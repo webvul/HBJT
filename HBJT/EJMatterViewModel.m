@@ -38,7 +38,6 @@
                 [subscriber sendError:nil];
             }
         } failure:^(NSError *error) {
-            NSLog(@"%@",error);
             [subscriber sendError:error];
         }];
         return nil;

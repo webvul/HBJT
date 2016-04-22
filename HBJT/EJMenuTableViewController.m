@@ -101,7 +101,7 @@
     AppDelegate *appDelegate = [AppDelegate sharedDelegate];
     if (indexPath.section == 1) {
         if ([appDelegate currentUser] == NO) {
-            [appDelegate closeDrawerNeedReopen:NO];
+            [appDelegate closeDrawerNeedReopen:YES];
             [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
         } else {
             switch (indexPath.row) {
@@ -111,7 +111,7 @@
                     break;
                 case 1:
                     [appDelegate closeDrawerNeedReopen:YES];
-                    [appDelegate push:[[UIStoryboard storyboardWithName:@"Matter" bundle:nil] instantiateViewControllerWithIdentifier:@"matter"]];
+                    [appDelegate push:[[UIStoryboard storyboardWithName:@"Follow" bundle:nil] instantiateViewControllerWithIdentifier:@"Follow"]];
                     break;
             }
         }
@@ -129,7 +129,7 @@
     }
     if (indexPath.section == 3) {
         if ([appDelegate currentUser] == NO) {
-            [appDelegate closeDrawerNeedReopen:NO];
+            [appDelegate closeDrawerNeedReopen:YES];
             [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
         }
         else

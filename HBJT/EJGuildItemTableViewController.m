@@ -82,7 +82,6 @@
     [self.viewModel.networkHintSignal subscribeNext:^(id x) {
         if ([x isKindOfClass:[NSString class]]) {
             if ([x isEqualToString:@"事项获取成功"]) {
-                NSLog(@"%@",self.tableView);
                 [self.tableView reloadData];
             }
             else

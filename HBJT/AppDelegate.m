@@ -140,7 +140,6 @@
 - (void)push:(nonnull UIViewController *)viewController
 {
     [self toggleDrawerOpenGesture:NO];
-    NSLog(@"%@",self.rootNavigationController.viewControllers);
     [self.rootNavigationController pushViewController:viewController animated:YES];
     [self.rootNavigationController setNavigationBarHidden:NO];
 }
@@ -178,7 +177,6 @@
     if (_rootNavigationController == nil) {
         _rootNavigationController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil] instantiateViewControllerWithIdentifier:@"Root"];
         _rootNavigationController.navigationBar.tintColor = naviBG;
-        NSLog(@"%@",_rootNavigationController);
     }
     return _rootNavigationController;
 }

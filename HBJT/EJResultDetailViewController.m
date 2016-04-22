@@ -56,7 +56,6 @@
     [self.viewModel.networkHintSignal subscribeNext:^(id x) {
         if ([x isKindOfClass:[NSString class]]) {
             if ([x isEqualToString:@"事项获取成功"]) {
-                NSLog(@"%@",self.viewModel.data);
                 self.resultNameLabel.text = [self.viewModel.data objectForKey:@"resultName"];
                 self.resultSubmitDateLabel.text = [self.viewModel.data objectForKey:@"resultSubmitDate"];
                 self.resultEstimateTimeLabel.text = ([self.viewModel.data objectForKey:@"resultEstimateTime"]? [[[self.viewModel.data objectForKey:@"resultEstimateTime"] stringValue] stringByAppendingString:@"天"]: nil);

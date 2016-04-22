@@ -10,4 +10,15 @@
 
 @implementation EJFollowListAPIManager
 
+- (instancetype)initWithUserID:(NSString *)userID pageNumber:(NSNumber *)pageNumber
+{
+    self = [super initWith:kEJSNetworkAPINameFollowList];
+    if (self) {
+        [self.params setObject:userID forKey:@"userid"];
+        [self.params setObject:@(15) forKey:@"pageSize"];
+        [self.params setObject:pageNumber forKey:@"pageNumber"];
+    }
+    return self;
+}
+
 @end

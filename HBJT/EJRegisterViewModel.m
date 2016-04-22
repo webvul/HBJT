@@ -39,7 +39,6 @@
             @strongify(self);
             ([self.validateUsernameAPIManager newStatus] == 0? [subscriber sendCompleted]: [subscriber sendError:nil]);
         } failure:^(NSError *error) {
-            NSLog(@"%@",error.userInfo);
             [subscriber sendError:error];
         }];
         return nil;
@@ -50,7 +49,6 @@
                 @strongify(self);
                 ([self.registerAPIManager newStatus] == 0? [subscriber sendCompleted]: [subscriber sendError:nil]);
             } failure:^(NSError *error) {
-                NSLog(@"%@",error.userInfo);
                 [subscriber sendError:error];
             }];
             return nil;

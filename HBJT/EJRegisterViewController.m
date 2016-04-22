@@ -9,6 +9,7 @@
 #import "EJRegisterViewController.h"
 #import "EJFramework.h"
 #import "EJRegisterViewModel.h"
+#import "EJLoginTableViewController.h"
 
 @interface EJRegisterViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -73,6 +74,7 @@
     [[self.registerButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         [self.viewModel registery];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

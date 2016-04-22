@@ -6,8 +6,12 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "FTViewModel.h"
+#import "EJFramework.h"
 
 @interface EJFollowViewModel : FTViewModel
+
+@property (strong, nonatomic) NSArray *itemList;
+
+- (void)fetchList;
 
 @end

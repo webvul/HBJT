@@ -10,4 +10,6 @@
 
 @interface EJNewsDetailViewController : ParentViewController
 
+@property (assign, nonatomic) BOOL laud;
+
 @end

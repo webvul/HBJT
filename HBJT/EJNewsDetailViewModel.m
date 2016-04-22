@@ -42,7 +42,7 @@
     self.laudSiganl = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         @strongify(self);
         [self.laudAPIManger launchRequestWithSuccess:^(id responseObject) {
-            if ([self.detailAPIManger newStatus]) {
+            if ([self.laudAPIManger newStatus]) {
                 [subscriber sendError:nil];
             }
             else
@@ -70,6 +70,7 @@
         @strongify(self);
 
         self.htmlString = [self.detailAPIManger.data objectForKey:@"htmlString"];
+        self.laudNumber = [self.detailAPIManger.data objectForKey:@"laud"];
         self.networkHintText = self.detailAPIManger.statusDescription;
         self.isNetworkProceed = NO;
     }];
@@ -84,7 +85,7 @@
     self.networkHintText = @"点赞中";
     [self.laudSiganl subscribeError:^(NSError *error) {
         @strongify(self);
-        self.networkHintText = self.detailAPIManger.statusDescription;
+        self.networkHintText = self.laudAPIManger.statusDescription;
         self.isNetworkProceed = NO;
     } completed:^{
         self.networkHintText = @"点赞成功";

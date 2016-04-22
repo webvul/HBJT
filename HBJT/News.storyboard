@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="roU-IX-Fnu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="roU-IX-Fnu">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -222,7 +222,7 @@
                                                                     <state key="normal" title="Button" image="07"/>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="56" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Cd-Wr-MCu">
-                                                                    <rect key="frame" x="292" y="66" width="12" height="12"/>
+                                                                    <rect key="frame" x="264" y="66" width="12" height="12"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -234,20 +234,9 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xC2-SS-59d">
-                                                                    <rect key="frame" x="314" y="66" width="28" height="12"/>
+                                                                    <rect key="frame" x="286" y="60" width="56" height="24"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                                     <state key="normal" title="点赞" backgroundImage="009_r09">
-                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                    </state>
-                                                                </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2f-5g-HOM">
-                                                                    <rect key="frame" x="259" y="66" width="28" height="12"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="12" id="2id-su-Jzt"/>
-                                                                        <constraint firstAttribute="width" constant="28" id="ssz-yw-laC"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                                    <state key="normal" title="阅读" backgroundImage="009_r09">
                                                                         <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </state>
                                                                 </button>
@@ -259,7 +248,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="08" translatesAutoresizingMaskIntoConstraints="NO" id="5Bq-NF-vGh">
-                                                                    <rect key="frame" x="346" y="30" width="24" height="24"/>
+                                                                    <rect key="frame" x="346" y="24" width="24" height="24"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="24" id="DNT-wh-cSk"/>
                                                                         <constraint firstAttribute="height" constant="24" id="IEL-Uh-cgo"/>
@@ -274,6 +263,17 @@
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2f-5g-HOM">
+                                                                    <rect key="frame" x="200" y="60" width="56" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="24" id="2id-su-Jzt"/>
+                                                                        <constraint firstAttribute="width" constant="56" id="ssz-yw-laC"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                    <state key="normal" title="阅读" backgroundImage="009_r09">
+                                                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="ls5-Tt-11y" firstAttribute="bottom" secondItem="0Cd-Wr-MCu" secondAttribute="bottom" id="1PJ-VE-Mlq"/>
@@ -301,6 +301,7 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="laudButton" destination="xC2-SS-59d" id="Jim-gn-1Fi"/>
                                                             <outlet property="laudLabel" destination="ls5-Tt-11y" id="ff7-Vc-Q5Y"/>
                                                             <outlet property="markNewImageView" destination="tXJ-JV-udN" id="qBo-FE-U2w"/>
                                                             <outlet property="readLabel" destination="0Cd-Wr-MCu" id="lyD-6s-Sy8"/>
@@ -400,6 +401,7 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="laudButton" destination="Myy-sc-w7x" id="Y67-Dv-Qt2"/>
                                                             <outlet property="laudLabel" destination="BSU-0R-9eB" id="8Mj-TB-4cL"/>
                                                             <outlet property="readLabel" destination="sbu-XW-ZdK" id="HoS-XN-IXL"/>
                                                             <outlet property="thumbnailImageView" destination="bDr-Hn-SOv" id="sPM-Zm-I8G"/>

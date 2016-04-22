@@ -8,11 +8,15 @@
 
 #import "EJGuildItemDetailViewModel.h"
 #import "EJItemInfoAPIManager.h"
+#import "EJFollowAPIManager.h"
+#import "AppDelegate.h"
 
 @interface EJGuildItemDetailViewModel()
 
 @property (strong, nonatomic) EJItemInfoAPIManager *itemInfoAPIManager;
 @property (strong, nonatomic) RACSignal *itemInfoSignal;
+@property (strong, nonatomic) EJFollowAPIManager *followAPIManager;
+@property (strong, nonatomic) RACSignal *followSignal;
 
 @end
 
@@ -38,6 +42,42 @@
         }];
         return nil;
     }];
+    self.followSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        [self.followAPIManager launchRequestWithSuccess:^(id responseObject) {
+            @strongify(self);
+            if ([self.followAPIManager newStatus])
+            {
+                [subscriber sendError:nil];
+            }
+            else
+            {
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendError:error];
+        }];
+        return nil;
+    }];
+}
+
+- (void)follow
+{
+    self.isNetworkProceed = YES;
+    AppDelegate *delegate = [AppDelegate sharedDelegate];
+    if (![delegate currentUser]) {
+        self.networkHintText = @"请先登录";
+        self.isNetworkProceed = NO;
+        return;
+    }
+    self.followAPIManager = [[EJFollowAPIManager alloc] initWithUserID:delegate.userIDString itemID:self.itemID];
+    [self.followSignal subscribeNext:^(id x) {
+        self.networkHintText = self.itemInfoAPIManager.statusDescription;
+        self.isNetworkProceed = NO;
+    } completed:^{
+        self.networkHintText = self.itemInfoAPIManager.statusDescription;
+        self.isNetworkProceed = NO;
+    }];
 }
 
 - (void)loadItemInfo
@@ -61,7 +101,6 @@
         self.itemConsultation = [self zeroToNull: [self.itemInfoAPIManager.data objectForKey:@"itemConsultation"]];
         self.itemComplaint = [self zeroToNull: [self.itemInfoAPIManager.data objectForKey:@"itemComplaint"]];
         self.networkHintText = self.itemInfoAPIManager.statusDescription;
-        NSLog(@"%@",self.itemName);
         self.isNetworkProceed = NO;
     }];
 }
@@ -73,5 +112,7 @@
     }
     return zero;
 }
+
+
 
 @end

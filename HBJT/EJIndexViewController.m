@@ -119,8 +119,8 @@ CGFloat scrollViewOffsetx;
     dispatch_once(&onceToken, ^{
         [[AppDelegate sharedDelegate] setkeyboardDistance];
         [self prepareOtherViewController];
-        [[AppDelegate sharedDelegate] setLeftDrawerViewController];
     });
+    [[AppDelegate sharedDelegate] setLeftDrawerViewController];
     [[AppDelegate sharedDelegate] toggleDrawerOpenGesture:YES];
 
 }
@@ -153,7 +153,6 @@ CGFloat scrollViewOffsetx;
     @weakify(self);
     RAC(self.viewModel, scrollViewOffset) = [RACObserve(self.scrollView, contentOffset) map:^id(id value) {
         @strongify(self);
-        //NSLog(@"%@",@(self.scrollView.contentOffset.x/self.scrollViewWidth));
         return @(self.scrollView.contentOffset.x/self.scrollViewWidth);
    }];
 }

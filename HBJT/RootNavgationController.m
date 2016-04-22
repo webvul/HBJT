@@ -87,7 +87,6 @@
     if ([self respondsToSelector:@selector(interactivePopGestureRecognizer)])
     {
         self.interactivePopGestureRecognizer.enabled = YES;
-        NSLog(@"%d",self.interactivePopGestureRecognizer.enabled);
     }
 }
 

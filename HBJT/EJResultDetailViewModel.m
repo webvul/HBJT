@@ -29,7 +29,6 @@
         @strongify(self);
         [self.resultAPIManager launchRequestWithSuccess:^(id responseObject) {
             @strongify(self);
-            NSLog(@"%tu",[self.resultAPIManager newStatus]);
             if ([self.resultAPIManager newStatus]) {
                 [subscriber sendError:nil];
             }
@@ -57,7 +56,6 @@
     } completed:^{
         @strongify(self);
         self.data = self.resultAPIManager.data;
-        NSLog(@"%@",self.resultAPIManager);
         self.networkHintText = self.resultAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     }];

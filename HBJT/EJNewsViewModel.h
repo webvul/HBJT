@@ -24,7 +24,8 @@
 - (void)loadPreviousTab;
 - (void)loadNextTab;
 - (void)reload;
-- (void)load;
 - (void)loadMore;
+
+- (void)laud:(NSString *)newsID;
 
 @end

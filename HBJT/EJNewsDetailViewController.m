@@ -73,9 +73,11 @@
         if ([x isKindOfClass:[NSString class]]) {
             if ([x isEqualToString:@"读取成功"]) {
                 [self.webView loadHTMLString:self.viewModel.htmlString baseURL:nil];
+                self.laudLabel.text = self.viewModel.laudNumber;
             }
             if ([x isEqualToString:@"点赞成功"]) {
                 self.laudLabel.text = [@([self.laudLabel.text integerValue]+1) stringValue];
+                self.laud = YES;
             }
         }
     }];

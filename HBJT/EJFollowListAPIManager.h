@@ -6,8 +6,10 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import "EJSAPIManager.h"
+#import "EJS.h"
 
 @interface EJFollowListAPIManager : EJSAPIManager
+
+- (instancetype)initWithUserID:(NSString *)userID pageNumber:(NSNumber *)pageNumber;
 
 @end

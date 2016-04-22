@@ -36,7 +36,6 @@
             @strongify(self);
             ([self.loginAPIManager newStatus] == 0? [subscriber sendCompleted]: [subscriber sendError:nil]);
         } failure:^(NSError *error) {
-            NSLog(@"%@",error.userInfo);
             [subscriber sendError:nil];
         }];
         return nil;

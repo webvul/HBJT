@@ -11,6 +11,7 @@
 #import "EJNewsTableViewCell.h"
 #import "EJNewsViewModel.h"
 #import "UIScrollView+HATFCarousel.h"
+#import "EJNewsDetailViewController.h"
 
 @interface EJNewsViewController ()
 
@@ -38,6 +39,9 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView1;
 @property (weak, nonatomic) IBOutlet UITableView *tableView2;
 @property (strong, nonatomic) EJNewsViewModel *viewModel;
+@property (strong, nonatomic) MBProgressHUD *hub;
+@property (strong, nonatomic) EJNewsDetailViewController *lastSelectedNewsViewController;
+@property (assign, nonatomic) NSInteger lastSelectedRow;
 
 @end
 
@@ -68,7 +72,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    if (self.lastSelectedNewsViewController.laud) {
 
+        [self.currentDataSource[self.lastSelectedRow] setObject:@([[self.currentDataSource[self.lastSelectedRow] objectForKey:@"articleLaudNumber"] integerValue]+1) forKey:@"articleLaudNumber"]
+        ;
+    }
 }
 
 - (void)clearCurrentDataSource
@@ -152,6 +160,8 @@
     UIViewController *viewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil] instantiateViewControllerWithIdentifier:@"Detail"];
     [self prepareViewController:viewController withSender:@{@"newsTitle":newsTitle,@"newsID":newsID,@"newsDate":newsDate,@"newsRead":newsRead,@"newsLaud":newsLaud}];
     [self.navigationController pushViewController:viewController animated:YES];
+    self.lastSelectedNewsViewController = (EJNewsDetailViewController *)viewController;
+    self.lastSelectedRow = indexPath.row;
 }
    
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -202,6 +212,13 @@
         cell.timeLabel.text = [articleData objectForKey:@"articleTime"];
         cell.readLabel.text = [[articleData objectForKey:@"articleReadNumber"]stringValue];
         cell.laudLabel.text = [[articleData objectForKey:@"articleLaudNumber"]stringValue];
+          cell.laudButton.tag = indexPath.row;
+        [cell.laudButton addTarget:self action:@selector(laudButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+      
+        /*[[cell.laudButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            [self.viewModel laud:[[self.viewModel.data[indexPath.row] objectForKey:@"articleID"] stringValue]];
+            NSLog(@"1");
+        }];*/
         return cell;
     }
     else
@@ -216,9 +233,18 @@
         cell.readLabel.text = [[articleData objectForKey:@"articleReadNumber"]stringValue];
         cell.laudLabel.text = [[articleData objectForKey:@"articleLaudNumber"]stringValue];
         [cell.thumbnailImageView sd_setImageWithURL:[articleData objectForKey:@"articleThumbnailURL"]];
+        cell.laudButton.tag = indexPath.row;
+        [cell.laudButton addTarget:self action:@selector(laudButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         return cell;
     }
 }
+
+- (void)laudButtonClicked:(UIButton *)btn
+{
+    [self.viewModel laud:[[self.viewModel.data[btn.tag] objectForKey:@"articleID"] stringValue]];
+
+}
+
 
 - (void)bindViewModelToUpdate
 {
@@ -278,6 +304,19 @@
         UILabel *buttonLabel = self.labelArray[i];
         buttonLabel.hidden = NO;
     }];
+    [self.viewModel.networkHintSignal subscribeNext:^(id x) {
+        if ([x isKindOfClass:[NSString class]]) {
+            if ([x isEqualToString:@"点赞成功"]) {
+                self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                [self.hub setLabelText:x];
+                //[self.hub hide:YES afterDelay:1];
+
+
+
+            }
+        }
+    }];
+
 }
 
 - (void)preparedWithSender:(id)sender

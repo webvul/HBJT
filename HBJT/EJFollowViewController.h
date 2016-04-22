@@ -6,8 +6,8 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "EJFramework.h"
 
-@interface EJFollowViewController : UIViewController
+@interface EJFollowViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end

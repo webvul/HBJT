@@ -9,9 +9,11 @@
 #import "EJNewsViewModel.h"
 #import "EJWebsiteArticleListAPIManager.h"
 #import "EJWebsiteLaudNumberAPIManager.h"
+#import "EJWebsiteArticleLaudAPIManager.h"
 
 @interface EJNewsViewModel()
-
+@property (strong, nonatomic) EJWebsiteArticleLaudAPIManager *laudAPIManger;
+@property (strong, nonatomic) RACSignal *laudSiganl;
 @property (strong, nonatomic) EJWebsiteArticleListAPIManager *websiteArticleListAPIManager;
 @property (strong, nonatomic) EJWebsiteLaudNumberAPIManager *websiteLaudNumberAPIManager;
 @property (strong, nonatomic) RACSignal *loadArticleSignal;
@@ -23,8 +25,27 @@
 
 @implementation EJNewsViewModel
 
+- (void)laud:(NSString *)newsID
+{
+
+        @weakify(self);
+        self.laudAPIManger = [[EJWebsiteArticleLaudAPIManager alloc] initWithArticleID:newsID];
+        self.isNetworkProceed = YES;
+        self.networkHintText = @"点赞中";
+        [self.laudSiganl subscribeError:^(NSError *error) {
+            @strongify(self);
+            self.networkHintText = self.laudAPIManger.statusDescription;
+            self.isNetworkProceed = NO;
+        } completed:^{
+            self.networkHintText = @"点赞成功";
+            self.isNetworkProceed = NO;
+        }];
+
+}
+
 - (void)autoStart
 {
+    @weakify(self);
     self.dataArray = [NSMutableArray arrayWithCapacity:6];
     for (NSInteger i = 0; i < 6; i++) {
         [self.dataArray addObject:[NSArray array]];
@@ -32,6 +53,7 @@
     self.noMoreDataMark = [@[@0, @0, @0, @0, @0, @0] mutableCopy];
     self.tabNumberSiganl = RACObserve(self, currentTabIndex);
     self.loadArticleSignal = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
         [self.websiteArticleListAPIManager launchRequestWithSuccess:^(id responseObject) {
             if (![self.websiteArticleListAPIManager newStatus]) {
                 [subscriber sendCompleted];
@@ -45,6 +67,22 @@
         }];
         return nil;
     }];
+    self.laudSiganl = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self);
+        [self.laudAPIManger launchRequestWithSuccess:^(id responseObject) {
+            if ([self.laudAPIManger newStatus]) {
+                [subscriber sendError:nil];
+            }
+            else
+            {
+                [subscriber sendCompleted];
+            }
+        } failure:^(NSError *error) {
+            [subscriber sendError:error];
+        }];
+        return nil;
+    }];
+
 }
 
 - (void)loadMore

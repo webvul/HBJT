@@ -47,6 +47,8 @@
     [[self.passwordRetrieveButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         [self.viewModel retrievePassword];
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

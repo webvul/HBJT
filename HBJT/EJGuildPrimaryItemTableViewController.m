@@ -11,6 +11,11 @@
 #import "EJGuildItemTableViewCell.h"
 #import "EJGuildItemTableViewController.h"
 
+#import "CommonTool.h"
+//获取屏幕宽度
+#define FFScreenWidth [UIScreen mainScreen].bounds.size.width
+//获取屏幕高度
+#define FFScreenHeight [UIScreen mainScreen].bounds.size.height
 @interface EJGuildPrimaryItemTableViewController ()
 
 @property (nonatomic, strong) EJGuildPrimaryItemViewModel *viewModel;
@@ -33,22 +38,18 @@
     self.navigationItem.titleView=[self returnTitle:@"办事指南"];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark - Table view data source
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSLog(@"%@",self.viewModel.itemList);
     return self.viewModel.itemList.count;
+}
+
+///行高
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.itemList[indexPath.row] objectForKey:@"itemname"] AndWidth:FFScreenWidth-40 AndFont:[UIFont systemFontOfSize:14.0f]];
+    return rect.size.height+1+30+20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -57,9 +58,17 @@
         cell = [[EJGuildItemTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Item"];
     }
     cell.titleLabel.text = [self.viewModel.itemList[indexPath.row] objectForKey:@"itemname"];
-    //cell.subLabel.text = [self.viewModel.itemList[indexPath.row] objectForKey:@""];
-    // Configure the cell...
+    cell.titleLabel.numberOfLines = 0 ;
+    CGRect  rect = [CommonTool getHeightWithText:cell.titleLabel.text AndWidth:FFScreenWidth-40 AndFont:[UIFont systemFontOfSize:14.0f]];
+    [cell.titleLabel remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(cell.contentView.mas_left).with.offset(20.0f);
+        make.right.equalTo(cell.contentView.mas_right).with.offset(-20.0f);
+        make.top.equalTo(cell.contentView.mas_top).with.offset(10.0f);
+        make.height.mas_equalTo(rect.size.height+1);
+    }];
     
+    cell.subLabel.text = [NSString stringWithFormat:@"%@条子项",[self.viewModel.itemList[indexPath.row] objectForKey:@"subItemNum"]];
+
     return cell;
 }
 

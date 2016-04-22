@@ -116,7 +116,6 @@
             }];
             [[sectionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
                 EJGuildPrimaryItemTableViewController *primaryItemViewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"PrimaryItem"];
-                //NSLog(@"%@",[self.viewModel.sectionArray[i] objectForKey:@"id"]);
                 [self prepareViewController:primaryItemViewController withSender:[self.viewModel.sectionArray[i] objectForKey:@"id"]];
                 [self.navigationController pushViewController:primaryItemViewController animated:YES];
             }];
@@ -146,8 +145,6 @@
     UIScrollView *scrollView = (UIScrollView *)self.guildView.superview;
     if (self.sectionButtonArray.count > 0) {
         scrollView.scrollEnabled = (((UIButton *)self.sectionButtonArray.lastObject).frame.origin.y > self.guildView.frame.size.height - 34 - 27);
-        NSLog(@"%f,%f", ((UIButton *)self.sectionButtonArray.lastObject).frame.origin.y,self.guildView.frame.size.height - 34-27);
-        NSLog(@"%@",((UIButton *)self.sectionButtonArray.lastObject));
     }
     else
     {
@@ -179,7 +176,6 @@
         cell.titleButton.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extItemname"];
         cell.subtitleButton.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extCode"];
         cell.resultButton.hidden = !([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"准予许可"]);
-        NSLog(@"%d %@",([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"准予许可"]),[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"]);
         return cell;
     }
 

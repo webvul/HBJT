@@ -45,7 +45,6 @@
         } else {
             self.rawData = responseObject;
             NSLog(@"API MANAGER DID SUCCEED");
-            //NSLog(@"%@",responseObject);
             [[AFNetworkReachabilityManager sharedManager] stopMonitoring];
             successBlock(responseObject);
         }

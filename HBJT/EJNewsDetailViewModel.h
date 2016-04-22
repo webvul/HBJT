@@ -15,7 +15,7 @@
 @property (nonatomic, strong) NSString *articleDate;
 @property (nonatomic, strong) NSString *articleRead;
 @property (nonatomic, strong) NSString *articleLaud;
-
+@property (nonatomic, strong) NSString *laudNumber;
 @property (nonatomic, strong) NSString *htmlString;
 
 

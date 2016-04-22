@@ -191,7 +191,6 @@
             self.resultArray = [[NSArray alloc] init];
         }
         self.resultArray = [self.resultArray arrayByAddingObjectsFromArray:[self.progressListAPIManager.data objectForKey:@"itemArray"]];
-        NSLog(@"%@",self.progressArray);
         self.networkHintText = self.progressListAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     }];
@@ -201,7 +200,6 @@
 {
     if (self.areaArray) {
         self.sectionListAPIManager = [[EJSectionListAPIManager alloc] initWithAreaCode:[self.districtArray[self.currentDistrictIndex] objectForKey:@"areaCode"]];
-        //NSLog(@"%@",[self.districtArray[self.currentDistrictIndex] objectForKey:@"areaCode"]);
         self.isNetworkProceed = YES;
         self.networkHintText = @"正在获取区域信息";
         [self.sectionListSignal subscribeError:^(NSError *error) {

@@ -75,9 +75,7 @@
 -(void)goBack{
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)fristRightBtnclick{
-    
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setNavigationBarColor:self.navigationController];

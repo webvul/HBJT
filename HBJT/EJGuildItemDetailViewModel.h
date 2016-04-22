@@ -26,5 +26,6 @@
 @property (strong, nonatomic)  NSString *itemComplaint;
 
 - (void)loadItemInfo;
+- (void)follow;
 
 @end

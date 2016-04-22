@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *readLabel;
 @property (weak, nonatomic) IBOutlet UILabel *laudLabel;
+@property (weak, nonatomic) IBOutlet UIButton *laudButton;
 
 @end

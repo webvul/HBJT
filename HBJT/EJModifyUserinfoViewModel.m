@@ -89,7 +89,6 @@
         self.isModifyUserinfoProceed = NO;
         return;
     }
-    NSLog(@"%@.%@.%@.%@",name,number,phone,address);
     self.modifyUserinfoAPIManager = [[EJModifyUserinfoAPIManager alloc]initWithID:[[AppDelegate sharedDelegate] userIDString] name:name number:number phone:phone address:address];
     @weakify(self);
     @weakify(delegate);

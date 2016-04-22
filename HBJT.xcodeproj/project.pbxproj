@@ -70,6 +70,9 @@
 		F7B306A81CBDED8F00EFB0F5 /* EJFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306A71CBDED8F00EFB0F5 /* EJFollowViewController.m */; };
 		F7B306AC1CBDEDFF00EFB0F5 /* EJFollowViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */; };
 		F7B306AF1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */; };
+		F7B6155D1CCA14280009637F /* EJFollowAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B6155C1CCA14280009637F /* EJFollowAPIManager.m */; };
+		F7B615601CCA319E0009637F /* UIViewController+BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B6155F1CCA319E0009637F /* UIViewController+BarItem.m */; };
+		F7B615631CCA32170009637F /* CommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B615621CCA32170009637F /* CommonTool.m */; };
 		F7B964271CC47F1900BE4C1E /* RootNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B964261CC47F1900BE4C1E /* RootNavgationController.m */; };
 		F7B9F7571CAE149A00A48158 /* EJResultDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7561CAE149A00A48158 /* EJResultDetailAPIManager.m */; };
 		F7B9F75A1CAE14B700A48158 /* EJProgressDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7591CAE14B700A48158 /* EJProgressDetailAPIManager.m */; };
@@ -87,6 +90,7 @@
 		F7C4C9771C9647F200C36129 /* EJNewsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C4C9761C9647F200C36129 /* EJNewsViewModel.m */; };
 		F7C4C97D1C964F0700C36129 /* EJWebsiteArticleListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C4C97C1C964F0700C36129 /* EJWebsiteArticleListAPIManager.m */; };
 		F7C4C9801C964F3B00C36129 /* EJWebsiteLaudNumberAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7C4C97F1C964F3B00C36129 /* EJWebsiteLaudNumberAPIManager.m */; };
+		F7C7A8351CC9C57F006CA633 /* Follow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C7A8341CC9C57F006CA633 /* Follow.storyboard */; };
 		F7DFF92A1C7D64A900A24DB5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7DFF9291C7D64A900A24DB5 /* MapKit.framework */; };
 		F7DFF93D1C7D74EF00A24DB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */; };
 		F7DFF93E1C7D74EF00A24DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7DFF9301C7D74EF00A24DB5 /* Assets.xcassets */; };
@@ -230,6 +234,12 @@
 		F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowViewModel.m; sourceTree = "<group>"; };
 		F7B306AD1CBDEE1800EFB0F5 /* EJFollowListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJFollowListAPIManager.h; sourceTree = "<group>"; };
 		F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowListAPIManager.m; sourceTree = "<group>"; };
+		F7B6155B1CCA14280009637F /* EJFollowAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJFollowAPIManager.h; sourceTree = "<group>"; };
+		F7B6155C1CCA14280009637F /* EJFollowAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowAPIManager.m; sourceTree = "<group>"; };
+		F7B6155E1CCA319E0009637F /* UIViewController+BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BarItem.h"; sourceTree = "<group>"; };
+		F7B6155F1CCA319E0009637F /* UIViewController+BarItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BarItem.m"; sourceTree = "<group>"; };
+		F7B615611CCA32170009637F /* CommonTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonTool.h; sourceTree = "<group>"; };
+		F7B615621CCA32170009637F /* CommonTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonTool.m; sourceTree = "<group>"; };
 		F7B964251CC47F1900BE4C1E /* RootNavgationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootNavgationController.h; sourceTree = "<group>"; };
 		F7B964261CC47F1900BE4C1E /* RootNavgationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootNavgationController.m; sourceTree = "<group>"; };
 		F7B9F7551CAE149A00A48158 /* EJResultDetailAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJResultDetailAPIManager.h; sourceTree = "<group>"; };
@@ -266,6 +276,7 @@
 		F7C4C97C1C964F0700C36129 /* EJWebsiteArticleListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJWebsiteArticleListAPIManager.m; sourceTree = "<group>"; };
 		F7C4C97E1C964F3B00C36129 /* EJWebsiteLaudNumberAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJWebsiteLaudNumberAPIManager.h; sourceTree = "<group>"; };
 		F7C4C97F1C964F3B00C36129 /* EJWebsiteLaudNumberAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJWebsiteLaudNumberAPIManager.m; sourceTree = "<group>"; };
+		F7C7A8341CC9C57F006CA633 /* Follow.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Follow.storyboard; sourceTree = "<group>"; };
 		F7DFF90E1C7D595500A24DB5 /* HBJT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HBJT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7DFF9291C7D64A900A24DB5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -519,12 +530,15 @@
 		F7B306A91CBDED9700EFB0F5 /* EJFollow */ = {
 			isa = PBXGroup;
 			children = (
+				F7C7A8341CC9C57F006CA633 /* Follow.storyboard */,
 				F7B306A61CBDED8F00EFB0F5 /* EJFollowViewController.h */,
 				F7B306A71CBDED8F00EFB0F5 /* EJFollowViewController.m */,
 				F7B306AA1CBDEDFF00EFB0F5 /* EJFollowViewModel.h */,
 				F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */,
 				F7B306AD1CBDEE1800EFB0F5 /* EJFollowListAPIManager.h */,
 				F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */,
+				F7B6155B1CCA14280009637F /* EJFollowAPIManager.h */,
+				F7B6155C1CCA14280009637F /* EJFollowAPIManager.m */,
 			);
 			name = EJFollow;
 			sourceTree = "<group>";
@@ -570,12 +584,16 @@
 		F7DFF92D1C7D74EF00A24DB5 /* HBJT */ = {
 			isa = PBXGroup;
 			children = (
+				F7B615611CCA32170009637F /* CommonTool.h */,
+				F7B615621CCA32170009637F /* CommonTool.m */,
 				F7A2BBFE1CBB820A00235F1A /* ParentViewController.h */,
 				F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
 				F7B964251CC47F1900BE4C1E /* RootNavgationController.h */,
 				F7B964261CC47F1900BE4C1E /* RootNavgationController.m */,
+				F7B6155E1CCA319E0009637F /* UIViewController+BarItem.h */,
+				F7B6155F1CCA319E0009637F /* UIViewController+BarItem.m */,
 				F73ED97B1C979D73006AF2A0 /* EJSuggestion */,
 				F77333AC1C7D974E00E2FD20 /* EJS */,
 				F7FE552D1C919B6E001C1F6B /* EJMatter */,
@@ -739,6 +757,7 @@
 				F7DFF93F1C7D74EF00A24DB5 /* LaunchScreen.storyboard in Resources */,
 				F73ED9901C97F7CC006AF2A0 /* News.storyboard in Resources */,
 				F7FE55451C91A480001C1F6B /* Matter.storyboard in Resources */,
+				F7C7A8351CC9C57F006CA633 /* Follow.storyboard in Resources */,
 				F7FE551A1C91544C001C1F6B /* Userinfo.storyboard in Resources */,
 				F7A86D281C891731006D5F18 /* Logger.storyboard in Resources */,
 			);
@@ -825,6 +844,7 @@
 				F7C4C9801C964F3B00C36129 /* EJWebsiteLaudNumberAPIManager.m in Sources */,
 				F734D27B1C8D522B00A062F9 /* FTKeyboardTapGestureRecognizer.m in Sources */,
 				F79661FF1CAA1B8F00C92174 /* EJPasswordRetrieveViewController.m in Sources */,
+				F7B615631CCA32170009637F /* CommonTool.m in Sources */,
 				F7A5B8E61C895CBC00672967 /* EJRegisterAPIManager.m in Sources */,
 				F7C14FE91C85404A00779833 /* EJSNetwork.m in Sources */,
 				F7A67E751CA40D2B00A64DE1 /* EJItemInfoAPIManager.m in Sources */,
@@ -863,12 +883,14 @@
 				F7A86D471C8942B4006D5F18 /* EJModifyUserinfoViewModel.m in Sources */,
 				F79084E31CA50ECC00E48E2C /* EJGuildPrimaryItemViewModel.m in Sources */,
 				F7FE55261C918363001C1F6B /* EJVerityPasswordAPIManager.m in Sources */,
+				F7B615601CCA319E0009637F /* UIViewController+BarItem.m in Sources */,
 				F7FE55291C919B24001C1F6B /* EJMatterViewController.m in Sources */,
 				F79084E01CA50DF600E48E2C /* EJGuildPrimaryItemTableViewController.m in Sources */,
 				F7AB19081C86CC2A00723EC2 /* UIViewController+FTBinding.m in Sources */,
 				F7AF7BC31CA8DA53001814E5 /* EJGuildItemDetailViewModel.m in Sources */,
 				F7C1596F1C8589F000779833 /* EJMenuTableViewController.m in Sources */,
 				83E782ED1C95DF8200A7AA1E /* EJSuggestionViewController.m in Sources */,
+				F7B6155D1CCA14280009637F /* EJFollowAPIManager.m in Sources */,
 				F731A4E01CA0DBFF00A0A2A5 /* EJGuildViewController.m in Sources */,
 				F73ED98B1C97B813006AF2A0 /* EJNewsPictureTableViewCell.m in Sources */,
 				F7A86D351C891B2E006D5F18 /* EJLoginAPIManager.m in Sources */,
