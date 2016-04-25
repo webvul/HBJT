@@ -16,7 +16,7 @@
 
 - (void)awakeFromNib {
     
-    self.titleLabel.font = [UIFont systemFontOfSize:14.0f];
+    self.titleLabel.font = [UIFont systemFontOfSize:13.0f];
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.contentView.mas_left).with.offset(20.0f);
         make.right.equalTo(self.contentView.mas_right).with.offset(-20.0f);

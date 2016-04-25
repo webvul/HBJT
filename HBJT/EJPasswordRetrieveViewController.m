@@ -47,18 +47,25 @@
     [[self.passwordRetrieveButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         [self.viewModel retrievePassword];
-        
-        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 
 - (void)bindViewModelForNotice
 {
     @weakify(self);
+    [[[[self.viewModel.networkHintSignal filter:^BOOL(id value) {
+        return [value isKindOfClass:[NSString class]];
+        }] filter:^BOOL(id value) {
+            return [value isEqualToString:@"修改成功"];
+        }] delay:1.0] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
     [self.viewModel.networkHintSignal subscribeNext:^(id x) {
         @strongify(self);
         if ([x isKindOfClass:[NSString class]]) {
             [self.hub setLabelText:x];
+
         } else if ([x boolValue]) {
             self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             [self.hub setYOffset:0];
@@ -67,10 +74,13 @@
         }
     }];
     [[RACObserve(self.viewModel, timeCount) map:^id(id value) {
+        @strongify(self);
         if ([value integerValue]) {
+            self.smsSenderButton.enabled = NO;
             return [NSString stringWithFormat:@"已发送(%tu)",[value integerValue]];
         } else
         {
+            self.smsSenderButton.enabled = YES;
             return [NSString stringWithFormat:@"获取验证码"];
 
         }

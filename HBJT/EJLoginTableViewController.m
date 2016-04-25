@@ -82,7 +82,6 @@
 }
 
 - (void)didReceiveMemoryWarning {
-    self.viewModel = nil;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -121,7 +120,7 @@
     }] filter:^BOOL(id value) {
         return [value isEqualToString:@"登录成功"];
     }] delay:1] subscribeNext:^(id x) {
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
     }];
     [[self.registerButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil] instantiateViewControllerWithIdentifier:@"Register" ] animated:YES];

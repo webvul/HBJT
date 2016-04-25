@@ -9,7 +9,7 @@
 #import "EJGuildItemTableViewController.h"
 #import "EJGuildItemViewModel.h"
 #import "EJGuildItemTableViewCell.h"
-
+#import "FFDoSomethingGuildVC.h"
 @interface EJGuildItemTableViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *mainLabel;
@@ -55,7 +55,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Detail"];
+//    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Detail"];
+    FFDoSomethingGuildVC  * viewController = [[FFDoSomethingGuildVC alloc]init];
     [self prepareViewController:viewController withSender:[self.viewModel.itemList[indexPath.row] objectForKey:@"id"]];
     [self.navigationController pushViewController:viewController animated:YES];
 }

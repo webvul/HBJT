@@ -132,11 +132,11 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="h5e-Bk-Nbo" detailTextLabel="x9O-7v-BOr" style="IBUITableViewCellStyleSubtitle" id="xe7-Vo-xzB">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="h5e-Bk-Nbo" detailTextLabel="x9O-7v-BOr" style="IBUITableViewCellStyleSubtitle" id="xe7-Vo-xzB">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="77"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xe7-Vo-xzB" id="yI8-g9-7a3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="76"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="h5e-Bk-Nbo">
@@ -156,15 +156,15 @@
                                                     </subviews>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResultCell" id="wXe-Ph-wG5" customClass="EJGuildResultTableViewCell">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ResultCell" id="wXe-Ph-wG5" customClass="EJGuildResultTableViewCell">
                                                 <rect key="frame" x="0.0" y="105" width="375" height="77"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wXe-Ph-wG5" id="nFH-Oo-c0l">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="76"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="76"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vij-PZ-vmp">
-                                                            <rect key="frame" x="280" y="35" width="71" height="20"/>
+                                                            <rect key="frame" x="263" y="35" width="71" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="71" id="IyE-NF-szA"/>
                                                                 <constraint firstAttribute="height" constant="20" id="O4D-NI-fVr"/>
@@ -188,7 +188,7 @@
                                                         <constraint firstItem="IHG-uY-Cyf" firstAttribute="trailing" secondItem="Vij-PZ-vmp" secondAttribute="trailing" id="2A3-jt-M0J"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="Vij-PZ-vmp" secondAttribute="bottom" constant="13" id="LES-7D-4gU"/>
                                                         <constraint firstItem="Y2e-N4-la8" firstAttribute="leading" secondItem="nFH-Oo-c0l" secondAttribute="leading" constant="18" id="M6C-Mz-pan"/>
-                                                        <constraint firstAttribute="trailingMargin" secondItem="Vij-PZ-vmp" secondAttribute="trailing" constant="16" id="dv2-C4-emj"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="Vij-PZ-vmp" secondAttribute="trailing" id="dv2-C4-emj"/>
                                                         <constraint firstItem="Y2e-N4-la8" firstAttribute="centerY" secondItem="Vij-PZ-vmp" secondAttribute="centerY" constant="-5" id="jv8-Sg-hvS"/>
                                                         <constraint firstItem="Y2e-N4-la8" firstAttribute="top" secondItem="IHG-uY-Cyf" secondAttribute="bottom" constant="5" id="lAo-V3-iIV"/>
                                                         <constraint firstItem="IHG-uY-Cyf" firstAttribute="leading" secondItem="Y2e-N4-la8" secondAttribute="leading" id="rDp-yz-aLM"/>
@@ -786,7 +786,7 @@
                                             <constraint firstItem="IKF-Hv-Vuu" firstAttribute="leading" secondItem="xLn-vA-xY1" secondAttribute="leading" id="5y2-tD-8nc"/>
                                             <constraint firstItem="DPy-FD-1z2" firstAttribute="trailing" secondItem="TFR-9F-BJo" secondAttribute="trailing" constant="-5" id="84V-zH-wGT"/>
                                             <constraint firstItem="k8Z-Jq-GEB" firstAttribute="trailing" secondItem="xLn-vA-xY1" secondAttribute="trailing" id="95C-Ls-uJa"/>
-                                            <constraint firstItem="TFR-9F-BJo" firstAttribute="leading" secondItem="d97-J5-RQU" secondAttribute="leadingMargin" constant="18" id="9mn-hH-hMv"/>
+                                            <constraint firstItem="TFR-9F-BJo" firstAttribute="leading" secondItem="d97-J5-RQU" secondAttribute="leading" constant="26" id="9mn-hH-hMv"/>
                                             <constraint firstItem="QXQ-mN-ipC" firstAttribute="leading" secondItem="k8Z-Jq-GEB" secondAttribute="leading" id="Auz-03-vla"/>
                                             <constraint firstItem="WVI-0W-l6v" firstAttribute="trailing" secondItem="TFR-9F-BJo" secondAttribute="trailing" id="Az6-tN-ZNi"/>
                                             <constraint firstItem="SJT-s1-vVX" firstAttribute="trailing" secondItem="TFR-9F-BJo" secondAttribute="trailing" id="B2j-sq-GN8"/>

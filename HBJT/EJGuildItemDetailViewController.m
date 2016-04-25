@@ -39,7 +39,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationItem.titleView=[self returnTitle:@"办事指南"];
-    [self rightBtntitle:@"关注" withimage:@"04"];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,9 +72,13 @@
     RAC(self, itemLocationLabel.text) = RACObserve(self.viewModel, itemLocation);
     RAC(self, itemConsultationLabel.text) = RACObserve(self.viewModel, itemConsultation);
     RAC(self, itemComplaintLabel.text) = RACObserve(self.viewModel, itemComplaint);
+    
     [self.viewModel.networkHintSignal subscribeNext:^(id x) {
         if ([x isKindOfClass:[NSString class]]) {
             [self.hub setLabelText:x];
+            if ([x isEqualToString:@"读取成功"]||[x isEqualToString:@"关注成功"]||[x isEqualToString:@"取消成功"]) {
+                (self.viewModel.followed? [self rightBtntitle:@"取消关注" withimage:@"004"]: [self rightBtntitle:@"关注" withimage:@"04"]);
+            }
         } else if ([x boolValue]) {
             self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             //[self.hub setYOffset:-64];
@@ -106,7 +109,7 @@
     
     //选择时间的按钮
     UIButton * rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.frame=CGRectMake(0, 0, 60, 30);
+    rightButton.frame=CGRectMake(0, 0, 80, 30);
     //先设置按钮里面的内容居中
     rightButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     //设置文字居左 －>向左移15(左减右加)

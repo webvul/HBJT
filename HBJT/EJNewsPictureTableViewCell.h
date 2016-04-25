@@ -17,4 +17,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *laudButton;
 @property (weak, nonatomic) IBOutlet UILabel *laudLabel;
 
+@property (nonatomic, copy) void (^laudButtonClick)(NSInteger index);
+
 @end

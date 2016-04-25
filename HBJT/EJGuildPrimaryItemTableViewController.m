@@ -48,7 +48,7 @@
 ///行高
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.itemList[indexPath.row] objectForKey:@"itemname"] AndWidth:FFScreenWidth-40 AndFont:[UIFont systemFontOfSize:14.0f]];
+    CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.itemList[indexPath.row] objectForKey:@"itemname"] AndWidth:FFScreenWidth-40 AndFont:[UIFont systemFontOfSize:13.0f]];
     return rect.size.height+1+30+20;
 }
 
@@ -59,7 +59,7 @@
     }
     cell.titleLabel.text = [self.viewModel.itemList[indexPath.row] objectForKey:@"itemname"];
     cell.titleLabel.numberOfLines = 0 ;
-    CGRect  rect = [CommonTool getHeightWithText:cell.titleLabel.text AndWidth:FFScreenWidth-40 AndFont:[UIFont systemFontOfSize:14.0f]];
+    CGRect  rect = [CommonTool getHeightWithText:cell.titleLabel.text AndWidth:FFScreenWidth-40 AndFont:[UIFont systemFontOfSize:13.0f]];
     [cell.titleLabel remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(cell.contentView.mas_left).with.offset(20.0f);
         make.right.equalTo(cell.contentView.mas_right).with.offset(-20.0f);

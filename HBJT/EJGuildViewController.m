@@ -12,7 +12,7 @@
 #import "EJGuildViewModel.h"
 #import "EJGuildPrimaryItemTableViewController.h"
 #import "EJGuildResultTableViewCell.h"
-
+#import "FFProgressDetailVC.h"
 @interface EJGuildViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *tabLabel0;
 @property (weak, nonatomic) IBOutlet UIButton *tabButton0;
@@ -130,7 +130,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Result"];;
+//    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Result"];;
+    FFProgressDetailVC  * viewController = [[FFProgressDetailVC alloc]init];
     NSString *itemID = [self.viewModel.resultArray[indexPath.row] objectForKey:@"id"];
     NSNumber *resultType = @(self.viewModel.currentTab);
     [self prepareViewController:viewController withSender:@{@"id":itemID,@"type":resultType}];
@@ -167,7 +168,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(!self.tabLabel1.hidden)
+    if(self.tabLabel1.hidden)
     {
         EJGuildResultTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultCell" forIndexPath:indexPath];
         if (cell == nil) {
@@ -175,7 +176,7 @@
         }
         cell.titleButton.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extItemname"];
         cell.subtitleButton.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extCode"];
-        cell.resultButton.hidden = !([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"准予许可"]);
+        cell.resultButton.hidden = !(([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"准予许可"])||([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"即办办结"]));
         return cell;
     }
 

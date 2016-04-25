@@ -12,6 +12,7 @@
 #import "EJNewsViewModel.h"
 #import "UIScrollView+HATFCarousel.h"
 #import "EJNewsDetailViewController.h"
+#import "EJNewsTableViewCell.h"
 
 @interface EJNewsViewController ()
 
@@ -52,6 +53,9 @@
     // Do any additional setup after loading the view.
     
     self.navigationItem.titleView=[self returnTitle:@"湖北省交通运输厅"];
+    
+    self.tableView1.delaysContentTouches = NO ;
+    self.tableView2.delaysContentTouches = NO ;
     
     self.buttonArray = @[self.button0,self.button1,self.button2,self.button3,self.button4,self.button5];
     self.labelArray = @[self.buttonLabel0,self.buttonLabel1,self.buttonLabel2,self.buttonLabel3,self.buttonLabel4,self.buttonLabel5];
@@ -111,20 +115,6 @@
     [self.viewModel reload];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -166,7 +156,6 @@
    
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     if (tableView == self.tableView0) {
         return self.previousDataSource.count;
         
@@ -206,19 +195,24 @@
         EJNewsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"news"];
         if (cell == nil) {
             cell = [[EJNewsTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"news"];
+
         }
         cell.titleLabel.text = [articleData objectForKey:@"articleTitle"];
         cell.markNewImageView.hidden = ![articleData objectForKey:@"articleIsNewTag"];
         cell.timeLabel.text = [articleData objectForKey:@"articleTime"];
         cell.readLabel.text = [[articleData objectForKey:@"articleReadNumber"]stringValue];
         cell.laudLabel.text = [[articleData objectForKey:@"articleLaudNumber"]stringValue];
-          cell.laudButton.tag = indexPath.row;
-        [cell.laudButton addTarget:self action:@selector(laudButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-      
-        /*[[cell.laudButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [self.viewModel laud:[[self.viewModel.data[indexPath.row] objectForKey:@"articleID"] stringValue]];
-            NSLog(@"1");
-        }];*/
+        
+        [cell.laudButton bringSubviewToFront:cell.contentView];
+        cell.laudButton.tag = indexPath.row;
+        // 点赞 按钮
+        cell.laudButtonClick = ^ (NSInteger index)
+        {
+            self.lastSelectedRow = index;
+            [self.viewModel laud:[[self.viewModel.data[index] objectForKey:@"articleID"] stringValue]];
+            NSLog(@"赞赞赞赞赞");
+        };
+        
         return cell;
     }
     else
@@ -233,18 +227,17 @@
         cell.readLabel.text = [[articleData objectForKey:@"articleReadNumber"]stringValue];
         cell.laudLabel.text = [[articleData objectForKey:@"articleLaudNumber"]stringValue];
         [cell.thumbnailImageView sd_setImageWithURL:[articleData objectForKey:@"articleThumbnailURL"]];
+        
         cell.laudButton.tag = indexPath.row;
-        [cell.laudButton addTarget:self action:@selector(laudButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+        cell.laudButtonClick = ^ (NSInteger index)
+        {
+            self.lastSelectedRow = index;
+            [self.viewModel laud:[[self.viewModel.data[index] objectForKey:@"articleID"] stringValue]];
+        };
+        
         return cell;
     }
 }
-
-- (void)laudButtonClicked:(UIButton *)btn
-{
-    [self.viewModel laud:[[self.viewModel.data[btn.tag] objectForKey:@"articleID"] stringValue]];
-
-}
-
 
 - (void)bindViewModelToUpdate
 {
@@ -307,13 +300,21 @@
     [self.viewModel.networkHintSignal subscribeNext:^(id x) {
         if ([x isKindOfClass:[NSString class]]) {
             if ([x isEqualToString:@"点赞成功"]) {
+                [self.currentDataSource[self.lastSelectedRow] setObject:@([[self.currentDataSource[self.lastSelectedRow] objectForKey:@"articleLaudNumber"] integerValue]+1) forKey:@"articleLaudNumber"];
+                [self.tableView1 reloadData];
                 self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                 [self.hub setLabelText:x];
-                //[self.hub hide:YES afterDelay:1];
-
-
-
             }
+            else if([x isEqualToString:@"重复点赞！"])
+            {
+                self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                [self.hub setLabelText:x];
+            }
+            [self.hub hide:YES afterDelay:1];
+
+        }
+        else if (!x)
+        {
         }
     }];
 

@@ -24,6 +24,7 @@
 @property (strong, nonatomic)  NSString *itemLocation;
 @property (strong, nonatomic)  NSString *itemConsultation;
 @property (strong, nonatomic)  NSString *itemComplaint;
+@property (assign, nonatomic) BOOL followed;
 
 - (void)loadItemInfo;
 - (void)follow;

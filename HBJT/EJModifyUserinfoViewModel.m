@@ -69,7 +69,7 @@
                          [delegate userAddressString]:
                          self.addressText);
     if (![FTVerifier verify:name withRegex:@"^[\u4e00-\u9fa5]{2,8}$"]) {
-        self.modifyUserinfoHintText = @"姓名格式不正确";
+        self.modifyUserinfoHintText = @"真实姓名格式不正确";
         self.isModifyUserinfoProceed = NO;
         return;
     }

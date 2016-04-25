@@ -29,7 +29,6 @@
     [super viewDidLoad];
     self.navigationItem.titleView=[self returnTitle:@"个人资料"];
     
-    self.usernameTextField.placeholder = @"1111111";
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];
 }
 
@@ -60,16 +59,19 @@
             [self.hub hide:YES afterDelay:1];
         }
     }];
-    [[[self.viewModel.modifyUserinfoHintSignal filter:^BOOL(id value) {
+    [[[[[self.viewModel.modifyUserinfoHintSignal filter:^BOOL(id value) {
         return [value isKindOfClass:[NSString class]];
     }] filter:^BOOL(id value) {
         return [value isEqualToString:@"修改成功"];
-    }] subscribeNext:^(id x) {
+    }] doNext:^(id x) {
         @strongify(self);
         self.nameTextField.text = @"";
         self.numberTextField.text = @"";
         self.phoneTextField.text = @"";
         self.addressTextField.text = @"";
+    }] delay:1.0] subscribeNext:^(id x) {
+        @strongify(self);
+        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 

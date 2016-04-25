@@ -10,4 +10,16 @@
 
 @implementation EJNewsPictureTableViewCell
 
+- (void)awakeFromNib
+{
+    if (self.laudButton!=nil) {
+        [self.laudButton addTarget:self action:@selector(laudButtonClcik:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+- (void)laudButtonClcik:(UIButton *)btn
+{
+    self.laudButtonClick(btn.tag);
+}
+
 @end

@@ -393,7 +393,7 @@
     };
     
     // 设置账号
-    [XGPush setAccount:@"test"];
+    [XGPush setAccount:@"shared"];
     
     //注册设备
     NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];

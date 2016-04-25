@@ -72,10 +72,11 @@
     }
     self.followAPIManager = [[EJFollowAPIManager alloc] initWithUserID:delegate.userIDString itemID:self.itemID];
     [self.followSignal subscribeNext:^(id x) {
-        self.networkHintText = self.itemInfoAPIManager.statusDescription;
+        self.networkHintText = @"出现错误";
         self.isNetworkProceed = NO;
     } completed:^{
-        self.networkHintText = self.itemInfoAPIManager.statusDescription;
+        self.followed = !self.followed;
+        self.networkHintText = (self.followed? @"关注成功": @"取消成功");
         self.isNetworkProceed = NO;
     }];
 }
@@ -100,6 +101,7 @@
         self.itemLocation = [self zeroToNull: [self.itemInfoAPIManager.data objectForKey:@"itemLocation"]];
         self.itemConsultation = [self zeroToNull: [self.itemInfoAPIManager.data objectForKey:@"itemConsultation"]];
         self.itemComplaint = [self zeroToNull: [self.itemInfoAPIManager.data objectForKey:@"itemComplaint"]];
+        self.followed = [[self.itemInfoAPIManager.data objectForKey:@"itemFollowed"] boolValue];
         self.networkHintText = self.itemInfoAPIManager.statusDescription;
         self.isNetworkProceed = NO;
     }];

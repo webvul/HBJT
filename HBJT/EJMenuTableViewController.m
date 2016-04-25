@@ -6,6 +6,8 @@
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
 
+#define SystemVersionLessThan(v) ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] == NSOrderedAscending)
+
 #import "EJMenuTableViewController.h"
 #import "AppDelegate.h"
 #import "EJS/EJS.h"
@@ -72,7 +74,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-    self.viewModel = nil;
 }
 
 #pragma mark - UITableViewDataSource
@@ -144,7 +145,30 @@
                     [appDelegate push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateViewControllerWithIdentifier:@"password"]];
                     break;
                 case 2:
-                    [appDelegate setCurrentUser:NO];
+                {
+                    //退出登录
+                    if (SystemVersionLessThan(@"8.0")) {
+                        [appDelegate setCurrentUser:NO];
+                        MBProgressHUD *hud = [[MBProgressHUD alloc] init];
+                        [MBProgressHUD showHUDAddedTo:hud animated:YES];
+                        [hud setLabelText:@"登出成功"];
+                        [hud hide:YES afterDelay:1.0];
+                    }
+                    else {
+                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"确认退出吗?"  preferredStyle:UIAlertControllerStyleAlert];
+                        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            [appDelegate setCurrentUser:NO];
+                            MBProgressHUD *hud = [[MBProgressHUD alloc] init];
+                            [MBProgressHUD showHUDAddedTo:hud animated:YES];
+                            [hud setLabelText:@"登出成功"];
+                            [hud hide:YES afterDelay:1.0];
+                        }]];
+                        [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                            
+                        }]];
+                        [self presentViewController:alert animated:NO completion:nil];
+                    }
+                }
                     break;
                 default:
                     break;
@@ -161,8 +185,12 @@
     @weakify(appDelegate);
     [[self.loginButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(appDelegate);
-        [appDelegate closeDrawerNeedReopen:NO];
-        [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
+        [appDelegate closeDrawerNeedReopen:YES];
+        if (![appDelegate currentUser]) {
+            [appDelegate push:[[UIStoryboard storyboardWithName:@"Logger" bundle:nil]instantiateInitialViewController]];
+        } else {
+            [appDelegate push:[[UIStoryboard storyboardWithName:@"Userinfo" bundle:nil] instantiateInitialViewController]];
+        }
     }];
     [[self.letterButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(appDelegate);
@@ -188,7 +216,7 @@
         if ([x isKindOfClass:[NSString class]]) {
             self.usernameLabelButton.hidden = NO;
             self.loginLabelButton.hidden = YES;
-            self.loginButton.enabled = NO;
+            //self.loginButton.enabled = NO;
             [self.usernameLabelButton setTitle:x forState:UIControlStateNormal];
             self.logoutCell.hidden = NO;
         } else if (![x boolValue])

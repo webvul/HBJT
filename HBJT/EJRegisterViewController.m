@@ -74,7 +74,6 @@
     [[self.registerButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         @strongify(self);
         [self.viewModel registery];
-        [self.navigationController popViewControllerAnimated:YES];
     }];
 }
 
@@ -104,9 +103,7 @@
         return [value isEqualToString:@"注册成功"];
     }] delay:1] subscribeNext:^(id x) {
         @strongify(self);
-        NSLog(@"%@",self.navigationController.topViewController);
         [self.navigationController popViewControllerAnimated:YES];
-        NSLog(@"%@",self.navigationController.topViewController);
         [self prepareViewController:self.navigationController.topViewController withSender:@[self.viewModel.usernameText,self.viewModel.passwordText]];
     }];
 }

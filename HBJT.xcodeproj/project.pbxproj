@@ -25,6 +25,9 @@
 		F73ED9901C97F7CC006AF2A0 /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F73ED98F1C97F7CC006AF2A0 /* News.storyboard */; };
 		F746B9081C8EB7CF00DBF40E /* EJSResponseAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = F746B9071C8EB7CF00DBF40E /* EJSResponseAnalyzer.m */; };
 		F746B90C1C8EDDBB00DBF40E /* FTDataAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = F746B90B1C8EDDBB00DBF40E /* FTDataAnalyzer.m */; };
+		F746EE9C1CCE1C29008172FA /* FFProgressDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F746EE961CCE1C29008172FA /* FFProgressDetailVC.m */; };
+		F746EE9D1CCE1C29008172FA /* FFDoSomethingGuildVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F746EE971CCE1C29008172FA /* FFDoSomethingGuildVC.m */; };
+		F746EE9E1CCE1C29008172FA /* FFGuildCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F746EE981CCE1C29008172FA /* FFGuildCell.m */; };
 		F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F75EA0331C86E11000878EF5 /* EJSAPIManager.m */; };
 		F77333AD1C7D974E00E2FD20 /* FTIntercepter.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333A91C7D974E00E2FD20 /* FTIntercepter.m */; };
 		F77333AE1C7D974E00E2FD20 /* FTLog.m in Sources */ = {isa = PBXBuildFile; fileRef = F77333AB1C7D974E00E2FD20 /* FTLog.m */; };
@@ -146,6 +149,12 @@
 		F746B9071C8EB7CF00DBF40E /* EJSResponseAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSResponseAnalyzer.m; sourceTree = "<group>"; };
 		F746B90A1C8EDDBB00DBF40E /* FTDataAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTDataAnalyzer.h; sourceTree = "<group>"; };
 		F746B90B1C8EDDBB00DBF40E /* FTDataAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTDataAnalyzer.m; sourceTree = "<group>"; };
+		F746EE951CCE1C29008172FA /* FFProgressDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFProgressDetailVC.h; sourceTree = "<group>"; };
+		F746EE961CCE1C29008172FA /* FFProgressDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFProgressDetailVC.m; sourceTree = "<group>"; };
+		F746EE971CCE1C29008172FA /* FFDoSomethingGuildVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDoSomethingGuildVC.m; sourceTree = "<group>"; };
+		F746EE981CCE1C29008172FA /* FFGuildCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFGuildCell.m; sourceTree = "<group>"; };
+		F746EE991CCE1C29008172FA /* FFGuildCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFGuildCell.h; sourceTree = "<group>"; };
+		F746EE9A1CCE1C29008172FA /* FFDoSomethingGuildVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDoSomethingGuildVC.h; sourceTree = "<group>"; };
 		F75EA0321C86E11000878EF5 /* EJSAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJSAPIManager.h; sourceTree = "<group>"; };
 		F75EA0331C86E11000878EF5 /* EJSAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJSAPIManager.m; sourceTree = "<group>"; };
 		F77333A81C7D974E00E2FD20 /* FTIntercepter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTIntercepter.h; sourceTree = "<group>"; };
@@ -358,6 +367,12 @@
 		F731A4DD1CA0DBBB00A0A2A5 /* EJGuild */ = {
 			isa = PBXGroup;
 			children = (
+				F746EE951CCE1C29008172FA /* FFProgressDetailVC.h */,
+				F746EE961CCE1C29008172FA /* FFProgressDetailVC.m */,
+				F746EE9A1CCE1C29008172FA /* FFDoSomethingGuildVC.h */,
+				F746EE971CCE1C29008172FA /* FFDoSomethingGuildVC.m */,
+				F746EE991CCE1C29008172FA /* FFGuildCell.h */,
+				F746EE981CCE1C29008172FA /* FFGuildCell.m */,
 				F7EA97641CC8B54D00A2E77E /* EJGuildResultTableViewCell.h */,
 				F7EA97651CC8B54D00A2E77E /* EJGuildResultTableViewCell.m */,
 				F7AF7BBE1CA8CE30001814E5 /* EJGuildItemDetailViewController.h */,
@@ -594,8 +609,8 @@
 				F7B964261CC47F1900BE4C1E /* RootNavgationController.m */,
 				F7B6155E1CCA319E0009637F /* UIViewController+BarItem.h */,
 				F7B6155F1CCA319E0009637F /* UIViewController+BarItem.m */,
-				F73ED97B1C979D73006AF2A0 /* EJSuggestion */,
 				F77333AC1C7D974E00E2FD20 /* EJS */,
+				F73ED97B1C979D73006AF2A0 /* EJSuggestion */,
 				F7FE552D1C919B6E001C1F6B /* EJMatter */,
 				F716BC661C86880100516DF4 /* EJIndex */,
 				F7F284A61C87EB6400027DF6 /* EJMenu */,
@@ -861,6 +876,7 @@
 				F73ED97E1C979E74006AF2A0 /* FTViewModel+EJSAPIManager.m in Sources */,
 				F7C14FE21C853A9B00779833 /* FTViewModel.m in Sources */,
 				F7A86D381C891C1F006D5F18 /* EJValidateUsernameAPIManager.m in Sources */,
+				F746EE9E1CCE1C29008172FA /* FFGuildCell.m in Sources */,
 				F7A86D3B1C8941B2006D5F18 /* EJRegisterViewModel.m in Sources */,
 				83E782F31C95DFD700A7AA1E /* EJSuggestionAPIManager.m in Sources */,
 				F7AF7BBA1CA8C68D001814E5 /* EJNewsDetailViewController.m in Sources */,
@@ -868,6 +884,7 @@
 				F7A67E721CA40CFE00A64DE1 /* EJItemAPIManager.m in Sources */,
 				F7C14FDC1C853A9B00779833 /* FTAPIManager.m in Sources */,
 				F7B9F7571CAE149A00A48158 /* EJResultDetailAPIManager.m in Sources */,
+				F746EE9D1CCE1C29008172FA /* FFDoSomethingGuildVC.m in Sources */,
 				F7B9F7661CAE518E00A48158 /* EJPasswordRetrieveAPIManager.m in Sources */,
 				F7A86D2E1C891997006D5F18 /* EJLoginTableViewController.m in Sources */,
 				F7FE551D1C9154E5001C1F6B /* EJModifyUserinfoViewController.m in Sources */,
@@ -877,6 +894,7 @@
 				F7AC66C01C8FFDA200BC8456 /* EJUserAgreementViewController.m in Sources */,
 				F7AB19001C8698F100723EC2 /* EJNewsViewController.m in Sources */,
 				F7AF7BCC1CA90558001814E5 /* EJWebsiteArticleLaudAPIManager.m in Sources */,
+				F746EE9C1CCE1C29008172FA /* FFProgressDetailVC.m in Sources */,
 				F7A5B8E91C8969F600672967 /* EJRegisterViewController.m in Sources */,
 				F731A4E91CA0E02B00A0A2A5 /* EJAreaListAPIManager.m in Sources */,
 				F7B9F75A1CAE14B700A48158 /* EJProgressDetailAPIManager.m in Sources */,

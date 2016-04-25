@@ -46,7 +46,7 @@
 {
     self.isLoginProceed = YES;
     self.loginTintText = @"正在登录";
-    if (![FTVerifier verify:self.usernameText withRegex:@"^[A-Za-z]{6,18}$"]) {
+    if (![FTVerifier verify:self.usernameText withRegex:@"^[A-Za-z0-9]{6,18}$"]) {
         self.loginTintText = @"用户名格式不正确";
         self.isLoginProceed = NO;
         return;
@@ -60,7 +60,7 @@
     @weakify(self);
     [self.loginSignal subscribeError:^(NSError *error) {
         @strongify(self);
-        self.loginTintText = self.loginAPIManager.statusDescription;
+        self.loginTintText = @"用户名密码不匹配";
         self.isLoginProceed = NO;
     } completed:^{
         @strongify(self);
