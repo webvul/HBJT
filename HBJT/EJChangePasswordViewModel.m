@@ -72,13 +72,13 @@
 {
     self.isChangePasswordProceed = YES;
     self.changePasswordHintText = @"正在修改";
-    if (![FTVerifier verify:self.oldpasswordText withRegex:@"^.{6,11}$"]) {
-        self.changePasswordHintText = @"原密码格式不正确";
+    if (self.oldpasswordText.length <6 || self.oldpasswordText.length > 18) {
+        self.changePasswordHintText = @"原密码长度不正确";
         self.isChangePasswordProceed = NO;
         return;
     }
-    if (![FTVerifier verify:self.passwordText withRegex:@"^.{6,11}$"]) {
-        self.changePasswordHintText = @"新密码格式不正确";
+    if (self.passwordText.length <6 || self.passwordText.length > 18) {
+        self.changePasswordHintText = @"新密码长度不正确";
         self.isChangePasswordProceed = NO;
         return;
     }

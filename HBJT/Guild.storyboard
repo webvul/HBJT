@@ -183,19 +183,40 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="准予许可" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0G-Xm-iGT">
+                                                            <rect key="frame" x="263" y="35" width="71" height="21"/>
+                                                            <color key="backgroundColor" red="0.98823529409999999" green="0.47843137250000001" blue="0.027450980390000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="71" id="dmL-3l-mUw"/>
+                                                                <constraint firstAttribute="height" constant="21" id="gSn-7C-CR6"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="IHG-uY-Cyf" firstAttribute="trailing" secondItem="Vij-PZ-vmp" secondAttribute="trailing" id="2A3-jt-M0J"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="O0G-Xm-iGT" secondAttribute="trailing" id="H2o-HO-xzr"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="Vij-PZ-vmp" secondAttribute="bottom" constant="13" id="LES-7D-4gU"/>
                                                         <constraint firstItem="Y2e-N4-la8" firstAttribute="leading" secondItem="nFH-Oo-c0l" secondAttribute="leading" constant="18" id="M6C-Mz-pan"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="Vij-PZ-vmp" secondAttribute="trailing" id="dv2-C4-emj"/>
+                                                        <constraint firstItem="Y2e-N4-la8" firstAttribute="centerY" secondItem="O0G-Xm-iGT" secondAttribute="centerY" constant="-5" id="eOc-N3-LOQ"/>
                                                         <constraint firstItem="Y2e-N4-la8" firstAttribute="centerY" secondItem="Vij-PZ-vmp" secondAttribute="centerY" constant="-5" id="jv8-Sg-hvS"/>
                                                         <constraint firstItem="Y2e-N4-la8" firstAttribute="top" secondItem="IHG-uY-Cyf" secondAttribute="bottom" constant="5" id="lAo-V3-iIV"/>
+                                                        <constraint firstItem="IHG-uY-Cyf" firstAttribute="trailing" secondItem="O0G-Xm-iGT" secondAttribute="trailing" id="mMA-Ja-cyA"/>
                                                         <constraint firstItem="IHG-uY-Cyf" firstAttribute="leading" secondItem="Y2e-N4-la8" secondAttribute="leading" id="rDp-yz-aLM"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="O0G-Xm-iGT" secondAttribute="bottom" constant="12" id="sr9-jS-l5M"/>
                                                     </constraints>
+                                                    <variation key="default">
+                                                        <mask key="subviews">
+                                                            <exclude reference="Vij-PZ-vmp"/>
+                                                        </mask>
+                                                    </variation>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="resultButton" destination="Vij-PZ-vmp" id="zTa-uh-kEw"/>
+                                                    <outlet property="resultLabel" destination="O0G-Xm-iGT" id="GPs-nX-Lxk"/>
                                                     <outlet property="subtitleButton" destination="Y2e-N4-la8" id="Men-Jr-4zM"/>
                                                     <outlet property="titleButton" destination="IHG-uY-Cyf" id="ohw-Vl-mwA"/>
                                                 </connections>
@@ -918,7 +939,7 @@
                                             <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="权限范围内交通建设项目工程可行性研究" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSv-hm-ouI">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="权限范围内交通建设项目工程可行性研究" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSv-hm-ouI">
                                             <rect key="frame" x="16" y="19" width="310" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="x81-5o-Fiz"/>
@@ -936,6 +957,8 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="sSv-hm-ouI" secondAttribute="trailing" constant="8" id="ALB-FL-75F"/>
                                         <constraint firstItem="sSv-hm-ouI" firstAttribute="leading" secondItem="bE1-f8-ODB" secondAttribute="leadingMargin" constant="8" id="BEC-Ij-lDP"/>
+                                        <constraint firstItem="sSv-hm-ouI" firstAttribute="top" secondItem="bE1-f8-ODB" secondAttribute="topMargin" constant="11" id="E0v-uj-Kil"/>
+                                        <constraint firstItem="sSv-hm-ouI" firstAttribute="leading" secondItem="bE1-f8-ODB" secondAttribute="leadingMargin" constant="8" id="U8n-1h-LPV"/>
                                         <constraint firstItem="sSv-hm-ouI" firstAttribute="centerY" secondItem="bE1-f8-ODB" secondAttribute="centerY" id="acb-dZ-qMt"/>
                                         <constraint firstItem="th8-Sg-1cG" firstAttribute="top" secondItem="sSv-hm-ouI" secondAttribute="bottom" constant="3" id="nd6-6F-JMr"/>
                                         <constraint firstItem="th8-Sg-1cG" firstAttribute="leading" secondItem="sSv-hm-ouI" secondAttribute="leading" id="npe-QR-sNh"/>

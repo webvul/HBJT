@@ -10,6 +10,6 @@
 
 @interface FFProgressDetailVC : ParentViewController
 
-
+@property (nonatomic,copy) NSString  * titleName ;
 
 @end

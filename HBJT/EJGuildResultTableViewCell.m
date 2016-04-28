@@ -16,6 +16,8 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.resultLabel.layer.cornerRadius = 5.0f;
+    self.resultLabel.clipsToBounds = YES;
     // Initialization code
 }
 

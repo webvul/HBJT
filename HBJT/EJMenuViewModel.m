@@ -20,8 +20,9 @@
         if (![value boolValue]) {
             return value;
         }
-        NSString *name = [[AppDelegate sharedDelegate] userNameString];
-        return ([name isEqualToString:@"0"]?[delegate userUsernameString]: name);
+        //NSString *name = [[AppDelegate sharedDelegate] userNameString];
+        //return ([name isEqualToString:@"0"]?[delegate userUsernameString]: name);
+        return [delegate userUsernameString];
     }];
 }
 

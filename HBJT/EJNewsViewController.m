@@ -156,6 +156,7 @@
    
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    self.tableView1.mj_footer.hidden = (self.currentDataSource.count == 0);
     if (tableView == self.tableView0) {
         return self.previousDataSource.count;
         
@@ -198,7 +199,7 @@
 
         }
         cell.titleLabel.text = [articleData objectForKey:@"articleTitle"];
-        cell.markNewImageView.hidden = ![articleData objectForKey:@"articleIsNewTag"];
+        cell.markNewImageView.hidden = [[articleData objectForKey:@"articleIsNewTag"] isEqualToString:@"0"];
         cell.timeLabel.text = [articleData objectForKey:@"articleTime"];
         cell.readLabel.text = [[articleData objectForKey:@"articleReadNumber"]stringValue];
         cell.laudLabel.text = [[articleData objectForKey:@"articleLaudNumber"]stringValue];

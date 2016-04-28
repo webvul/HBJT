@@ -152,6 +152,10 @@
 
 - (void)loadResultsList
 {
+    if (self.resultsListAPIManager) {
+        [self.resultsListAPIManager.task cancel];
+        self.isNetworkProceed = NO;
+    }
     self.resultsListAPIManager = [[EJResultsListAPIManager alloc] initWithPageNumber:self.pageNumber];
     self.isNetworkProceed = YES;
     [self.resultsListSiganl subscribeError:^(NSError *error) {
@@ -181,6 +185,10 @@
 
 - (void)loadProgressList
 {
+    if (self.progressListAPIManager) {
+        [self.progressListAPIManager.task cancel];
+        self.isNetworkProceed = NO;
+    }
     self.progressListAPIManager = [[EJProgressListAPIManger alloc] initWithPageNumber:self.pageNumber];
     self.isNetworkProceed = YES;
     [self.progressListSignal subscribeError:^(NSError *error) {

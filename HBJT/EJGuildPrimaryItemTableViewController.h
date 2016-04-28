@@ -10,4 +10,7 @@
 
 @interface EJGuildPrimaryItemTableViewController : UITableViewController
 
+@property (nonatomic, copy) NSString  * titleName ;
+
+
 @end

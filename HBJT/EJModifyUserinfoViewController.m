@@ -8,6 +8,7 @@
 
 #import "EJModifyUserinfoViewController.h"
 #import "EJModifyUserinfoViewModel.h"
+#import "AppDelegate.h"
 
 @interface EJModifyUserinfoViewController ()
 
@@ -16,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *numberTextField;
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (strong, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet UITextView *addressTextView;
 @property (strong, nonatomic) IBOutlet UIButton *modifyUserinfoButton;
 @property (strong, nonatomic) MBProgressHUD *hub;
 @property (strong, nonatomic) EJModifyUserinfoViewModel *viewModel;
@@ -36,17 +38,25 @@
 {
     [super viewWillAppear:animated];
     [self viewModel];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self.addressTextView setContentOffset:CGPointMake(0, 0) animated:NO];
+    [super viewDidAppear:animated];
+
 }
 
 #pragma mark - Reactive Method
 
 - (void)bindViewModelForNotice
 {
-    RAC(self.usernameTextField, placeholder) = [self.viewModel.usernamePlaceHolderSiganal replayLast];
+    /*RAC(self.usernameTextField, placeholder) = [self.viewModel.usernamePlaceHolderSiganal replayLast];
     RAC(self.nameTextField, placeholder) = [self.viewModel.namePlaceHolderSiganal replayLast];
     RAC(self.numberTextField, placeholder) = [self.viewModel.numberPlaceHolderSiganal replayLast];
     RAC(self.phoneTextField, placeholder) = [self.viewModel.phonePlaceHolderSiganal replayLast];
-    RAC(self.addressTextField, placeholder) = [self.viewModel.addressPlaceHolderSiganal replayLast];
+    RAC(self.addressTextField, placeholder) = [self.viewModel.addressPlaceHolderSiganal replayLast];*/
     @weakify(self);
     [self.viewModel.modifyUserinfoHintSignal subscribeNext:^(id x) {
         @strongify(self);
@@ -64,11 +74,11 @@
     }] filter:^BOOL(id value) {
         return [value isEqualToString:@"修改成功"];
     }] doNext:^(id x) {
-        @strongify(self);
-        self.nameTextField.text = @"";
-        self.numberTextField.text = @"";
-        self.phoneTextField.text = @"";
-        self.addressTextField.text = @"";
+//        @strongify(self);
+//        self.nameTextField.text = @"";
+//        self.numberTextField.text = @"";
+//        self.phoneTextField.text = @"";
+//        self.addressTextField.text = @"";
     }] delay:1.0] subscribeNext:^(id x) {
         @strongify(self);
         [self.navigationController popViewControllerAnimated:YES];
@@ -77,15 +87,21 @@
 
 - (void)bindViewModelToUpdate
 {
+    AppDelegate *appDelegate = [AppDelegate sharedDelegate];
+    self.usernameTextField.text = appDelegate.userUsernameString;
+    self.nameTextField.text = appDelegate.userNameString;
+    self.numberTextField.text = appDelegate.userNumberString;
+    self.phoneTextField.text = appDelegate.userPhoneString;
+    self.addressTextView.text = appDelegate.userAddressString;
+    self.addressTextView.showsVerticalScrollIndicator = NO;
     RAC(self.viewModel, nameText) = self.nameTextField.rac_textSignal;
     RAC(self.viewModel, numberText) = self.numberTextField.rac_textSignal;
     RAC(self.viewModel, phoneText) = self.phoneTextField.rac_textSignal;
-    RAC(self.viewModel, addressText) = self.addressTextField.rac_textSignal;
+    RAC(self.viewModel, addressText) = self.addressTextView.rac_textSignal;
     [[self.modifyUserinfoButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.viewModel modifyUserinfo];
     }];
 }
-
 
 - (EJModifyUserinfoViewModel *)viewModel
 {

@@ -91,7 +91,7 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2qW-HL-7OD">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入6-18位新密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2qW-HL-7OD">
                                         <rect key="frame" x="86" y="0.0" width="258" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Wk1-Wx-9bt"/>
@@ -166,6 +166,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="s81-cj-agF"/>
                                         </constraints>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.22" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -196,11 +197,6 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -280,7 +276,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gi6-iT-fqW">
-                                <rect key="frame" x="10" y="312" width="355" height="35"/>
+                                <rect key="frame" x="10" y="372" width="355" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="1MB-pB-YCI"/>
                                 </constraints>
@@ -289,14 +285,20 @@
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2b-yd-gST">
-                                <rect key="frame" x="9" y="245" width="357" height="40"/>
+                                <rect key="frame" x="9" y="245" width="357" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系地址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bia-eG-OE0">
-                                        <rect key="frame" x="13" y="12" width="52" height="16"/>
+                                        <rect key="frame" x="13" y="9" width="52" height="16"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gMw-H6-Taj">
+                                        <rect key="frame" x="81" y="0.0" width="263" height="90"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="联系地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EvA-7f-5kF">
                                         <rect key="frame" x="86" y="0.0" width="258" height="40"/>
                                         <constraints>
@@ -313,13 +315,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0Mx-JR-pyX"/>
+                                    <constraint firstAttribute="height" constant="100" id="0Mx-JR-pyX"/>
                                     <constraint firstItem="bia-eG-OE0" firstAttribute="leading" secondItem="n2b-yd-gST" secondAttribute="leading" constant="13" id="8eg-YD-AJR"/>
-                                    <constraint firstItem="bia-eG-OE0" firstAttribute="centerY" secondItem="n2b-yd-gST" secondAttribute="centerY" id="K5r-F1-SHi"/>
+                                    <constraint firstItem="gMw-H6-Taj" firstAttribute="top" secondItem="n2b-yd-gST" secondAttribute="top" id="J7Z-Qh-Vng"/>
+                                    <constraint firstItem="bia-eG-OE0" firstAttribute="centerY" secondItem="n2b-yd-gST" secondAttribute="centerY" constant="-33" id="K5r-F1-SHi"/>
+                                    <constraint firstAttribute="trailing" secondItem="gMw-H6-Taj" secondAttribute="trailing" constant="13" id="NXl-sW-uzF"/>
+                                    <constraint firstAttribute="bottom" secondItem="gMw-H6-Taj" secondAttribute="bottom" constant="10" id="iak-a5-ta8"/>
                                     <constraint firstAttribute="trailing" secondItem="EvA-7f-5kF" secondAttribute="trailing" constant="13" id="pzA-3m-6OU"/>
                                     <constraint firstItem="EvA-7f-5kF" firstAttribute="leading" secondItem="n2b-yd-gST" secondAttribute="leading" constant="86" id="qmj-4F-rwK"/>
+                                    <constraint firstItem="gMw-H6-Taj" firstAttribute="leading" secondItem="n2b-yd-gST" secondAttribute="leading" constant="81" id="uPo-C5-pZ2"/>
                                     <constraint firstItem="EvA-7f-5kF" firstAttribute="centerY" secondItem="bia-eG-OE0" secondAttribute="centerY" id="xWR-WS-Hro"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="EvA-7f-5kF"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,6 +359,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="addressTextField" destination="EvA-7f-5kF" id="6ei-xZ-6b0"/>
+                        <outlet property="addressTextView" destination="gMw-H6-Taj" id="XGM-44-BRa"/>
                         <outlet property="modifyUserinfoButton" destination="gi6-iT-fqW" id="NPJ-6a-vER"/>
                         <outlet property="nameTextField" destination="JKy-uN-cGf" id="keU-Zi-NQr"/>
                         <outlet property="numberTextField" destination="15M-ZH-m5b" id="lvT-Ob-MUq"/>
@@ -357,7 +369,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UaL-hH-oLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="228" y="326"/>
+            <point key="canvasLocation" x="227.5" y="325.5"/>
         </scene>
     </scenes>
     <resources>

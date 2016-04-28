@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "EJIndexViewModel.h"
 #import "EJS/EJS.h"
+#import "FFProgressDetailVC.h"
 
 
 @interface EJIndexViewController ()
@@ -218,6 +219,32 @@ CGFloat scrollViewOffsetx;
 {
     AppDelegate *appDelegate = [AppDelegate sharedDelegate];
     @weakify(appDelegate);
+    NSString *msg = appDelegate.msg;
+    NSString *pushType = appDelegate.pushType;
+    
+    if (msg != nil && pushType != nil) {
+        UIViewController *viewController;
+        if ([pushType isEqualToString:@"01"]) {
+            viewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil]instantiateViewControllerWithIdentifier:@"Detail"];
+            [self prepareViewController:viewController withSender:@{@"newsID":msg}];
+        }
+        if ([pushType isEqualToString:@"02"]) {
+            viewController = [[FFProgressDetailVC alloc]init];
+            [self prepareViewController:viewController withSender:@{@"id":msg,@"type":@1}];
+        }
+        if ([pushType isEqualToString:@"03"]) {
+            viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
+            
+            [self prepareViewController:viewController withSender:@{@"title":@"推送信息",@"url":msg,@"offset":@(0-64)}];
+        }
+        [appDelegate push:viewController];
+    }
+
+    
+    
+    
+    
+    
     [[self.button8 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [self.navigationController pushViewController:[[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateInitialViewController] animated:YES];
         [appDelegate setNeedDrawerReopen:NO];

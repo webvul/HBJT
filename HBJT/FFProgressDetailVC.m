@@ -32,7 +32,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.titleView=[self returnTitle:@"细节详情"];
+    self.navigationItem.titleView=[self returnTitle:[NSString stringWithFormat:@"%@详情",self.titleName]];
     
     [self.view addSubview:self.tableView];
     [self _setupConstraints];
@@ -107,7 +107,6 @@
 {
     return self.leftTitleArr.count ;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -208,6 +207,9 @@
             day = [NSString stringWithFormat:@"0%@",day];
         }
         cell.rightLabel.text = [NSString stringWithFormat:@"%@-%@-%@",year,monthTure,day];
+        if (year.length == 0) {
+            cell.rightLabel.text = @"";
+        }
         
     }
     else if (indexPath.row == 2)
@@ -226,11 +228,25 @@
     }
     else if (indexPath.row == 5 )
     {
-        cell.rightLabel.text = [self.viewModel.data objectForKey:@"resultStep"];
+        if ([self.titleName isEqualToString:@"进度查询"])
+        {
+            cell.rightLabel.text = @"" ;
+        }
+         if ([self.titleName isEqualToString:@"结果公示"])
+         {
+             cell.rightLabel.text = [self.viewModel.data objectForKey:@"result"];
+         }
     }
     else if (indexPath.row == 6)
     {
-        cell.rightLabel.text = [self.viewModel.data objectForKey:@"result"] ;
+        if ([self.titleName isEqualToString:@"进度查询"])
+        {
+            cell.rightLabel.text = [self.viewModel.data objectForKey:@"resultStep"] ;
+        }
+        if ([self.titleName isEqualToString:@"结果公示"])
+        {
+            cell.rightLabel.text = @"" ;
+        }
     }
     else if (indexPath.row == 7)
     {
@@ -294,6 +310,9 @@
             day = [NSString stringWithFormat:@"0%@",day];
         }
         cell.rightLabel.text = [NSString stringWithFormat:@"%@-%@-%@",year,monthTure,day];
+        if (year.length == 0) {
+            cell.rightLabel.text = @"";
+        }
     }
     else
     {

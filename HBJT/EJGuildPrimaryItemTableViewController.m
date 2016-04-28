@@ -29,13 +29,8 @@
     [super viewDidLoad];
     [self returnBack];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.viewModel loadItemList];
-    self.navigationItem.titleView=[self returnTitle:@"办事指南"];
+    self.navigationItem.titleView=[self returnTitle:self.titleName];
 }
 
 
@@ -75,6 +70,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     EJGuildItemTableViewController *tableViewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Item"];
+    tableViewController.titleName = self.titleName ;
     NSString *itemid = [self.viewModel.itemList[indexPath.row] objectForKey:@"id"];
     NSString *itemname = [self.viewModel.itemList[indexPath.row] objectForKey:@"itemname"];
     [self prepareViewController:tableViewController withSender:@{@"id":itemid, @"name": itemname}];

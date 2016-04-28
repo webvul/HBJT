@@ -33,6 +33,7 @@
 {
     [super viewWillAppear:animated];
     [self.viewModel connect];
+    [self prepareOtherViewController];
 }
 
 - (void)bindViewModelToUpdate

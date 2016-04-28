@@ -594,6 +594,23 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>0B13DF7AAC2061FEE701BB77A5133BAD</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>52DB71FB36F582C59EC46E16CD821E0D</string>
+				<string>3DCD21A0C46F65FE9F194CD5270C76E4</string>
+				<string>3C8AE5CB846CDABDFD162B906F03D462</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>QQ_XGPush</string>
+			<key>path</key>
+			<string>QQ_XGPush</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>0B599344D0A4532B2730171262DF99F5</key>
 		<dict>
 			<key>baseConfigurationReference</key>
@@ -3202,6 +3219,19 @@
 			<key>remoteInfo</key>
 			<string>Aspects</string>
 		</dict>
+		<key>3C8AE5CB846CDABDFD162B906F03D462</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8EAA838617F3586226DD848A11E0A6C2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>3D160CF6D98F40818B773A6E813E7645</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -3258,6 +3288,21 @@
 			<string>MASConstraintMaker.m</string>
 			<key>path</key>
 			<string>Masonry/MASConstraintMaker.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3DCD21A0C46F65FE9F194CD5270C76E4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>XGSetting.h</string>
+			<key>path</key>
+			<string>XGPush/XGSetting.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -3534,19 +3579,6 @@
 			<string>RACTuple.m</string>
 			<key>path</key>
 			<string>ReactiveCocoa/RACTuple.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>4396D110E5C6E8C0B4B361312F0BDBE6</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>697CA1C2C155ED0A320AF5B66C5DC036</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -4294,6 +4326,21 @@
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
+		<key>52DB71FB36F582C59EC46E16CD821E0D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>XGPush.h</string>
+			<key>path</key>
+			<string>XGPush/XGPush.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>532BFF047F42A4AA3F83414FB5E6BE12</key>
 		<dict>
 			<key>baseConfigurationReference</key>
@@ -4623,7 +4670,7 @@
 				<string>8B6CF3887F3D83955962392988C3BA8C</string>
 				<string>F21A0DF30FFFF9ADD153281D59DDDCD0</string>
 				<string>09179152852D83171FCBCD41BFF6AEFA</string>
-				<string>EEA709EBE1400EC4F8DFF2B6B618C363</string>
+				<string>0B13DF7AAC2061FEE701BB77A5133BAD</string>
 				<string>B925182941FC8CB084F02C8C31E9F024</string>
 				<string>8A2DE199CC9ABC25F072F73097E4F133</string>
 			</array>
@@ -5409,36 +5456,6 @@
 			<string>SDWebImagePrefetcher.h</string>
 			<key>path</key>
 			<string>SDWebImage/SDWebImagePrefetcher.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>697CA1C2C155ED0A320AF5B66C5DC036</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libXG-SDK.a</string>
-			<key>path</key>
-			<string>XGPush/2.4.6/libXG-SDK.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6A1AA66EA82021EB5033B7F422FF82B1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>XGPush.h</string>
-			<key>path</key>
-			<string>XGPush/2.4.6/XGPush.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -6557,21 +6574,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>7CAD4C997EC6F19BEDE3F2843B9BDFA9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>XGSetting.h</string>
-			<key>path</key>
-			<string>XGPush/2.4.6/XGSetting.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>7CB3D1FEB3E9D82A05493AF423B5AD47</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -7580,6 +7582,21 @@
 			<string>UITextField+RACSignalSupport.m</string>
 			<key>path</key>
 			<string>ReactiveCocoa/UITextField+RACSignalSupport.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EAA838617F3586226DD848A11E0A6C2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libXG-SDK.a</string>
+			<key>path</key>
+			<string>XGPush/libXG-SDK.a</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -12715,23 +12732,6 @@
 			<string>XCBuildConfiguration</string>
 			<key>name</key>
 			<string>Debug</string>
-		</dict>
-		<key>EEA709EBE1400EC4F8DFF2B6B618C363</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>6A1AA66EA82021EB5033B7F422FF82B1</string>
-				<string>7CAD4C997EC6F19BEDE3F2843B9BDFA9</string>
-				<string>4396D110E5C6E8C0B4B361312F0BDBE6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>QQ_XGPush</string>
-			<key>path</key>
-			<string>QQ_XGPush</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
 		</dict>
 		<key>EEF1E9AB4BD6462753F9CFE3D333E11F</key>
 		<dict>

@@ -26,8 +26,8 @@
     [super viewDidLoad];
     [self returnBack];
     [self.viewModel loadItemList];
-    // Do any additional setup after loading the view.
-    self.navigationItem.titleView=[self returnTitle:@"办事指南"];
+ 
+    self.navigationItem.titleView=[self returnTitle:self.titleName];
     self.mainLabel.text = self.labelTitle;
 }
 
@@ -39,23 +39,10 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-
-}
-
-
 #pragma mark - Table view data source
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Detail"];
     FFDoSomethingGuildVC  * viewController = [[FFDoSomethingGuildVC alloc]init];
     [self prepareViewController:viewController withSender:[self.viewModel.itemList[indexPath.row] objectForKey:@"id"]];
     [self.navigationController pushViewController:viewController animated:YES];

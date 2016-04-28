@@ -123,7 +123,15 @@
                 [appDelegate closeDrawerNeedReopen:YES];
                 [appDelegate push:[[UIStoryboard storyboardWithName:@"Suggestion" bundle:nil] instantiateInitialViewController]];
                 break;
-                
+            case 1:
+            {
+                UIViewController *VC = [[ParentViewController alloc]init];
+                VC.title = @"使用须知";
+                VC.view.backgroundColor = [UIColor whiteColor];
+                [appDelegate closeDrawerNeedReopen:YES];
+                [appDelegate push:VC];
+            }
+                break;
             default:
                 break;
         }

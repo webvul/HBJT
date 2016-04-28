@@ -11,9 +11,11 @@
 
 @interface EJSuggestionViewController ()
 @property (assign, nonatomic) BOOL isLetter;
-@property (weak, nonatomic) IBOutlet UILabel *suggestLabel;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+@property (weak, nonatomic) IBOutlet UITextField *qqTextField;
 @property (strong, nonatomic) IBOutlet UIButton *commitButton;
-@property (strong, nonatomic) IBOutlet UITextField *suggestionTextField;
 @property (strong, nonatomic) EJSuggestionViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UITextView *suggestionTextView;
@@ -26,11 +28,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
     self.navigationItem.titleView=[self returnTitle:(self.isLetter?@"我的留言":@"审批建议")];
     self.scrollView.scrollEnabled = (self.view.frame.size.height < 500);
-    self.suggestLabel.text = (self.isLetter?@"留言内容":@"建议内容");
+//    self.suggestLabel.text = (self.isLetter?@"留言内容":@"建议内容");
     self.label = [[UILabel alloc] init];
     self.label.text = (self.isLetter?@"请输入您的留言（必填）":@"请输入建议内容（必填）");
     self.label.enabled = YES;//lable必须设置为不可用
@@ -44,9 +45,7 @@
         make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width -30, 26));
     }];
     [self bindViewModel];
-
 }
-
 
 - (void)bindViewModelToUpdate
 {
@@ -54,6 +53,11 @@
         [self.viewModel suggest];
     }];
     RAC(self.viewModel, suggestionText) = [self.suggestionTextView rac_textSignal];
+    RAC(self.viewModel, nameText) = self.nameTextField.rac_textSignal;
+    RAC(self.viewModel, emailText) = self.emailTextField.rac_textSignal;
+    RAC(self.viewModel, phoneText) = self.phoneTextField.rac_textSignal;
+    RAC(self.viewModel, qqText) = self.qqTextField.rac_textSignal;
+
     [[self.suggestionTextView rac_textSignal] subscribeNext:^(id x) {
         self.label.text = ([x isEqualToString:@""]? (self.isLetter?@"请输入您的留言（必填）":@"请输入建议内容（必填）"):  @"");
     }];
@@ -71,6 +75,7 @@
             [self.hub hide:YES afterDelay:1];
         }
     }];
+    
     [[[[[self.viewModel.networkHintSignal filter:^BOOL(id value) {
         return [value isKindOfClass:[NSString class]];
     }] filter:^BOOL(id value) {
@@ -80,11 +85,6 @@
     } ] delay:1.0] subscribeNext:^(id x) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)preparedWithSender:(id)sender
@@ -102,18 +102,5 @@
     }
     return _viewModel;
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
-
 
 @end

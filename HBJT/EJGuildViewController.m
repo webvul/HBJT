@@ -33,6 +33,10 @@
 @property (strong, nonatomic) MBProgressHUD *hub;
 @property (strong, nonatomic) EJGuildViewModel *viewModel;
 @property (assign, nonatomic) NSInteger retryTime;
+
+@property (nonatomic, strong) FFProgressDetailVC  * viewController ;
+@property (nonatomic, assign) NSInteger  row ;
+
 @end
 
 @implementation EJGuildViewController
@@ -90,6 +94,7 @@
     }];
 }
 
+// 武汉市交通运输局 
 - (void)loadSectionButtons
 {
     for (UIButton *button in self.sectionButtonArray) {
@@ -114,8 +119,10 @@
                     make.top.equalTo([(UIButton *)self.sectionButtonArray.lastObject bottom]).offset(20);
                 }
             }];
+            // 武汉市交通运输局 按钮点击事情
             [[sectionButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
                 EJGuildPrimaryItemTableViewController *primaryItemViewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"PrimaryItem"];
+                primaryItemViewController.titleName = [sectionInfo objectForKey:@"itemname"];
                 [self prepareViewController:primaryItemViewController withSender:[self.viewModel.sectionArray[i] objectForKey:@"id"]];
                 [self.navigationController pushViewController:primaryItemViewController animated:YES];
             }];
@@ -130,18 +137,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"Guild" bundle:nil] instantiateViewControllerWithIdentifier:@"Result"];;
-    FFProgressDetailVC  * viewController = [[FFProgressDetailVC alloc]init];
+    _viewController = [[FFProgressDetailVC alloc]init];
+    if (self.row == 2)
+    {
+        _viewController.titleName = @"进度查询";
+    }
+    if (self.row == 3)
+    {
+        _viewController.titleName = @"结果公示";
+    }
     NSString *itemID = [self.viewModel.resultArray[indexPath.row] objectForKey:@"id"];
     NSNumber *resultType = @(self.viewModel.currentTab);
-    [self prepareViewController:viewController withSender:@{@"id":itemID,@"type":resultType}];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self prepareViewController:_viewController withSender:@{@"id":itemID,@"type":resultType}];
+    [self.navigationController pushViewController:_viewController animated:YES];
 }
     
-
 - (void)viewDidLayoutSubviews
 {
-    
     [super viewDidLayoutSubviews];
     UIScrollView *scrollView = (UIScrollView *)self.guildView.superview;
     if (self.sectionButtonArray.count > 0) {
@@ -176,7 +188,8 @@
         }
         cell.titleButton.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extItemname"];
         cell.subtitleButton.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"extCode"];
-        cell.resultButton.hidden = !(([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"准予许可"])||([[self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"] isEqualToString: @"即办办结"]));
+        cell.resultLabel.text = [self.viewModel.resultArray[indexPath.row] objectForKey:@"completeStatus"];
+        cell.resultLabel.hidden = !cell.resultLabel.text.length;
         return cell;
     }
 
@@ -275,6 +288,8 @@
             }
         }
     }];
+    
+    // 上面的3个按钮点击事件
     [[self.tabButton0 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         self.guildView.hidden = NO;
         self.tabLabel0.hidden = NO;
@@ -283,6 +298,9 @@
         [self.tableView.mj_header endRefreshing];
     }];
     [[self.tabButton1 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        self.row = 2 ;
+        
         self.guildView.hidden = YES;
         self.tabLabel0.hidden = YES;
         self.tabLabel1.hidden = NO;
@@ -291,6 +309,9 @@
         [self.viewModel loadNew];
     }];
     [[self.tabButton2 rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        
+        self.row = 3 ;
+        
         self.guildView.hidden = YES;
         self.tabLabel0.hidden = YES;
         self.tabLabel1.hidden = YES;

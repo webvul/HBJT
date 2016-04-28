@@ -65,7 +65,6 @@
 		F7AC66C01C8FFDA200BC8456 /* EJUserAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AC66BF1C8FFDA200BC8456 /* EJUserAgreementViewController.m */; };
 		F7AEC05E1C926CF6003DD341 /* EJMatterIndexTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AEC05D1C926CF6003DD341 /* EJMatterIndexTableViewController.m */; };
 		F7AF7BBA1CA8C68D001814E5 /* EJNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF7BB91CA8C68D001814E5 /* EJNewsDetailViewController.m */; };
-		F7AF7BC01CA8CE30001814E5 /* EJGuildItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF7BBF1CA8CE30001814E5 /* EJGuildItemDetailViewController.m */; };
 		F7AF7BC31CA8DA53001814E5 /* EJGuildItemDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF7BC21CA8DA53001814E5 /* EJGuildItemDetailViewModel.m */; };
 		F7AF7BC61CA9040D001814E5 /* EJNewsDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF7BC51CA9040D001814E5 /* EJNewsDetailViewModel.m */; };
 		F7AF7BC91CA90535001814E5 /* EJWebsiteArticleDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7AF7BC81CA90535001814E5 /* EJWebsiteArticleDetailAPIManager.m */; };
@@ -73,13 +72,13 @@
 		F7B306A81CBDED8F00EFB0F5 /* EJFollowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306A71CBDED8F00EFB0F5 /* EJFollowViewController.m */; };
 		F7B306AC1CBDEDFF00EFB0F5 /* EJFollowViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */; };
 		F7B306AF1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */; };
+		F7B36BDD1CD0B97B00640934 /* VerifyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B36BDB1CD0B97B00640934 /* VerifyTool.m */; };
 		F7B6155D1CCA14280009637F /* EJFollowAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B6155C1CCA14280009637F /* EJFollowAPIManager.m */; };
 		F7B615601CCA319E0009637F /* UIViewController+BarItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B6155F1CCA319E0009637F /* UIViewController+BarItem.m */; };
 		F7B615631CCA32170009637F /* CommonTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B615621CCA32170009637F /* CommonTool.m */; };
 		F7B964271CC47F1900BE4C1E /* RootNavgationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B964261CC47F1900BE4C1E /* RootNavgationController.m */; };
 		F7B9F7571CAE149A00A48158 /* EJResultDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7561CAE149A00A48158 /* EJResultDetailAPIManager.m */; };
 		F7B9F75A1CAE14B700A48158 /* EJProgressDetailAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7591CAE14B700A48158 /* EJProgressDetailAPIManager.m */; };
-		F7B9F75D1CAE189C00A48158 /* EJResultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F75C1CAE189C00A48158 /* EJResultDetailViewController.m */; };
 		F7B9F7601CAE1A4E00A48158 /* EJResultDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F75F1CAE1A4E00A48158 /* EJResultDetailViewModel.m */; };
 		F7B9F7631CAE515900A48158 /* EJVeriftyPhoneNumberAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7621CAE515900A48158 /* EJVeriftyPhoneNumberAPIManager.m */; };
 		F7B9F7661CAE518E00A48158 /* EJPasswordRetrieveAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F7B9F7651CAE518E00A48158 /* EJPasswordRetrieveAPIManager.m */; };
@@ -115,6 +114,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08F7B9AE1CCF4C6C00CF0BAD /* VerifyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerifyTool.h; path = ../VerifyTool.h; sourceTree = "<group>"; };
+		08F7B9AF1CCF4C6C00CF0BAD /* VerifyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerifyTool.m; path = ../VerifyTool.m; sourceTree = "<group>"; };
 		210317032B9168BA09858C87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E077DB84359F2F7E567C7E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		834999AC1C955E21002086C2 /* EJQueryAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJQueryAPIManager.m; sourceTree = "<group>"; };
@@ -227,8 +228,6 @@
 		F7AEC05D1C926CF6003DD341 /* EJMatterIndexTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJMatterIndexTableViewController.m; sourceTree = "<group>"; };
 		F7AF7BB81CA8C68D001814E5 /* EJNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJNewsDetailViewController.h; sourceTree = "<group>"; };
 		F7AF7BB91CA8C68D001814E5 /* EJNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJNewsDetailViewController.m; sourceTree = "<group>"; };
-		F7AF7BBE1CA8CE30001814E5 /* EJGuildItemDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJGuildItemDetailViewController.h; sourceTree = "<group>"; };
-		F7AF7BBF1CA8CE30001814E5 /* EJGuildItemDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJGuildItemDetailViewController.m; sourceTree = "<group>"; };
 		F7AF7BC11CA8DA53001814E5 /* EJGuildItemDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJGuildItemDetailViewModel.h; sourceTree = "<group>"; };
 		F7AF7BC21CA8DA53001814E5 /* EJGuildItemDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJGuildItemDetailViewModel.m; sourceTree = "<group>"; };
 		F7AF7BC41CA9040D001814E5 /* EJNewsDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJNewsDetailViewModel.h; sourceTree = "<group>"; };
@@ -243,6 +242,8 @@
 		F7B306AB1CBDEDFF00EFB0F5 /* EJFollowViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowViewModel.m; sourceTree = "<group>"; };
 		F7B306AD1CBDEE1800EFB0F5 /* EJFollowListAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJFollowListAPIManager.h; sourceTree = "<group>"; };
 		F7B306AE1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowListAPIManager.m; sourceTree = "<group>"; };
+		F7B36BDB1CD0B97B00640934 /* VerifyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyTool.m; sourceTree = "<group>"; };
+		F7B36BDC1CD0B97B00640934 /* VerifyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyTool.h; sourceTree = "<group>"; };
 		F7B6155B1CCA14280009637F /* EJFollowAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJFollowAPIManager.h; sourceTree = "<group>"; };
 		F7B6155C1CCA14280009637F /* EJFollowAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJFollowAPIManager.m; sourceTree = "<group>"; };
 		F7B6155E1CCA319E0009637F /* UIViewController+BarItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BarItem.h"; sourceTree = "<group>"; };
@@ -255,8 +256,6 @@
 		F7B9F7561CAE149A00A48158 /* EJResultDetailAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJResultDetailAPIManager.m; sourceTree = "<group>"; };
 		F7B9F7581CAE14B700A48158 /* EJProgressDetailAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJProgressDetailAPIManager.h; sourceTree = "<group>"; };
 		F7B9F7591CAE14B700A48158 /* EJProgressDetailAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJProgressDetailAPIManager.m; sourceTree = "<group>"; };
-		F7B9F75B1CAE189C00A48158 /* EJResultDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJResultDetailViewController.h; sourceTree = "<group>"; };
-		F7B9F75C1CAE189C00A48158 /* EJResultDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJResultDetailViewController.m; sourceTree = "<group>"; };
 		F7B9F75E1CAE1A4E00A48158 /* EJResultDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJResultDetailViewModel.h; sourceTree = "<group>"; };
 		F7B9F75F1CAE1A4E00A48158 /* EJResultDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJResultDetailViewModel.m; sourceTree = "<group>"; };
 		F7B9F7611CAE515900A48158 /* EJVeriftyPhoneNumberAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVeriftyPhoneNumberAPIManager.h; sourceTree = "<group>"; };
@@ -332,6 +331,136 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08F7B9A81CCF0BC700CF0BAD /* 行政审批 */ = {
+			isa = PBXGroup;
+			children = (
+				F731A4DE1CA0DBFF00A0A2A5 /* EJGuildViewController.h */,
+				F731A4DF1CA0DBFF00A0A2A5 /* EJGuildViewController.m */,
+				F7EA97641CC8B54D00A2E77E /* EJGuildResultTableViewCell.h */,
+				F7EA97651CC8B54D00A2E77E /* EJGuildResultTableViewCell.m */,
+				F731A4E41CA0DCFD00A0A2A5 /* EJGuildViewModel.h */,
+				F731A4E51CA0DCFD00A0A2A5 /* EJGuildViewModel.m */,
+				F7A67E661CA3DE5D00A64DE1 /* GuildDistrictButton.xib */,
+				F7A67E681CA4051C00A64DE1 /* GuildSectionButton.xib */,
+			);
+			name = "行政审批";
+			sourceTree = "<group>";
+		};
+		08F7B9A91CCF0C3600CF0BAD /* 武汉市交通运输局 */ = {
+			isa = PBXGroup;
+			children = (
+				F79084DE1CA50DF600E48E2C /* EJGuildPrimaryItemTableViewController.h */,
+				F79084DF1CA50DF600E48E2C /* EJGuildPrimaryItemTableViewController.m */,
+				F79084E11CA50ECC00E48E2C /* EJGuildPrimaryItemViewModel.h */,
+				F79084E21CA50ECC00E48E2C /* EJGuildPrimaryItemViewModel.m */,
+				F79084E41CA5257000E48E2C /* EJGuildItemTableViewCell.h */,
+				F79084E51CA5257000E48E2C /* EJGuildItemTableViewCell.m */,
+			);
+			name = "武汉市交通运输局";
+			sourceTree = "<group>";
+		};
+		08F7B9AA1CCF0C8800CF0BAD /* 指南详情 */ = {
+			isa = PBXGroup;
+			children = (
+				F746EE9A1CCE1C29008172FA /* FFDoSomethingGuildVC.h */,
+				F746EE971CCE1C29008172FA /* FFDoSomethingGuildVC.m */,
+				F746EE991CCE1C29008172FA /* FFGuildCell.h */,
+				F746EE981CCE1C29008172FA /* FFGuildCell.m */,
+				F7AF7BC11CA8DA53001814E5 /* EJGuildItemDetailViewModel.h */,
+				F7AF7BC21CA8DA53001814E5 /* EJGuildItemDetailViewModel.m */,
+			);
+			name = "指南详情";
+			sourceTree = "<group>";
+		};
+		08F7B9AB1CCF0D1500CF0BAD /* 武汉市交通运输局2 */ = {
+			isa = PBXGroup;
+			children = (
+				F79084E71CA534F500E48E2C /* EJGuildItemTableViewController.h */,
+				F79084E81CA534F500E48E2C /* EJGuildItemTableViewController.m */,
+				F79084EA1CA5382900E48E2C /* EJGuildItemViewModel.h */,
+				F79084EB1CA5382900E48E2C /* EJGuildItemViewModel.m */,
+			);
+			name = "武汉市交通运输局2";
+			sourceTree = "<group>";
+		};
+		08F7B9AC1CCF0EAA00CF0BAD /* 进度查询(结果公示)详情 */ = {
+			isa = PBXGroup;
+			children = (
+				F746EE951CCE1C29008172FA /* FFProgressDetailVC.h */,
+				F746EE961CCE1C29008172FA /* FFProgressDetailVC.m */,
+				F7B9F75E1CAE1A4E00A48158 /* EJResultDetailViewModel.h */,
+				F7B9F75F1CAE1A4E00A48158 /* EJResultDetailViewModel.m */,
+			);
+			name = "进度查询(结果公示)详情";
+			sourceTree = "<group>";
+		};
+		08F7B9AD1CCF0F0B00CF0BAD /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				08F7B9AE1CCF4C6C00CF0BAD /* VerifyTool.h */,
+				08F7B9AF1CCF4C6C00CF0BAD /* VerifyTool.m */,
+				F7B615611CCA32170009637F /* CommonTool.h */,
+				F7B615621CCA32170009637F /* CommonTool.m */,
+				F7B6155E1CCA319E0009637F /* UIViewController+BarItem.h */,
+				F7B6155F1CCA319E0009637F /* UIViewController+BarItem.m */,
+			);
+			name = Vendors;
+			sourceTree = "<group>";
+		};
+		08F7B9B11CCF509E00CF0BAD /* 个人资料 */ = {
+			isa = PBXGroup;
+			children = (
+				F7FE551B1C9154E5001C1F6B /* EJModifyUserinfoViewController.h */,
+				F7FE551C1C9154E5001C1F6B /* EJModifyUserinfoViewController.m */,
+			);
+			name = "个人资料";
+			sourceTree = "<group>";
+		};
+		08F7B9B21CCF50AB00CF0BAD /* 修改密码 */ = {
+			isa = PBXGroup;
+			children = (
+				F7FE55411C919FA7001C1F6B /* EJChangePasswordViewController.h */,
+				F7FE55421C919FA7001C1F6B /* EJChangePasswordViewController.m */,
+			);
+			name = "修改密码";
+			sourceTree = "<group>";
+		};
+		08F7B9B31CCF50B400CF0BAD /* 登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				F7A86D2A1C891997006D5F18 /* EJLoginTableViewController.h */,
+				F7A86D2B1C891997006D5F18 /* EJLoginTableViewController.m */,
+			);
+			name = "登陆";
+			sourceTree = "<group>";
+		};
+		08F7B9B41CCF50BB00CF0BAD /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				F7A5B8E71C8969F600672967 /* EJRegisterViewController.h */,
+				F7A5B8E81C8969F600672967 /* EJRegisterViewController.m */,
+			);
+			name = "注册";
+			sourceTree = "<group>";
+		};
+		08F7B9B51CCF50C400CF0BAD /* 用户协议认同 */ = {
+			isa = PBXGroup;
+			children = (
+				F7AC66BE1C8FFDA200BC8456 /* EJUserAgreementViewController.h */,
+				F7AC66BF1C8FFDA200BC8456 /* EJUserAgreementViewController.m */,
+			);
+			name = "用户协议认同";
+			sourceTree = "<group>";
+		};
+		08F7B9B61CCF50EF00CF0BAD /* 忘记密码 */ = {
+			isa = PBXGroup;
+			children = (
+				F79661FD1CAA1B8F00C92174 /* EJPasswordRetrieveViewController.h */,
+				F79661FE1CAA1B8F00C92174 /* EJPasswordRetrieveViewController.m */,
+			);
+			name = "忘记密码";
+			sourceTree = "<group>";
+		};
 		6B9BA4E7EC2B89025271D28D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,39 +496,12 @@
 		F731A4DD1CA0DBBB00A0A2A5 /* EJGuild */ = {
 			isa = PBXGroup;
 			children = (
-				F746EE951CCE1C29008172FA /* FFProgressDetailVC.h */,
-				F746EE961CCE1C29008172FA /* FFProgressDetailVC.m */,
-				F746EE9A1CCE1C29008172FA /* FFDoSomethingGuildVC.h */,
-				F746EE971CCE1C29008172FA /* FFDoSomethingGuildVC.m */,
-				F746EE991CCE1C29008172FA /* FFGuildCell.h */,
-				F746EE981CCE1C29008172FA /* FFGuildCell.m */,
-				F7EA97641CC8B54D00A2E77E /* EJGuildResultTableViewCell.h */,
-				F7EA97651CC8B54D00A2E77E /* EJGuildResultTableViewCell.m */,
-				F7AF7BBE1CA8CE30001814E5 /* EJGuildItemDetailViewController.h */,
-				F7AF7BBF1CA8CE30001814E5 /* EJGuildItemDetailViewController.m */,
-				F7AF7BC11CA8DA53001814E5 /* EJGuildItemDetailViewModel.h */,
-				F7AF7BC21CA8DA53001814E5 /* EJGuildItemDetailViewModel.m */,
-				F79084DE1CA50DF600E48E2C /* EJGuildPrimaryItemTableViewController.h */,
-				F79084DF1CA50DF600E48E2C /* EJGuildPrimaryItemTableViewController.m */,
-				F79084E71CA534F500E48E2C /* EJGuildItemTableViewController.h */,
-				F79084E81CA534F500E48E2C /* EJGuildItemTableViewController.m */,
-				F79084EA1CA5382900E48E2C /* EJGuildItemViewModel.h */,
-				F79084EB1CA5382900E48E2C /* EJGuildItemViewModel.m */,
-				F79084E11CA50ECC00E48E2C /* EJGuildPrimaryItemViewModel.h */,
-				F79084E21CA50ECC00E48E2C /* EJGuildPrimaryItemViewModel.m */,
 				F731A4DB1CA0DB9100A0A2A5 /* Guild.storyboard */,
-				F7B9F75B1CAE189C00A48158 /* EJResultDetailViewController.h */,
-				F7B9F75C1CAE189C00A48158 /* EJResultDetailViewController.m */,
-				F7B9F75E1CAE1A4E00A48158 /* EJResultDetailViewModel.h */,
-				F7B9F75F1CAE1A4E00A48158 /* EJResultDetailViewModel.m */,
-				F79084E41CA5257000E48E2C /* EJGuildItemTableViewCell.h */,
-				F79084E51CA5257000E48E2C /* EJGuildItemTableViewCell.m */,
-				F7A67E661CA3DE5D00A64DE1 /* GuildDistrictButton.xib */,
-				F7A67E681CA4051C00A64DE1 /* GuildSectionButton.xib */,
-				F731A4DE1CA0DBFF00A0A2A5 /* EJGuildViewController.h */,
-				F731A4DF1CA0DBFF00A0A2A5 /* EJGuildViewController.m */,
-				F731A4E41CA0DCFD00A0A2A5 /* EJGuildViewModel.h */,
-				F731A4E51CA0DCFD00A0A2A5 /* EJGuildViewModel.m */,
+				08F7B9A81CCF0BC700CF0BAD /* 行政审批 */,
+				08F7B9A91CCF0C3600CF0BAD /* 武汉市交通运输局 */,
+				08F7B9AB1CCF0D1500CF0BAD /* 武汉市交通运输局2 */,
+				08F7B9AA1CCF0C8800CF0BAD /* 指南详情 */,
+				08F7B9AC1CCF0EAA00CF0BAD /* 进度查询(结果公示)详情 */,
 				F79662091CAA2B8C00C92174 /* EJProgressListAPIManger.h */,
 				F796620A1CAA2B8C00C92174 /* EJProgressListAPIManger.m */,
 				F79662031CAA29CA00C92174 /* EJResultsListAPIManager.h */,
@@ -503,18 +605,12 @@
 			children = (
 				F7A86D271C891731006D5F18 /* Logger.storyboard */,
 				F7FE55191C91544C001C1F6B /* Userinfo.storyboard */,
-				F7FE551B1C9154E5001C1F6B /* EJModifyUserinfoViewController.h */,
-				F7FE551C1C9154E5001C1F6B /* EJModifyUserinfoViewController.m */,
-				F7FE55411C919FA7001C1F6B /* EJChangePasswordViewController.h */,
-				F7FE55421C919FA7001C1F6B /* EJChangePasswordViewController.m */,
-				F7A86D2A1C891997006D5F18 /* EJLoginTableViewController.h */,
-				F7A86D2B1C891997006D5F18 /* EJLoginTableViewController.m */,
-				F7A5B8E71C8969F600672967 /* EJRegisterViewController.h */,
-				F7A5B8E81C8969F600672967 /* EJRegisterViewController.m */,
-				F7AC66BE1C8FFDA200BC8456 /* EJUserAgreementViewController.h */,
-				F7AC66BF1C8FFDA200BC8456 /* EJUserAgreementViewController.m */,
-				F79661FD1CAA1B8F00C92174 /* EJPasswordRetrieveViewController.h */,
-				F79661FE1CAA1B8F00C92174 /* EJPasswordRetrieveViewController.m */,
+				08F7B9B31CCF50B400CF0BAD /* 登陆 */,
+				08F7B9B41CCF50BB00CF0BAD /* 注册 */,
+				08F7B9B11CCF509E00CF0BAD /* 个人资料 */,
+				08F7B9B21CCF50AB00CF0BAD /* 修改密码 */,
+				08F7B9B51CCF50C400CF0BAD /* 用户协议认同 */,
+				08F7B9B61CCF50EF00CF0BAD /* 忘记密码 */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -599,16 +695,14 @@
 		F7DFF92D1C7D74EF00A24DB5 /* HBJT */ = {
 			isa = PBXGroup;
 			children = (
-				F7B615611CCA32170009637F /* CommonTool.h */,
-				F7B615621CCA32170009637F /* CommonTool.m */,
 				F7A2BBFE1CBB820A00235F1A /* ParentViewController.h */,
 				F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
+				F7B36BDB1CD0B97B00640934 /* VerifyTool.m */,
+				F7B36BDC1CD0B97B00640934 /* VerifyTool.h */,
 				F7B964251CC47F1900BE4C1E /* RootNavgationController.h */,
 				F7B964261CC47F1900BE4C1E /* RootNavgationController.m */,
-				F7B6155E1CCA319E0009637F /* UIViewController+BarItem.h */,
-				F7B6155F1CCA319E0009637F /* UIViewController+BarItem.m */,
 				F77333AC1C7D974E00E2FD20 /* EJS */,
 				F73ED97B1C979D73006AF2A0 /* EJSuggestion */,
 				F7FE552D1C919B6E001C1F6B /* EJMatter */,
@@ -622,6 +716,7 @@
 				F73ED97D1C979E74006AF2A0 /* FTViewModel+EJSAPIManager.m */,
 				F7E1B40A1C99460700536C6C /* UIScrollView+HATFCarousel.h */,
 				F7E1B40B1C99460700536C6C /* UIScrollView+HATFCarousel.m */,
+				08F7B9AD1CCF0F0B00CF0BAD /* Vendors */,
 				F7C1596C1C8580A900779833 /* FTFoundation */,
 				F77333A71C7D974E00E2FD20 /* FTools */,
 			);
@@ -869,6 +964,7 @@
 				834999AD1C955E21002086C2 /* EJQueryAPIManager.m in Sources */,
 				F7AF7BC91CA90535001814E5 /* EJWebsiteArticleDetailAPIManager.m in Sources */,
 				F7DFF9421C7D74EF00A24DB5 /* main.m in Sources */,
+				F7B36BDD1CD0B97B00640934 /* VerifyTool.m in Sources */,
 				F7B9F7631CAE515900A48158 /* EJVeriftyPhoneNumberAPIManager.m in Sources */,
 				F7B9F7601CAE1A4E00A48158 /* EJResultDetailViewModel.m in Sources */,
 				F746B9081C8EB7CF00DBF40E /* EJSResponseAnalyzer.m in Sources */,
@@ -925,7 +1021,6 @@
 				F7B306AF1CBDEE1800EFB0F5 /* EJFollowListAPIManager.m in Sources */,
 				F79662051CAA29CA00C92174 /* EJResultsListAPIManager.m in Sources */,
 				F75EA0341C86E11000878EF5 /* EJSAPIManager.m in Sources */,
-				F7B9F75D1CAE189C00A48158 /* EJResultDetailViewController.m in Sources */,
 				F7A67E6F1CA40CD800A64DE1 /* EJPrimaryItemAPIManger.m in Sources */,
 				F73ED98E1C97B82F006AF2A0 /* EJNewsTableViewCell.m in Sources */,
 				83E782F01C95DFAA00A7AA1E /* EJSuggestionViewModel.m in Sources */,
@@ -935,7 +1030,6 @@
 				F7EA97661CC8B54D00A2E77E /* EJGuildResultTableViewCell.m in Sources */,
 				F79084E61CA5257000E48E2C /* EJGuildItemTableViewCell.m in Sources */,
 				F796620B1CAA2B8C00C92174 /* EJProgressListAPIManger.m in Sources */,
-				F7AF7BC01CA8CE30001814E5 /* EJGuildItemDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,7 +1176,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.whhuiyu.hbjt;
 				PRODUCT_NAME = HBJT;
-				PROVISIONING_PROFILE = "4a6dbc4e-678a-4094-a25c-47754968fab6";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -1093,7 +1188,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HBJT/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1125,7 +1220,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.whhuiyu.hbjt;
 				PRODUCT_NAME = HBJT;
-				PROVISIONING_PROFILE = "4a6dbc4e-678a-4094-a25c-47754968fab6";
+				PROVISIONING_PROFILE = "";
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};

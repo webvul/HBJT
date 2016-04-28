@@ -9,6 +9,7 @@
 #import "EJFramework.h"
 
 @interface EJGuildResultTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIButton *resultButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleButton;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleButton;

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "EJLoginViewModel.h"
 #import "EJLoginAPIManager.h"
-
+#import "VerifyTool.h"
 
 @interface EJLoginViewModel()
 
@@ -46,13 +46,21 @@
 {
     self.isLoginProceed = YES;
     self.loginTintText = @"正在登录";
-    if (![FTVerifier verify:self.usernameText withRegex:@"^[A-Za-z0-9]{6,18}$"]) {
-        self.loginTintText = @"用户名格式不正确";
+    
+    if (self.usernameText.length < 1 || self.usernameText.length > 16) {
+        self.loginTintText = @"用户名长度不正确";
         self.isLoginProceed = NO;
         return;
     }
-    if (![FTVerifier verify:self.passwordText withRegex:@"^.{6,16}$"]) {
-        self.loginTintText = @"密码格式不正确";
+//    if (![VerifyTool validateNumber:self.usernameText])
+//    {
+//        self.loginTintText = @"用户名格式不正确";
+//        self.isLoginProceed = NO;
+//        return;
+//    }
+    
+    if (self.passwordText.length < 6 || self.passwordText.length > 18) {
+        self.loginTintText = @"密码长度不正确";
         self.isLoginProceed = NO;
         return;
     }

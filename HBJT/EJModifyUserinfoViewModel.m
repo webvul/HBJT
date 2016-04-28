@@ -23,11 +23,11 @@
 
 - (void)autoStart
 {
-    self.usernamePlaceHolderSiganal = [self mapSignalForUserinfoSignal:RACObserve([AppDelegate sharedDelegate], userUsernameString)];
+    /*self.usernamePlaceHolderSiganal = [self mapSignalForUserinfoSignal:RACObserve([AppDelegate sharedDelegate], userUsernameString)];
     self.namePlaceHolderSiganal = [self mapSignalForUserinfoSignal:RACObserve([AppDelegate sharedDelegate], userNameString)];
     self.numberPlaceHolderSiganal = [self mapSignalForUserinfoSignal:RACObserve([AppDelegate sharedDelegate], userNumberString)];
     self.phonePlaceHolderSiganal = [self mapSignalForUserinfoSignal:RACObserve([AppDelegate sharedDelegate], userPhoneString)];
-    self.addressPlaceHolderSiganal = [self mapSignalForUserinfoSignal:RACObserve([AppDelegate sharedDelegate], userAddressString)];
+    self.addressPlaceHolderSiganal = [self mapSignalForUserinfoSignal:RACObserve([AppDelegate sharedDelegate], userAddressString)];*/
     @weakify(self);
     self.modifyUserinfoHintSignal = [[RACObserve(self, isModifyUserinfoProceed) merge:RACObserve(self, modifyUserinfoHintText)] filter:^BOOL(id value) {
         @strongify(self);
@@ -56,20 +56,18 @@
     self.isModifyUserinfoProceed = YES;
     self.modifyUserinfoHintText = @"正在修改";
     AppDelegate *delegate = [AppDelegate sharedDelegate];
-    NSString *name = [NSString stringWithString:([self.nameText isEqualToString:@""]?
-                      [delegate userNameString]:
-                      self.nameText)];
-    NSString *number = ([self.numberText isEqualToString:@""]?
-                        [delegate userNumberString]:
-                        self.numberText);
-    NSString *phone = ([self.phoneText isEqualToString:@""]?
-                       [delegate userPhoneString]:
-                       self.phoneText);
-    NSString *address = ([self.addressText isEqualToString:@""]?
-                         [delegate userAddressString]:
-                         self.addressText);
-    if (![FTVerifier verify:name withRegex:@"^[\u4e00-\u9fa5]{2,8}$"]) {
-        self.modifyUserinfoHintText = @"真实姓名格式不正确";
+    NSString *name = self.nameText;
+    NSString *number = self.numberText;
+    NSString *phone = self.phoneText;
+    NSString *address = self.addressText;
+//    if (![FTVerifier verify:name withRegex:@"^[\u4e00-\u9fa5]{1,16}$"]) {
+//        self.modifyUserinfoHintText = @"真实姓名格式不正确";
+//        self.isModifyUserinfoProceed = NO;
+//        return;
+//    }
+    if (name.length < 1 || name.length > 16)
+    {
+        self.modifyUserinfoHintText = @"真实姓名长度不正确";
         self.isModifyUserinfoProceed = NO;
         return;
     }

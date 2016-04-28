@@ -115,12 +115,12 @@
         self.isNetworkProceed = NO;
         return;
     }
-    if (![FTVerifier verify:self.usernameText withRegex:@"^[A-Za-z]{6,18}$"]) {
+    if (![FTVerifier verify:self.usernameText withRegex:@"^[A-Za-z0-9]{1,16}$"]) {
         self.networkHintText = @"用户名格式不正确";
         self.isNetworkProceed = NO;
         return;
     }
-    if (![FTVerifier verify:self.passwordText withRegex:@"^.{6,16}$"]) {
+    if (![FTVerifier verify:self.passwordText withRegex:@"^.{6,18}$"]) {
         self.networkHintText = @"密码格式不正确";
         self.isNetworkProceed = NO;
         return;

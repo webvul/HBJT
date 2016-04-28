@@ -10,7 +10,7 @@
 #import "EJValidateUsernameAPIManager.h"
 #import "EJRegisterAPIManager.h"
 
-
+#import "VerifyTool.h"
 @interface EJRegisterViewModel ()
 
 @property (strong, nonatomic) RACSignal *registerSignal;
@@ -61,14 +61,22 @@
 {
     self.isRegisterProceed = YES;
     self.registerHintText = @"正在注册";
-    if(![FTVerifier verify:self.usernameText withRegex:@"^[A-Za-z]{6,18}$"])
+    if (![VerifyTool judgePassWordLegal:self.usernameText])
     {
         self.registerHintText = @"用户名格式不正确";
         self.isRegisterProceed = NO;
         return;
     }
-    if (![FTVerifier verify:self.passwordText withRegex:@"^.{6,11}$"]) {
-        self.registerHintText = @"密码格式不正确";
+    
+    if(self.usernameText.length <1 || self.usernameText.length > 16)
+    {
+        self.registerHintText = @"用户名长度不正确";
+        self.isRegisterProceed = NO;
+        return;
+    }
+    if (self.passwordText.length <6 || self.passwordText.length > 18)
+    {
+        self.registerHintText = @"密码长度不正确";
         self.isRegisterProceed = NO;
         return;
     }
@@ -77,8 +85,8 @@
         self.isRegisterProceed = NO;
         return;
     }
-    if (![FTVerifier verify:self.nameText withRegex:@"^[\u4e00-\u9fa5]{2,8}$"]) {
-        self.registerHintText = @"姓名格式不正确";
+    if (self.nameText.length < 1 || self.nameText.length > 16) {
+        self.registerHintText = @"真实姓名长度不正确";
         self.isRegisterProceed = NO;
         return;
     }

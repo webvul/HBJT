@@ -8,6 +8,7 @@
 
 #import "EJSuggestionViewModel.h"
 #import "EJSuggestionAPIManager.h"
+#import "VerifyTool.h"
 
 @interface EJSuggestionViewModel ()
 
@@ -40,6 +41,33 @@
 - (void)suggest
 {
     self.isNetworkProceed = YES;
+    if (self.nameText.length > 20)
+    {
+        self.networkHintText = @"姓名长度过长";
+        self.isNetworkProceed = NO;
+        return;
+    }
+    if (!([self.phoneText isEqualToString:@""]||[VerifyTool validateMobile:self.phoneText]))
+    {
+        self.networkHintText = @"联系电话输入不正确";
+        self.isNetworkProceed = NO;
+        return;
+    }
+    
+    if (!([self.qqText isEqualToString:@""]||[VerifyTool isQQ:self.qqText]))
+    {
+        self.networkHintText = @"QQ输入不正确";
+        self.isNetworkProceed = NO;
+        return;
+    }
+    
+    if (!([self.emailText isEqualToString:@""]||[VerifyTool validateEmail:self.emailText]))
+    {
+        self.networkHintText = @"邮箱输入不正确";
+        self.isNetworkProceed = NO;
+        return;
+    }
+    
     if ([self.suggestionText isEqualToString:@""]) {
         self.networkHintText = @"请填写您的建议";
         self.isNetworkProceed = NO;

@@ -32,8 +32,10 @@
     [self returnBack];
     self.navigationItem.titleView=[self returnTitle:@"登录"];
     
-    // Do any additional setup after loading the view.
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];
+    
+    //设置键盘类型
+    self.usernameTextField.keyboardType = UIKeyboardTypeASCIICapable;
 }
 
 -(void)returnBack{
@@ -45,11 +47,8 @@
     sizeTitleImg.frame=CGRectMake(5,10 ,24,24);
     [leftBackBtn  addSubview:sizeTitleImg];
 
-    
     [leftBackBtn addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                       target:nil action:nil];
+    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     negativeSpacer.width = -15;
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftBackBtn];
     self.navigationItem.leftBarButtonItems = @[negativeSpacer, leftBarButtonItem];
@@ -79,11 +78,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Reactive Method
@@ -120,6 +114,15 @@
     }] filter:^BOOL(id value) {
         return [value isEqualToString:@"登录成功"];
     }] delay:1] subscribeNext:^(id x) {
+        
+        
+        
+        [XGPush setAccount:[[AppDelegate sharedDelegate] userIDString]];
+        NSLog(@"%@",[XGPush registerDeviceStr:[[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"]]);
+        
+        
+        
+        
         [self.navigationController popViewControllerAnimated:YES];
     }];
     [[self.registerButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {

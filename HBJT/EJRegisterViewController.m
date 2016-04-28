@@ -19,12 +19,14 @@
 @property (strong, nonatomic) IBOutlet UITextField *numberTextField;
 @property (strong, nonatomic) IBOutlet UITextField *phoneTextField;
 @property (strong, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet UITextView *addressTextView;
 @property (strong, nonatomic) IBOutlet UIButton *registerButton;
 @property (strong, nonatomic) IBOutlet UIButton *agreeLabelButton;
 @property (strong, nonatomic) IBOutlet UIButton *agreeButton;
 @property (strong, nonatomic) EJRegisterViewModel *viewModel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) MBProgressHUD *hub;
+@property (strong, nonatomic) UILabel *label;
 @end
 
 @implementation EJRegisterViewController
@@ -33,27 +35,35 @@
     [super viewDidLoad];
     
     self.navigationItem.titleView = [self returnTitle:@"用户注册"];
-    // Do any additional setup after loading the view.
+
     [FTKeyboardTapGestureRecognizer addRecognizerFor:self.view];
+    self.label = [[UILabel alloc] init];
+    self.label.text = @"请输入联系地址";
+    self.label.backgroundColor = [UIColor clearColor];
+    self.label.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.22];
+    self.label.font = [UIFont systemFontOfSize:14];
+    [self.addressTextView addSubview:self.label];
+    [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.addressTextView.mas_top).with.offset(5.0f);
+        make.left.equalTo(self.addressTextView.mas_left).with.offset(5.0f);
+        make.size.mas_equalTo(CGSizeMake(self.view.frame.size.width -30, 26));
+    }];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.viewModel connect];
-    self.scrollView.scrollEnabled = (self.view.frame.size.height < 500);
-    NSLog(@"%f,%d",self.view.frame.size.height,self.scrollView.scrollEnabled);
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-}
+    NSLog(@"%@",self.registerButton);    [self.scrollView setContentSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height + 105)];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+
 }
 
 #pragma mark - Reactive Methods
@@ -66,7 +76,7 @@
     RAC(self.viewModel, numberText) = self.numberTextField.rac_textSignal;
     RAC(self.viewModel, phoneText) = self.phoneTextField.rac_textSignal;
     RAC(self.viewModel, nameText) = self.nameTextField.rac_textSignal;
-    RAC(self.viewModel, addressText) = self.addressTextField.rac_textSignal;
+    RAC(self.viewModel, addressText) = self.addressTextView.rac_textSignal;
     @weakify(self);
     [[self.agreeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         self.viewModel.isUserAgreed = !self.viewModel.isUserAgreed;
@@ -75,6 +85,13 @@
         @strongify(self);
         [self.viewModel registery];
     }];
+    [[self.addressTextView rac_textSignal] subscribeNext:^(id x) {
+        self.label.text = ([x isEqualToString:@""]? @"请输入联系地址":  @"");
+    }];
+
+}
+- (IBAction)registerButtonClicked:(id)sender {
+    [self.viewModel registery];
 }
 
 - (void)bindViewModelForNotice

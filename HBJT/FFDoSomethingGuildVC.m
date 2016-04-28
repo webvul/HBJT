@@ -36,7 +36,7 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.titleView=[self returnTitle:@"办事指南"];
+    self.navigationItem.titleView=[self returnTitle:@"指南详情"];
     [self rightBtntitle:@"关注" withimage:@"04"];
     
     [self.view addSubview:self.tableView];
@@ -100,7 +100,7 @@
         if ([x isKindOfClass:[NSString class]]) {
             [self.hub setLabelText:x];
             if ([x isEqualToString:@"读取成功"]||[x isEqualToString:@"关注成功"]||[x isEqualToString:@"取消成功"]) {
-                (self.viewModel.followed? [self rightBtntitle:@"取消关注" withimage:@"004"]: [self rightBtntitle:@"关注" withimage:@"04"]);
+                (self.viewModel.followed? [self rightBtntitle:@"已关注" withimage:@"004"]: [self rightBtntitle:@"关注" withimage:@"04"]);
             }
         } else if ([x boolValue]) {
             self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
