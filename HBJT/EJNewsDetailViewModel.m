@@ -71,6 +71,7 @@
 
         self.htmlString = [self.detailAPIManger.data objectForKey:@"htmlString"];
         self.laudNumber = [self.detailAPIManger.data objectForKey:@"laud"];
+        self.hitNumber = [self.detailAPIManger.data objectForKey:@"hits"];
         self.networkHintText = self.detailAPIManger.statusDescription;
         self.isNetworkProceed = NO;
     }];

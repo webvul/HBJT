@@ -13,6 +13,7 @@
 #import "RootNavgationController.h"
 #import "XGSetting.h"
 #import "FFProgressDetailVC.h"
+#import "EJS.h"
 #define _IPHONE80_ 80000
 
 @interface AppDelegate ()
@@ -23,6 +24,11 @@
 @property (strong, nonatomic) EJMenuTableViewController *menuTableViewController;
 @property (strong, nonatomic) EJNewsViewController *newsViewController;
 @property (strong, nonatomic) RootNavgationController *rootNavigationController;
+
+@property (strong, nonatomic) NSString *pushType;
+@property (strong, nonatomic) NSString *pushMsg;
+@property (strong, nonatomic) NSString *pushTitle;
+
 
 @end
 
@@ -36,8 +42,13 @@
     [self.window setRootViewController:self.drawerController];
     [self.window makeKeyAndVisible];
     NSLog(@"App Launched");
-    //[self fakeLogin];
     [self registerNofiticationWithOptions:launchOptions];
+#if DEBUG
+    [self fakeLogin];
+    [self fakePush];
+#else
+    
+#endif
     return YES;
 }
 
@@ -133,13 +144,6 @@
     }
 }
 
-#pragma mark - Private Methods
-
-- (void)fakeLogin
-{
-    [self setUsername:@"void" name:@"空" id:@"null" number:@"0" phone:@"invalid" address:@"not found (404)"];
-}
-
 
 #pragma mark - Getters
 
@@ -206,7 +210,7 @@
 #pragma mark - 腾讯信鸽
 
 - (void) registerNofiticationWithOptions:(NSDictionary *)launchOptions {
-    [XGPush startApp:2200190878 appKey:@"IL77FM1C2Y9E"];
+    [XGPush startApp: (unsigned int)[EJSNetwork pushID] appKey:[EJSNetwork pushKey]];
     
     // 设置账户
     [XGPush setAccount:[NSString stringWithFormat:@"anonymous%@",@"123"]];
@@ -244,9 +248,14 @@
     void (^successBlock)(void) = ^(void){
         //成功之后的处理
         @strongify(self);
-        self.msg = ([[launchOptions objectForKey:@"mgs"] isKindOfClass:[NSString class]]? [launchOptions objectForKey:@"mgs"]: nil );
+        NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+        self.pushMsg = ([[userInfo objectForKey:@"msg"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"msg"]: self.pushMsg );
 
-        self.pushType = ([[launchOptions objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [launchOptions objectForKey:@"pushtype"]: nil );
+        self.pushType = ([[userInfo objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"pushtype"]: self.pushType );
+        
+        if (self.pushType != nil && self.pushMsg != nil) {
+            [self getPushed];
+        }
         NSLog(@"XGPush handleLaunching's successBlock");
     };
     
@@ -286,6 +295,13 @@
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
+    self.pushMsg = ([[userInfo objectForKey:@"msg"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"msg"]: self.pushMsg );
+    
+    self.pushType = ([[userInfo objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"pushtype"]: self.pushType );
+    self.pushTitle = ([[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] isKindOfClass:[NSString class]]? [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]: self.pushTitle);
+    if (self.pushType != nil && self.pushMsg != nil) {
+        [self getPushed];
+    }
     //推送反馈(app运行时)
     [XGPush handleReceiveNotification:userInfo];
     
@@ -306,8 +322,7 @@
 #endif
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    NSString * deviceTokenStr = [XGPush registerDevice:deviceToken];
-    [[NSUserDefaults standardUserDefaults] setObject:deviceTokenStr forKey:@"deviceToken"];
+    //NSString * deviceTokenStr = [XGPush registerDevice:deviceToken];
     
     void (^successBlock)(void) = ^(void){
         //成功之后的处理
@@ -319,9 +334,9 @@
         NSLog(@"XGPush register errorBlock");
     };
     // 设置账号
-    [XGPush setAccount:[NSString stringWithFormat:@"anonymous%@",@"123"]];
+    //[XGPush setAccount:[NSString stringWithFormat:@"anonymous%@",@"123"]];
     
-    [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
+     NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
     
     //如果不需要回调
     //[XGPush registerDevice:deviceToken];
@@ -379,4 +394,62 @@
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
 }
 
+- (void)clearPush
+{
+    self.pushType = nil;
+    self.pushMsg = nil;
+    self.pushTitle = nil;
+}
+
+- (void)getPushed
+{
+    UIViewController *topViewController = self.rootNavigationController.topViewController;
+    if (self.pushMsg != nil && self.pushType != nil) {
+        UIViewController *viewController;
+        if ([self.pushType isEqualToString:@"01"]) {
+            viewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil]instantiateViewControllerWithIdentifier:@"Detail"];
+            NSDateFormatter *df = [[NSDateFormatter alloc] init];
+            [df setDateFormat:@"YYYY-mm-dd hh:mm:ss"];
+            [topViewController prepareViewController:viewController withSender:@{@"newsTitle":self.pushTitle,@"newsID":self.pushMsg,@"newsDate":[df stringFromDate:[NSDate date]]}];
+        }
+        if ([self.pushType isEqualToString:@"02"]) {
+            viewController = [[FFProgressDetailVC alloc]init];
+            [viewController setValue:@"动态" forKey:@"titleName"];
+            [topViewController prepareViewController:viewController withSender:@{@"id":self.pushMsg,@"type":@1}];
+        }
+        if ([self.pushType isEqualToString:@"03"]) {
+            viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
+            
+            [topViewController prepareViewController:viewController withSender:@{@"title":@"推送通知",@"url":self.pushMsg,@"offset":@(0-64)}];
+        }
+        [self push:viewController];
+        [self clearPush];
+    }
+}
+
+
+#pragma mark - Fake Methods
+
+- (void)fakeLogin
+{
+    UIViewController *loggerViewController = [[UIStoryboard storyboardWithName:@"Logger" bundle:nil]  instantiateInitialViewController];
+    [[RACScheduler mainThreadScheduler]afterDelay:2 schedule:^{
+        
+        [self push:loggerViewController];
+        [self.indexViewController prepareViewController:loggerViewController withSender:@[@"xxxxxx",@"xxxxxx"]];
+    }];
+}
+
+- (void)fakePush
+{
+    [self application:[UIApplication sharedApplication] didReceiveRemoteNotification:@{
+        @"aps": @{
+            @"alert":@"哈喽，普氏·诺提费什！",
+            @"badge":@1,
+            @"sound":@"default"
+        },
+        @"pushtype":@"01",
+        @"msg":@"118083"
+    }];
+}
 @end

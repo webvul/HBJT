@@ -114,8 +114,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		08F7B9AE1CCF4C6C00CF0BAD /* VerifyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VerifyTool.h; path = ../VerifyTool.h; sourceTree = "<group>"; };
-		08F7B9AF1CCF4C6C00CF0BAD /* VerifyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VerifyTool.m; path = ../VerifyTool.m; sourceTree = "<group>"; };
 		210317032B9168BA09858C87 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E077DB84359F2F7E567C7E7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		834999AC1C955E21002086C2 /* EJQueryAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJQueryAPIManager.m; sourceTree = "<group>"; };
@@ -397,8 +395,8 @@
 		08F7B9AD1CCF0F0B00CF0BAD /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
-				08F7B9AE1CCF4C6C00CF0BAD /* VerifyTool.h */,
-				08F7B9AF1CCF4C6C00CF0BAD /* VerifyTool.m */,
+				F7B36BDB1CD0B97B00640934 /* VerifyTool.m */,
+				F7B36BDC1CD0B97B00640934 /* VerifyTool.h */,
 				F7B615611CCA32170009637F /* CommonTool.h */,
 				F7B615621CCA32170009637F /* CommonTool.m */,
 				F7B6155E1CCA319E0009637F /* UIViewController+BarItem.h */,
@@ -699,8 +697,6 @@
 				F7A2BBFD1CBB820A00235F1A /* ParentViewController.m */,
 				F7DFF92E1C7D74EF00A24DB5 /* AppDelegate.h */,
 				F7DFF92F1C7D74EF00A24DB5 /* AppDelegate.m */,
-				F7B36BDB1CD0B97B00640934 /* VerifyTool.m */,
-				F7B36BDC1CD0B97B00640934 /* VerifyTool.h */,
 				F7B964251CC47F1900BE4C1E /* RootNavgationController.h */,
 				F7B964261CC47F1900BE4C1E /* RootNavgationController.m */,
 				F77333AC1C7D974E00E2FD20 /* EJS */,

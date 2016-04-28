@@ -33,7 +33,7 @@
     [super viewDidLoad];
     
     self.navigationItem.titleView=[self returnTitle:[NSString stringWithFormat:@"%@详情",self.titleName]];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
     [self _setupConstraints];
     
@@ -57,9 +57,9 @@
 - (void)_setupConstraints
 {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.view.mas_left);
-        make.size.mas_equalTo(CGSizeMake(FFScreenWidth, FFScreenHeight));
+        make.top.equalTo(self.view.mas_top).offset(20);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        make.size.mas_equalTo(CGSizeMake(FFScreenWidth - 20, FFScreenHeight));
     }];
 }
 
@@ -112,12 +112,12 @@
 {
     if (indexPath.row == 0)
     {
-        CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.data objectForKey:@"resultName"] AndWidth:FFScreenWidth-120 AndFont:[UIFont systemFontOfSize:13.0f]];
+        CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.data objectForKey:@"resultName"] AndWidth:FFScreenWidth-140 AndFont:[UIFont systemFontOfSize:13.0f]];
         return rect.size.height + 20 ;
     }
     else if (indexPath.row == 4)
     {
-        CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.data objectForKey:@"resultProposer"] AndWidth:FFScreenWidth-120 AndFont:[UIFont systemFontOfSize:13.0f]];
+        CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.data objectForKey:@"resultProposer"] AndWidth:FFScreenWidth-140 AndFont:[UIFont systemFontOfSize:13.0f]];
         return rect.size.height + 20 ;
     }
     else
@@ -139,10 +139,10 @@
     cell.rightLabel.textColor = [UIColor grayColor];
     if (indexPath.row == 0)
     {
-        cell.rightLabel.textColor = [UIColor blueColor];
+        cell.rightLabel.textColor = naviBG;
         
         cell.rightLabel.text = [self.viewModel.data objectForKey:@"resultName"] ;
-        CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.data objectForKey:@"resultName"] AndWidth:FFScreenWidth-120 AndFont:[UIFont systemFontOfSize:13.0f]];
+        CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.data objectForKey:@"resultName"] AndWidth:FFScreenWidth-140 AndFont:[UIFont systemFontOfSize:13.0f]];
         [cell getCellHeight:rect.size.height+1];
     }
     else if (indexPath.row == 1)
@@ -223,7 +223,7 @@
     else if (indexPath.row == 4)
     {
         cell.rightLabel.text = [self.viewModel.data objectForKey:@"resultProposer"] ;
-        CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.data objectForKey:@"resultProposer"] AndWidth:FFScreenWidth-120 AndFont:[UIFont systemFontOfSize:13.0f]];
+        CGRect  rect = [CommonTool getHeightWithText:[self.viewModel.data objectForKey:@"resultProposer"] AndWidth:FFScreenWidth-140 AndFont:[UIFont systemFontOfSize:13.0f]];
         [cell getCellHeight:rect.size.height+1];
     }
     else if (indexPath.row == 5 )

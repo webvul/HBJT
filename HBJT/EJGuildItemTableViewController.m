@@ -86,7 +86,7 @@
             self.hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
             //[self.hub setYOffset:-64];
         } else {
-            [self.hub hide:YES afterDelay:1];
+            [self.hub hide:YES afterDelay:0.5];
         }
     }];
 }

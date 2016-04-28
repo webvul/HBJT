@@ -41,7 +41,7 @@
         [self.rightLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.leftLabel.mas_right).with.offset(10.0f);
             make.centerY.equalTo(self.contentView.mas_centerY);
-            make.size.mas_equalTo(CGSizeMake(FFScreenWidth-120, 20));
+            make.size.mas_equalTo(CGSizeMake(FFScreenWidth-140, 20));
         }];
         
         
@@ -63,7 +63,7 @@
         [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.rightLabel.mas_left);
             make.bottom.equalTo(self.contentView.mas_bottom);
-            make.size.mas_equalTo(CGSizeMake(FFScreenWidth-120, 1));
+            make.size.mas_equalTo(CGSizeMake(FFScreenWidth-140, 1));
         }];
     }
     return self ;
@@ -75,7 +75,7 @@
     [self.rightLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.leftLabel.mas_right).with.offset(10.0f);
         make.centerY.equalTo(self.contentView.mas_centerY);
-        make.size.mas_equalTo(CGSizeMake(FFScreenWidth-120, height));
+        make.size.mas_equalTo(CGSizeMake(FFScreenWidth-140, height));
     }];
 }
 

@@ -41,7 +41,7 @@
     
     [self.view addSubview:self.tableView];
     [self _setupConstraints];
-    
+    self.view.tintColor = naviBG;
     
 }
 
@@ -80,10 +80,11 @@
 
 - (void)_setupConstraints
 {
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view.mas_top);
-        make.left.equalTo(self.view.mas_left);
-        make.size.mas_equalTo(CGSizeMake(FFScreenWidth, FFScreenHeight-49));
+        make.top.equalTo(self.view.mas_top).offset(20);
+        make.left.equalTo(self.view.mas_left).offset(10);
+        make.size.mas_equalTo(CGSizeMake(FFScreenWidth-20, FFScreenHeight));
     }];
 }
 
@@ -215,12 +216,12 @@
 {
     if (indexPath.row == 0)
     {
-        CGRect  rect = [CommonTool getHeightWithText:self.viewModel.itemName AndWidth:FFScreenWidth-120 AndFont:[UIFont systemFontOfSize:13.0f]];
-        return rect.size.height + 20 ;
+        CGRect  rect = [CommonTool getHeightWithText:self.viewModel.itemName AndWidth:FFScreenWidth-140 AndFont:[UIFont systemFontOfSize:13.0f]];
+        return rect.size.height + 24 ;
     }
     else
     {
-        return 40 ;
+        return 44 ;
     }
 }
 
@@ -237,13 +238,13 @@
     cell.rightLabel.textColor = [UIColor grayColor];
     if (indexPath.row == 0 || indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7)
     {
-       cell.rightLabel.textColor = [UIColor blueColor];
+       cell.rightLabel.textColor = naviBG;
     }
     
     if (indexPath.row == 0)
     {
         cell.rightLabel.text = self.viewModel.itemName ;
-        CGRect  rect = [CommonTool getHeightWithText:self.viewModel.itemName AndWidth:FFScreenWidth-120 AndFont:[UIFont systemFontOfSize:13.0f]];
+        CGRect  rect = [CommonTool getHeightWithText:self.viewModel.itemName AndWidth:FFScreenWidth-140 AndFont:[UIFont systemFontOfSize:13.0f]];
         [cell getCellHeight:rect.size.height+1];
     }
     else if (indexPath.row == 1)

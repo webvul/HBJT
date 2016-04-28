@@ -22,8 +22,8 @@
 @property (assign, nonatomic) BOOL currentUser;
 @property (assign, nonatomic) BOOL needDrawerReopen;
 
-@property (strong, nonatomic) NSString *pushType;
-@property (strong, nonatomic) NSString *msg;
+
+- (void)fakePush;
 
 + (instancetype)sharedDelegate;
 
@@ -48,7 +48,6 @@
             number:(NSString *)userNumberString
              phone:(NSString *)userPhoneString
            address:(NSString *)userAddressString;
-
 
 
 @end

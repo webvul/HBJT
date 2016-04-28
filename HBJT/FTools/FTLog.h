@@ -5,7 +5,7 @@
 //  Created by 方秋鸣 on 16/2/18.
 //  Copyright © 2016年 fangqiuming. All rights reserved.
 //
-
+#if DEBUG
 #define NSLog(format, ...) \
 do { \
 NSLog(@"%@:%d %.2f [ %@ ]", \
@@ -14,6 +14,9 @@ __LINE__, \
 CFAbsoluteTimeGetCurrent() - markTime, \
 [NSString stringWithFormat:format, ##__VA_ARGS__]); \
 } while(0)
+#else
+#define NSLog(format, ...)
+#endif
 
 #import <Foundation/Foundation.h>
 
