@@ -29,13 +29,6 @@
 @property (strong, nonatomic) NSString *pushMsg;
 @property (strong, nonatomic) NSString *pushTitle;
 
-/**
- *  设置应用在前台运行时收到推送是否进行跳转，默认为YES;
- */
-@property (assign, nonatomic) BOOL shouldAcceptRemoteNotificationWhenApplicationRunningForeground;
-@property (assign, nonatomic) BOOL getPushed;
-
-
 
 @end
 
@@ -61,7 +54,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    if (self.getPushed) {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"getPushed"])
+    {
         [self acceptRemoteNotification];
     }
 }
@@ -71,6 +65,8 @@
 {
     [self fakePush];
 }
+
+
 
 
 
@@ -272,11 +268,10 @@
         @strongify(self);
         NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         self.pushMsg = ([[userInfo objectForKey:@"msg"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"msg"]: self.pushMsg );
-        
         self.pushType = ([[userInfo objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"pushtype"]: self.pushType );
         self.pushTitle = ([[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] isKindOfClass:[NSString class]]? [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]: self.pushTitle);
         if (self.pushType != nil && self.pushMsg != nil) {
-            self.getPushed = YES;
+            [self acceptRemoteNotification];
         }
         NSLog(@"XGPush handleLaunching's successBlock");
     };
@@ -317,13 +312,13 @@
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
-    if (self.shouldAcceptRemoteNotificationWhenApplicationRunningForeground || ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground)) {
+    if (YES){ //(self.shouldAcceptRemoteNotificationWhenApplicationRunningForeground || ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground)) {
         self.pushMsg = ([[userInfo objectForKey:@"msg"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"msg"]: self.pushMsg );
         
         self.pushType = ([[userInfo objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"pushtype"]: self.pushType );
         self.pushTitle = ([[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] isKindOfClass:[NSString class]]? [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]: self.pushTitle);
         if (self.pushType != nil && self.pushMsg != nil) {
-            self.getPushed = YES;
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"getPushed"];
         }
         //推送反馈(app运行时)
         [XGPush handleReceiveNotification:userInfo];
@@ -422,7 +417,7 @@
     self.pushType = nil;
     self.pushMsg = nil;
     self.pushTitle = nil;
-    self.getPushed = NO;
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"getPushed"];
 }
 
 - (void)acceptRemoteNotification
@@ -473,7 +468,6 @@
 
 - (void)fakePush
 {
-    self.shouldAcceptRemoteNotificationWhenApplicationRunningForeground = YES;
     [self application:[UIApplication sharedApplication] didReceiveRemoteNotification:@{
         @"aps": @{
             @"alert":@"哈喽，普氏·诺提费什！",
@@ -483,7 +477,6 @@
         @"pushtype":@"03",
         @"msg":@"http://pages.fangqiuming.com"
     }];
-    self.shouldAcceptRemoteNotificationWhenApplicationRunningForeground = NO;
 
 }
 @end
