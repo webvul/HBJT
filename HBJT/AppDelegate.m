@@ -29,6 +29,13 @@
 @property (strong, nonatomic) NSString *pushMsg;
 @property (strong, nonatomic) NSString *pushTitle;
 
+/**
+ *  设置应用在前台运行时收到推送是否进行跳转，默认为YES;
+ */
+@property (assign, nonatomic) BOOL shouldAcceptRemoteNotificationWhenApplicationRunningForeground;
+@property (assign, nonatomic) BOOL getPushed;
+
+
 
 @end
 
@@ -45,12 +52,27 @@
     [self registerNofiticationWithOptions:launchOptions];
 #if DEBUG
     [self fakeLogin];
-    [self fakePush];
+    //[self fakePush];
 #else
     
 #endif
     return YES;
 }
+
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    if (self.getPushed) {
+        [self acceptRemoteNotification];
+    }
+}
+
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    [self fakePush];
+}
+
+
 
 #pragma mark - Public Methods
 
@@ -250,11 +272,11 @@
         @strongify(self);
         NSDictionary* userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
         self.pushMsg = ([[userInfo objectForKey:@"msg"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"msg"]: self.pushMsg );
-
-        self.pushType = ([[userInfo objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"pushtype"]: self.pushType );
         
+        self.pushType = ([[userInfo objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"pushtype"]: self.pushType );
+        self.pushTitle = ([[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] isKindOfClass:[NSString class]]? [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]: self.pushTitle);
         if (self.pushType != nil && self.pushMsg != nil) {
-            [self getPushed];
+            self.getPushed = YES;
         }
         NSLog(@"XGPush handleLaunching's successBlock");
     };
@@ -295,16 +317,17 @@
 
 - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
 {
-    self.pushMsg = ([[userInfo objectForKey:@"msg"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"msg"]: self.pushMsg );
-    
-    self.pushType = ([[userInfo objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"pushtype"]: self.pushType );
-    self.pushTitle = ([[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] isKindOfClass:[NSString class]]? [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]: self.pushTitle);
-    if (self.pushType != nil && self.pushMsg != nil) {
-        [self getPushed];
+    if (self.shouldAcceptRemoteNotificationWhenApplicationRunningForeground || ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground)) {
+        self.pushMsg = ([[userInfo objectForKey:@"msg"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"msg"]: self.pushMsg );
+        
+        self.pushType = ([[userInfo objectForKey:@"pushtype"] isKindOfClass:[NSString class]]? [userInfo objectForKey:@"pushtype"]: self.pushType );
+        self.pushTitle = ([[[userInfo objectForKey:@"aps"] objectForKey:@"alert"] isKindOfClass:[NSString class]]? [[userInfo objectForKey:@"aps"] objectForKey:@"alert"]: self.pushTitle);
+        if (self.pushType != nil && self.pushMsg != nil) {
+            self.getPushed = YES;
+        }
+        //推送反馈(app运行时)
+        [XGPush handleReceiveNotification:userInfo];
     }
-    //推送反馈(app运行时)
-    [XGPush handleReceiveNotification:userInfo];
-    
 }
 
 //-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
@@ -399,9 +422,10 @@
     self.pushType = nil;
     self.pushMsg = nil;
     self.pushTitle = nil;
+    self.getPushed = NO;
 }
 
-- (void)getPushed
+- (void)acceptRemoteNotification
 {
     UIViewController *topViewController = self.rootNavigationController.topViewController;
     if (self.pushMsg != nil && self.pushType != nil) {
@@ -409,20 +433,27 @@
         if ([self.pushType isEqualToString:@"01"]) {
             viewController = [[UIStoryboard storyboardWithName:@"News" bundle:nil]instantiateViewControllerWithIdentifier:@"Detail"];
             NSDateFormatter *df = [[NSDateFormatter alloc] init];
-            [df setDateFormat:@"YYYY-mm-dd hh:mm:ss"];
+            [df setDateFormat:@"YYYY-MM-dd hh:mm:ss"];
+            if (!self.pushTitle) {
+                self.pushTitle = @"热点新闻";
+            }
             [topViewController prepareViewController:viewController withSender:@{@"newsTitle":self.pushTitle,@"newsID":self.pushMsg,@"newsDate":[df stringFromDate:[NSDate date]]}];
+            [self push:viewController];
         }
         if ([self.pushType isEqualToString:@"02"]) {
             viewController = [[FFProgressDetailVC alloc]init];
-            [viewController setValue:@"动态" forKey:@"titleName"];
+            [viewController setValue:@"结果公示" forKey:@"titleName"];
             [topViewController prepareViewController:viewController withSender:@{@"id":self.pushMsg,@"type":@1}];
+            [self push:viewController];
         }
         if ([self.pushType isEqualToString:@"03"]) {
-            viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
-            
-            [topViewController prepareViewController:viewController withSender:@{@"title":@"推送通知",@"url":self.pushMsg,@"offset":@(0-64)}];
+            /*viewController = [[UIStoryboard storyboardWithName:@"Index" bundle:nil]instantiateViewControllerWithIdentifier:@"Web"];
+            if (!self.pushTitle) {
+                self.pushTitle = @"推送通知";
+            }
+            [topViewController prepareViewController:viewController withSender:@{@"title":self.pushTitle,@"url":self.pushMsg,@"offset":@(0-64)}];*/
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.pushMsg]];
         }
-        [self push:viewController];
         [self clearPush];
     }
 }
@@ -442,14 +473,17 @@
 
 - (void)fakePush
 {
+    self.shouldAcceptRemoteNotificationWhenApplicationRunningForeground = YES;
     [self application:[UIApplication sharedApplication] didReceiveRemoteNotification:@{
         @"aps": @{
             @"alert":@"哈喽，普氏·诺提费什！",
             @"badge":@1,
             @"sound":@"default"
         },
-        @"pushtype":@"01",
-        @"msg":@"118083"
+        @"pushtype":@"03",
+        @"msg":@"http://pages.fangqiuming.com"
     }];
+    self.shouldAcceptRemoteNotificationWhenApplicationRunningForeground = NO;
+
 }
 @end
