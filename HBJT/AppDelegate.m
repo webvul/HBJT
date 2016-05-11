@@ -45,9 +45,7 @@
     [self registerNofiticationWithOptions:launchOptions];
 #if DEBUG
     [self fakeLogin];
-    //[self fakePush];
-#else
-    
+    [self fakePush];
 #endif
     return YES;
 }
@@ -60,15 +58,10 @@
     }
 }
 
-
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     [self fakePush];
 }
-
-
-
-
 
 #pragma mark - Public Methods
 
@@ -458,16 +451,19 @@
 
 - (void)fakeLogin
 {
+#if DEBUG
     UIViewController *loggerViewController = [[UIStoryboard storyboardWithName:@"Logger" bundle:nil]  instantiateInitialViewController];
     [[RACScheduler mainThreadScheduler]afterDelay:2 schedule:^{
         
         [self push:loggerViewController];
         [self.indexViewController prepareViewController:loggerViewController withSender:@[@"xxxxxx",@"xxxxxx"]];
     }];
+#endif
 }
 
 - (void)fakePush
 {
+#if DEBUG
     [self application:[UIApplication sharedApplication] didReceiveRemoteNotification:@{
         @"aps": @{
             @"alert":@"哈喽，普氏·诺提费什！",
@@ -477,6 +473,6 @@
         @"pushtype":@"03",
         @"msg":@"http://pages.fangqiuming.com"
     }];
-
+#endif
 }
 @end
